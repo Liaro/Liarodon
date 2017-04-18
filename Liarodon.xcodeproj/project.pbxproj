@@ -8,12 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		43F9B1901EA613C50093E798 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F9B18F1EA613C50093E798 /* AppDelegate.swift */; };
-		43F9B1921EA613C50093E798 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F9B1911EA613C50093E798 /* ViewController.swift */; };
-		43F9B1951EA613C50093E798 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43F9B1931EA613C50093E798 /* Main.storyboard */; };
 		43F9B1971EA613C50093E798 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43F9B1961EA613C50093E798 /* Assets.xcassets */; };
 		43F9B19A1EA613C50093E798 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43F9B1981EA613C50093E798 /* LaunchScreen.storyboard */; };
 		43F9B1A51EA613C50093E798 /* LiarodonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F9B1A41EA613C50093E798 /* LiarodonTests.swift */; };
 		43F9B1B01EA613C50093E798 /* LiarodonUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F9B1AF1EA613C50093E798 /* LiarodonUITests.swift */; };
+		43F9B1CE1EA6159E0093E798 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F9B1CD1EA6159E0093E798 /* MainTabBarController.swift */; };
+		43F9B1D01EA615D80093E798 /* Timeline.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43F9B1CF1EA615D80093E798 /* Timeline.storyboard */; };
+		43F9B1D41EA616040093E798 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43F9B1D31EA616040093E798 /* Main.storyboard */; };
+		43F9B1D61EA616710093E798 /* TimelineTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F9B1D51EA616710093E798 /* TimelineTableViewController.swift */; };
+		43F9B1D91EA616E70093E798 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43F9B1D81EA616E70093E798 /* Login.storyboard */; };
+		43F9B1DB1EA617390093E798 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F9B1DA1EA617390093E798 /* LoginViewController.swift */; };
+		43F9B1E41EA618060093E798 /* Notification.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43F9B1E21EA618050093E798 /* Notification.storyboard */; };
+		43F9B1E51EA618060093E798 /* NotificationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F9B1E31EA618050093E798 /* NotificationTableViewController.swift */; };
+		43F9B1E91EA618680093E798 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43F9B1E81EA618680093E798 /* Profile.storyboard */; };
+		43F9B1EB1EA618870093E798 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F9B1EA1EA618870093E798 /* ProfileViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,8 +44,6 @@
 /* Begin PBXFileReference section */
 		43F9B18C1EA613C50093E798 /* Liarodon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Liarodon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		43F9B18F1EA613C50093E798 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		43F9B1911EA613C50093E798 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		43F9B1941EA613C50093E798 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		43F9B1961EA613C50093E798 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		43F9B1991EA613C50093E798 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		43F9B19B1EA613C50093E798 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -47,6 +53,16 @@
 		43F9B1AB1EA613C50093E798 /* LiarodonUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LiarodonUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		43F9B1AF1EA613C50093E798 /* LiarodonUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiarodonUITests.swift; sourceTree = "<group>"; };
 		43F9B1B11EA613C50093E798 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		43F9B1CD1EA6159E0093E798 /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		43F9B1CF1EA615D80093E798 /* Timeline.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Timeline.storyboard; path = Timeline/Timeline.storyboard; sourceTree = "<group>"; };
+		43F9B1D31EA616040093E798 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		43F9B1D51EA616710093E798 /* TimelineTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimelineTableViewController.swift; path = Timeline/TimelineTableViewController.swift; sourceTree = "<group>"; };
+		43F9B1D81EA616E70093E798 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Login.storyboard; path = Login/Login.storyboard; sourceTree = "<group>"; };
+		43F9B1DA1EA617390093E798 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = Login/LoginViewController.swift; sourceTree = "<group>"; };
+		43F9B1E21EA618050093E798 /* Notification.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Notification.storyboard; sourceTree = "<group>"; };
+		43F9B1E31EA618050093E798 /* NotificationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationTableViewController.swift; sourceTree = "<group>"; };
+		43F9B1E81EA618680093E798 /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Profile.storyboard; path = Profile/Profile.storyboard; sourceTree = "<group>"; };
+		43F9B1EA1EA618870093E798 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileViewController.swift; path = Profile/ProfileViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,8 +114,11 @@
 			isa = PBXGroup;
 			children = (
 				43F9B18F1EA613C50093E798 /* AppDelegate.swift */,
-				43F9B1911EA613C50093E798 /* ViewController.swift */,
-				43F9B1931EA613C50093E798 /* Main.storyboard */,
+				43F9B1D71EA616C70093E798 /* Login */,
+				43F9B1C71EA615280093E798 /* Main */,
+				43F9B1D11EA615DE0093E798 /* Timeline */,
+				43F9B1E11EA618050093E798 /* Notification */,
+				43F9B1E61EA6182A0093E798 /* Profile */,
 				43F9B1961EA613C50093E798 /* Assets.xcassets */,
 				43F9B1981EA613C50093E798 /* LaunchScreen.storyboard */,
 				43F9B19B1EA613C50093E798 /* Info.plist */,
@@ -123,6 +142,51 @@
 				43F9B1B11EA613C50093E798 /* Info.plist */,
 			);
 			path = LiarodonUITests;
+			sourceTree = "<group>";
+		};
+		43F9B1C71EA615280093E798 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				43F9B1D31EA616040093E798 /* Main.storyboard */,
+				43F9B1CD1EA6159E0093E798 /* MainTabBarController.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		43F9B1D11EA615DE0093E798 /* Timeline */ = {
+			isa = PBXGroup;
+			children = (
+				43F9B1CF1EA615D80093E798 /* Timeline.storyboard */,
+				43F9B1D51EA616710093E798 /* TimelineTableViewController.swift */,
+			);
+			name = Timeline;
+			sourceTree = "<group>";
+		};
+		43F9B1D71EA616C70093E798 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				43F9B1D81EA616E70093E798 /* Login.storyboard */,
+				43F9B1DA1EA617390093E798 /* LoginViewController.swift */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
+		43F9B1E11EA618050093E798 /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				43F9B1E21EA618050093E798 /* Notification.storyboard */,
+				43F9B1E31EA618050093E798 /* NotificationTableViewController.swift */,
+			);
+			path = Notification;
+			sourceTree = "<group>";
+		};
+		43F9B1E61EA6182A0093E798 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				43F9B1E81EA618680093E798 /* Profile.storyboard */,
+				43F9B1EA1EA618870093E798 /* ProfileViewController.swift */,
+			);
+			name = Profile;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -234,9 +298,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43F9B1D01EA615D80093E798 /* Timeline.storyboard in Resources */,
 				43F9B19A1EA613C50093E798 /* LaunchScreen.storyboard in Resources */,
 				43F9B1971EA613C50093E798 /* Assets.xcassets in Resources */,
-				43F9B1951EA613C50093E798 /* Main.storyboard in Resources */,
+				43F9B1D91EA616E70093E798 /* Login.storyboard in Resources */,
+				43F9B1D41EA616040093E798 /* Main.storyboard in Resources */,
+				43F9B1E91EA618680093E798 /* Profile.storyboard in Resources */,
+				43F9B1E41EA618060093E798 /* Notification.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,8 +329,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				43F9B1921EA613C50093E798 /* ViewController.swift in Sources */,
+				43F9B1E51EA618060093E798 /* NotificationTableViewController.swift in Sources */,
 				43F9B1901EA613C50093E798 /* AppDelegate.swift in Sources */,
+				43F9B1D61EA616710093E798 /* TimelineTableViewController.swift in Sources */,
+				43F9B1EB1EA618870093E798 /* ProfileViewController.swift in Sources */,
+				43F9B1DB1EA617390093E798 /* LoginViewController.swift in Sources */,
+				43F9B1CE1EA6159E0093E798 /* MainTabBarController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -298,14 +370,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		43F9B1931EA613C50093E798 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				43F9B1941EA613C50093E798 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		43F9B1981EA613C50093E798 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
