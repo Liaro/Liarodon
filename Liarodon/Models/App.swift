@@ -28,12 +28,11 @@ struct PostAppsRequest: MastodonRequest {
         return [
             "client_name": clientName,
             "redirect_uris": "urn:ietf:wg:oauth:2.0:oob",
-            "scopes": "read write follow"
+            "scopes": "read%20write%20follow"
         ]
     }
 
     func response(from object: Any, urlResponse: HTTPURLResponse) throws -> App {
-        print(object)
         return try App.decodeValue(object)
     }
 }
