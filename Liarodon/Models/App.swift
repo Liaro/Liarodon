@@ -9,12 +9,23 @@
 import Foundation
 import Himotoki
 
-struct App: Decodable {
+final class App {
 
     let id: Int
     let clientID: String
     let clientSecret: String
     let redirectURI: String
+
+    init(id: Int, clientID: String, clientSecret: String, redirectURI: String) {
+
+        self.id = id
+        self.clientID = clientID
+        self.clientSecret = clientSecret
+        self.redirectURI = redirectURI
+    }
+}
+
+extension App: Decodable {
 
     static func decode(_ e: Extractor) throws -> App {
 
