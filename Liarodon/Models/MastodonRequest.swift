@@ -9,7 +9,8 @@
 import APIKit
 import Himotoki
 
-internal var MastodonRequestBaseURL = URL(string: "https://mstdn.jp")!
+var MastodonAPIBaseURL = URL(string: "https://mstdn.jp")!
+var MastodonAPIAccessToken = ""
 
 protocol MastodonRequest: Request {
 }
@@ -17,6 +18,12 @@ protocol MastodonRequest: Request {
 extension MastodonRequest {
 
     var baseURL: URL {
-        return MastodonRequestBaseURL
+        return MastodonAPIBaseURL
+    }
+
+    var headerFields: [String : String] {
+        return [
+            "Authorization": "Bearer " + MastodonAPIAccessToken
+        ]
     }
 }
