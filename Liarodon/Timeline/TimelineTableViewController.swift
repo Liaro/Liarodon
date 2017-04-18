@@ -8,7 +8,8 @@
 
 import UIKit
 
-enum TimlineType {
+
+enum TimelineType {
     case home
     case local
     case federated
@@ -16,7 +17,7 @@ enum TimlineType {
 
 final class TimelineTableViewController: UITableViewController {
 
-    var type: TimlineType!
+    var type: TimelineType!
 
     override func viewDidLoad() {
         super.viewDidLoad()
