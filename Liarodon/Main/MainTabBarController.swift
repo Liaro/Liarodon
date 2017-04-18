@@ -14,6 +14,18 @@ final class MainTabBarController: UITabBarController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+
+        let homeNavigationViewController = viewControllers?[0] as! UINavigationController
+        homeNavigationViewController.tabBarItem.image = UIImage(named: "tab-home")
+        homeNavigationViewController.title = "Home"
+
+        let localTimelineNavigationViewController = viewControllers?[1] as! UINavigationController
+        localTimelineNavigationViewController.tabBarItem.image = UIImage(named: "tab-local-timeline")
+        localTimelineNavigationViewController.title = "Local"
+
+        let federatedNavigationViewController = viewControllers?[2] as! UINavigationController
+        federatedNavigationViewController.tabBarItem.image = UIImage(named: "tab-federated")
+        federatedNavigationViewController.title = "Federated"
     }
 
     override func didReceiveMemoryWarning() {

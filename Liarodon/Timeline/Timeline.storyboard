@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="R3Z-uQ-WeX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="0ir-iA-oE8">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Timeline Table View Controller-->
+        <!--Timeline-->
         <scene sceneID="QWi-bO-s8C">
             <objects>
                 <tableViewController id="R3Z-uQ-WeX" customClass="TimelineTableViewController" customModule="Liarodon" customModuleProvider="target" sceneMemberID="viewController">
@@ -32,10 +31,35 @@
                             <outlet property="delegate" destination="R3Z-uQ-WeX" id="Dg3-Xy-XWV"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Timeline" id="DHq-Wh-wSr"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RjH-og-a0w" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="0.0" y="0.0"/>
+            <point key="canvasLocation" x="938.39999999999998" y="-0.44977511244377816"/>
+        </scene>
+        <!--Timeline-->
+        <scene sceneID="Am9-I9-kVx">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="0ir-iA-oE8" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Timeline" image="tab-home" id="HF1-Yu-YCz"/>
+                    <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="OrT-gR-l2J">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="R3Z-uQ-WeX" kind="relationship" relationship="rootViewController" id="RJH-Gk-wJF"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ShL-Xq-aQC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-0.80000000000000004" y="-0.44977511244377816"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="tab-home" width="16" height="16"/>
+    </resources>
 </document>
