@@ -13,16 +13,16 @@
         <scene sceneID="QWi-bO-s8C">
             <objects>
                 <tableViewController id="R3Z-uQ-WeX" customClass="TimelineTableViewController" customModule="Liarodon" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="215" sectionHeaderHeight="28" sectionFooterHeight="28" id="vax-5H-8qa">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="265" sectionHeaderHeight="28" sectionFooterHeight="28" id="vax-5H-8qa">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Toot" rowHeight="215" id="cHh-EG-Sy4">
-                                <rect key="frame" x="0.0" y="28" width="320" height="215"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Toot" rowHeight="265" id="cHh-EG-Sy4" customClass="TootTableViewCell" customModule="Liarodon" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="320" height="265"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cHh-EG-Sy4" id="F9x-BH-XYg">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="214"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="264.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user" translatesAutoresizingMaskIntoConstraints="NO" id="kom-Ot-Ng1">
@@ -56,27 +56,27 @@
                                             <color key="textColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ze8-g4-F1H">
-                                            <rect key="frame" x="76" y="46" width="236" height="122"/>
-                                            <string key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nost</string>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jek-tu-mNf">
-                                            <rect key="frame" x="76" y="179.5" width="24" height="22"/>
+                                            <rect key="frame" x="76" y="202" width="24" height="22"/>
                                             <state key="normal" title="1" image="tab-federated"/>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bad-6f-WBV">
-                                            <rect key="frame" x="120" y="180" width="24" height="22"/>
+                                            <rect key="frame" x="120" y="202" width="24" height="22"/>
                                             <state key="normal" title="1" image="tab-federated"/>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ihX-K8-OTz">
-                                            <rect key="frame" x="164" y="180" width="24" height="22"/>
+                                            <rect key="frame" x="164" y="202" width="24" height="22"/>
                                             <state key="normal" title="1" image="tab-federated"/>
                                         </button>
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aAt-Ca-Wmo">
+                                            <rect key="frame" x="76" y="44" width="236" height="150"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </string>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        </textView>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gpE-y5-rQx">
-                                            <rect key="frame" x="208" y="180" width="16" height="22"/>
+                                            <rect key="frame" x="208" y="202" width="16" height="22"/>
                                             <state key="normal" image="tab-federated"/>
                                         </button>
                                     </subviews>
@@ -85,25 +85,28 @@
                                         <constraint firstItem="gpE-y5-rQx" firstAttribute="top" secondItem="ihX-K8-OTz" secondAttribute="top" id="5N3-6T-bK4"/>
                                         <constraint firstItem="kom-Ot-Ng1" firstAttribute="leading" secondItem="F9x-BH-XYg" secondAttribute="leadingMargin" id="80C-a0-XLa"/>
                                         <constraint firstItem="PS7-in-IDP" firstAttribute="top" secondItem="89r-Uw-8c6" secondAttribute="bottom" constant="2" id="9S7-TG-aCy"/>
+                                        <constraint firstItem="aAt-Ca-Wmo" firstAttribute="top" secondItem="PS7-in-IDP" secondAttribute="bottom" id="C1g-lA-mhP"/>
                                         <constraint firstItem="ihX-K8-OTz" firstAttribute="leading" secondItem="Bad-6f-WBV" secondAttribute="trailing" constant="20" id="F74-3A-sA8"/>
+                                        <constraint firstItem="Jek-tu-mNf" firstAttribute="leading" secondItem="aAt-Ca-Wmo" secondAttribute="leading" id="FDm-4r-GJZ"/>
                                         <constraint firstItem="Bad-6f-WBV" firstAttribute="top" secondItem="Jek-tu-mNf" secondAttribute="top" id="GFi-l1-PJM"/>
-                                        <constraint firstItem="Jek-tu-mNf" firstAttribute="leading" secondItem="Ze8-g4-F1H" secondAttribute="leading" id="Gb5-vR-B2K"/>
                                         <constraint firstItem="Xnl-ZK-QpF" firstAttribute="bottom" secondItem="89r-Uw-8c6" secondAttribute="bottom" id="Ns1-s6-UEI"/>
-                                        <constraint firstItem="Jek-tu-mNf" firstAttribute="top" secondItem="Ze8-g4-F1H" secondAttribute="bottom" constant="11.5" id="RyE-sA-a0u"/>
+                                        <constraint firstItem="Jek-tu-mNf" firstAttribute="top" secondItem="aAt-Ca-Wmo" secondAttribute="bottom" constant="7.5" id="RyJ-k3-QBe"/>
                                         <constraint firstItem="gpE-y5-rQx" firstAttribute="leading" secondItem="ihX-K8-OTz" secondAttribute="trailing" constant="20" id="SOx-uL-v1K"/>
                                         <constraint firstItem="89r-Uw-8c6" firstAttribute="bottom" secondItem="5mf-9y-1jz" secondAttribute="bottom" id="ScW-aT-l00"/>
-                                        <constraint firstItem="Ze8-g4-F1H" firstAttribute="leading" secondItem="kom-Ot-Ng1" secondAttribute="trailing" constant="8" id="apf-VW-o8e"/>
-                                        <constraint firstItem="Ze8-g4-F1H" firstAttribute="top" secondItem="PS7-in-IDP" secondAttribute="bottom" constant="2" id="e0E-sD-hWF"/>
+                                        <constraint firstItem="aAt-Ca-Wmo" firstAttribute="leading" secondItem="PS7-in-IDP" secondAttribute="leading" id="Vxe-c5-T2h"/>
                                         <constraint firstItem="5mf-9y-1jz" firstAttribute="top" secondItem="F9x-BH-XYg" secondAttribute="topMargin" id="ekQ-KP-tMm"/>
                                         <constraint firstItem="PS7-in-IDP" firstAttribute="leading" secondItem="5mf-9y-1jz" secondAttribute="leading" id="hpd-Yi-f9a"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="aAt-Ca-Wmo" secondAttribute="trailing" id="kbI-JX-Pwh"/>
                                         <constraint firstItem="kom-Ot-Ng1" firstAttribute="top" secondItem="F9x-BH-XYg" secondAttribute="topMargin" id="rHa-tG-0Mu"/>
                                         <constraint firstItem="ihX-K8-OTz" firstAttribute="top" secondItem="Bad-6f-WBV" secondAttribute="top" id="rex-OL-toR"/>
                                         <constraint firstItem="5mf-9y-1jz" firstAttribute="leading" secondItem="kom-Ot-Ng1" secondAttribute="trailing" constant="8" id="tTD-6h-jCL"/>
                                         <constraint firstItem="Bad-6f-WBV" firstAttribute="leading" secondItem="Jek-tu-mNf" secondAttribute="trailing" constant="20" id="vd5-IN-qik"/>
-                                        <constraint firstAttribute="trailing" secondItem="Ze8-g4-F1H" secondAttribute="trailing" constant="8" id="zZ0-6N-yCS"/>
                                         <constraint firstItem="89r-Uw-8c6" firstAttribute="leading" secondItem="5mf-9y-1jz" secondAttribute="trailing" constant="6" id="ztp-Fr-Fvd"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="contentTextView" destination="aAt-Ca-Wmo" id="86X-lT-L0D"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
