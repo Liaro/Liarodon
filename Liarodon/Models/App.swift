@@ -32,6 +32,10 @@ struct PostAppsRequest: MastodonRequest {
         ]
     }
 
+    var headerFields: [String : String] {
+        return [:]
+    }
+
     func response(from object: Any, urlResponse: HTTPURLResponse) throws -> App {
         return try App.decodeValue(object)
     }

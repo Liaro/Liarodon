@@ -27,6 +27,10 @@ struct PostAccessTokenRequest: MastodonRequest {
         return "/oauth/token"
     }
 
+    var headerFields: [String : String] {
+        return [:]
+    }
+
     var parameters: Any? {
         return [
             "client_id": clientID,
