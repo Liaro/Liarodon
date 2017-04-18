@@ -89,7 +89,22 @@ struct GetAccountFollowingRequest: MastodonRequest {
 }
 
 /// Getting an account's statuses.
-// TODO: Implement
+struct GetAccountStatusesRequest: MastodonRequest {
+
+    let id: Int
+
+    var method: HTTPMethod {
+        return .get
+    }
+
+    var path: String {
+        return "/api/v1/accounts/\(id)/statuses"
+    }
+
+    func response(from object: Any, urlResponse: HTTPURLResponse) throws -> [Status] {
+        return try decodeArray(object)
+    }
+}
 
 
 /// Following an account.
