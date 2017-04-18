@@ -53,7 +53,7 @@ struct GetAccountRequest: MastodonRequest {
 
 
 /// Getting an account's followers.
-struct GetFollowersRequest: MastodonRequest {
+struct GetAccountFollowersRequest: MastodonRequest {
 
     let id: Int
 
@@ -71,7 +71,7 @@ struct GetFollowersRequest: MastodonRequest {
 }
 
 /// Getting who account is following.
-struct GetFollowingRequest: MastodonRequest {
+struct GetAccountFollowingRequest: MastodonRequest {
 
     let id: Int
 
