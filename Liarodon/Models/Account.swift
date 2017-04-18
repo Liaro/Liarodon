@@ -10,7 +10,7 @@ import Foundation
 import Himotoki
 
 
-struct Account: Decodable {
+final class Account {
 
     /// The ID of the account.
     let id: Int
@@ -33,15 +33,41 @@ struct Account: Decodable {
     /// Biography of user.
     let note: String
     /// URL of the user's profile page (can be remote).
-    let url: String
+    let url: URL
     /// URL to the avatar image.
-    let avatar: String
+    let avatar: URL
     ///URL to the avatar static image (gif)
-    let avatarStatic: String
+    let avatarStatic: URL
     /// URL to the header image.
-    let header: String
+    let header: URL
     /// URL to the header static image (gif)
-    let headerStatic: String
+    let headerStatic: URL
+
+
+    init(id: Int, username: String, acct: String, displayName: String,
+         locked: Bool, createdAt: String, followersCount: Int, followingCount: Int,
+         statusesCount: Int, note: String, url: URL, avatar: URL, avatarStatic: URL,
+         header: URL, headerStatic: URL) {
+
+        self.id = id
+        self.username = username
+        self.acct = acct
+        self.displayName = displayName
+        self.locked = locked
+        self.createdAt = createdAt
+        self.followersCount = followersCount
+        self.followingCount = followingCount
+        self.statusesCount = statusesCount
+        self.note = note
+        self.url = url
+        self.avatar = avatar
+        self.avatarStatic = avatarStatic
+        self.header = header
+        self.headerStatic = headerStatic
+    }
+}
+
+extension Account: Decodable {
 
     static func decode(_ e: Extractor) throws -> Account {
 
@@ -56,11 +82,24 @@ struct Account: Decodable {
             followingCount  : e <| "following_count",
             statusesCount   : e <| "statuses_count",
             note            : e <| "note",
-            url             : e <| "url",
-            avatar          : e <| "avatar",
-            avatarStatic    : e <| "avatar_static",
-            header          : e <| "header",
-            headerStatic    : e <| "header_static"
+            url             : URL(string: try e <| "url")!,
+            avatar          : URL(string: try e <| "avatar")!,
+            avatarStatic    : URL(string: try e <| "avatar_static")!,
+            header          : URL(string: try e <| "header")!,
+            headerStatic    : URL(string: try e <| "header_static")!
         )
+    }
+}
+
+extension Account: CustomStringConvertible {
+
+    var description: String {
+        return
+            "{\n" +
+            "  id: \(id),\n" +
+            "  username: \(username),\n" +
+            "  acct: \(acct), \n" +
+            "  displayName: \(displayName),\n" +
+            "}"
     }
 }
