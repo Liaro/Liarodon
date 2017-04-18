@@ -46,3 +46,39 @@ struct GetAccountRequest: MastodonRequest {
         return try Account.decodeValue(object)
     }
 }
+/// Getting an account's followers.
+struct GetFollowersRequest: MastodonRequest {
+
+    let id: Int
+
+    var method: HTTPMethod {
+        return .get
+    }
+
+    var path: String {
+        return "/api/v1/accounts/\(id)/followers"
+    }
+
+    func response(from object: Any, urlResponse: HTTPURLResponse) throws -> [Account] {
+        return try decodeArray(object)
+    }
+}
+
+/// Getting who account is following.
+struct GetFollowingRequest: MastodonRequest {
+
+    let id: Int
+
+    var method: HTTPMethod {
+        return .get
+    }
+
+    var path: String {
+        return "/api/v1/accounts/\(id)/following"
+    }
+
+    func response(from object: Any, urlResponse: HTTPURLResponse) throws -> [Account] {
+        return try decodeArray(object)
+    }
+}
+
