@@ -6,14 +6,15 @@
 //  Copyright © 2017年 Liaro Inc. All rights reserved.
 //
 
+//  Official API document
+//  https://github.com/tootsuite/documentation/blob/master/Using-the-API/API.md
+
 import Foundation
 import APIKit
 import Himotoki
 
-
+/// Getting the current user.
 struct GetAuthenticatedAccountRequest: MastodonRequest {
-
-    typealias Response = Account
 
     var method: HTTPMethod {
         return .get
@@ -28,24 +29,29 @@ struct GetAuthenticatedAccountRequest: MastodonRequest {
     }
 }
 
+
+/// Fetching an account.
 struct GetAccountRequest: MastodonRequest {
 
     let id: Int
-
-    typealias Response = Account
 
     var method: HTTPMethod {
         return .get
     }
 
     var path: String {
-        return "/api/v1/accounts/" + String(id)
+        return "/api/v1/accounts/\(id)"
     }
 
     func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Account {
         return try Account.decodeValue(object)
     }
 }
+
+/// Updating the current user
+// TODO: Implement
+
+
 /// Getting an account's followers.
 struct GetFollowersRequest: MastodonRequest {
 
@@ -82,3 +88,30 @@ struct GetFollowingRequest: MastodonRequest {
     }
 }
 
+/// Getting an account's statuses.
+// TODO: Implement
+
+
+/// Following an account.
+// TODO: Implement
+ 
+/// Unfollowing an account.
+// TODO: Implement
+
+/// Blocking an account.
+// TODO: Implement
+
+/// Unblocking an account.
+// TODO: Implement
+
+/// Muting an account.
+// TODO: Implement
+
+/// Unmuting an account.
+// TODO: Implement
+
+/// Getting an account's relationships.
+// TODO: Implement
+
+/// Searching for accounts.
+// TODO: Implement
