@@ -14,7 +14,7 @@ struct PostAccessTokenRequest: MastodonRequest {
 
     let clientID: String
     let clientSecret: String
-    let userName: String        // User mail address
+    let username: String        // User mail address
     let password: String
 
     typealias Response = AccessToken
@@ -36,7 +36,7 @@ struct PostAccessTokenRequest: MastodonRequest {
             "client_id": clientID,
             "client_secret": clientSecret,
             "grant_type": "password",
-            "username": userName,
+            "username": username,
             "password": password
         ]
     }
