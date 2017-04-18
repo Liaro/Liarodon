@@ -22,6 +22,7 @@
 		43F9B1E51EA618060093E798 /* NotificationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F9B1E31EA618050093E798 /* NotificationTableViewController.swift */; };
 		43F9B1E91EA618680093E798 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43F9B1E81EA618680093E798 /* Profile.storyboard */; };
 		43F9B1EB1EA618870093E798 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F9B1EA1EA618870093E798 /* ProfileViewController.swift */; };
+		C96594BCA41A1A7E8BAFF67D /* Pods_Liarodon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A2903B0F09627C9A95655D4 /* Pods_Liarodon.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,9 @@
 		43F9B1E31EA618050093E798 /* NotificationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationTableViewController.swift; sourceTree = "<group>"; };
 		43F9B1E81EA618680093E798 /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Profile.storyboard; path = Profile/Profile.storyboard; sourceTree = "<group>"; };
 		43F9B1EA1EA618870093E798 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileViewController.swift; path = Profile/ProfileViewController.swift; sourceTree = "<group>"; };
+		8A2903B0F09627C9A95655D4 /* Pods_Liarodon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Liarodon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB08770CBB454B140713D012 /* Pods-Liarodon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Liarodon.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Liarodon/Pods-Liarodon.debug.xcconfig"; sourceTree = "<group>"; };
+		CAD57C341AEC8EF5EFD2E96C /* Pods-Liarodon.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Liarodon.release.xcconfig"; path = "Pods/Target Support Files/Pods-Liarodon/Pods-Liarodon.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C96594BCA41A1A7E8BAFF67D /* Pods_Liarodon.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,6 +95,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3374808BA931DCA09DC7298B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8A2903B0F09627C9A95655D4 /* Pods_Liarodon.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		43F9B1831EA613C50093E798 = {
 			isa = PBXGroup;
 			children = (
@@ -97,6 +110,8 @@
 				43F9B1A31EA613C50093E798 /* LiarodonTests */,
 				43F9B1AE1EA613C50093E798 /* LiarodonUITests */,
 				43F9B18D1EA613C50093E798 /* Products */,
+				D960644E029D1438710D089D /* Pods */,
+				3374808BA931DCA09DC7298B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -189,6 +204,15 @@
 			name = Profile;
 			sourceTree = "<group>";
 		};
+		D960644E029D1438710D089D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BB08770CBB454B140713D012 /* Pods-Liarodon.debug.xcconfig */,
+				CAD57C341AEC8EF5EFD2E96C /* Pods-Liarodon.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -196,9 +220,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 43F9B1B41EA613C50093E798 /* Build configuration list for PBXNativeTarget "Liarodon" */;
 			buildPhases = (
+				E9345393F0C9223EAAEC9CA8 /* [CP] Check Pods Manifest.lock */,
 				43F9B1881EA613C50093E798 /* Sources */,
 				43F9B1891EA613C50093E798 /* Frameworks */,
 				43F9B18A1EA613C50093E798 /* Resources */,
+				E6A4B25C08DFB781B981C711 /* [CP] Embed Pods Frameworks */,
+				D4003FF003A553F483A6D5AA /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -323,6 +350,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		D4003FF003A553F483A6D5AA /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Liarodon/Pods-Liarodon-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E6A4B25C08DFB781B981C711 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Liarodon/Pods-Liarodon-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E9345393F0C9223EAAEC9CA8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		43F9B1881EA613C50093E798 /* Sources */ = {
@@ -476,6 +551,7 @@
 		};
 		43F9B1B51EA613C50093E798 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BB08770CBB454B140713D012 /* Pods-Liarodon.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -491,6 +567,7 @@
 		};
 		43F9B1B61EA613C50093E798 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CAD57C341AEC8EF5EFD2E96C /* Pods-Liarodon.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
