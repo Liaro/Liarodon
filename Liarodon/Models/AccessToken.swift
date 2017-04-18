@@ -10,12 +10,23 @@ import Foundation
 import Himotoki
 
 
-struct AccessToken: Decodable {
+final class AccessToken {
 
     let accessToken: String
     let createdAt: Int
     let scope: String
     let tokenType: String
+
+    init(accessToken: String, createdAt: Int, scope: String, tokenType: String) {
+
+        self.accessToken = accessToken
+        self.createdAt = createdAt
+        self.scope = scope
+        self.tokenType = tokenType
+    }
+}
+
+extension AccessToken: Decodable {
 
     static func decode(_ e: Extractor) throws -> AccessToken {
 
