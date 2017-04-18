@@ -8,10 +8,27 @@
 
 import UIKit
 
+enum TimlineType {
+    case home
+    case local
+    case federated
+}
+
 final class TimelineTableViewController: UITableViewController {
+
+    var type: TimlineType!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        switch type! {
+        case .home:
+            title = "Home"
+        case .local:
+            title = "Local"
+        case .federated:
+            title = "Federated"
+        }
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false

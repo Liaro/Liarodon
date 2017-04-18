@@ -18,14 +18,17 @@ final class MainTabBarController: UITabBarController {
         let homeNavigationViewController = viewControllers?[0] as! UINavigationController
         homeNavigationViewController.tabBarItem.image = UIImage(named: "tab-home")
         homeNavigationViewController.title = "Home"
+        (homeNavigationViewController.topViewController as! TimelineTableViewController).type = .home
 
         let localTimelineNavigationViewController = viewControllers?[1] as! UINavigationController
         localTimelineNavigationViewController.tabBarItem.image = UIImage(named: "tab-local-timeline")
         localTimelineNavigationViewController.title = "Local"
+        (localTimelineNavigationViewController.topViewController as! TimelineTableViewController).type = .local
 
         let federatedNavigationViewController = viewControllers?[2] as! UINavigationController
         federatedNavigationViewController.tabBarItem.image = UIImage(named: "tab-federated")
         federatedNavigationViewController.title = "Federated"
+        (federatedNavigationViewController.topViewController as! TimelineTableViewController).type = .federated
     }
 
     override func didReceiveMemoryWarning() {
