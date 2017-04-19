@@ -22,6 +22,20 @@
 		43F9B1E51EA618060093E798 /* NotificationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F9B1E31EA618050093E798 /* NotificationTableViewController.swift */; };
 		43F9B1E91EA618680093E798 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43F9B1E81EA618680093E798 /* Profile.storyboard */; };
 		43F9B1EB1EA618870093E798 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F9B1EA1EA618870093E798 /* ProfileViewController.swift */; };
+		43F9B1EE1EA626740093E798 /* AccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F9B1ED1EA626740093E798 /* AccessToken.swift */; };
+		43F9B1F41EA62B910093E798 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F9B1F31EA62B910093E798 /* App.swift */; };
+		43F9B1F61EA63E6C0093E798 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F9B1F51EA63E6C0093E798 /* Account.swift */; };
+		43F9B1F91EA64C400093E798 /* MastodonAPI+Apps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F9B1F81EA64C400093E798 /* MastodonAPI+Apps.swift */; };
+		43F9B1FD1EA64E2B0093E798 /* MastodonAPI+Accounts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F9B1FC1EA64E2B0093E798 /* MastodonAPI+Accounts.swift */; };
+		43F9B1FF1EA64E710093E798 /* MastodonAPI+OAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F9B1FE1EA64E710093E798 /* MastodonAPI+OAuth.swift */; };
+		43F9B2011EA658820093E798 /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F9B2001EA658820093E798 /* Status.swift */; };
+		43F9B2031EA677910093E798 /* Attachment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F9B2021EA677910093E798 /* Attachment.swift */; };
+		43F9B2051EA67C680093E798 /* Mention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F9B2041EA67C680093E798 /* Mention.swift */; };
+		43F9B2071EA67DAB0093E798 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F9B2061EA67DAB0093E798 /* Tag.swift */; };
+		43F9B2091EA67E460093E798 /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F9B2081EA67E460093E798 /* Application.swift */; };
+		43F9B20B1EA708200093E798 /* MastodonAPI+Timelines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F9B20A1EA708200093E798 /* MastodonAPI+Timelines.swift */; };
+		43F9B20E1EA7112B0093E798 /* String+url.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F9B20D1EA7112B0093E798 /* String+url.swift */; };
+		43F9B2101EA7160C0093E798 /* MastodonAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F9B20F1EA7160C0093E798 /* MastodonAPI.swift */; };
 		C96594BCA41A1A7E8BAFF67D /* Pods_Liarodon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A2903B0F09627C9A95655D4 /* Pods_Liarodon.framework */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +78,20 @@
 		43F9B1E31EA618050093E798 /* NotificationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationTableViewController.swift; sourceTree = "<group>"; };
 		43F9B1E81EA618680093E798 /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Profile.storyboard; path = Profile/Profile.storyboard; sourceTree = "<group>"; };
 		43F9B1EA1EA618870093E798 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileViewController.swift; path = Profile/ProfileViewController.swift; sourceTree = "<group>"; };
+		43F9B1ED1EA626740093E798 /* AccessToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccessToken.swift; path = Models/AccessToken.swift; sourceTree = "<group>"; };
+		43F9B1F31EA62B910093E798 /* App.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = App.swift; path = Models/App.swift; sourceTree = "<group>"; };
+		43F9B1F51EA63E6C0093E798 /* Account.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Account.swift; path = Models/Account.swift; sourceTree = "<group>"; };
+		43F9B1F81EA64C400093E798 /* MastodonAPI+Apps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "MastodonAPI+Apps.swift"; path = "API/MastodonAPI+Apps.swift"; sourceTree = "<group>"; };
+		43F9B1FC1EA64E2B0093E798 /* MastodonAPI+Accounts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "MastodonAPI+Accounts.swift"; path = "API/MastodonAPI+Accounts.swift"; sourceTree = "<group>"; };
+		43F9B1FE1EA64E710093E798 /* MastodonAPI+OAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "MastodonAPI+OAuth.swift"; path = "API/MastodonAPI+OAuth.swift"; sourceTree = "<group>"; };
+		43F9B2001EA658820093E798 /* Status.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Status.swift; path = Models/Status.swift; sourceTree = "<group>"; };
+		43F9B2021EA677910093E798 /* Attachment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Attachment.swift; path = Models/Attachment.swift; sourceTree = "<group>"; };
+		43F9B2041EA67C680093E798 /* Mention.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Mention.swift; path = Models/Mention.swift; sourceTree = "<group>"; };
+		43F9B2061EA67DAB0093E798 /* Tag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Tag.swift; path = Models/Tag.swift; sourceTree = "<group>"; };
+		43F9B2081EA67E460093E798 /* Application.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Application.swift; path = Models/Application.swift; sourceTree = "<group>"; };
+		43F9B20A1EA708200093E798 /* MastodonAPI+Timelines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "MastodonAPI+Timelines.swift"; path = "API/MastodonAPI+Timelines.swift"; sourceTree = "<group>"; };
+		43F9B20D1EA7112B0093E798 /* String+url.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+url.swift"; path = "Extensions/String+url.swift"; sourceTree = "<group>"; };
+		43F9B20F1EA7160C0093E798 /* MastodonAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MastodonAPI.swift; path = API/MastodonAPI.swift; sourceTree = "<group>"; };
 		8A2903B0F09627C9A95655D4 /* Pods_Liarodon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Liarodon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB08770CBB454B140713D012 /* Pods-Liarodon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Liarodon.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Liarodon/Pods-Liarodon.debug.xcconfig"; sourceTree = "<group>"; };
 		CAD57C341AEC8EF5EFD2E96C /* Pods-Liarodon.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Liarodon.release.xcconfig"; path = "Pods/Target Support Files/Pods-Liarodon/Pods-Liarodon.release.xcconfig"; sourceTree = "<group>"; };
@@ -129,11 +157,14 @@
 			isa = PBXGroup;
 			children = (
 				43F9B18F1EA613C50093E798 /* AppDelegate.swift */,
+				43F9B1F71EA64BE80093E798 /* API */,
+				43F9B1EC1EA6259E0093E798 /* Models */,
 				43F9B1D71EA616C70093E798 /* Login */,
 				43F9B1C71EA615280093E798 /* Main */,
 				43F9B1D11EA615DE0093E798 /* Timeline */,
 				43F9B1E11EA618050093E798 /* Notification */,
 				43F9B1E61EA6182A0093E798 /* Profile */,
+				43F9B20C1EA711100093E798 /* Extensions */,
 				43F9B1961EA613C50093E798 /* Assets.xcassets */,
 				43F9B1981EA613C50093E798 /* LaunchScreen.storyboard */,
 				43F9B19B1EA613C50093E798 /* Info.plist */,
@@ -202,6 +233,41 @@
 				43F9B1EA1EA618870093E798 /* ProfileViewController.swift */,
 			);
 			name = Profile;
+			sourceTree = "<group>";
+		};
+		43F9B1EC1EA6259E0093E798 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				43F9B1F31EA62B910093E798 /* App.swift */,
+				43F9B1ED1EA626740093E798 /* AccessToken.swift */,
+				43F9B1F51EA63E6C0093E798 /* Account.swift */,
+				43F9B2001EA658820093E798 /* Status.swift */,
+				43F9B2021EA677910093E798 /* Attachment.swift */,
+				43F9B2041EA67C680093E798 /* Mention.swift */,
+				43F9B2061EA67DAB0093E798 /* Tag.swift */,
+				43F9B2081EA67E460093E798 /* Application.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		43F9B1F71EA64BE80093E798 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				43F9B20F1EA7160C0093E798 /* MastodonAPI.swift */,
+				43F9B1F81EA64C400093E798 /* MastodonAPI+Apps.swift */,
+				43F9B1FE1EA64E710093E798 /* MastodonAPI+OAuth.swift */,
+				43F9B1FC1EA64E2B0093E798 /* MastodonAPI+Accounts.swift */,
+				43F9B20A1EA708200093E798 /* MastodonAPI+Timelines.swift */,
+			);
+			name = API;
+			sourceTree = "<group>";
+		};
+		43F9B20C1EA711100093E798 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				43F9B20D1EA7112B0093E798 /* String+url.swift */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 		D960644E029D1438710D089D /* Pods */ = {
@@ -404,12 +470,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43F9B2091EA67E460093E798 /* Application.swift in Sources */,
+				43F9B2071EA67DAB0093E798 /* Tag.swift in Sources */,
 				43F9B1E51EA618060093E798 /* NotificationTableViewController.swift in Sources */,
+				43F9B2051EA67C680093E798 /* Mention.swift in Sources */,
+				43F9B20B1EA708200093E798 /* MastodonAPI+Timelines.swift in Sources */,
+				43F9B1F91EA64C400093E798 /* MastodonAPI+Apps.swift in Sources */,
+				43F9B1FF1EA64E710093E798 /* MastodonAPI+OAuth.swift in Sources */,
+				43F9B2031EA677910093E798 /* Attachment.swift in Sources */,
 				43F9B1901EA613C50093E798 /* AppDelegate.swift in Sources */,
 				43F9B1D61EA616710093E798 /* TimelineTableViewController.swift in Sources */,
+				43F9B1FD1EA64E2B0093E798 /* MastodonAPI+Accounts.swift in Sources */,
 				43F9B1EB1EA618870093E798 /* ProfileViewController.swift in Sources */,
 				43F9B1DB1EA617390093E798 /* LoginViewController.swift in Sources */,
+				43F9B2011EA658820093E798 /* Status.swift in Sources */,
+				43F9B1F61EA63E6C0093E798 /* Account.swift in Sources */,
+				43F9B2101EA7160C0093E798 /* MastodonAPI.swift in Sources */,
+				43F9B20E1EA7112B0093E798 /* String+url.swift in Sources */,
 				43F9B1CE1EA6159E0093E798 /* MainTabBarController.swift in Sources */,
+				43F9B1F41EA62B910093E798 /* App.swift in Sources */,
+				43F9B1EE1EA626740093E798 /* AccessToken.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
