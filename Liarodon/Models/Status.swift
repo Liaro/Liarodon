@@ -139,10 +139,29 @@ extension Status: Decodable {
 extension Status: CustomStringConvertible {
 
     var description: String {
+        var reblogText = ""
+        if let reblog = reblog {
+            reblogText = "  reblog: {\n" +
+                         "    id: \(reblog.id),\n" +
+                         "    content: \(reblog.content), \n" +
+                         "    ...\n" +
+                         "  }\n"
+        } else {
+            reblogText = "  reblog: nil\n"
+        }
         return
             "{\n" +
                 "  id: \(id),\n" +
                 "  content: \(content),\n" +
+                "  account: {\n" +
+                "    id: \(account.id),\n" +
+                "    username: \(account.username), \n" +
+                "    url: \(account.url), \n" +
+                "    ...\n" +
+                "  }\n" +
+                reblogText +
+                "  application: \(String(describing: application?.name)), \n" +
+                "  ...\n" +
             "}"
     }
 }

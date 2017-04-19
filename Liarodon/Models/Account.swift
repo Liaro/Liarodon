@@ -100,6 +100,7 @@ extension Account: CustomStringConvertible {
             "  username: \(username),\n" +
             "  acct: \(acct), \n" +
             "  displayName: \(displayName),\n" +
+            "  ...\n" +
             "}"
     }
 }
