@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1E3A43531EA6833200669319 /* TootTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3A43521EA6833200669319 /* TootTableViewCell.swift */; };
+		1EB690C01EA6F095003587A1 /* AttachmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EB690BF1EA6F095003587A1 /* AttachmentView.swift */; };
 		43F9B1901EA613C50093E798 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F9B18F1EA613C50093E798 /* AppDelegate.swift */; };
 		43F9B1971EA613C50093E798 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43F9B1961EA613C50093E798 /* Assets.xcassets */; };
 		43F9B19A1EA613C50093E798 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43F9B1981EA613C50093E798 /* LaunchScreen.storyboard */; };
@@ -57,6 +59,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1E3A43521EA6833200669319 /* TootTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TootTableViewCell.swift; path = Timeline/TootTableViewCell.swift; sourceTree = "<group>"; };
+		1EB690BF1EA6F095003587A1 /* AttachmentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AttachmentView.swift; path = Timeline/AttachmentView.swift; sourceTree = "<group>"; };
 		43F9B18C1EA613C50093E798 /* Liarodon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Liarodon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		43F9B18F1EA613C50093E798 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		43F9B1961EA613C50093E798 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -204,6 +208,8 @@
 			children = (
 				43F9B1CF1EA615D80093E798 /* Timeline.storyboard */,
 				43F9B1D51EA616710093E798 /* TimelineTableViewController.swift */,
+				1E3A43521EA6833200669319 /* TootTableViewCell.swift */,
+				1EB690BF1EA6F095003587A1 /* AttachmentView.swift */,
 			);
 			name = Timeline;
 			sourceTree = "<group>";
@@ -481,6 +487,8 @@
 				43F9B1901EA613C50093E798 /* AppDelegate.swift in Sources */,
 				43F9B1D61EA616710093E798 /* TimelineTableViewController.swift in Sources */,
 				43F9B1FD1EA64E2B0093E798 /* MastodonAPI+Accounts.swift in Sources */,
+				1EB690C01EA6F095003587A1 /* AttachmentView.swift in Sources */,
+				1E3A43531EA6833200669319 /* TootTableViewCell.swift in Sources */,
 				43F9B1EB1EA618870093E798 /* ProfileViewController.swift in Sources */,
 				43F9B1DB1EA617390093E798 /* LoginViewController.swift in Sources */,
 				43F9B2011EA658820093E798 /* Status.swift in Sources */,
@@ -637,11 +645,13 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Liarodon/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = me.liaro.Liarodon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -653,11 +663,13 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Liarodon/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = me.liaro.Liarodon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

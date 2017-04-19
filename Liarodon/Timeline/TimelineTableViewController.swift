@@ -8,10 +8,31 @@
 
 import UIKit
 
+
+enum TimelineType {
+    case home
+    case local
+    case federated
+}
+
 final class TimelineTableViewController: UITableViewController {
+
+    var type: TimelineType!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        switch type! {
+        case .home:
+            title = "Home"
+        case .local:
+            title = "Local"
+        case .federated:
+            title = "Federated"
+        }
+
+        tableView.estimatedRowHeight = 250
+        tableView.rowHeight = UITableViewAutomaticDimension
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -29,23 +50,22 @@ final class TimelineTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return 10
     }
 
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
 
-        // Configure the cell...
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Toot", for: indexPath) as! TootTableViewCell
+
+        cell.configureCell(row: indexPath.row)
 
         return cell
     }
-    */
 
     /*
     // Override to support conditional editing of the table view.
