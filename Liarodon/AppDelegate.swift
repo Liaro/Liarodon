@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import KeychainAccess
 import APIKit
 
 
@@ -18,6 +19,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+
+        // Setup MastodonAPI
+        let keychain = Keychain()
+        do {
+            if let instanceURL = try keychain.get("instance_url") {
+                MastodonAPI.instanceURL = instanceURL.url
+            }
+            if let accessToken = try keychain.get("access_token") {
+                MastodonAPI.accessToken = accessToken
+            }
+        } catch {}
 
         // Example for use MastodonAPI.
         /*

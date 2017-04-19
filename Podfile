@@ -5,6 +5,9 @@ use_frameworks!
 target 'Liarodon' do
     pod 'APIKit'
     pod 'Himotoki'
+    pod 'KeychainAccess'
+    pod 'KeyboardObserver'
+    pod 'NVActivityIndicatorView'
 end
 
 post_install do |installer|

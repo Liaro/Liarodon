@@ -31,6 +31,14 @@ final class MainTabBarController: UITabBarController {
         (federatedNavigationViewController.topViewController as! TimelineTableViewController).type = .federated
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        if MastodonAPI.accessToken == nil {
+            performSegue(withIdentifier: "Login", sender: self)
+        }
+    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
