@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import APIKit
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +18,47 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+
+        // Example for use MastodonAPI.
+        /*
+        MastodonAPI.instanceURL = URL(string: "https://mstdn.jp")!
+        let req = MastodonAPI.PostAppsRequest(clientName: "131e55")
+        Session.send(req) { (result) in
+            switch result {
+            case .success(let app):
+                print(app)
+                let req = MastodonAPI.PostAccessTokenRequest(
+                    clientID: app.clientID,
+                    clientSecret: app.clientSecret,
+                    username: "131e550807@gmail.com",
+                    password: "kei9218080756"
+                )
+                Session.send(req, callbackQueue: nil) { (result) in
+                    switch result {
+                    case .success(let accessToken):
+                        print(accessToken)
+                        MastodonAPI.accessToken = accessToken.accessToken
+
+                        let req = MastodonAPI.GetAuthenticatedAccountRequest()
+                        Session.send(req, callbackQueue: nil) { (result) in
+                            switch result {
+                            case .success(let account):
+                                print(account)
+
+                            case .failure(let error):
+                                print(error)
+                            }
+                        }
+                    case .failure(let error):
+                        print(error)
+                    }
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
+        */
+
         return true
     }
 
