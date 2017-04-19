@@ -33,21 +33,21 @@ final class Account {
     /// Biography of user.
     let note: String
     /// URL of the user's profile page (can be remote).
-    let url: URL
+    let url: String
     /// URL to the avatar image.
-    let avatar: URL
+    let avatar: String
     ///URL to the avatar static image (gif)
-    let avatarStatic: URL
+    let avatarStatic: String
     /// URL to the header image.
-    let header: URL
+    let header: String
     /// URL to the header static image (gif)
-    let headerStatic: URL
+    let headerStatic: String
 
 
     init(id: Int, username: String, acct: String, displayName: String,
          locked: Bool, createdAt: String, followersCount: Int, followingCount: Int,
-         statusesCount: Int, note: String, url: URL, avatar: URL, avatarStatic: URL,
-         header: URL, headerStatic: URL) {
+         statusesCount: Int, note: String, url: String, avatar: String, avatarStatic: String,
+         header: String, headerStatic: String) {
 
         self.id = id
         self.username = username
@@ -82,11 +82,11 @@ extension Account: Decodable {
             followingCount  : e <| "following_count",
             statusesCount   : e <| "statuses_count",
             note            : e <| "note",
-            url             : URL(string: try e <| "url")!,
-            avatar          : URL(string: try e <| "avatar")!,
-            avatarStatic    : URL(string: try e <| "avatar_static")!,
-            header          : URL(string: try e <| "header")!,
-            headerStatic    : URL(string: try e <| "header_static")!
+            url             : e <| "url",
+            avatar          : e <| "avatar",
+            avatarStatic    : e <| "avatar_static",
+            header          : e <| "header",
+            headerStatic    : e <| "header_static"
         )
     }
 }

@@ -14,9 +14,9 @@ final class Tag {
     /// The hashtag, not including the preceding #.
     public let name: String
     /// The URL of the hashtag.
-    public let url: URL
+    public let url: String
 
-    init(name: String, url: URL) {
+    init(name: String, url: String) {
 
         self.name = name
         self.url = url
@@ -27,12 +27,9 @@ extension Tag: Decodable {
 
     static func decode(_ e: Extractor) throws -> Tag {
 
-        let urlString: String = try e <| "url"
-        let url = URL(string: urlString)!
-
         return try Tag(
             name : e <| "name",
-            url  : url
+            url  : e <| "url"
         )
     }
 }

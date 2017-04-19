@@ -23,7 +23,7 @@ final class Status {
     /// A Fediverse-unique resource ID.
     let uri: String
     /// URL to the status page (can be remote).
-    let url: URL
+    let url: String
     /// The Account which posted the status.
     let account: Account
     /// nil or the ID of the status it replies to.
@@ -59,7 +59,7 @@ final class Status {
     /// Application from which the status was posted.
     let application: Application?
 
-    init(id: Int, uri: String, url: URL, account: Account, inReplyToID: Int?,
+    init(id: Int, uri: String, url: String, account: Account, inReplyToID: Int?,
          inReplyToAccountID: Int?, reblog: Status?, content: String, createdAt: String,
          reblogsCount: Int, favouritesCount: Int, reblogged: Bool?, favourited: Bool?,
          sensitive: Bool?, spoilerText: String, visibility: Visibility,
@@ -91,14 +91,9 @@ final class Status {
 extension Status: Decodable {
 
     static func decode(_ e: Extractor) throws -> Status {
-        print(e)
-        let urlString: String = try e <| "url"
-        let url = URL(string: urlString)!
         let account = try Account.decode(try e <| "account")
-        let reblogE: Extractor? = (try e <|? "reblog")
-        let reblog = reblogE != nil
-            ? try Status.decode(reblogE!)
-            : nil
+        let reblogE: Extractor? = try e <|? "reblog"
+        let reblog = reblogE != nil ? try Status.decode(reblogE!) : nil
         let visibility = Visibility(rawValue: try e <| "visibility")!
         let mediaAttachmentsE: [Extractor] = try e <|| "media_attachments"
         let mediaAttachments: [Attachment] = try mediaAttachmentsE.map({
@@ -118,7 +113,7 @@ extension Status: Decodable {
         return try Status(
             id                  : e <| "id",
             uri                 : e <| "uri",
-            url                 : url,
+            url                 : e <| "url",
             account             : account,
             inReplyToID         : e <|? "in_reply_to_id",
             inReplyToAccountID  : e <|? "in_reply_to_account_id",

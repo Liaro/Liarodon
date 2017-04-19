@@ -14,9 +14,9 @@ final class Application {
     /// Name of the app.
     public let name: String
     /// Homepage URL of the app.
-    public let website: URL?
+    public let website: String?
 
-    init(name: String, website: URL?) {
+    init(name: String, website: String?) {
 
         self.name = name
         self.website = website
@@ -26,12 +26,10 @@ final class Application {
 extension Application: Decodable {
 
     static func decode(_ e: Extractor) throws -> Application {
-        let urlString: String? = try? e <| "website"
-        let url = urlString != nil ? URL(string: urlString!)! : nil
 
         return try Application(
             name    : e <| "name",
-            website : url
+            website : e <|? "website"
         )
     }
 }
