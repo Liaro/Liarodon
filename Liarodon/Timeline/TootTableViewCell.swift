@@ -13,13 +13,37 @@ class TootTableViewCell: UITableViewCell {
     @IBOutlet var contentTextView: UITextView! {
         didSet {
             contentTextView.textContainer.lineFragmentPadding = 0
+            contentTextView.textContainerInset = .zero
 
         }
     }
 
+    @IBOutlet var replyingLabel: UILabel!
+
+    @IBOutlet var attachmentView: AttachmentView!
+    @IBOutlet var attachmentHeightConstraint: NSLayoutConstraint!
+
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+    }
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+
+        attachmentView.subviews.forEach {
+            $0.removeFromSuperview()
+        }
+        attachmentHeightConstraint.constant = 0
+    }
+
+    func configureCell(row: Int) {
+        if row % 2 == 0 {
+            replyingLabel.text = nil
+            attachmentView.backgroundColor = UIColor.lightGray
+            attachmentHeightConstraint.constant = 100
+        } else {
+            replyingLabel.text = "Replying to @hoge"
+        }
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

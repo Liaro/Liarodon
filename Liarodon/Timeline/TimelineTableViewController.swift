@@ -31,6 +31,9 @@ final class TimelineTableViewController: UITableViewController {
             title = "Federated"
         }
 
+        tableView.estimatedRowHeight = 250
+        tableView.rowHeight = UITableViewAutomaticDimension
+
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -57,7 +60,9 @@ final class TimelineTableViewController: UITableViewController {
 
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Toot", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Toot", for: indexPath) as! TootTableViewCell
+
+        cell.configureCell(row: indexPath.row)
 
         return cell
     }
