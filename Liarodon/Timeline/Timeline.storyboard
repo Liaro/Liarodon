@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -19,11 +18,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Toot" rowHeight="281" id="cHh-EG-Sy4" customClass="TootTableViewCell" customModule="Liarodon" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="320" height="281"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Toot" rowHeight="249" id="cHh-EG-Sy4" customClass="TootTableViewCell" customModule="Liarodon" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="320" height="249"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cHh-EG-Sy4" id="F9x-BH-XYg">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="280.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="248.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user" translatesAutoresizingMaskIntoConstraints="NO" id="kom-Ot-Ng1">
@@ -58,24 +57,24 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jek-tu-mNf">
-                                            <rect key="frame" x="76" y="243" width="24" height="22"/>
+                                            <rect key="frame" x="76" y="211" width="24" height="22"/>
                                             <state key="normal" title="1" image="tab-federated">
                                                 <color key="titleColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
                                             </state>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bad-6f-WBV">
-                                            <rect key="frame" x="130" y="243" width="24" height="22"/>
+                                            <rect key="frame" x="130" y="211" width="24" height="22"/>
                                             <state key="normal" title="1" image="tab-federated">
                                                 <color key="titleColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
                                             </state>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ihX-K8-OTz">
-                                            <rect key="frame" x="184" y="243" width="24" height="22"/>
+                                            <rect key="frame" x="184" y="211" width="24" height="22"/>
                                             <state key="normal" title="1" image="tab-federated">
                                                 <color key="titleColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
                                             </state>
                                         </button>
-                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aAt-Ca-Wmo">
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aAt-Ca-Wmo">
                                             <rect key="frame" x="76" y="44" width="236" height="177.5"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="0.0" right="0.0"/>
@@ -84,13 +83,13 @@
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gpE-y5-rQx">
-                                            <rect key="frame" x="238" y="243" width="16" height="22"/>
+                                            <rect key="frame" x="238" y="211" width="16" height="22"/>
                                             <state key="normal" image="tab-federated">
                                                 <color key="titleColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
                                             </state>
                                         </button>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aNZ-E5-FIN" userLabel="AttachmentView" customClass="AttachmentView" customModule="Liarodon" customModuleProvider="target">
-                                            <rect key="frame" x="76" y="228" width="236" height="0.0"/>
+                                            <rect key="frame" x="76" y="196" width="236" height="0.0"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" id="r5f-L7-MS6"/>
@@ -115,7 +114,7 @@
                                         <constraint firstItem="5mf-9y-1jz" firstAttribute="top" secondItem="F9x-BH-XYg" secondAttribute="topMargin" id="ekQ-KP-tMm"/>
                                         <constraint firstItem="PS7-in-IDP" firstAttribute="leading" secondItem="5mf-9y-1jz" secondAttribute="leading" id="hpd-Yi-f9a"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="aAt-Ca-Wmo" secondAttribute="trailing" id="kbI-JX-Pwh"/>
-                                        <constraint firstItem="aNZ-E5-FIN" firstAttribute="top" secondItem="aAt-Ca-Wmo" secondAttribute="bottom" constant="6.5" id="mZI-PT-hgj"/>
+                                        <constraint firstItem="aNZ-E5-FIN" firstAttribute="top" secondItem="aAt-Ca-Wmo" secondAttribute="bottom" constant="-25.5" id="mZI-PT-hgj"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="Jek-tu-mNf" secondAttribute="bottom" constant="7.5" id="nfn-Kl-fjg"/>
                                         <constraint firstItem="kom-Ot-Ng1" firstAttribute="top" secondItem="F9x-BH-XYg" secondAttribute="topMargin" id="rHa-tG-0Mu"/>
                                         <constraint firstItem="ihX-K8-OTz" firstAttribute="top" secondItem="Bad-6f-WBV" secondAttribute="top" id="rex-OL-toR"/>
@@ -128,8 +127,16 @@
                                 <connections>
                                     <outlet property="attachmentHeightConstraint" destination="r5f-L7-MS6" id="33a-Mo-AEd"/>
                                     <outlet property="attachmentView" destination="aNZ-E5-FIN" id="iOt-54-e49"/>
+                                    <outlet property="avatarImageView" destination="kom-Ot-Ng1" id="HZK-Vc-GFC"/>
+                                    <outlet property="boostButton" destination="Bad-6f-WBV" id="ivp-uh-g9F"/>
                                     <outlet property="contentTextView" destination="aAt-Ca-Wmo" id="uEr-2I-xE1"/>
+                                    <outlet property="displayNameLabel" destination="5mf-9y-1jz" id="CnD-w9-VMR"/>
+                                    <outlet property="favouriteButton" destination="ihX-K8-OTz" id="2SQ-Fj-eBD"/>
+                                    <outlet property="moreButton" destination="gpE-y5-rQx" id="QEu-J4-VRH"/>
+                                    <outlet property="replyButton" destination="Jek-tu-mNf" id="GIg-jZ-lCQ"/>
                                     <outlet property="replyingLabel" destination="PS7-in-IDP" id="E6H-To-M85"/>
+                                    <outlet property="timeLabel" destination="Xnl-ZK-QpF" id="bDN-Qo-QWi"/>
+                                    <outlet property="usernameLabel" destination="89r-Uw-8c6" id="AqT-Th-Zsu"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

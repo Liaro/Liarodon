@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import APIKit
 
 enum TimelineType {
     case home
@@ -18,6 +18,7 @@ enum TimelineType {
 final class TimelineTableViewController: UITableViewController {
 
     var type: TimelineType!
+    var statuses = [Status]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +35,23 @@ final class TimelineTableViewController: UITableViewController {
         tableView.estimatedRowHeight = 250
         tableView.rowHeight = UITableViewAutomaticDimension
 
+
+        let request = MastodonAPI.GetHomeTimelineRequest()
+        Session.send(request) { [weak self] (result) in
+            guard let s = self else {
+                return
+            }
+
+            switch result {
+            case .success(let statuses):
+                s.statuses = statuses
+                s.tableView.reloadData()
+
+            case .failure(let error):
+                print(error)
+            }
+        }
+
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -49,20 +67,18 @@ final class TimelineTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 10
+        return statuses.count
     }
 
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Toot", for: indexPath) as! TootTableViewCell
 
-        cell.configureCell(row: indexPath.row)
+        cell.configureCell(status: statuses[indexPath.row])
 
         return cell
     }
