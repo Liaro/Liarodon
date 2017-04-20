@@ -26,6 +26,11 @@ class TootTableViewCell: UITableViewCell {
     @IBOutlet var avatarImageView: UIImageView!
     @IBOutlet var attachmentView: AttachmentView!
     @IBOutlet var attachmentHeightConstraint: NSLayoutConstraint!
+    @IBOutlet var attachmentViewBottomConstraint: NSLayoutConstraint! {
+        didSet {
+            attachmentViewBottomConstraint.constant = 0
+        }
+    }
 
     @IBOutlet var boostButton: UIButton!
     @IBOutlet var favouriteButton: UIButton!
@@ -45,6 +50,7 @@ class TootTableViewCell: UITableViewCell {
             $0.removeFromSuperview()
         }
         attachmentHeightConstraint.constant = 0
+        attachmentViewBottomConstraint.constant = 0
     }
 
     func configureCell(status targetStatus: Status) {
@@ -76,8 +82,11 @@ class TootTableViewCell: UITableViewCell {
         displayNameLabel.text = status.account.displayName
         usernameLabel.text = "@\(status.account.username)"
 
-        attachmentView.backgroundColor = UIColor.lightGray
-        attachmentHeightConstraint.constant = 100
+        if !status.mediaAttachments.isEmpty {
+            attachmentView.backgroundColor = UIColor.lightGray
+            attachmentHeightConstraint.constant = 100
+            attachmentViewBottomConstraint.constant = 15
+        }
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -85,5 +94,13 @@ class TootTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    @IBAction func replyButtonTapped(_ sender: UIButton) {
+    }
+    @IBAction func reblogButtonTapped(_ sender: UIButton) {
+    }
 
+    @IBAction func favouriteButtonTapped(_ sender: UIButton) {
+    }
+    @IBAction func moreButtonTapped(_ sender: UIButton) {
+    }
 }
