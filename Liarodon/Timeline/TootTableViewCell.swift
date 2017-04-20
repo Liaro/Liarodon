@@ -94,6 +94,8 @@ class TootTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+
+
     @IBAction func replyButtonTapped(_ sender: UIButton) {
     }
     @IBAction func reblogButtonTapped(_ sender: UIButton) {
@@ -104,3 +106,5 @@ class TootTableViewCell: UITableViewCell {
     @IBAction func moreButtonTapped(_ sender: UIButton) {
     }
 }
+
+

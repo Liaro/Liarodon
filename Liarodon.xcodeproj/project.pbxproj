@@ -39,6 +39,7 @@
 		43F9B20E1EA7112B0093E798 /* String+url.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F9B20D1EA7112B0093E798 /* String+url.swift */; };
 		43F9B2101EA7160C0093E798 /* MastodonAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F9B20F1EA7160C0093E798 /* MastodonAPI.swift */; };
 		C96594BCA41A1A7E8BAFF67D /* Pods_Liarodon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A2903B0F09627C9A95655D4 /* Pods_Liarodon.framework */; };
+		F6660CF91EA8F45C007D04D7 /* LinkTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6660CF81EA8F45C007D04D7 /* LinkTextView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +100,7 @@
 		8A2903B0F09627C9A95655D4 /* Pods_Liarodon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Liarodon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB08770CBB454B140713D012 /* Pods-Liarodon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Liarodon.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Liarodon/Pods-Liarodon.debug.xcconfig"; sourceTree = "<group>"; };
 		CAD57C341AEC8EF5EFD2E96C /* Pods-Liarodon.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Liarodon.release.xcconfig"; path = "Pods/Target Support Files/Pods-Liarodon/Pods-Liarodon.release.xcconfig"; sourceTree = "<group>"; };
+		F6660CF81EA8F45C007D04D7 /* LinkTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LinkTextView.swift; path = Timeline/LinkTextView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -210,6 +212,7 @@
 				43F9B1D51EA616710093E798 /* TimelineTableViewController.swift */,
 				1E3A43521EA6833200669319 /* TootTableViewCell.swift */,
 				1EB690BF1EA6F095003587A1 /* AttachmentView.swift */,
+				F6660CF81EA8F45C007D04D7 /* LinkTextView.swift */,
 			);
 			name = Timeline;
 			sourceTree = "<group>";
@@ -487,6 +490,7 @@
 				43F9B1901EA613C50093E798 /* AppDelegate.swift in Sources */,
 				43F9B1D61EA616710093E798 /* TimelineTableViewController.swift in Sources */,
 				43F9B1FD1EA64E2B0093E798 /* MastodonAPI+Accounts.swift in Sources */,
+				F6660CF91EA8F45C007D04D7 /* LinkTextView.swift in Sources */,
 				1EB690C01EA6F095003587A1 /* AttachmentView.swift in Sources */,
 				1E3A43531EA6833200669319 /* TootTableViewCell.swift in Sources */,
 				43F9B1EB1EA618870093E798 /* ProfileViewController.swift in Sources */,
