@@ -73,7 +73,6 @@ class TootTableViewCell: UITableViewCell {
         let options = [
             NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType,
             NSCharacterEncodingDocumentAttribute: String.Encoding.utf8.rawValue,
-            NSFontAttributeName: UIFont.systemFont(ofSize: 100)
         ] as [String : Any]
         let html = status.content + "<style>p{font-size:15px}</style>"
         let text: NSAttributedString?
