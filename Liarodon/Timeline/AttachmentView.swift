@@ -7,15 +7,34 @@
 //
 
 import UIKit
+import SnapKit
+import Kingfisher
 
 class AttachmentView: UIView {
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    let statusImageView = StatusImageView(frame: .zero)
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
     }
-    */
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+
+    func setAttachments(attachments: [Attachment]) {
+        self.addSubview(statusImageView)
+        statusImageView.snp.makeConstraints { $0.left.top.right.bottom.equalTo(self) }
+
+        let images = attachments.map { attachment -> UIImageView in
+            let imageView = UIImageView()
+            imageView.contentMode = .scaleAspectFill
+            imageView.clipsToBounds = true
+            imageView.kf.setImage(with: attachment.previewURL.url)
+            return imageView
+        }
+
+        statusImageView.setImages(images: images)
+    }
 
 }

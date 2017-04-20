@@ -7,6 +7,7 @@ PODS:
   - Kingfisher (3.6.2)
   - NVActivityIndicatorView (3.6.1)
   - Result (3.2.1)
+  - SnapKit (3.2.0)
 
 DEPENDENCIES:
   - APIKit
@@ -15,6 +16,7 @@ DEPENDENCIES:
   - KeychainAccess
   - Kingfisher
   - NVActivityIndicatorView
+  - SnapKit
 
 SPEC CHECKSUMS:
   APIKit: 7460983f490d3bde6aaaaa4164d18c9865a6f91d
@@ -24,7 +26,8 @@ SPEC CHECKSUMS:
   Kingfisher: 2c94e72c6830622c71d06adf4ea024c37d316830
   NVActivityIndicatorView: 9f52a7f84bf5c6a798722c450fe3c198e01c56ed
   Result: 2453a22e5c5b11c0c3a478736e82cd02f763b781
+  SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
 
-PODFILE CHECKSUM: 95552cf346e3b7cf1e1efc487f08f38c47c23f13
+PODFILE CHECKSUM: 20c5d72581c8cdad2cadd4dafceccbf42ac8dce5
 
 COCOAPODS: 1.2.1
