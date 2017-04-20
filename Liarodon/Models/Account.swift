@@ -123,7 +123,17 @@ extension Account: CustomStringConvertible {
             "  username: \(username),\n" +
             "  acct: \(acct), \n" +
             "  displayName: \(displayName),\n" +
-            "  ...\n" +
+            "  locked: \(locked),\n" +
+            "  createdAt: \(createdAt),\n" +
+            "  followersCount: \(followersCount),\n" +
+            "  followingCount: \(followingCount),\n" +
+            "  statusesCount: \(statusesCount),\n" +
+            "  note: \(note),\n" +
+            "  url: \(url),\n" +
+            "  avatar: \(avatar),\n" +
+            "  avatarStatic: \(avatarStatic),\n" +
+            "  header: \(header),\n" +
+            "  headerStatic: \(headerStatic),\n" +
             "}"
     }
 }
