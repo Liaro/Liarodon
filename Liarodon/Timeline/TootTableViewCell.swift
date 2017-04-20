@@ -21,6 +21,7 @@ class TootTableViewCell: UITableViewCell {
     @IBOutlet var replyingLabel: UILabel!
     @IBOutlet var displayNameLabel: UILabel!
     @IBOutlet var timeLabel: UILabel!
+    @IBOutlet var statusReblogLabel: UILabel!
 
     @IBOutlet var usernameLabel: UILabel!
     @IBOutlet var avatarImageView: UIImageView!
@@ -56,6 +57,12 @@ class TootTableViewCell: UITableViewCell {
     func configureCell(status targetStatus: Status) {
         // If status has a reblog, show a boosted status mainly.
         self.status = targetStatus.reblog ?? targetStatus
+
+        if let _ = targetStatus.reblog {
+            statusReblogLabel.text = "\(targetStatus.account.username) boosted"
+        } else {
+            statusReblogLabel.text = nil
+        }
 
         if let replyAccountID = status.inReplyToAccountID {
             replyingLabel.text = "Replying to \(replyAccountID)"
