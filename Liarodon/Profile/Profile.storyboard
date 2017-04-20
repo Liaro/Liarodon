@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="g7f-ag-BUV">
-    <device id="retina4_7" orientation="portrait">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="g7f-ag-BUV">
+    <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -17,31 +18,120 @@
                         <viewControllerLayoutGuide type="bottom" id="dAO-xK-Jeq"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="d2j-MO-7AV">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ns3-nq-cuZ">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <connections>
+                                    <segue destination="BIY-cA-Rgo" kind="embed" identifier="Following" id="NVd-eN-z3a"/>
+                                </connections>
+                            </containerView>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HhQ-xh-g2g" customClass="ProfileHeaderView" customModule="Liarodon" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="64" width="414" height="198"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="usx-n8-5Iu" userLabel="Header Image View">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="198"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JWS-jv-czg" userLabel="Avatar Image View">
+                                        <rect key="frame" x="163" y="31" width="88" height="88"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="JWS-jv-czg" secondAttribute="height" id="13C-gp-CjC"/>
+                                            <constraint firstAttribute="height" constant="88" id="Xsv-9p-hWy"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="44"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ぶれす" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iiT-Nj-ERV">
+                                        <rect key="frame" x="176" y="124" width="62" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@131e55" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uh7-Qi-JYR">
+                                        <rect key="frame" x="176" y="150" width="63" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="JWS-jv-czg" firstAttribute="centerX" secondItem="HhQ-xh-g2g" secondAttribute="centerX" id="0Hp-Mq-U7q"/>
+                                    <constraint firstItem="Uh7-Qi-JYR" firstAttribute="centerX" secondItem="HhQ-xh-g2g" secondAttribute="centerX" id="8ui-59-AP2"/>
+                                    <constraint firstAttribute="trailing" secondItem="usx-n8-5Iu" secondAttribute="trailing" id="Dy3-zZ-U95"/>
+                                    <constraint firstAttribute="width" secondItem="HhQ-xh-g2g" secondAttribute="height" multiplier="700:335" id="NEa-lU-hqh"/>
+                                    <constraint firstItem="Uh7-Qi-JYR" firstAttribute="top" secondItem="iiT-Nj-ERV" secondAttribute="bottom" constant="2" id="Oxy-z1-hki"/>
+                                    <constraint firstItem="usx-n8-5Iu" firstAttribute="top" secondItem="HhQ-xh-g2g" secondAttribute="top" id="PRi-72-Sdo"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="iiT-Nj-ERV" secondAttribute="trailing" constant="10" id="Qk5-Ca-dqC"/>
+                                    <constraint firstItem="usx-n8-5Iu" firstAttribute="leading" secondItem="HhQ-xh-g2g" secondAttribute="leading" id="Rak-VK-GCf"/>
+                                    <constraint firstItem="JWS-jv-czg" firstAttribute="centerY" secondItem="HhQ-xh-g2g" secondAttribute="centerY" constant="-24" id="X35-z8-EQJ"/>
+                                    <constraint firstItem="iiT-Nj-ERV" firstAttribute="centerX" secondItem="HhQ-xh-g2g" secondAttribute="centerX" id="iLk-tG-cOH"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="414" id="iuj-Kf-ges"/>
+                                    <constraint firstItem="Uh7-Qi-JYR" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="HhQ-xh-g2g" secondAttribute="leading" constant="10" id="jP2-gV-JHb"/>
+                                    <constraint firstItem="iiT-Nj-ERV" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="HhQ-xh-g2g" secondAttribute="leading" constant="10" id="oOr-it-OOF"/>
+                                    <constraint firstItem="iiT-Nj-ERV" firstAttribute="top" secondItem="JWS-jv-czg" secondAttribute="bottom" constant="5" id="qbK-gC-Gwx"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Uh7-Qi-JYR" secondAttribute="trailing" constant="10" id="uEI-1G-V84"/>
+                                    <constraint firstAttribute="bottom" secondItem="usx-n8-5Iu" secondAttribute="bottom" id="yjh-hd-Pva"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Ns3-nq-cuZ" firstAttribute="top" secondItem="d2j-MO-7AV" secondAttribute="top" id="0Fo-eb-dvg"/>
+                            <constraint firstItem="HhQ-xh-g2g" firstAttribute="top" secondItem="9t3-Tt-H6K" secondAttribute="bottom" id="4Ag-In-Qhc"/>
+                            <constraint firstItem="dAO-xK-Jeq" firstAttribute="top" secondItem="Ns3-nq-cuZ" secondAttribute="bottom" id="Hdc-n2-TnQ"/>
+                            <constraint firstAttribute="trailing" secondItem="Ns3-nq-cuZ" secondAttribute="trailing" id="Hp8-FL-hJs"/>
+                            <constraint firstAttribute="trailing" secondItem="HhQ-xh-g2g" secondAttribute="trailing" priority="750" id="K9g-U7-mch"/>
+                            <constraint firstItem="HhQ-xh-g2g" firstAttribute="centerX" secondItem="d2j-MO-7AV" secondAttribute="centerX" id="aZ6-cM-Xu1"/>
+                            <constraint firstItem="Ns3-nq-cuZ" firstAttribute="leading" secondItem="d2j-MO-7AV" secondAttribute="leading" id="bF1-VK-2n8"/>
+                            <constraint firstItem="HhQ-xh-g2g" firstAttribute="leading" secondItem="d2j-MO-7AV" secondAttribute="leading" priority="750" id="hpN-Ht-bYw"/>
+                        </constraints>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <navigationItem key="navigationItem" title="Profile" id="MXe-KY-ckV"/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="acctLabel" destination="Uh7-Qi-JYR" id="N3e-sJ-Geh"/>
+                        <outlet property="avatarImageView" destination="JWS-jv-czg" id="OBd-Fj-a1k"/>
+                        <outlet property="displayNameLabel" destination="iiT-Nj-ERV" id="R17-I1-ScD"/>
+                        <outlet property="headerImageView" destination="usx-n8-5Iu" id="DJm-ze-Q2i"/>
+                        <outlet property="headerView" destination="HhQ-xh-g2g" id="EMc-to-dhg"/>
+                        <outlet property="headerViewTopConstraint" destination="4Ag-In-Qhc" id="Adl-pk-1Ob"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Og-kZ-IB1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="980" y="176.76161919040482"/>
+            <point key="canvasLocation" x="800.625" y="176.25"/>
+        </scene>
+        <!--FollowingTableViewController-->
+        <scene sceneID="jmZ-SQ-b34">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Accounts" referencedIdentifier="FollowingTableViewController" id="BIY-cA-Rgo" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hXh-8P-Vo9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1407" y="176"/>
         </scene>
         <!--Profile-->
         <scene sceneID="nbw-Re-DaJ">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="g7f-ag-BUV" sceneMemberID="viewController">
+                    <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <tabBarItem key="tabBarItem" title="Profile" image="tab-profile" id="YIP-ex-SEz"/>
                     <toolbarItems/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="4bw-So-okl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="IVO-N4-U3l" kind="relationship" relationship="rootViewController" id="sn0-Uy-9ii"/>
+                        <segue destination="IVO-N4-U3l" kind="relationship" relationship="rootViewController" id="FWX-yA-UeY"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tc9-Nc-RTy" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -50,6 +140,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="tab-profile" width="16" height="16"/>
+        <image name="tab-profile" width="25" height="25"/>
     </resources>
 </document>
