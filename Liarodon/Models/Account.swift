@@ -71,6 +71,29 @@ extension Account: Decodable {
 
     static func decode(_ e: Extractor) throws -> Account {
 
+        let url: String = try e <| "url"
+        var avatar: String = try e <| "avatar"
+        var avatarStatic: String = try e <| "avatar_static"
+        var header: String = try e <| "header"
+        var headerStatic: String = try e <| "header_static"
+
+        if let scheme = url.url?.scheme, let host = url.url?.host {
+            let base = scheme + "://" + host
+
+            if !avatar.contains("http") {
+                avatar = base + avatar
+            }
+            if !avatarStatic.contains("http") {
+                avatarStatic = base + avatarStatic
+            }
+            if !header.contains("http") {
+                header = base + header
+            }
+            if !headerStatic.contains("http") {
+                headerStatic = base + headerStatic
+            }
+        }
+
         return try Account(
             id              : e <| "id",
             username        : e <| "username",
@@ -82,11 +105,11 @@ extension Account: Decodable {
             followingCount  : e <| "following_count",
             statusesCount   : e <| "statuses_count",
             note            : e <| "note",
-            url             : e <| "url",
-            avatar          : e <| "avatar",
-            avatarStatic    : e <| "avatar_static",
-            header          : e <| "header",
-            headerStatic    : e <| "header_static"
+            url             : url,
+            avatar          : avatar,
+            avatarStatic    : avatarStatic,
+            header          : header,
+            headerStatic    : headerStatic
         )
     }
 }
@@ -100,7 +123,17 @@ extension Account: CustomStringConvertible {
             "  username: \(username),\n" +
             "  acct: \(acct), \n" +
             "  displayName: \(displayName),\n" +
-            "  ...\n" +
+            "  locked: \(locked),\n" +
+            "  createdAt: \(createdAt),\n" +
+            "  followersCount: \(followersCount),\n" +
+            "  followingCount: \(followingCount),\n" +
+            "  statusesCount: \(statusesCount),\n" +
+            "  note: \(note),\n" +
+            "  url: \(url),\n" +
+            "  avatar: \(avatar),\n" +
+            "  avatarStatic: \(avatarStatic),\n" +
+            "  header: \(header),\n" +
+            "  headerStatic: \(headerStatic),\n" +
             "}"
     }
 }
