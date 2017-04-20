@@ -36,21 +36,10 @@ final class TimelineTableViewController: UITableViewController {
         tableView.rowHeight = UITableViewAutomaticDimension
 
 
-        let request = MastodonAPI.GetHomeTimelineRequest()
-        Session.send(request) { [weak self] (result) in
-            guard let s = self else {
-                return
-            }
-
-            switch result {
-            case .success(let statuses):
-                s.statuses = statuses
-                s.tableView.reloadData()
-
-            case .failure(let error):
-                print(error)
-            }
+        if MastodonAPI.instanceURL == nil {
+            return
         }
+        fetchInitialTimeline()
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -83,6 +72,24 @@ final class TimelineTableViewController: UITableViewController {
         return cell
     }
 
+    func fetchInitialTimeline() {
+        let request = MastodonAPI.GetHomeTimelineRequest()
+        Session.send(request) { [weak self] (result) in
+            guard let s = self else {
+                return
+            }
+
+            switch result {
+            case .success(let statuses):
+                s.statuses = statuses
+                s.tableView.reloadData()
+
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
