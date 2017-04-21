@@ -71,7 +71,7 @@ extension MastodonAPI {
         }
 
         var parameters: Any? {
-            var params: [String: Any] = [:]
+            var params = [String: Any]()
             if let maxID = maxID {
                 params["max_id"] = maxID
             }
