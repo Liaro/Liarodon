@@ -15,6 +15,16 @@ enum AttachmentType: String {
     case gifv   = "gifv"
 }
 
+extension String {
+    var notMissingURL: URL? {
+        if self.contains("http") {
+            return self.url
+        } else {
+            return nil
+        }
+    }
+}
+
 final class Attachment {
 
     /// ID of the attachment.
@@ -29,6 +39,14 @@ final class Attachment {
     let previewURL: String
     /// Shorter URL for the image, for insertion into text (only present on local images).
     let textURL: String?
+
+    var mainURL: URL? {
+        return url.notMissingURL ?? remoteURL?.notMissingURL ?? previewURL.notMissingURL
+    }
+
+    var smallURL: URL? {
+        return previewURL.notMissingURL ?? remoteURL?.notMissingURL ?? url.notMissingURL
+    }
 
     init(id: Int, type: AttachmentType, url: String, remoteURL: String?, previewURL: String, textURL: String?) {
 

@@ -9,6 +9,8 @@ target 'Liarodon' do
     pod 'KeyboardObserver'
     pod 'NVActivityIndicatorView'
     pod 'Kingfisher'
+    pod 'SnapKit'
+    pod 'ImageViewer'
 end
 
 post_install do |installer|

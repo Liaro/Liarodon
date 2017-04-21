@@ -8,6 +8,8 @@
 
 import UIKit
 import APIKit
+import ImageViewer
+import Kingfisher
 
 enum TimelineType {
     case home
@@ -21,6 +23,7 @@ final class TimelineTableViewController: UITableViewController {
     var statuses = [Status]()
     let indicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 30, height: 40))
     var loading = true
+    fileprivate var attachmentGallery: AttachmentGallery?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,6 +76,7 @@ final class TimelineTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Toot", for: indexPath) as! TootTableViewCell
 
         cell.configureCell(status: statuses[indexPath.row])
+        cell.attachmentView.delegate = self
 
         return cell
     }
@@ -222,3 +226,77 @@ final class TimelineTableViewController: UITableViewController {
     */
 
 }
+
+extension TimelineTableViewController: AttachmentViewDelegate {
+
+    func attachmentView(_ attachmentView: AttachmentView, imageTapped imageView: UIImageView, withImageViews imageViews: [UIImageView], withAttachments attachments: [Attachment], selectedIndex index: Int) {
+
+        attachmentGallery = AttachmentGallery(attachments: attachments, imageViews: imageViews)
+        let closeButton = UIButton(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+        closeButton.setTitle("❌", for: .normal)
+        let galleryViewController = GalleryViewController(startIndex: index, itemsDatasource: attachmentGallery!, displacedViewsDatasource: attachmentGallery, configuration: [
+                GalleryConfigurationItem.closeButtonMode(.custom(closeButton)),
+                GalleryConfigurationItem.pagingMode(.standard),
+                GalleryConfigurationItem.presentationStyle(.displacement),
+                GalleryConfigurationItem.hideDecorationViewsOnLaunch(false),
+                GalleryConfigurationItem.thumbnailsButtonMode(.none),
+            ])
+
+        presentImageGallery(galleryViewController)
+    }
+}
+
+class AttachmentGallery {
+
+    let attachments: [Attachment]
+    let imageViews: [UIImageView]
+    let galleryItems: [GalleryItem]
+    init(attachments: [Attachment], imageViews: [UIImageView]) {
+        self.attachments = attachments
+        self.imageViews = imageViews
+
+        galleryItems = attachments.map { attachment in
+            switch attachment.type {
+            case .image, .gifv:
+                return GalleryItem.image(fetchImageBlock: { callback in
+                    ImageDownloader.default.downloadImage(with: attachment.mainURL!, options: [], progressBlock: nil) {
+                        (image, error, url, data) in
+                        callback(image)
+                    }
+                })
+            case .video:
+                return GalleryItem.video(fetchPreviewImageBlock: { callback in
+                    ImageDownloader.default.downloadImage(with: attachment.smallURL!, options: [], progressBlock: nil) {
+                        (image, error, url, data) in
+                        callback(image)
+                    }
+                }, videoURL: attachment.mainURL!)
+            }
+        }
+
+    }
+}
+
+extension AttachmentGallery: GalleryDisplacedViewsDatasource {
+
+    func provideDisplacementItem(atIndex index: Int) -> DisplaceableView? {
+        if index < imageViews.count {
+            return imageViews[index]
+        } else {
+            return nil
+        }
+    }
+}
+
+extension AttachmentGallery: GalleryItemsDatasource {
+
+    func itemCount() -> Int {
+        return attachments.count
+    }
+
+    func provideGalleryItem(_ index: Int) -> GalleryItem {
+        return galleryItems[index]
+    }
+}
+
+extension UIImageView: DisplaceableView {}

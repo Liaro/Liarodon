@@ -81,8 +81,9 @@ class TootTableViewCell: UITableViewCell {
 
         if !status.mediaAttachments.isEmpty {
             attachmentView.backgroundColor = UIColor.lightGray
-            attachmentHeightConstraint.constant = 100
+            attachmentHeightConstraint.constant = 130
             attachmentViewBottomConstraint.constant = 15
+            attachmentView.setAttachments(attachments: status.mediaAttachments)
         }
         if !status.shouldHasLessMargin {
             contentBottomMarginConstraint.constant = 8
