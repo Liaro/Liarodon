@@ -20,7 +20,7 @@ final class TimelineTableViewController: UITableViewController {
     var type: TimelineType!
     var statuses = [Status]()
     let indicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 30, height: 40))
-    var loading = false
+    var loading = true
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -131,7 +131,7 @@ final class TimelineTableViewController: UITableViewController {
         let request: MastodonAPI.GetPublicTimelineRequest
         switch type! {
         case .home:
-            let request = MastodonAPI.GetHomeTimelineRequest(maxId: statuses.last!.id)
+            let request = MastodonAPI.GetHomeTimelineRequest(maxId: statuses.last?.id)
             Session.send(request) { [weak self] (result) in
                 guard let s = self else {
                     return
