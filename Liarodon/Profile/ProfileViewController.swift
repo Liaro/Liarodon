@@ -17,7 +17,7 @@ final class ProfileViewController: UIViewController {
     // Display authenticated account if nil.
     var accountID: Int? = nil
 
-    private var account: Account!
+    fileprivate var account: Account!
 
     @IBOutlet weak var headerView: ProfileHeaderView!
     @IBOutlet weak var headerViewMinTopConstraint: NSLayoutConstraint!
@@ -139,6 +139,20 @@ final class ProfileViewController: UIViewController {
         followersButton.value = account.followersCount
         // TODO: GET /api/v1/favourites and count [Status]
         favouritesButton.value = 0
+
+        for vc in childTableViewControllers {
+            switch vc {
+
+            case let following as FollowingTableViewController:
+                following.account = account
+
+            case let followers as FollowersTableViewController:
+                followers.account = account
+
+            default:
+                break
+            }
+        }
     }
 
 
@@ -253,17 +267,19 @@ extension ProfileViewController {
         }
         switch id {
 
-        case "Timeline":
+        case "Statuses":
             guard let timelineVC = segue.destination as? TimelineTableViewController else {
                 return
             }
             // TODO: .home => .account
             timelineVC.type = .home
 
-        case "Following":
-            guard let followingVC = segue.destination as? FollowingTableViewController else {
+        case "Favourites":
+            guard let timelineVC = segue.destination as? TimelineTableViewController else {
                 return
             }
+            // TODO: .home => .favourites
+            timelineVC.type = .home
 
         default:
             break

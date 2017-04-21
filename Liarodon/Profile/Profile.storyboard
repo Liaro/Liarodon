@@ -26,7 +26,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
-                                    <segue destination="cjj-1q-10L" kind="embed" id="6e5-9d-4Dn"/>
+                                    <segue destination="cjj-1q-10L" kind="embed" identifier="Statuses" id="6e5-9d-4Dn"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ns3-nq-cuZ" userLabel="Following Container View">
@@ -45,7 +45,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
-                                    <segue destination="4vz-YK-RxK" kind="embed" id="wEQ-0q-aEk"/>
+                                    <segue destination="4vz-YK-RxK" kind="embed" identifier="Favourites" id="wEQ-0q-aEk"/>
                                 </connections>
                             </containerView>
                             <view clipsSubviews="YES" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HhQ-xh-g2g" customClass="ProfileHeaderView" customModule="Liarodon" customModuleProvider="target">
@@ -250,18 +250,18 @@
             </objects>
             <point key="canvasLocation" x="1438" y="230"/>
         </scene>
-        <!--FollowingTableViewController-->
+        <!--TimelineViewController-->
         <scene sceneID="dUn-xM-5hz">
             <objects>
-                <viewControllerPlaceholder storyboardName="Accounts" referencedIdentifier="FollowingTableViewController" id="4vz-YK-RxK" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="Timeline" referencedIdentifier="TimelineViewController" id="4vz-YK-RxK" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3i9-Uf-beD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1438" y="289"/>
         </scene>
-        <!--FollowingTableViewController-->
+        <!--TimelineViewController-->
         <scene sceneID="M22-Gy-Mvz">
             <objects>
-                <viewControllerPlaceholder storyboardName="Accounts" referencedIdentifier="FollowingTableViewController" id="cjj-1q-10L" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="Timeline" referencedIdentifier="TimelineViewController" id="cjj-1q-10L" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m4s-uU-QBy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1438" y="107"/>
