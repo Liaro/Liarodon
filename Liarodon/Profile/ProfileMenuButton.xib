@@ -20,7 +20,7 @@
             <rect key="frame" x="0.0" y="0.0" width="160" height="64"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JBM-r7-BMV">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="JBM-r7-BMV">
                     <rect key="frame" x="65" y="7" width="30" height="18"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <nil key="textColor"/>
@@ -34,12 +34,13 @@
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vfu-3l-9LT">
                     <rect key="frame" x="0.0" y="0.0" width="160" height="64"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
                     <connections>
                         <action selector="didTap:" destination="-1" eventType="touchUpInside" id="WNG-g3-DXt"/>
                     </connections>
                 </button>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
             <constraints>
                 <constraint firstItem="JBM-r7-BMV" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="m9w-Go-ya1" secondAttribute="leading" constant="5" id="5Uo-yR-FgJ"/>
                 <constraint firstItem="JBM-r7-BMV" firstAttribute="centerX" secondItem="m9w-Go-ya1" secondAttribute="centerX" id="9lF-i2-Lv6"/>
