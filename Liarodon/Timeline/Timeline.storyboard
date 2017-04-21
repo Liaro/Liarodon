@@ -166,6 +166,7 @@
                                     <outlet property="attachmentViewBottomConstraint" destination="bWD-fl-P79" id="Wcf-q4-5Tl"/>
                                     <outlet property="avatarImageView" destination="kom-Ot-Ng1" id="HZK-Vc-GFC"/>
                                     <outlet property="boostButton" destination="Bad-6f-WBV" id="ivp-uh-g9F"/>
+                                    <outlet property="contentBottomMarginConstraint" destination="mZI-PT-hgj" id="69y-Vu-Xlv"/>
                                     <outlet property="contentTextView" destination="aAt-Ca-Wmo" id="uEr-2I-xE1"/>
                                     <outlet property="displayNameLabel" destination="5mf-9y-1jz" id="CnD-w9-VMR"/>
                                     <outlet property="favouriteButton" destination="ihX-K8-OTz" id="2SQ-Fj-eBD"/>

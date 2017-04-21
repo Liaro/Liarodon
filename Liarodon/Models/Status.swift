@@ -60,6 +60,7 @@ final class Status {
     let application: Application?
 
     let attributedContent: NSAttributedString
+    let shouldHasLessMargin: Bool
 
     init(id: Int, uri: String, url: String, account: Account, inReplyToID: Int?,
          inReplyToAccountID: Int?, reblog: Status?, content: String, createdAt: String,
@@ -100,6 +101,8 @@ final class Status {
             text = nil
         }
         attributedContent = text! // TODO: Add plane text if text is nil
+        // if the string has p suffix, NSStringView add a space to bottom. so adding less margin is needed
+        shouldHasLessMargin = content.hasSuffix("</p>")
     }
 }
 
