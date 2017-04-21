@@ -8,6 +8,7 @@
 
 import UIKit
 import Kingfisher
+import DateToolsSwift
 
 class TootTableViewCell: UITableViewCell {
 
@@ -78,6 +79,9 @@ class TootTableViewCell: UITableViewCell {
         avatarImageView.kf.setImage(with: status.account.avatar.url)
         displayNameLabel.text = status.account.displayName
         usernameLabel.text = "@\(status.account.username)"
+
+        let date = Date(dateString: status.createdAt, format: "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", timeZone: TimeZone(secondsFromGMT: 0)!)
+        timeLabel.text = date.shortTimeAgoSinceNow
 
         if !status.mediaAttachments.isEmpty {
             attachmentView.backgroundColor = UIColor.lightGray

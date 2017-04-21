@@ -1,6 +1,7 @@
 PODS:
   - APIKit (3.1.1):
     - Result (~> 3.0)
+  - DateToolsSwift (2.0.3)
   - Himotoki (3.0.1)
   - ImageViewer (4.0)
   - KeyboardObserver (1.0.1)
@@ -12,6 +13,7 @@ PODS:
 
 DEPENDENCIES:
   - APIKit
+  - DateToolsSwift
   - Himotoki
   - ImageViewer
   - KeyboardObserver
@@ -22,6 +24,7 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   APIKit: 7460983f490d3bde6aaaaa4164d18c9865a6f91d
+  DateToolsSwift: bf69bf9056d9e53c5c03f06e51f219b9b8b02f9e
   Himotoki: 85fda41d4d0e14f7228317a3b474175cdfb8f515
   ImageViewer: 364abc0309c33dda86d08ca25b0243e5c67d8cd3
   KeyboardObserver: b74a483236861c63a29a18b5b617f63313f04eef
@@ -31,6 +34,6 @@ SPEC CHECKSUMS:
   Result: 2453a22e5c5b11c0c3a478736e82cd02f763b781
   SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
 
-PODFILE CHECKSUM: cb436fa48ac800666339b37940a193ee3b5557f9
+PODFILE CHECKSUM: 80cb9fc1238d05ef9048e0526e84d057b9f48d86
 
 COCOAPODS: 1.2.1

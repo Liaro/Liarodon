@@ -11,6 +11,7 @@ target 'Liarodon' do
     pod 'Kingfisher'
     pod 'SnapKit'
     pod 'ImageViewer'
+    pod 'DateToolsSwift'
 end
 
 post_install do |installer|
