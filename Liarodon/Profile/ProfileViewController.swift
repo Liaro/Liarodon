@@ -169,7 +169,7 @@ final class ProfileViewController: UIViewController {
 
         UIView.animate(withDuration: 0.25, animations: { [weak self] in
             guard let s = self else { return }
-            s.headerView.layoutIfNeeded()
+            s.view.layoutIfNeeded()
         }, completion: { [weak self] _ in
             guard let s = self else { return }
             s.lastContentOffsetY = tableView.contentOffset.y
