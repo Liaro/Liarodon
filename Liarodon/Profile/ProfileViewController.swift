@@ -20,8 +20,8 @@ final class ProfileViewController: UIViewController {
     private var account: Account!
 
     @IBOutlet weak var headerView: ProfileHeaderView!
+    @IBOutlet weak var headerViewMinTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var headerViewTopConstraint: NSLayoutConstraint!
-
     @IBOutlet private weak var headerImageView: UIImageView!
     @IBOutlet private weak var avatarImageView: UIImageView!
     @IBOutlet private weak var displayNameLabel: UILabel! {
@@ -35,15 +35,36 @@ final class ProfileViewController: UIViewController {
         }
     }
 
-    /// Child view controllers
-    fileprivate weak var followingTableViewController: FollowingTableViewController! {
-        didSet {
-            followingTableViewController.addObserver(self, forKeyPath: "tableView.contentOffset", options: [.initial, .new], context: nil)
-        }
+    @IBOutlet weak var menuView: UIView!
+    @IBOutlet weak var statusesButton: ProfileMenuButton!
+    @IBOutlet weak var followingButton: ProfileMenuButton!
+    @IBOutlet weak var followersButton: ProfileMenuButton!
+    @IBOutlet weak var favouritesButton: ProfileMenuButton!
+    private var menuButtons: [ProfileMenuButton] {
+        return [
+            statusesButton,
+            followingButton,
+            followersButton,
+            favouritesButton
+        ]
     }
-    fileprivate weak var followersTableViewController: FollowersTableViewController!
+    @IBOutlet var containerViews: [UIView]!
 
-    fileprivate var lastContentOffsetY: CGFloat!
+    private var currentContainerViewIndex: Int!
+    private var childTableViewControllers: [UITableViewController] {
+        return childViewControllers.filter({ $0 is UITableViewController }) as! [UITableViewController]
+    }
+    private var currentChildTableViewController: UITableViewController {
+        return childTableViewControllers[currentContainerViewIndex]
+    }
+
+    // For scrolling
+    private var childTableViewContentInset: UIEdgeInsets {
+        let insetTop = headerView.frame.maxY
+        return UIEdgeInsets(top: insetTop, left: 0, bottom: 0, right: 0)
+    }
+    private var lastContentOffsetY: CGFloat!
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,12 +81,15 @@ final class ProfileViewController: UIViewController {
             }
         }
 
-
+        for button in menuButtons {
+            button.delegate = self
+        }
     }
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
 
+        headerViewMinTopConstraint.constant = -(headerView.bounds.height - menuView.bounds.height)
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -73,11 +97,15 @@ final class ProfileViewController: UIViewController {
 
         let insetTop = headerView.frame.maxY
         let inset = UIEdgeInsets(top: insetTop, left: 0, bottom: 0, right: 0)
-        followingTableViewController.tableView.contentInset = inset
-        followingTableViewController.tableView.scrollIndicatorInsets = inset
-        followingTableViewController.tableView.contentOffset = CGPoint(x: 0, y: -insetTop)
+        for tableViewController in childTableViewControllers {
+            tableViewController.tableView.contentInset = inset
+            tableViewController.tableView.scrollIndicatorInsets = inset
+            tableViewController.tableView.contentOffset = CGPoint(x: 0, y: -insetTop)
+        }
 
-        lastContentOffsetY = followingTableViewController.tableView.contentOffset.y
+        if currentContainerViewIndex == nil {
+            switchContainerView(index: 0)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -101,32 +129,80 @@ final class ProfileViewController: UIViewController {
     }
 
     private func setupViews() {
+
         headerImageView.kf.setImage(with: account.header.url)
         avatarImageView.kf.setImage(with: account.avatar.url)
         displayNameLabel.text = account.displayName
         acctLabel.text = "@" + account.acct
+        statusesButton.value = account.statusesCount
+        followingButton.value = account.followingCount
+        followersButton.value = account.followersCount
+        // TODO: GET /api/v1/favourites and count [Status]
+        favouritesButton.value = 0
+    }
+
+
+    fileprivate func switchContainerView(index: Int) {
+        print("switchContainerView")
+
+        for view in containerViews {
+            view.isHidden = true
+
+            if view.tag == index {
+                view.isHidden = false
+            }
+        }
+
+//        if currentContainerViewIndex != nil {
+//            currentChildTableViewController.removeObserver(self, forKeyPath: "tableView.contentOffset")
+//        }
+
+        currentContainerViewIndex = index
+
+//        // Reset headerViewTopConstraint for shown tableView
+//        let tableView = currentChildTableViewController.tableView!
+//        let offsetY = tableView.contentOffset.y
+//        let insetTop = tableView.contentInset.top
+//        let newTop = -(offsetY + insetTop)
+//        let oldTop = headerViewTopConstraint.constant
+//        print("old, new", oldTop, newTop)
+//
+//        let inset = UIEdgeInsets(top: headerView.frame.maxY, left: 0, bottom: 0, right: 0)
+//        tableView.scrollIndicatorInsets = inset
+//        tableView.contentInset = inset
+//        if newTop < headerViewMinTopConstraint.constant {
+//            headerViewTopConstraint.constant = newTop
+//        }
+//        lastContentOffsetY = tableView.contentOffset.y
+//
+//        // Observe tableView contentOffset
+//        currentChildTableViewController.addObserver(self, forKeyPath: "tableView.contentOffset", options: [.new], context: nil)
     }
 
     private func didChangeTableViewContentOffset(tableView: UITableView) {
 
+        let contentOffsetY = tableView.contentOffset.y
         guard lastContentOffsetY != nil else {
+            lastContentOffsetY = contentOffsetY
             return
         }
 
-        let contentOffsetY = tableView.contentOffset.y
         let diff = abs(contentOffsetY - lastContentOffsetY)
-        let isDown: Bool // scroll to down or up
+
         var isBounce = false
         if contentOffsetY < -tableView.contentInset.top {
             isBounce = true
         }
+
+        let isDown: Bool
         if contentOffsetY > lastContentOffsetY {
             isDown = true
         } else {
             isDown = false
         }
 
-        var newTop = headerViewTopConstraint.constant
+        let top = headerViewTopConstraint.constant
+        var newTop = top
         if isDown {
             newTop = newTop - diff
         } else {
@@ -136,28 +212,34 @@ final class ProfileViewController: UIViewController {
             newTop = 0
         }
         headerViewTopConstraint.constant = newTop
-
-        // About 30: topLayouGuide.length is too long. 30 is good. But I don't know why 30.
-        let newInsetTop = max(headerView.frame.maxY, 30)
-        tableView.scrollIndicatorInsets = UIEdgeInsets(top: newInsetTop, left: 0, bottom: 0, right: 0)
+        print(newTop)
+        tableView.scrollIndicatorInsets = UIEdgeInsets(top: headerView.frame.maxY, left: 0, bottom: 0, right: 0)
 
         lastContentOffsetY = contentOffsetY
     }
 
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+//    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+//
+//        guard let _ = keyPath, let obj = object else {
+//            super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
+//            return
+//        }
 
-        guard let key = keyPath, let obj = object else {
-            super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
-            return
-        }
+//        switch obj {
+//        case let tableVC as UITableViewController:
+//            didChangeTableViewContentOffset(tableView: tableVC.tableView)
 
-        switch obj {
-        case let followingVC as FollowingTableViewController:
-            didChangeTableViewContentOffset(tableView: followingVC.tableView)
+//        default:
+//            break
+//        }
+//    }
+}
 
-        default:
-            break
-        }
+extension ProfileViewController: ProfileMenuButtonDelegate {
+
+    func profileMenuButtonDidTap(button: ProfileMenuButton) {
+
+        switchContainerView(index: button.tag)
     }
 }
 
@@ -178,12 +260,11 @@ extension ProfileViewController {
             // TODO: .home => .account
             timelineVC.type = .home
 
-
         case "Following":
             guard let followingVC = segue.destination as? FollowingTableViewController else {
                 return
             }
-            followingTableViewController = followingVC
+
         default:
             break
         }
