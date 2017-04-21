@@ -19,6 +19,8 @@ final class TimelineTableViewController: UITableViewController {
 
     var type: TimelineType!
     var statuses = [Status]()
+    let indicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 30, height: 40))
+    var loading = true
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +37,9 @@ final class TimelineTableViewController: UITableViewController {
         tableView.estimatedRowHeight = 250
         tableView.rowHeight = UITableViewAutomaticDimension
 
+        indicator.activityIndicatorViewStyle = .gray
+        indicator.startAnimating()
+        tableView.tableFooterView = indicator
 
         if MastodonAPI.instanceURL == nil {
             return
@@ -73,7 +78,33 @@ final class TimelineTableViewController: UITableViewController {
     }
 
     func fetchInitialTimeline() {
-        let request = MastodonAPI.GetHomeTimelineRequest()
+        loading = true
+
+        let request: MastodonAPI.GetPublicTimelineRequest
+        switch type! {
+        case .home:
+            let request = MastodonAPI.GetHomeTimelineRequest()
+            Session.send(request) { [weak self] (result) in
+                guard let s = self else {
+                    return
+                }
+
+                switch result {
+                case .success(let statuses):
+                    s.statuses = statuses
+                    s.tableView.reloadData()
+
+                case .failure(let error):
+                    print(error)
+                }
+                s.loading = false
+            }
+            return
+        case .local:
+            request = MastodonAPI.GetPublicTimelineRequest(isLocal: true)
+        case .federated:
+            request = MastodonAPI.GetPublicTimelineRequest(isLocal: false)
+        }
         Session.send(request) { [weak self] (result) in
             guard let s = self else {
                 return
@@ -87,6 +118,61 @@ final class TimelineTableViewController: UITableViewController {
             case .failure(let error):
                 print(error)
             }
+            s.loading = false
+        }
+    }
+
+    func loadOlder() {
+        if loading {
+            return
+        }
+        loading = true
+
+        let request: MastodonAPI.GetPublicTimelineRequest
+        switch type! {
+        case .home:
+            let request = MastodonAPI.GetHomeTimelineRequest(maxId: statuses.last?.id)
+            Session.send(request) { [weak self] (result) in
+                guard let s = self else {
+                    return
+                }
+
+                switch result {
+                case .success(let statuses):
+                    s.statuses = s.statuses + statuses
+                    s.tableView.reloadData()
+
+                case .failure(let error):
+                    print(error)
+                }
+                s.loading = false
+            }
+            return
+        case .local:
+            request = MastodonAPI.GetPublicTimelineRequest(isLocal: true, maxId: statuses.last!.id)
+        case .federated:
+            request = MastodonAPI.GetPublicTimelineRequest(isLocal: false, maxId: statuses.last!.id)
+        }
+        Session.send(request) { [weak self] (result) in
+            guard let s = self else {
+                return
+            }
+
+            switch result {
+            case .success(let statuses):
+                s.statuses = s.statuses + statuses
+                s.tableView.reloadData()
+
+            case .failure(let error):
+                print(error)
+            }
+            s.loading = false
+        }
+    }
+
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.y >= scrollView.contentSize.height - tableView.frame.size.height {
+            loadOlder()
         }
     }
 

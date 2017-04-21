@@ -32,6 +32,7 @@ class TootTableViewCell: UITableViewCell {
             attachmentViewBottomConstraint.constant = 0
         }
     }
+    @IBOutlet var contentBottomMarginConstraint: NSLayoutConstraint!
 
     @IBOutlet var boostButton: UIButton!
     @IBOutlet var favouriteButton: UIButton!
@@ -53,6 +54,7 @@ class TootTableViewCell: UITableViewCell {
 
         attachmentHeightConstraint.constant = 0
         attachmentViewBottomConstraint.constant = 0
+        contentBottomMarginConstraint.constant = -25.5
     }
 
     func configureCell(status targetStatus: Status) {
@@ -81,6 +83,9 @@ class TootTableViewCell: UITableViewCell {
             attachmentView.backgroundColor = UIColor.lightGray
             attachmentHeightConstraint.constant = 100
             attachmentViewBottomConstraint.constant = 15
+        }
+        if !status.shouldHasLessMargin {
+            contentBottomMarginConstraint.constant = 8
         }
     }
 

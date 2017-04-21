@@ -15,12 +15,32 @@ extension MastodonAPI {
     /// Retrieving a home timeline.
     struct GetHomeTimelineRequest: MastodonRequest {
 
+        let maxId: Int?
+        let sinceId: Int?
+
+        init(maxId: Int? = nil, sinceId: Int? = nil) {
+            self.maxId = maxId
+            self.sinceId = sinceId
+        }
+
         var method: HTTPMethod {
             return .get
         }
 
         var path: String {
             return "/api/v1/timelines/home"
+        }
+
+        var parameters: Any? {
+            var params = [String: Any]()
+
+            if let maxId = maxId {
+                params["max_id"] = maxId
+            }
+            if let sinceId = sinceId {
+                params["since_id"] = sinceId
+            }
+            return params
         }
 
         func response(from object: Any, urlResponse: HTTPURLResponse) throws -> [Status] {
@@ -32,6 +52,14 @@ extension MastodonAPI {
     struct GetPublicTimelineRequest: MastodonRequest {
 
         let isLocal: Bool
+        let maxId: Int?
+        let sinceId: Int?
+
+        init(isLocal: Bool, maxId: Int? = nil, sinceId: Int? = nil) {
+            self.isLocal = isLocal
+            self.maxId = maxId
+            self.sinceId = sinceId
+        }
 
         var method: HTTPMethod {
             return .get
@@ -42,12 +70,18 @@ extension MastodonAPI {
         }
 
         var parameters: Any? {
-            if isLocal {
-                return [
-                    "local": true
-                ]
+            var params = [String: Any]()
+
+            if let maxId = maxId {
+                params["max_id"] = maxId
             }
-            return [:]
+            if let sinceId = sinceId {
+                params["since_id"] = sinceId
+            }
+            if isLocal {
+                params["lcoal"] = true
+            }
+            return params
         }
 
         func response(from object: Any, urlResponse: HTTPURLResponse) throws -> [Status] {
