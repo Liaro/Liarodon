@@ -79,7 +79,7 @@ extension MastodonAPI {
                 params["since_id"] = sinceId
             }
             if isLocal {
-                params["lcoal"] = true
+                params["local"] = true
             }
             return params
         }
