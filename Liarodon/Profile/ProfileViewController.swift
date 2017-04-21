@@ -50,7 +50,7 @@ final class ProfileViewController: UIViewController {
     }
     @IBOutlet var containerViews: [UIView]!
 
-    private var currentContainerViewIndex: Int!
+    fileprivate var currentContainerViewIndex: Int!
     private var childTableViewControllers: [UITableViewController] {
         return childViewControllers.filter({ $0 is UITableViewController }) as! [UITableViewController]
     }
@@ -59,12 +59,7 @@ final class ProfileViewController: UIViewController {
     }
 
     // For scrolling
-    private var childTableViewContentInset: UIEdgeInsets {
-        let insetTop = headerView.frame.maxY
-        return UIEdgeInsets(top: insetTop, left: 0, bottom: 0, right: 0)
-    }
-    private var lastContentOffsetY: CGFloat!
-
+    fileprivate var lastContentOffsetY: CGFloat!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -155,42 +150,52 @@ final class ProfileViewController: UIViewController {
         }
     }
 
-
     fileprivate func switchContainerView(index: Int) {
-        print("switchContainerView")
 
         for view in containerViews {
-            view.isHidden = true
-
-            if view.tag == index {
-                view.isHidden = false
-            }
+            view.isHidden = view.tag != index
         }
 
-//        if currentContainerViewIndex != nil {
-//            currentChildTableViewController.removeObserver(self, forKeyPath: "tableView.contentOffset")
-//        }
-
+        if currentContainerViewIndex != nil {
+            currentChildTableViewController.removeObserver(self, forKeyPath: "tableView.contentOffset")
+        }
         currentContainerViewIndex = index
 
-//        // Reset headerViewTopConstraint for shown tableView
-//        let tableView = currentChildTableViewController.tableView!
-//        let offsetY = tableView.contentOffset.y
-//        let insetTop = tableView.contentInset.top
-//        let newTop = -(offsetY + insetTop)
-//        let oldTop = headerViewTopConstraint.constant
-//        print("old, new", oldTop, newTop)
-//
-//        let inset = UIEdgeInsets(top: headerView.frame.maxY, left: 0, bottom: 0, right: 0)
-//        tableView.scrollIndicatorInsets = inset
-//        tableView.contentInset = inset
-//        if newTop < headerViewMinTopConstraint.constant {
-//            headerViewTopConstraint.constant = newTop
-//        }
-//        lastContentOffsetY = tableView.contentOffset.y
-//
-//        // Observe tableView contentOffset
-//        currentChildTableViewController.addObserver(self, forKeyPath: "tableView.contentOffset", options: [.new], context: nil)
+        let tableView = currentChildTableViewController.tableView!
+        let offsetY = tableView.contentOffset.y
+        let insetTop = tableView.contentInset.top
+        let headerNewTop = -(offsetY + insetTop)
+        headerViewTopConstraint.constant = headerNewTop
+
+        UIView.animate(withDuration: 0.25, animations: { [weak self] in
+            guard let s = self else { return }
+            s.headerView.layoutIfNeeded()
+        }, completion: { [weak self] _ in
+            guard let s = self else { return }
+            s.lastContentOffsetY = tableView.contentOffset.y
+            s.currentChildTableViewController.addObserver(s, forKeyPath: "tableView.contentOffset", options: [.new], context: nil)
+        })
+    }
+}
+
+
+// MARK: - KVO
+extension ProfileViewController {
+
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+
+        guard let _ = keyPath, let obj = object else {
+            super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
+            return
+        }
+
+        switch obj {
+        case let tableVC as UITableViewController:
+            didChangeTableViewContentOffset(tableView: tableVC.tableView)
+
+        default:
+            break
+        }
     }
 
     private func didChangeTableViewContentOffset(tableView: UITableView) {
@@ -201,58 +206,48 @@ final class ProfileViewController: UIViewController {
             return
         }
 
-        let diff = abs(contentOffsetY - lastContentOffsetY)
 
         var isBounce = false
         if contentOffsetY < -tableView.contentInset.top {
             isBounce = true
         }
 
-        let isDown: Bool
+        var diff = abs(contentOffsetY - lastContentOffsetY)
         if contentOffsetY > lastContentOffsetY {
-            isDown = true
-        } else {
-            isDown = false
+            diff = -diff
         }
 
         let top = headerViewTopConstraint.constant
-        var newTop = top
-        if isDown {
-            newTop = newTop - diff
-        } else {
-            newTop = newTop + diff
-        }
+        var newTop = top + diff
+
         if !isBounce && newTop > 0 {
             newTop = 0
         }
+//        if isBounce {
+//            if top < newTop {
+//                headerViewTopConstraint.constant = newTop
+//            } else {
+//                // do nothing
+//            }
+//        } else {
+//        }
         headerViewTopConstraint.constant = newTop
-        print(newTop)
+
         tableView.scrollIndicatorInsets = UIEdgeInsets(top: headerView.frame.maxY, left: 0, bottom: 0, right: 0)
 
         lastContentOffsetY = contentOffsetY
     }
-
-//    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-//
-//        guard let _ = keyPath, let obj = object else {
-//            super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
-//            return
-//        }
-
-//        switch obj {
-//        case let tableVC as UITableViewController:
-//            didChangeTableViewContentOffset(tableView: tableVC.tableView)
-
-//        default:
-//            break
-//        }
-//    }
 }
 
+
+// MARK: - ProfileMenuButtonDelegate
 extension ProfileViewController: ProfileMenuButtonDelegate {
 
     func profileMenuButtonDidTap(button: ProfileMenuButton) {
 
+        guard currentContainerViewIndex != button.tag else {
+            return
+        }
         switchContainerView(index: button.tag)
     }
 }
