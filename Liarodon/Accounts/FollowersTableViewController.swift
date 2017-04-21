@@ -7,25 +7,58 @@
 //
 
 import UIKit
+import APIKit
+
 
 final class FollowersTableViewController: UITableViewController {
 
+    var account: Account! {
+        didSet {
+            fetchLatestFollowers()
+        }
+    }
+
+    private var accounts: [Account] = []
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        tableView.register(AccountsTableViewCell.nib, forCellReuseIdentifier: "accountCell")
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+
+        tableView.register(AccountsTableViewCell.nib, forCellReuseIdentifier: "accountCell")
+        tableView.estimatedRowHeight = 100
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.tableFooterView = UIView(frame: CGRect.zero)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+
+    private func fetchLatestFollowers() {
+        let request = MastodonAPI.GetAccountFollowersRequest(id: account.id, maxID: nil, sinceID: nil, limit: 80)
+        Session.send(request) { [weak self] (result) in
+            guard let s = self else {
+                return
+            }
+
+            switch result {
+            case .success(let accounts):
+                print(accounts.count)
+                s.accounts = accounts
+                s.tableView.reloadData()
+
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+
 
     // MARK: - Table view data source
 
@@ -36,12 +69,13 @@ final class FollowersTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
-        return 10
+        return accounts.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         let cell = tableView.dequeueReusableCell(withIdentifier: "accountCell", for: indexPath) as! AccountsTableViewCell
+        cell.configureCell(account: accounts[indexPath.row])
         return cell
     }
 
