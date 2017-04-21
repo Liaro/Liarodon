@@ -50,6 +50,7 @@ class TootTableViewCell: UITableViewCell {
         attachmentView.subviews.forEach {
             $0.removeFromSuperview()
         }
+
         attachmentHeightConstraint.constant = 0
         attachmentViewBottomConstraint.constant = 0
     }
@@ -70,19 +71,7 @@ class TootTableViewCell: UITableViewCell {
             replyingLabel.text = nil
         }
 
-        let options = [
-            NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType,
-            NSCharacterEncodingDocumentAttribute: String.Encoding.utf8.rawValue,
-        ] as [String : Any]
-        let html = status.content + "<style>p{font-size:15px}</style>"
-        let text: NSAttributedString?
-        if let data = html.data(using: .utf8) {
-            text = try? NSMutableAttributedString(data: data, options: options, documentAttributes: nil)
-        } else {
-            text = nil
-        }
-
-        contentTextView.attributedText = text!
+        contentTextView.attributedText = status.attributedContent
 
         avatarImageView.kf.setImage(with: status.account.avatar.url)
         displayNameLabel.text = status.account.displayName
