@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class TootTableViewCell: UITableViewCell {
 
@@ -14,14 +15,30 @@ class TootTableViewCell: UITableViewCell {
         didSet {
             contentTextView.textContainer.lineFragmentPadding = 0
             contentTextView.textContainerInset = .zero
-
         }
     }
 
     @IBOutlet var replyingLabel: UILabel!
+    @IBOutlet var displayNameLabel: UILabel!
+    @IBOutlet var timeLabel: UILabel!
+    @IBOutlet var statusReblogLabel: UILabel!
 
+    @IBOutlet var usernameLabel: UILabel!
+    @IBOutlet var avatarImageView: UIImageView!
     @IBOutlet var attachmentView: AttachmentView!
     @IBOutlet var attachmentHeightConstraint: NSLayoutConstraint!
+    @IBOutlet var attachmentViewBottomConstraint: NSLayoutConstraint! {
+        didSet {
+            attachmentViewBottomConstraint.constant = 0
+        }
+    }
+
+    @IBOutlet var boostButton: UIButton!
+    @IBOutlet var favouriteButton: UIButton!
+
+    @IBOutlet var moreButton: UIButton!
+    @IBOutlet var replyButton: UIButton!
+    var status: Status!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -34,15 +51,47 @@ class TootTableViewCell: UITableViewCell {
             $0.removeFromSuperview()
         }
         attachmentHeightConstraint.constant = 0
+        attachmentViewBottomConstraint.constant = 0
     }
 
-    func configureCell(row: Int) {
-        if row % 2 == 0 {
+    func configureCell(status targetStatus: Status) {
+        // If status has a reblog, show a boosted status mainly.
+        self.status = targetStatus.reblog ?? targetStatus
+
+        if let _ = targetStatus.reblog {
+            statusReblogLabel.text = "\(targetStatus.account.username) boosted"
+        } else {
+            statusReblogLabel.text = nil
+        }
+
+        if let replyAccountID = status.inReplyToAccountID {
+            replyingLabel.text = "Replying to \(replyAccountID)"
+        } else {
             replyingLabel.text = nil
+        }
+
+        let options = [
+            NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType,
+            NSCharacterEncodingDocumentAttribute: String.Encoding.utf8.rawValue,
+        ] as [String : Any]
+        let html = status.content + "<style>p{font-size:15px}</style>"
+        let text: NSAttributedString?
+        if let data = html.data(using: .utf8) {
+            text = try? NSMutableAttributedString(data: data, options: options, documentAttributes: nil)
+        } else {
+            text = nil
+        }
+
+        contentTextView.attributedText = text!
+
+        avatarImageView.kf.setImage(with: status.account.avatar.url)
+        displayNameLabel.text = status.account.displayName
+        usernameLabel.text = "@\(status.account.username)"
+
+        if !status.mediaAttachments.isEmpty {
             attachmentView.backgroundColor = UIColor.lightGray
             attachmentHeightConstraint.constant = 100
-        } else {
-            replyingLabel.text = "Replying to @hoge"
+            attachmentViewBottomConstraint.constant = 15
         }
     }
 
@@ -52,4 +101,16 @@ class TootTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+
+    @IBAction func replyButtonTapped(_ sender: UIButton) {
+    }
+    @IBAction func reblogButtonTapped(_ sender: UIButton) {
+    }
+
+    @IBAction func favouriteButtonTapped(_ sender: UIButton) {
+    }
+    @IBAction func moreButtonTapped(_ sender: UIButton) {
+    }
 }
+
+

@@ -52,7 +52,7 @@ final class Account {
         self.id = id
         self.username = username
         self.acct = acct
-        self.displayName = displayName
+        self.displayName = displayName.isEmpty ? username: displayName
         self.locked = locked
         self.createdAt = createdAt
         self.followersCount = followersCount

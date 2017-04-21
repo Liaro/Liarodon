@@ -4,6 +4,7 @@ PODS:
   - Himotoki (3.0.1)
   - KeyboardObserver (1.0.1)
   - KeychainAccess (3.0.2)
+  - Kingfisher (3.6.2)
   - NVActivityIndicatorView (3.6.1)
   - Result (3.2.1)
 
@@ -12,6 +13,7 @@ DEPENDENCIES:
   - Himotoki
   - KeyboardObserver
   - KeychainAccess
+  - Kingfisher
   - NVActivityIndicatorView
 
 SPEC CHECKSUMS:
@@ -19,9 +21,10 @@ SPEC CHECKSUMS:
   Himotoki: 85fda41d4d0e14f7228317a3b474175cdfb8f515
   KeyboardObserver: b74a483236861c63a29a18b5b617f63313f04eef
   KeychainAccess: a986406022dfc7c634c691ad3bec670cc6a32002
+  Kingfisher: 2c94e72c6830622c71d06adf4ea024c37d316830
   NVActivityIndicatorView: 9f52a7f84bf5c6a798722c450fe3c198e01c56ed
   Result: 2453a22e5c5b11c0c3a478736e82cd02f763b781
 
-PODFILE CHECKSUM: fb701e7c97160603ac4d51b90372f1d794a427b2
+PODFILE CHECKSUM: 95552cf346e3b7cf1e1efc487f08f38c47c23f13
 
 COCOAPODS: 1.2.1
