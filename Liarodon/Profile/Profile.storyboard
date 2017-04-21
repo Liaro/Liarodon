@@ -187,7 +187,6 @@
                             <constraint firstItem="R6h-ec-gUe" firstAttribute="leading" secondItem="d2j-MO-7AV" secondAttribute="leading" id="qhf-vS-HFU"/>
                         </constraints>
                     </view>
-                    <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <navigationItem key="navigationItem" title="Profile" id="MXe-KY-ckV"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -225,7 +224,6 @@
         <scene sceneID="nbw-Re-DaJ">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="g7f-ag-BUV" sceneMemberID="viewController">
-                    <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <tabBarItem key="tabBarItem" title="Profile" image="tab-profile" id="YIP-ex-SEz"/>
                     <toolbarItems/>
                     <nil key="simulatedBottomBarMetrics"/>

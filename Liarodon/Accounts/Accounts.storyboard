@@ -21,7 +21,6 @@
                             <outlet property="delegate" destination="K9l-aw-8Ti" id="J6N-gJ-Ynj"/>
                         </connections>
                     </tableView>
-                    <extendedEdge key="edgesForExtendedLayout"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hyu-ed-hpV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
