@@ -58,6 +58,9 @@ extension MastodonAPI {
     struct GetAccountFollowersRequest: MastodonRequest {
 
         let id: Int
+        let maxID: Int?
+        let sinceID: Int?
+        let limit: Int?
 
         var method: HTTPMethod {
             return .get
@@ -65,6 +68,20 @@ extension MastodonAPI {
 
         var path: String {
             return "/api/v1/accounts/\(id)/followers"
+        }
+
+        var parameters: Any? {
+            var params: [String: Any] = [:]
+            if let maxID = maxID {
+                params["max_id"] = maxID
+            }
+            if let sinceID = sinceID {
+                params["since_id"] = sinceID
+            }
+            if let limit = limit {
+                params["limit"] = limit
+            }
+            return params
         }
 
         func response(from object: Any, urlResponse: HTTPURLResponse) throws -> [Account] {
