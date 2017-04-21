@@ -59,6 +59,8 @@ final class Status {
     /// Application from which the status was posted.
     let application: Application?
 
+    let attributedContent: NSAttributedString
+
     init(id: Int, uri: String, url: String, account: Account, inReplyToID: Int?,
          inReplyToAccountID: Int?, reblog: Status?, content: String, createdAt: String,
          reblogsCount: Int, favouritesCount: Int, reblogged: Bool?, favourited: Bool?,
@@ -85,6 +87,19 @@ final class Status {
         self.mentions = mentions
         self.tags = tags
         self.application = application
+
+        let options = [
+            NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType,
+            NSCharacterEncodingDocumentAttribute: String.Encoding.utf8.rawValue,
+            ] as [String : Any]
+        let html = content + "<style>p{font-size:15px}</style>"
+        let text: NSAttributedString?
+        if let data = html.data(using: .utf8) {
+            text = try? NSMutableAttributedString(data: data, options: options, documentAttributes: nil)
+        } else {
+            text = nil
+        }
+        attributedContent = text! // TODO: Add plane text if text is nil
     }
 }
 
