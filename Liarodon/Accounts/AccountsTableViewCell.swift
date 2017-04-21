@@ -7,12 +7,17 @@
 //
 
 import UIKit
+import Kingfisher
+
 
 final class AccountsTableViewCell: UITableViewCell {
 
     static var nib: UINib {
         return UINib(nibName: "AccountsTableViewCell", bundle: nil)
     }
+    @IBOutlet weak var avatarImageView: UIImageView!
+    @IBOutlet weak var displayNameLabel: UILabel!
+    @IBOutlet weak var acctLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -23,6 +28,13 @@ final class AccountsTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+
+    func configureCell(account: Account) {
+
+        avatarImageView.kf.setImage(with: account.avatar.url)
+        displayNameLabel.text = account.displayName
+        acctLabel.text = "@" + account.acct
     }
     
 }
