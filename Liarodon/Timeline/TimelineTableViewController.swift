@@ -79,7 +79,32 @@ final class TimelineTableViewController: UITableViewController {
 
     func fetchInitialTimeline() {
         loading = true
-        let request = MastodonAPI.GetHomeTimelineRequest()
+
+        let request: MastodonAPI.GetPublicTimelineRequest
+        switch type! {
+        case .home:
+            let request = MastodonAPI.GetHomeTimelineRequest()
+            Session.send(request) { [weak self] (result) in
+                guard let s = self else {
+                    return
+                }
+
+                switch result {
+                case .success(let statuses):
+                    s.statuses = statuses
+                    s.tableView.reloadData()
+
+                case .failure(let error):
+                    print(error)
+                }
+                s.loading = false
+            }
+            return
+        case .local:
+            request = MastodonAPI.GetPublicTimelineRequest(isLocal: true)
+        case .federated:
+            request = MastodonAPI.GetPublicTimelineRequest(isLocal: false)
+        }
         Session.send(request) { [weak self] (result) in
             guard let s = self else {
                 return
@@ -103,7 +128,31 @@ final class TimelineTableViewController: UITableViewController {
         }
         loading = true
 
-        let request = MastodonAPI.GetHomeTimelineRequest(maxId: statuses.last!.id)
+        let request: MastodonAPI.GetPublicTimelineRequest
+        switch type! {
+        case .home:
+            let request = MastodonAPI.GetHomeTimelineRequest(maxId: statuses.last!.id)
+            Session.send(request) { [weak self] (result) in
+                guard let s = self else {
+                    return
+                }
+
+                switch result {
+                case .success(let statuses):
+                    s.statuses = s.statuses + statuses
+                    s.tableView.reloadData()
+
+                case .failure(let error):
+                    print(error)
+                }
+                s.loading = false
+            }
+            return
+        case .local:
+            request = MastodonAPI.GetPublicTimelineRequest(isLocal: true, maxId: statuses.last!.id)
+        case .federated:
+            request = MastodonAPI.GetPublicTimelineRequest(isLocal: false, maxId: statuses.last!.id)
+        }
         Session.send(request) { [weak self] (result) in
             guard let s = self else {
                 return
