@@ -25,8 +25,10 @@ extension MastodonRequest {
     }
 
     var headerFields: [String : String] {
-        return [
-            "Authorization": "Bearer " + MastodonAPI.accessToken
-        ]
+        var fields = [String: String]()
+        if let accessToken = MastodonAPI.accessToken {
+            fields["Authorization"] = "Bearer \(accessToken)"
+        }
+        return fields
     }
 }
