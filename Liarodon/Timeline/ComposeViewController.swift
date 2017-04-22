@@ -25,8 +25,16 @@ class ComposeViewController: UIViewController {
     @IBOutlet var textCountLabel: UILabel!
     @IBOutlet var contentWarningTextField: UITextField!
 
+    @IBOutlet var imageCollectionView: UICollectionView! {
+        didSet {
+            imageCollectionView.isHidden = true
+            imageCollectionView.delegate = self
+            imageCollectionView.dataSource = self
+        }
+    }
     @IBOutlet var topConstraint: NSLayoutConstraint!
     var restCount = 500
+    var images = [UIImage]()
     var isContentWarningEnabled = false {
         didSet {
             if isContentWarningEnabled {
@@ -101,6 +109,16 @@ class ComposeViewController: UIViewController {
         }
         textCountLabel.text = "\(restCount)"
     }
+
+    func addBottomInsetForImage() {
+        if images.isEmpty {
+            contentTextView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+            imageCollectionView.isHidden = true
+        } else {
+            contentTextView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: imageCollectionView.frame.height, right: 0)
+            imageCollectionView.isHidden = false
+        }
+    }
     
     @IBAction func photoButtonTapped(_ sender: UIButton) {
         let alert = UIAlertController(title: "Select source", message: nil, preferredStyle: .actionSheet)
@@ -157,7 +175,9 @@ extension ComposeViewController: UIImagePickerControllerDelegate, UINavigationCo
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if info[UIImagePickerControllerOriginalImage] != nil {
             let image = info[UIImagePickerControllerOriginalImage] as! UIImage
-            print(image)
+            images.append(image)
+            imageCollectionView.reloadData()
+            addBottomInsetForImage()
         }
         picker.dismiss(animated: true, completion: nil)
     }
@@ -168,6 +188,41 @@ extension ComposeViewController: UITextViewDelegate {
         textDidChange(nil)
     }
 }
+
+extension ComposeViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageCell", for: indexPath)
+
+        let image = cell.viewWithTag(1) as! UIImageView
+        image.image = images[indexPath.row]
+
+        return cell
+    }
+
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return images.count
+    }
+}
+
+extension ComposeViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let alert = UIAlertController(title: "remove it?", message: nil, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak self] _ in
+            self?.images.remove(at: indexPath.row)
+            collectionView.reloadData()
+            self?.addBottomInsetForImage()
+        }))
+        present(alert, animated: true, completion: nil)
+    }
+}
+
+extension ComposeViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 128, height: 128)
+    }
+}
+
 
 public class PlaceHolderTextView: UITextView {
 
