@@ -127,10 +127,48 @@ extension MastodonAPI {
 
 
     /// Following an account.
-    // TODO: Implement
-     
+    struct PostAccountFollowRequest: MastodonRequest {
+
+        let id: Int
+
+        var method: HTTPMethod {
+            return .post
+        }
+
+        var path: String {
+            return "/api/v1/accounts/\(id)/follow"
+        }
+
+        func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Relationship {
+            return try Relationship.decodeValue(object)
+        }
+    }
+
     /// Unfollowing an account.
-    // TODO: Implement
+    struct PostAccountUnfollowRequest: MastodonRequest {
+
+        let id: Int
+
+        var method: HTTPMethod {
+            return .post
+        }
+
+        var path: String {
+            return "/api/v1/accounts/\(id)/unfollow"
+        }
+
+        var parameters: Any? {
+            return [
+                "bearer_token": MastodonAPI.accessToken,
+            ]
+        }
+
+        func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Relationship {
+            print(object)
+            print(urlResponse)
+            return try Relationship.decodeValue(object)
+        }
+    }
 
     /// Blocking an account.
     // TODO: Implement
