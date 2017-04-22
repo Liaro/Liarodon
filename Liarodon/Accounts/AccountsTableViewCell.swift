@@ -18,6 +18,7 @@ final class AccountsTableViewCell: UITableViewCell {
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var displayNameLabel: UILabel!
     @IBOutlet weak var acctLabel: UILabel!
+    @IBOutlet weak var followUnfollowButton: UIButton!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -30,11 +31,27 @@ final class AccountsTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
-    func configureCell(account: Account) {
+    func configureCell(account: Account, followed: Bool? = nil) {
 
         avatarImageView.kf.setImage(with: account.avatar.url)
         displayNameLabel.text = account.displayName
         acctLabel.text = "@" + account.acct
+        
+        if let followed = followed {
+            let imageName: String
+            if followed {
+                imageName = "unfollow"
+                followUnfollowButton.tintColor = UIColor(red: 255/255, green: 122/255, blue: 122/255, alpha: 1)
+            } else {
+                imageName = "follow"
+                followUnfollowButton.tintColor = UIColor(red: 0, green: 122/255, blue: 255/255, alpha: 1)
+            }
+            let image = UIImage(named: imageName)!
+            followUnfollowButton.setImage(image, for: .normal)
+            followUnfollowButton.isHidden = false
+        } else {
+            followUnfollowButton.isHidden = true
+        }
     }
     
 }
