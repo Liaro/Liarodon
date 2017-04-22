@@ -145,9 +145,32 @@ extension MastodonAPI {
     // TODO: Implement
 
     /// Getting an account's relationships.
-    // TODO: Implement
+    struct GetAccountRelationshipsRequest: MastodonRequest, QueryParameters {
+
+        let ids: [Int]
+
+        var method: HTTPMethod {
+            return .get
+        }
+
+        var path: String {
+            return "/api/v1/accounts/relationships"
+        }
+
+        func encode() -> String? {
+            return "id%5B%5D=" + ids.map({"\($0)"}).joined(separator: "&id%5B%5D=")
+        }
+
+        var queryParameters: QueryParameters? {
+            return self
+        }
+
+        func response(from object: Any, urlResponse: HTTPURLResponse) throws -> [Relationship] {
+            print(object)
+            return try decodeArray(object)
+        }
+    }
 
     /// Searching for accounts.
     // TODO: Implement
-
 }

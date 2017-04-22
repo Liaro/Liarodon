@@ -15,7 +15,7 @@ final class MastodonAPI {
     static var accessToken: String!
 }
 
-protocol MastodonRequest: Request {
+protocol MastodonRequest: JSONRequest {
 }
 
 extension MastodonRequest {
