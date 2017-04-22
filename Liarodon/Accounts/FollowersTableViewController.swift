@@ -10,6 +10,19 @@ import UIKit
 import APIKit
 
 
+private class Follower {
+
+    let id: Int
+    let account: Account
+    var relationship: Relationship?
+
+    init(id: Int, account: Account, relationship: Relationship? = nil) {
+        self.id = id
+        self.account = account
+        self.relationship = relationship
+    }
+}
+
 final class FollowersTableViewController: UITableViewController {
 
     var account: Account! {
@@ -18,7 +31,10 @@ final class FollowersTableViewController: UITableViewController {
         }
     }
 
+    // Array index is mutual sharing.
+    private var followers: [Follower] = []
     private var accounts: [Account] = []
+    private var relationships: [Relationship] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +56,8 @@ final class FollowersTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    private func fetchLatestFollowers() {
+    func fetchLatestFollowers() {
+
         let request = MastodonAPI.GetAccountFollowersRequest(id: account.id, maxID: nil, sinceID: nil, limit: 80)
         Session.send(request) { [weak self] (result) in
             guard let s = self else {
@@ -48,10 +65,12 @@ final class FollowersTableViewController: UITableViewController {
             }
 
             switch result {
+
             case .success(let accounts):
-                print(accounts.count)
+                s.followers = accounts.map({ Follower(id: $0.id, account: $0) })
                 s.accounts = accounts
                 s.tableView.reloadData()
+                s.fetchRelationships(accounts: accounts)
 
             case .failure(let error):
                 print(error)
@@ -59,6 +78,31 @@ final class FollowersTableViewController: UITableViewController {
         }
     }
 
+
+    private func fetchRelationships(accounts: [Account]) {
+
+        let ids = accounts.map({ $0.id })
+        let request = MastodonAPI.GetAccountRelationshipsRequest(ids: ids)
+        Session.send(request) { [weak self] (result) in
+            guard let s = self else {
+                return
+            }
+
+            switch result {
+
+            case .success(let relationships):
+                for relationship in relationships {
+                    if let follower = s.followers.filter({ $0.id == relationship.id }).first {
+                        follower.relationship = relationship
+                    }
+                }
+                s.tableView.reloadData()
+
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
 
     // MARK: - Table view data source
 
@@ -69,13 +113,15 @@ final class FollowersTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
-        return accounts.count
+        return followers.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
+
         let cell = tableView.dequeueReusableCell(withIdentifier: "accountCell", for: indexPath) as! AccountsTableViewCell
-        cell.configureCell(account: accounts[indexPath.row])
+        let follower = followers[indexPath.row]
+        cell.configureCell(follower: follower.account, relationship: follower.relationship)
         return cell
     }
 

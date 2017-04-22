@@ -18,6 +18,7 @@ final class ProfileViewController: UIViewController {
     var accountID: Int? = nil
 
     fileprivate var account: Account!
+    fileprivate var mutableFollowingCount = 0
 
     @IBOutlet weak var headerView: ProfileHeaderView!
     @IBOutlet weak var headerViewMinTopConstraint: NSLayoutConstraint!
@@ -51,10 +52,10 @@ final class ProfileViewController: UIViewController {
     @IBOutlet var containerViews: [UIView]!
 
     fileprivate var currentContainerViewIndex: Int!
-    private var childTableViewControllers: [UITableViewController] {
+    fileprivate var childTableViewControllers: [UITableViewController] {
         return childViewControllers.filter({ $0 is UITableViewController }) as! [UITableViewController]
     }
-    private var currentChildTableViewController: UITableViewController {
+    fileprivate var currentChildTableViewController: UITableViewController {
         return childTableViewControllers[currentContainerViewIndex]
     }
 
@@ -74,6 +75,13 @@ final class ProfileViewController: UIViewController {
             Session.send(request) { [weak self] result in
                 self?.requestCompletion(result: result)
             }
+
+            NotificationCenter.default.addObserver(
+                self, selector: #selector(didRecieveFollowNotification(notification:)),
+                name: MastodonAPI.PostAccountFollowRequest.notificationName, object: nil)
+            NotificationCenter.default.addObserver(
+                self, selector: #selector(didRecieveUnfollowNotification(notification:)),
+                name: MastodonAPI.PostAccountUnfollowRequest.notificationName, object: nil)
         }
 
         for button in menuButtons {
@@ -114,6 +122,7 @@ final class ProfileViewController: UIViewController {
 
         case .success(let account):
             self.account = account
+            mutableFollowingCount = account.followingCount
             setupViews()
             print(account)
 
@@ -175,6 +184,13 @@ final class ProfileViewController: UIViewController {
             s.lastContentOffsetY = tableView.contentOffset.y
             s.currentChildTableViewController.addObserver(s, forKeyPath: "tableView.contentOffset", options: [.new], context: nil)
         })
+
+        if let followingVC = currentChildTableViewController as? FollowingTableViewController {
+            followingVC.fetchLatestFollowing()
+        }
+        else if let followersVC = currentChildTableViewController as? FollowersTableViewController {
+            followersVC.fetchLatestFollowers()
+        }
     }
 }
 
@@ -239,7 +255,6 @@ extension ProfileViewController {
     }
 }
 
-
 // MARK: - ProfileMenuButtonDelegate
 extension ProfileViewController: ProfileMenuButtonDelegate {
 
@@ -251,6 +266,31 @@ extension ProfileViewController: ProfileMenuButtonDelegate {
         switchContainerView(index: button.tag)
     }
 }
+
+// MARK: - Follow/Unfollow Notification Observer
+extension ProfileViewController {
+
+    func didRecieveFollowNotification(notification: Notification) {
+
+        mutableFollowingCount += 1
+        followingButton.value = mutableFollowingCount
+
+        if let followingVC = childTableViewControllers.filter({ $0 is FollowingTableViewController }).first as? FollowingTableViewController {
+            followingVC.fetchLatestFollowing()
+        }
+    }
+
+    func didRecieveUnfollowNotification(notification: Notification) {
+
+        mutableFollowingCount -= 1
+        followingButton.value = mutableFollowingCount
+
+        if let followersVC = childTableViewControllers.filter({ $0 is FollowersTableViewController }).first as? FollowersTableViewController {
+            followersVC.fetchLatestFollowers()
+        }
+    }
+}
+
 
 // MARK: - Navigation
 extension ProfileViewController {

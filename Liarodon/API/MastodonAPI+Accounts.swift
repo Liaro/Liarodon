@@ -127,10 +127,72 @@ extension MastodonAPI {
 
 
     /// Following an account.
-    // TODO: Implement
-     
+    struct PostAccountFollowRequest: MastodonRequest {
+
+        static let notificationName = NSNotification.Name(rawValue: "PostAccountFollowRequestNofication")
+
+        let id: Int
+
+        var method: HTTPMethod {
+            return .post
+        }
+
+        var path: String {
+            return "/api/v1/accounts/\(id)/follow"
+        }
+
+        func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Relationship {
+
+            let relationship = try Relationship.decodeValue(object)
+
+            DispatchQueue.main.async {
+                let notification = Notification(
+                    name: PostAccountFollowRequest.notificationName,
+                    object: self,
+                    userInfo: ["relationship": relationship])
+                NotificationCenter.default.post(notification)
+            }
+
+            return relationship
+        }
+    }
+
     /// Unfollowing an account.
-    // TODO: Implement
+    struct PostAccountUnfollowRequest: MastodonRequest {
+
+        static let notificationName = NSNotification.Name(rawValue: "PostAccountUnfollowRequestNofication")
+
+        let id: Int
+
+        var method: HTTPMethod {
+            return .post
+        }
+
+        var path: String {
+            return "/api/v1/accounts/\(id)/unfollow"
+        }
+
+        var parameters: Any? {
+            return [
+                "bearer_token": MastodonAPI.accessToken,
+            ]
+        }
+
+        func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Relationship {
+
+            let relationship = try Relationship.decodeValue(object)
+
+            DispatchQueue.main.async {
+                let notification = Notification(
+                    name: PostAccountUnfollowRequest.notificationName,
+                    object: self,
+                    userInfo: ["relationship": relationship])
+                NotificationCenter.default.post(notification)
+            }
+
+            return relationship
+        }
+    }
 
     /// Blocking an account.
     // TODO: Implement
@@ -145,9 +207,31 @@ extension MastodonAPI {
     // TODO: Implement
 
     /// Getting an account's relationships.
-    // TODO: Implement
+    struct GetAccountRelationshipsRequest: MastodonRequest, QueryParameters {
+
+        let ids: [Int]
+
+        var method: HTTPMethod {
+            return .get
+        }
+
+        var path: String {
+            return "/api/v1/accounts/relationships"
+        }
+
+        func encode() -> String? {
+            return "id%5B%5D=" + ids.map({"\($0)"}).joined(separator: "&id%5B%5D=")
+        }
+
+        var queryParameters: QueryParameters? {
+            return self
+        }
+
+        func response(from object: Any, urlResponse: HTTPURLResponse) throws -> [Relationship] {
+            return try decodeArray(object)
+        }
+    }
 
     /// Searching for accounts.
     // TODO: Implement
-
 }

@@ -20,6 +20,7 @@
 		438A98A01EA8CC9B007CB1BC /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438A989F1EA8CC9B007CB1BC /* ProfileHeaderView.swift */; };
 		438A98A21EA92C5A007CB1BC /* ProfileMenuButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 438A98A11EA92C5A007CB1BC /* ProfileMenuButton.xib */; };
 		438A98A41EA92DE1007CB1BC /* ProfileMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438A98A31EA92DE1007CB1BC /* ProfileMenuButton.swift */; };
+		439F01A31EAAAB12005C273A /* Relationship.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439F01A21EAAAB12005C273A /* Relationship.swift */; };
 		43F9B1901EA613C50093E798 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F9B18F1EA613C50093E798 /* AppDelegate.swift */; };
 		43F9B1971EA613C50093E798 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43F9B1961EA613C50093E798 /* Assets.xcassets */; };
 		43F9B19A1EA613C50093E798 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43F9B1981EA613C50093E798 /* LaunchScreen.storyboard */; };
@@ -84,6 +85,7 @@
 		438A989F1EA8CC9B007CB1BC /* ProfileHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileHeaderView.swift; path = Profile/ProfileHeaderView.swift; sourceTree = "<group>"; };
 		438A98A11EA92C5A007CB1BC /* ProfileMenuButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ProfileMenuButton.xib; path = Profile/ProfileMenuButton.xib; sourceTree = "<group>"; };
 		438A98A31EA92DE1007CB1BC /* ProfileMenuButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileMenuButton.swift; path = Profile/ProfileMenuButton.swift; sourceTree = "<group>"; };
+		439F01A21EAAAB12005C273A /* Relationship.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Relationship.swift; path = Models/Relationship.swift; sourceTree = "<group>"; };
 		43F9B18C1EA613C50093E798 /* Liarodon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Liarodon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		43F9B18F1EA613C50093E798 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		43F9B1961EA613C50093E798 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -291,6 +293,7 @@
 				43F9B1F31EA62B910093E798 /* App.swift */,
 				43F9B1ED1EA626740093E798 /* AccessToken.swift */,
 				43F9B1F51EA63E6C0093E798 /* Account.swift */,
+				439F01A21EAAAB12005C273A /* Relationship.swift */,
 				43F9B2001EA658820093E798 /* Status.swift */,
 				43F9B2021EA677910093E798 /* Attachment.swift */,
 				43F9B2041EA67C680093E798 /* Mention.swift */,
@@ -554,6 +557,7 @@
 				435CA8851EA8B54F006F5EE5 /* MutingTableViewController.swift in Sources */,
 				43F9B1F41EA62B910093E798 /* App.swift in Sources */,
 				43F9B1EE1EA626740093E798 /* AccessToken.swift in Sources */,
+				439F01A31EAAAB12005C273A /* Relationship.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

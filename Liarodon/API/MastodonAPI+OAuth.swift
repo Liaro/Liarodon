@@ -19,8 +19,6 @@ extension MastodonAPI {
         let username: String        // User mail address
         let password: String
 
-        typealias Response = AccessToken
-
         var method: HTTPMethod {
             return .post
         }
@@ -29,24 +27,19 @@ extension MastodonAPI {
             return "/oauth/token"
         }
 
-        var headerFields: [String : String] {
-            return [:]
-        }
-
         var parameters: Any? {
             return [
                 "client_id": clientID,
                 "client_secret": clientSecret,
                 "grant_type": "password",
                 "username": username,
-                "password": password
+                "password": password,
+                "scope": "read write follow"
             ]
         }
 
         func response(from object: Any, urlResponse: HTTPURLResponse) throws -> AccessToken {
-            print(object)
             return try AccessToken.decodeValue(object)
         }
     }
-
 }

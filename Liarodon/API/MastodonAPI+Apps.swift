@@ -16,8 +16,6 @@ extension MastodonAPI {
 
         let clientName: String
 
-        typealias Response = App
-
         var method: HTTPMethod {
             return .post
         }
@@ -30,12 +28,8 @@ extension MastodonAPI {
             return [
                 "client_name": clientName,
                 "redirect_uris": "urn:ietf:wg:oauth:2.0:oob",
-                "scopes": "read%20write%20follow"
+                "scopes": "read write follow"
             ]
-        }
-
-        var headerFields: [String : String] {
-            return [:]
         }
 
         func response(from object: Any, urlResponse: HTTPURLResponse) throws -> App {
