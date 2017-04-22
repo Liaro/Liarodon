@@ -76,7 +76,7 @@ final class FollowingTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         let cell = tableView.dequeueReusableCell(withIdentifier: "accountCell", for: indexPath) as! AccountsTableViewCell
-        cell.configureCell(account: accounts[indexPath.row], followed: true)
+        cell.configureCell(following: accounts[indexPath.row])
         return cell
     }
 

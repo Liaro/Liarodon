@@ -121,7 +121,7 @@ final class FollowersTableViewController: UITableViewController {
 
         let cell = tableView.dequeueReusableCell(withIdentifier: "accountCell", for: indexPath) as! AccountsTableViewCell
         let follower = followers[indexPath.row]
-        cell.configureCell(account: follower.account, followed: follower.relationship?.following)
+        cell.configureCell(follower: follower.account, relationship: follower.relationship)
         return cell
     }
 

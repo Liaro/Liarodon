@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -41,14 +41,32 @@
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="locked" translatesAutoresizingMaskIntoConstraints="NO" id="H2l-9c-lx9">
+                                <rect key="frame" x="121" y="44" width="12" height="12"/>
+                                <color key="tintColor" red="1" green="0.79607843140000001" blue="0.01176470588" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="H2l-9c-lx9" secondAttribute="height" id="Nfb-G3-4VS"/>
+                                    <constraint firstAttribute="height" constant="12" id="nzp-eg-BRg"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Requested" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="93T-UN-3v7">
+                                <rect key="frame" x="258" y="58" width="51.5" height="12"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vHy-pg-9er">
-                                <rect key="frame" x="277" y="26" width="28" height="28"/>
+                                <rect key="frame" x="261" y="18" width="44" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="vHy-pg-9er" secondAttribute="height" multiplier="1:1" id="g7U-mb-oc9"/>
-                                    <constraint firstAttribute="height" constant="28" id="mrB-xd-edV"/>
+                                    <constraint firstAttribute="height" constant="44" id="mrB-xd-edV"/>
                                 </constraints>
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <inset key="imageEdgeInsets" minX="8" minY="8" maxX="8" maxY="8"/>
                                 <state key="normal" image="follow"/>
+                                <connections>
+                                    <action selector="followUnfollowButtonDidTap:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="08u-oE-lPz"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -57,10 +75,14 @@
                             <constraint firstItem="cnP-gU-4R7" firstAttribute="leading" secondItem="ygy-5l-xNY" secondAttribute="trailing" constant="15" id="8Oz-Sy-yZD"/>
                             <constraint firstItem="ygy-5l-xNY" firstAttribute="centerY" secondItem="5EQ-mX-pGI" secondAttribute="centerY" id="C2G-qw-mMx"/>
                             <constraint firstItem="cnP-gU-4R7" firstAttribute="bottom" secondItem="ygy-5l-xNY" secondAttribute="centerY" id="CCJ-2o-Dok"/>
-                            <constraint firstItem="vHy-pg-9er" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="lxs-Gg-Dde" secondAttribute="trailing" constant="15" id="FAQ-Dc-sE0"/>
+                            <constraint firstItem="H2l-9c-lx9" firstAttribute="centerY" secondItem="lxs-Gg-Dde" secondAttribute="centerY" id="DJT-Y9-DIR"/>
+                            <constraint firstItem="93T-UN-3v7" firstAttribute="top" secondItem="vHy-pg-9er" secondAttribute="bottom" constant="-4" id="DOY-4T-tpa"/>
+                            <constraint firstItem="H2l-9c-lx9" firstAttribute="leading" secondItem="lxs-Gg-Dde" secondAttribute="trailing" constant="2" id="FXL-Rc-wZG"/>
                             <constraint firstItem="ygy-5l-xNY" firstAttribute="leading" secondItem="5EQ-mX-pGI" secondAttribute="leading" constant="15" id="FaN-d4-4IS"/>
                             <constraint firstItem="lxs-Gg-Dde" firstAttribute="top" secondItem="ygy-5l-xNY" secondAttribute="centerY" id="IYG-ID-vaR"/>
                             <constraint firstItem="lxs-Gg-Dde" firstAttribute="leading" secondItem="ygy-5l-xNY" secondAttribute="trailing" constant="15" id="KKF-Nw-3ET"/>
+                            <constraint firstItem="93T-UN-3v7" firstAttribute="centerX" secondItem="vHy-pg-9er" secondAttribute="centerX" id="QLL-Og-ywh"/>
+                            <constraint firstItem="vHy-pg-9er" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="H2l-9c-lx9" secondAttribute="trailing" constant="15" id="hze-qc-M3R"/>
                             <constraint firstItem="vHy-pg-9er" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="cnP-gU-4R7" secondAttribute="trailing" constant="15" id="jH5-dB-Ccs"/>
                             <constraint firstAttribute="trailing" secondItem="vHy-pg-9er" secondAttribute="trailing" constant="15" id="w1h-7C-VPO"/>
                             <constraint firstAttribute="height" priority="999" constant="80" id="wTp-K8-7IK"/>
@@ -80,11 +102,14 @@
                 <outlet property="avatarImageView" destination="ygy-5l-xNY" id="a5n-IZ-A7f"/>
                 <outlet property="displayNameLabel" destination="cnP-gU-4R7" id="VXe-gB-BzR"/>
                 <outlet property="followUnfollowButton" destination="vHy-pg-9er" id="ksH-th-yv8"/>
+                <outlet property="lockedImageView" destination="H2l-9c-lx9" id="ADP-ww-zYq"/>
+                <outlet property="requestedLabel" destination="93T-UN-3v7" id="xcA-BM-MTv"/>
             </connections>
             <point key="canvasLocation" x="34" y="45"/>
         </tableViewCell>
     </objects>
     <resources>
         <image name="follow" width="240" height="240"/>
+        <image name="locked" width="240" height="240"/>
     </resources>
 </document>
