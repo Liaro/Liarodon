@@ -9,6 +9,7 @@
 import UIKit
 import Kingfisher
 import DateToolsSwift
+import APIKit
 
 enum StatusLink {
     case tag(Tag)
@@ -106,6 +107,22 @@ class TootTableViewCell: UITableViewCell {
         if !status.shouldHasLessMargin {
             contentBottomMarginConstraint.constant = 8
         }
+        configureButtons()
+    }
+
+    private func configureButtons() {
+        if status.favourited == true {
+            favouriteButton.tintColor = UIColor.blue
+        } else {
+            favouriteButton.tintColor = UIColor.gray
+        }
+        if status.reblogged == true {
+            boostButton.tintColor = UIColor.blue
+        } else {
+            boostButton.tintColor = UIColor.gray
+        }
+        moreButton.tintColor = .gray
+        replyButton.tintColor = .gray
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -118,8 +135,54 @@ class TootTableViewCell: UITableViewCell {
     @IBAction func replyButtonTapped(_ sender: UIButton) {
     }
     @IBAction func reblogButtonTapped(_ sender: UIButton) {
+        status.reblogged = !status.reblogged
+        configureButtons()
+        if status.reblogged {
+            let request = MastodonAPI.AddReblogToStatus(statusId: status.id)
+            Session.send(request) { (result) in
+                switch result {
+                case .success(let status):
+                    print(status)
+                case .failure(let error):
+                    print(error)
+                }
+            }
+        } else {
+            let request = MastodonAPI.RemoveReblogToStatus(statusId: status.id)
+            Session.send(request) { (result) in
+                switch result {
+                case .success(let status):
+                    print(status)
+                case .failure(let error):
+                    print(error)
+                }
+            }
+        }
     }
     @IBAction func favouriteButtonTapped(_ sender: UIButton) {
+        status.favourited = !status.favourited
+        configureButtons()
+        if status.favourited {
+            let request = MastodonAPI.AddFavouriteToStatus(statusId: status.id)
+            Session.send(request) { (result) in
+                switch result {
+                case .success(let status):
+                    print(status)
+                case .failure(let error):
+                    print(error)
+                }
+            }
+        } else {
+            let request = MastodonAPI.RemoveFavouriteToStatus(statusId: status.id)
+            Session.send(request) { (result) in
+                switch result {
+                case .success(let status):
+                    print(status)
+                case .failure(let error):
+                    print(error)
+                }
+            }
+        }
     }
     @IBAction func moreButtonTapped(_ sender: UIButton) {
     }

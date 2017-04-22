@@ -41,11 +41,11 @@ final class Status {
     /// The number of favourites for the status.
     let favouritesCount: Int
     /// Whether the authenticated user has reblogged the status.
-    let reblogged: Bool?
+    var reblogged: Bool
     /// Whether the authenticated user has favourited the status.
-    let favourited: Bool?
+    var favourited: Bool
     /// Whether media attachments should be hidden by default.
-    let sensitive: Bool?
+    let sensitive: Bool
     /// If not empty, warning text that should be displayed before the actual content.
     let spoilerText: String
     /// The visibility type of the status.
@@ -79,9 +79,9 @@ final class Status {
         self.createdAt = createdAt
         self.reblogsCount = reblogsCount
         self.favouritesCount = favouritesCount
-        self.reblogged = reblogged
-        self.favourited = favourited
-        self.sensitive = sensitive
+        self.reblogged = reblogged ?? false
+        self.favourited = favourited ?? false
+        self.sensitive = sensitive ?? false
         self.spoilerText = spoilerText
         self.visibility = visibility
         self.mediaAttachments = mediaAttachments

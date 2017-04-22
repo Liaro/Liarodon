@@ -18,15 +18,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Toot" rowHeight="264" id="cHh-EG-Sy4" customClass="TootTableViewCell" customModule="Liarodon" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="320" height="264"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Toot" rowHeight="266" id="cHh-EG-Sy4" customClass="TootTableViewCell" customModule="Liarodon" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="320" height="266"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cHh-EG-Sy4" id="F9x-BH-XYg">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="263.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="265"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aAt-Ca-Wmo" customClass="LinkTextView" customModule="Liarodon" customModuleProvider="target">
-                                            <rect key="frame" x="76" y="59" width="236" height="177.5"/>
+                                            <rect key="frame" x="76" y="59" width="236" height="179"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="0.0" right="0.0"/>
                                             <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </string>
@@ -65,7 +65,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jek-tu-mNf">
-                                            <rect key="frame" x="76" y="226" width="24" height="22"/>
+                                            <rect key="frame" x="76" y="228" width="24" height="22"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="22" id="3FR-NR-5Ol"/>
                                                 <constraint firstAttribute="width" constant="24" id="pG0-W9-8U3"/>
@@ -78,7 +78,7 @@
                                             </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bad-6f-WBV">
-                                            <rect key="frame" x="140" y="226" width="24" height="22"/>
+                                            <rect key="frame" x="140" y="228" width="24" height="22"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="24" id="IKE-XS-MYb"/>
                                                 <constraint firstAttribute="height" constant="22" id="NG2-qG-7cD"/>
@@ -91,7 +91,7 @@
                                             </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ihX-K8-OTz">
-                                            <rect key="frame" x="204" y="226" width="24" height="22"/>
+                                            <rect key="frame" x="204" y="228" width="24" height="22"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="24" id="7di-Fg-FGb"/>
                                                 <constraint firstAttribute="height" constant="22" id="QQG-iL-Cak"/>
@@ -104,7 +104,7 @@
                                             </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gpE-y5-rQx">
-                                            <rect key="frame" x="268" y="226" width="24" height="22"/>
+                                            <rect key="frame" x="268" y="228" width="24" height="22"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="22" id="bxW-QI-ndu"/>
                                                 <constraint firstAttribute="width" constant="24" id="hej-7k-4Ch"/>
@@ -117,7 +117,7 @@
                                             </connections>
                                         </button>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aNZ-E5-FIN" userLabel="AttachmentView" customClass="AttachmentView" customModule="Liarodon" customModuleProvider="target">
-                                            <rect key="frame" x="76" y="211" width="236" height="0.0"/>
+                                            <rect key="frame" x="76" y="213" width="236" height="0.0"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" id="r5f-L7-MS6"/>
@@ -213,10 +213,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="boost" width="16" height="16"/>
-        <image name="favourite" width="16" height="16"/>
-        <image name="more" width="16" height="16"/>
-        <image name="reply" width="16" height="16"/>
+        <image name="boost" width="34" height="30"/>
+        <image name="favourite" width="34" height="30"/>
+        <image name="more" width="35" height="30"/>
+        <image name="reply" width="34" height="30"/>
         <image name="tab-home" width="16" height="16"/>
         <image name="user" width="16" height="16"/>
     </resources>
