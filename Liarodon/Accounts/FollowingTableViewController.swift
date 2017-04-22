@@ -10,7 +10,13 @@ import UIKit
 import APIKit
 
 
+protocol FollowingTableViewControllerDelegate: class {
+    func followingTableViewControllerWillRequest(viewController: FollowingTableViewController)
+}
+
 final class FollowingTableViewController: UITableViewController {
+
+    weak var deleagte: FollowingTableViewControllerDelegate?
 
     var account: Account! {
         didSet {
@@ -41,7 +47,7 @@ final class FollowingTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    private func fetchLatestFollowing() {
+    func fetchLatestFollowing() {
         let request = MastodonAPI.GetAccountFollowingRequest(id: account.id)
         Session.send(request) { [weak self] (result) in
             guard let s = self else {
@@ -50,7 +56,6 @@ final class FollowingTableViewController: UITableViewController {
 
             switch result {
             case .success(let accounts):
-                print(accounts.count)
                 s.accounts = accounts
                 s.tableView.reloadData()
 

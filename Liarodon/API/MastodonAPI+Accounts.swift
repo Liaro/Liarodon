@@ -129,6 +129,8 @@ extension MastodonAPI {
     /// Following an account.
     struct PostAccountFollowRequest: MastodonRequest {
 
+        static let notificationName = NSNotification.Name(rawValue: "PostAccountFollowRequestNofication")
+
         let id: Int
 
         var method: HTTPMethod {
@@ -140,12 +142,25 @@ extension MastodonAPI {
         }
 
         func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Relationship {
-            return try Relationship.decodeValue(object)
+
+            let relationship = try Relationship.decodeValue(object)
+
+            DispatchQueue.main.async {
+                let notification = Notification(
+                    name: PostAccountFollowRequest.notificationName,
+                    object: self,
+                    userInfo: ["relationship": relationship])
+                NotificationCenter.default.post(notification)
+            }
+
+            return relationship
         }
     }
 
     /// Unfollowing an account.
     struct PostAccountUnfollowRequest: MastodonRequest {
+
+        static let notificationName = NSNotification.Name(rawValue: "PostAccountUnfollowRequestNofication")
 
         let id: Int
 
@@ -164,9 +179,18 @@ extension MastodonAPI {
         }
 
         func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Relationship {
-            print(object)
-            print(urlResponse)
-            return try Relationship.decodeValue(object)
+
+            let relationship = try Relationship.decodeValue(object)
+
+            DispatchQueue.main.async {
+                let notification = Notification(
+                    name: PostAccountUnfollowRequest.notificationName,
+                    object: self,
+                    userInfo: ["relationship": relationship])
+                NotificationCenter.default.post(notification)
+            }
+
+            return relationship
         }
     }
 
@@ -204,7 +228,6 @@ extension MastodonAPI {
         }
 
         func response(from object: Any, urlResponse: HTTPURLResponse) throws -> [Relationship] {
-            print(object)
             return try decodeArray(object)
         }
     }

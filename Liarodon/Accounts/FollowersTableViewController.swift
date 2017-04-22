@@ -56,7 +56,7 @@ final class FollowersTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    private func fetchLatestFollowers() {
+    func fetchLatestFollowers() {
 
         let request = MastodonAPI.GetAccountFollowersRequest(id: account.id, maxID: nil, sinceID: nil, limit: 80)
         Session.send(request) { [weak self] (result) in
