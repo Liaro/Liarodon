@@ -30,4 +30,13 @@ class LinkTextView : UITextView {
         }
         return nil
     }
+
+    override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
+        // It prevent showing a menu: http://stackoverflow.com/questions/1426731/how-disable-copy-cut-select-select-all-in-uitextview
+        if action == #selector(paste(_:)) {
+            return false
+        } else {
+            return super.canPerformAction(action, withSender: sender)
+        }
+    }
 }

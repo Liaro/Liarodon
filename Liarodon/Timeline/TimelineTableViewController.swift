@@ -10,6 +10,7 @@ import UIKit
 import APIKit
 import ImageViewer
 import Kingfisher
+import SafariServices
 
 enum TimelineType {
     case home
@@ -77,6 +78,7 @@ final class TimelineTableViewController: UITableViewController {
 
         cell.configureCell(status: statuses[indexPath.row])
         cell.attachmentView.delegate = self
+        cell.delegate = self
 
         return cell
     }
@@ -243,6 +245,22 @@ extension TimelineTableViewController: AttachmentViewDelegate {
             ])
 
         presentImageGallery(galleryViewController)
+    }
+}
+
+extension TimelineTableViewController: TootTableViewCellDelegate {
+    func tootTableViewCell(_ cell: TootTableViewCell, shouldMoveTo link: StatusLink) {
+        switch link {
+        case .tag(let tag):
+            break // TODO
+        case .mention(let mention):
+            break // TODO
+        case .attachment(_, let offset):
+            attachmentView(cell.attachmentView, imageTapped: cell.attachmentView.images[offset], withImageViews: cell.attachmentView.images, withAttachments: cell.attachmentView.attachments, selectedIndex: offset)
+        case .link(let url):
+            let safariViewController = SFSafariViewController(url: url)
+            present(safariViewController, animated: true, completion: nil)
+        }
     }
 }
 
