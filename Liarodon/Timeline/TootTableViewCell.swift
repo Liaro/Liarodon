@@ -10,12 +10,26 @@ import UIKit
 import Kingfisher
 import DateToolsSwift
 
+enum StatusLink {
+    case tag(Tag)
+    case mention(Mention)
+    case attachment(Attachment, Int)
+    case link(URL)
+}
+
+protocol TootTableViewCellDelegate: class {
+    func tootTableViewCell(_ cell: TootTableViewCell, shouldMoveTo link: StatusLink)
+}
+
 class TootTableViewCell: UITableViewCell {
+
+    weak var delegate: TootTableViewCellDelegate?
 
     @IBOutlet var contentTextView: UITextView! {
         didSet {
             contentTextView.textContainer.lineFragmentPadding = 0
             contentTextView.textContainerInset = .zero
+            contentTextView.delegate = self
         }
     }
 
@@ -105,11 +119,43 @@ class TootTableViewCell: UITableViewCell {
     }
     @IBAction func reblogButtonTapped(_ sender: UIButton) {
     }
-
     @IBAction func favouriteButtonTapped(_ sender: UIButton) {
     }
     @IBAction func moreButtonTapped(_ sender: UIButton) {
     }
 }
 
+extension TootTableViewCell: UITextViewDelegate {
+    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange) -> Bool {
+        let matchedTag = status.tags.filter {
+            if $0.url == URL.absoluteString {
+                return true
+            }
+            return false
+        }.first
+        let matchedMention = status.mentions.filter {
+            if $0.url == URL.absoluteString {
+                return true
+            }
+            return false
+        }.first
+        let matchedAttachment = status.mediaAttachments.enumerated().filter {
+            if $0.element.url == URL.absoluteString || $0.element.remoteURL == URL.absoluteString {
+                return true
+            }
+            return false
+        }.first
 
+        if let tag = matchedTag {
+            delegate?.tootTableViewCell(self, shouldMoveTo: .tag(tag))
+        } else if let mention = matchedMention {
+            delegate?.tootTableViewCell(self, shouldMoveTo: .mention(mention))
+        } else if let attachment = matchedAttachment {
+            delegate?.tootTableViewCell(self, shouldMoveTo: .attachment(attachment.element, attachment.offset))
+        } else {
+            delegate?.tootTableViewCell(self, shouldMoveTo: .link(URL))
+        }
+
+        return false
+    }
+}
