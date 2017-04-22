@@ -39,7 +39,6 @@ final class Relationship {
 extension Relationship: Decodable {
 
     static func decode(_ e: Extractor) throws -> Relationship {
-        print(e)
         return try Relationship(
             id:         e <| "id",
             following:  e <| "following",
