@@ -156,7 +156,7 @@
                                         <constraint firstItem="BNf-6y-EcM" firstAttribute="leading" secondItem="5mf-9y-1jz" secondAttribute="leading" id="tDf-AV-Vl6"/>
                                         <constraint firstItem="5mf-9y-1jz" firstAttribute="leading" secondItem="kom-Ot-Ng1" secondAttribute="trailing" constant="8" id="tTD-6h-jCL"/>
                                         <constraint firstItem="Bad-6f-WBV" firstAttribute="leading" secondItem="Jek-tu-mNf" secondAttribute="trailing" constant="40" id="vd5-IN-qik"/>
-                                        <constraint firstItem="Xnl-ZK-QpF" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="89r-Uw-8c6" secondAttribute="trailing" id="y2B-f0-OsY"/>
+                                        <constraint firstItem="Xnl-ZK-QpF" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="89r-Uw-8c6" secondAttribute="trailing" constant="4" id="y2B-f0-OsY"/>
                                         <constraint firstItem="89r-Uw-8c6" firstAttribute="leading" secondItem="5mf-9y-1jz" secondAttribute="trailing" constant="6" id="ztp-Fr-Fvd"/>
                                     </constraints>
                                 </tableViewCellContentView>
@@ -384,7 +384,7 @@
                                                 <constraint firstItem="Keh-N1-YBl" firstAttribute="top" secondItem="Do0-Ln-EiU" secondAttribute="bottom" id="feE-pX-zBE"/>
                                                 <constraint firstItem="e9b-hO-MCr" firstAttribute="bottom" secondItem="Ayg-vH-2cY" secondAttribute="bottom" id="hDQ-qx-Vvk"/>
                                                 <constraint firstItem="Nv7-HC-UoS" firstAttribute="leading" secondItem="ghN-N2-rBg" secondAttribute="trailing" constant="40" id="mmR-i0-4Dv"/>
-                                                <constraint firstItem="Cqb-Wk-Kr8" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="e9b-hO-MCr" secondAttribute="trailing" id="szB-J9-ofK"/>
+                                                <constraint firstItem="Cqb-Wk-Kr8" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="e9b-hO-MCr" secondAttribute="trailing" constant="4" id="szB-J9-ofK"/>
                                                 <constraint firstItem="Ayg-vH-2cY" firstAttribute="top" secondItem="Keh-N1-YBl" secondAttribute="top" id="xcs-Ef-04B"/>
                                             </constraints>
                                         </tableViewCellContentView>
