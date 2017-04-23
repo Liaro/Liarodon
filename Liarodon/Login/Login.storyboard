@@ -71,7 +71,7 @@
                                         <rect key="frame" x="40" y="57" width="240" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="URL"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="無効なインスタンス名です" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h5S-OU-tAm">
                                         <rect key="frame" x="74.5" y="87" width="172" height="17"/>
@@ -113,13 +113,13 @@
                                         <rect key="frame" x="40" y="57" width="240" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="パスワード" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7I3-M4-A5t">
                                         <rect key="frame" x="40" y="107" width="240" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="メールアドレスかパスワードが間違っています" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yAc-U8-isv">
                                         <rect key="frame" x="10" y="137" width="300" height="17"/>
@@ -135,9 +135,21 @@
                                             <action selector="loginButtonDidTap:" destination="E2T-QQ-aic" eventType="touchUpInside" id="Cfx-jw-qV8"/>
                                         </connections>
                                     </button>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YxX-cu-XgJ">
+                                        <rect key="frame" x="250" y="109.5" width="26" height="26"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="26" id="c23-Dm-cKe"/>
+                                            <constraint firstAttribute="height" constant="26" id="xHU-Tt-B4q"/>
+                                        </constraints>
+                                        <state key="normal" image="onepassword-button"/>
+                                        <connections>
+                                            <action selector="onePasswordButtonTapped:" destination="E2T-QQ-aic" eventType="touchUpInside" id="mO2-5X-nyl"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="7I3-M4-A5t" firstAttribute="trailing" secondItem="YxX-cu-XgJ" secondAttribute="trailing" constant="4" id="4Nn-qD-4hQ"/>
                                     <constraint firstItem="7I3-M4-A5t" firstAttribute="top" secondItem="4al-Rp-mDZ" secondAttribute="bottom" constant="20" id="5Ln-fy-giS"/>
                                     <constraint firstItem="Eug-Kx-8CW" firstAttribute="top" secondItem="yAc-U8-isv" secondAttribute="bottom" constant="20" id="6Ir-4J-jMo"/>
                                     <constraint firstItem="7I3-M4-A5t" firstAttribute="leading" secondItem="LWt-Xk-MCP" secondAttribute="leading" constant="40" id="SBm-Mg-feu"/>
@@ -148,6 +160,7 @@
                                     <constraint firstItem="icl-hA-w4a" firstAttribute="centerX" secondItem="LWt-Xk-MCP" secondAttribute="centerX" id="hGI-tS-8oe"/>
                                     <constraint firstItem="icl-hA-w4a" firstAttribute="top" secondItem="LWt-Xk-MCP" secondAttribute="top" constant="20" id="iHO-1c-nNc"/>
                                     <constraint firstItem="4al-Rp-mDZ" firstAttribute="leading" secondItem="LWt-Xk-MCP" secondAttribute="leading" constant="40" id="piP-E4-BYv"/>
+                                    <constraint firstItem="YxX-cu-XgJ" firstAttribute="centerY" secondItem="7I3-M4-A5t" secondAttribute="centerY" id="v6w-Kx-XKd"/>
                                     <constraint firstAttribute="trailing" secondItem="7I3-M4-A5t" secondAttribute="trailing" constant="40" id="w4P-53-l9g"/>
                                     <constraint firstItem="yAc-U8-isv" firstAttribute="top" secondItem="7I3-M4-A5t" secondAttribute="bottom" id="xRp-QZ-XQh"/>
                                     <constraint firstItem="7I3-M4-A5t" firstAttribute="centerX" secondItem="LWt-Xk-MCP" secondAttribute="centerX" id="xnd-9A-tKV"/>
@@ -195,16 +208,18 @@
                         <outlet property="loginViewLeadingConstraint" destination="dRb-Si-eGt" id="zuk-mg-s0a"/>
                         <outlet property="logoView" destination="0pe-mC-1Xc" id="m0Y-O9-jHS"/>
                         <outlet property="logoViewTopConstraint" destination="N6k-rc-WRh" id="BW7-9d-e9c"/>
+                        <outlet property="onePasswordButton" destination="YxX-cu-XgJ" id="beq-Id-Gnh"/>
                         <outlet property="passwordTextField" destination="7I3-M4-A5t" id="03P-wI-6pk"/>
                         <outlet property="usernameTextField" destination="4al-Rp-mDZ" id="Zzj-xd-lgV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3xs-tH-IcH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="80.799999999999997" y="201.94902548725639"/>
+            <point key="canvasLocation" x="80.625" y="201.7605633802817"/>
         </scene>
     </scenes>
     <resources>
         <image name="logo-alpha" width="512" height="512"/>
+        <image name="onepassword-button" width="27" height="27"/>
     </resources>
 </document>

@@ -16,6 +16,7 @@
 		1EEF59B71EAC7B130047293B /* AccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EEF59B61EAC7B130047293B /* AccountService.swift */; };
 		1EEF59B91EACEFB40047293B /* TootDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EEF59B81EACEFB40047293B /* TootDetailViewController.swift */; };
 		1EEF59BB1EAD1D400047293B /* MastodonAPI+Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EEF59BA1EAD1D400047293B /* MastodonAPI+Report.swift */; };
+		1EEF59BD1EAD27DB0047293B /* 1Password.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1EEF59BC1EAD27DB0047293B /* 1Password.xcassets */; };
 		430061661EACC839005DB81F /* FollowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430061651EACC839005DB81F /* FollowButton.swift */; };
 		432590261EACA039000C364A /* AccountsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432590251EACA039000C364A /* AccountsTableViewController.swift */; };
 		435CA87B1EA8AD32006F5EE5 /* Accounts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 435CA87A1EA8AD32006F5EE5 /* Accounts.storyboard */; };
@@ -85,6 +86,7 @@
 		1EEF59B61EAC7B130047293B /* AccountService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountService.swift; path = Accounts/AccountService.swift; sourceTree = "<group>"; };
 		1EEF59B81EACEFB40047293B /* TootDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TootDetailViewController.swift; path = Timeline/TootDetailViewController.swift; sourceTree = "<group>"; };
 		1EEF59BA1EAD1D400047293B /* MastodonAPI+Report.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "MastodonAPI+Report.swift"; path = "API/MastodonAPI+Report.swift"; sourceTree = "<group>"; };
+		1EEF59BC1EAD27DB0047293B /* 1Password.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = 1Password.xcassets; sourceTree = "<group>"; };
 		430061651EACC839005DB81F /* FollowButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FollowButton.swift; path = Accounts/FollowButton.swift; sourceTree = "<group>"; };
 		432590251EACA039000C364A /* AccountsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountsTableViewController.swift; path = Accounts/AccountsTableViewController.swift; sourceTree = "<group>"; };
 		435CA87A1EA8AD32006F5EE5 /* Accounts.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Accounts.storyboard; path = Accounts/Accounts.storyboard; sourceTree = "<group>"; };
@@ -219,6 +221,7 @@
 				435CA8791EA8ACD1006F5EE5 /* Accounts */,
 				43F9B20C1EA711100093E798 /* Extensions */,
 				43F9B1961EA613C50093E798 /* Assets.xcassets */,
+				1EEF59BC1EAD27DB0047293B /* 1Password.xcassets */,
 				43F9B1981EA613C50093E798 /* LaunchScreen.storyboard */,
 				43F9B19B1EA613C50093E798 /* Info.plist */,
 			);
@@ -464,6 +467,7 @@
 				43F9B1E91EA618680093E798 /* Profile.storyboard in Resources */,
 				435CA8811EA8AE36006F5EE5 /* AccountsTableViewCell.xib in Resources */,
 				43F9B1E41EA618060093E798 /* Notification.storyboard in Resources */,
+				1EEF59BD1EAD27DB0047293B /* 1Password.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

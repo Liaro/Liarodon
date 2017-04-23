@@ -11,6 +11,7 @@ import KeychainAccess
 import KeyboardObserver
 import APIKit
 import NVActivityIndicatorView
+import OnePasswordExtension
 
 final class LoginViewController: UIViewController {
 
@@ -19,6 +20,7 @@ final class LoginViewController: UIViewController {
     @IBOutlet weak var logoView: UIView!
     @IBOutlet weak var logoViewTopConstraint: NSLayoutConstraint!
 
+    @IBOutlet weak var onePasswordButton: UIButton!
     @IBOutlet weak var instanceView: UIView!
     @IBOutlet weak var instanceViewLeadingConstraint: NSLayoutConstraint!
     @IBOutlet weak var instanceTextField: UITextField!
@@ -58,6 +60,7 @@ final class LoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        onePasswordButton.isHidden = !OnePasswordExtension.shared().isAppExtensionAvailable()
 
         // Do any additional setup after loading the view.
         if showCloseButton {
@@ -105,6 +108,17 @@ final class LoginViewController: UIViewController {
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
 
         return .portrait
+    }
+
+    @IBAction func onePasswordButtonTapped(_ sender: UIButton) {
+        OnePasswordExtension.shared().findLogin(forURLString: MastodonAPI.instanceURL.absoluteString, for: self, sender: sender) { [weak self] login, error in
+            if login?.count == 0 || error != nil {
+                return
+            }
+
+            self?.usernameTextField.text = login?[AppExtensionUsernameKey] as? String
+            self?.passwordTextField.text = login?[AppExtensionPasswordKey] as? String
+        }
     }
 
     @IBAction func leftTopButtonTapped(_ sender: UIButton) {
