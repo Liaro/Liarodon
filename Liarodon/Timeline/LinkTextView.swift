@@ -10,6 +10,11 @@ import UIKit
 
 class LinkTextView : UITextView {
     override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
+        let view = super.hitTest(point, with: event)
+        guard view == self else {
+            return view
+        }
+
         var p = point
         p.y = p.y - self.textContainerInset.top
         p.x = p.x - self.textContainerInset.left
