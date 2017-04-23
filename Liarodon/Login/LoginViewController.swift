@@ -280,6 +280,11 @@ extension LoginViewController {
                             host: MastodonAPI.instanceURL.absoluteString,
                             accountId: account.id) {
                     _ = AccountService.shared.selectAccount(loginAccount)
+                    let notification = Notification(
+                        name: accountChangedNotification,
+                        object: self,
+                        userInfo: nil)
+                    NotificationCenter.default.post(notification)
                     self?.dismiss(animated: true, completion: nil)
                 } else {
                     self?.postTokenFailure()
