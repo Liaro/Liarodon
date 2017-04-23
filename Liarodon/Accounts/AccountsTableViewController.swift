@@ -32,15 +32,8 @@ class AccountsTableCellData {
     }
 }
 
-protocol AccountsTableViewControllerDelegate: class {
-
-    func accountsTableViewControllerDidSelectAccount(viewController: AccountsTableViewController, account: Account)
-}
-
 /// For display Following/Followers/Blocking/Muting accounts.
 class AccountsTableViewController: UITableViewController {
-
-    weak var deleagte: AccountsTableViewControllerDelegate?
 
     var type: AccountsTableType!
     var myAccount: Account!
@@ -155,6 +148,28 @@ class AccountsTableViewController: UITableViewController {
 
         tableView.deselectRow(at: indexPath, animated: true)
         let cell = tableView.cellForRow(at: indexPath) as! AccountsTableViewCell
-        deleagte?.accountsTableViewControllerDidSelectAccount(viewController: self, account: cell.account)
+        performSegue(withIdentifier: "Profile", sender: cell.account)
+    }
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let id = segue.identifier else {
+            return
+        }
+
+        switch id {
+
+        case "Profile":
+            guard let profileVC = segue.destination as? ProfileViewController else {
+                return
+            }
+            guard let account = sender as? Account else {
+                return
+            }
+            profileVC.accountID = account.id
+            
+        default:
+            break
+        }
     }
 }

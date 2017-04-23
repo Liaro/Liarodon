@@ -21,10 +21,21 @@
                             <outlet property="delegate" destination="K9l-aw-8Ti" id="J6N-gJ-Ynj"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <segue destination="4Ba-0o-agc" kind="show" identifier="Profile" id="MP0-8B-j2q"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hyu-ed-hpV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="113" y="219"/>
+        </scene>
+        <!--ProfileViewController-->
+        <scene sceneID="J5X-nO-t4H">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Profile" referencedIdentifier="ProfileViewController" id="4Ba-0o-agc" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SNa-wO-yP7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="637" y="218"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ubF-cq-lXZ">

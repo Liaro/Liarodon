@@ -240,7 +240,6 @@ final class ProfileViewController: UIViewController {
                 accountsVC.myAccount = myAccount
                 accountsVC.account = account
                 accountsVC.fetchLatestAccounts()
-                accountsVC.deleagte = self
             }
         }
 
@@ -408,15 +407,6 @@ extension ProfileViewController {
     }
 }
 
-// MARK: - AccountsTableViewControllerDelegate
-extension ProfileViewController: AccountsTableViewControllerDelegate {
-
-    func accountsTableViewControllerDidSelectAccount(viewController: AccountsTableViewController, account: Account) {
-
-        performSegue(withIdentifier: "Profile", sender: account)
-    }
-}
-
 // MARK: - Navigation
 extension ProfileViewController {
 
@@ -457,15 +447,6 @@ extension ProfileViewController {
             // TODO: .home => .favourites
             timelineVC.type = .home
             favouritesViewController = timelineVC
-
-        case "Profile":
-            guard let profileVC = segue.destination as? ProfileViewController else {
-                return
-            }
-            guard let account = sender as? Account else {
-                return
-            }
-            profileVC.accountID = account.id
 
         default:
             break

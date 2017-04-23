@@ -96,7 +96,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </label>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="dVf-x6-eej" customClass="LinkTextView" customModule="Liarodon" customModuleProvider="target">
+                                    <textView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="dVf-x6-eej" customClass="LinkTextView" customModule="Liarodon" customModuleProvider="target">
                                         <rect key="frame" x="15" y="152.5" width="290" height="40"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -272,7 +272,6 @@
                         <outlet property="requestedLabel" destination="ncf-2Q-SLs" id="fbY-hl-Ska"/>
                         <outlet property="statusesButton" destination="cYl-sN-Pkh" id="FBd-fa-NLM"/>
                         <outlet property="statusesContainerView" destination="R6h-ec-gUe" id="cLG-gY-dVH"/>
-                        <segue destination="Hjw-pM-RD1" kind="show" identifier="Profile" id="KO1-iz-lHM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Og-kZ-IB1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -306,14 +305,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3i9-Uf-beD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1438" y="289"/>
-        </scene>
-        <!--ProfileViewController-->
-        <scene sceneID="zKC-ov-gX6">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Profile" referencedIdentifier="ProfileViewController" id="Hjw-pM-RD1" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="L1n-4S-E6T" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1388" y="-21"/>
         </scene>
         <!--TimelineViewController-->
         <scene sceneID="CeN-xi-fx6">
