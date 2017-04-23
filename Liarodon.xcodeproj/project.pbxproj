@@ -15,13 +15,11 @@
 		1EC795551EAC61FA000AE44D /* SelectAccountTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC795541EAC61FA000AE44D /* SelectAccountTableViewController.swift */; };
 		1EEF59B71EAC7B130047293B /* AccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EEF59B61EAC7B130047293B /* AccountService.swift */; };
 		1EEF59B91EACEFB40047293B /* TootDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EEF59B81EACEFB40047293B /* TootDetailViewController.swift */; };
+		430061661EACC839005DB81F /* FollowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430061651EACC839005DB81F /* FollowButton.swift */; };
+		432590261EACA039000C364A /* AccountsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432590251EACA039000C364A /* AccountsTableViewController.swift */; };
 		435CA87B1EA8AD32006F5EE5 /* Accounts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 435CA87A1EA8AD32006F5EE5 /* Accounts.storyboard */; };
-		435CA87D1EA8ADF7006F5EE5 /* FollowingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435CA87C1EA8ADF7006F5EE5 /* FollowingTableViewController.swift */; };
 		435CA8801EA8AE36006F5EE5 /* AccountsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435CA87E1EA8AE36006F5EE5 /* AccountsTableViewCell.swift */; };
 		435CA8811EA8AE36006F5EE5 /* AccountsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 435CA87F1EA8AE36006F5EE5 /* AccountsTableViewCell.xib */; };
-		435CA8831EA8B52B006F5EE5 /* BlockingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435CA8821EA8B52B006F5EE5 /* BlockingTableViewController.swift */; };
-		435CA8851EA8B54F006F5EE5 /* MutingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435CA8841EA8B54F006F5EE5 /* MutingTableViewController.swift */; };
-		435CA8871EA8B552006F5EE5 /* FollowersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435CA8861EA8B552006F5EE5 /* FollowersTableViewController.swift */; };
 		438A98A01EA8CC9B007CB1BC /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438A989F1EA8CC9B007CB1BC /* ProfileHeaderView.swift */; };
 		438A98A21EA92C5A007CB1BC /* ProfileMenuButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 438A98A11EA92C5A007CB1BC /* ProfileMenuButton.xib */; };
 		438A98A41EA92DE1007CB1BC /* ProfileMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438A98A31EA92DE1007CB1BC /* ProfileMenuButton.swift */; };
@@ -85,13 +83,11 @@
 		1EC795541EAC61FA000AE44D /* SelectAccountTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SelectAccountTableViewController.swift; path = Accounts/SelectAccountTableViewController.swift; sourceTree = "<group>"; };
 		1EEF59B61EAC7B130047293B /* AccountService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountService.swift; path = Accounts/AccountService.swift; sourceTree = "<group>"; };
 		1EEF59B81EACEFB40047293B /* TootDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TootDetailViewController.swift; path = Timeline/TootDetailViewController.swift; sourceTree = "<group>"; };
+		430061651EACC839005DB81F /* FollowButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FollowButton.swift; path = Accounts/FollowButton.swift; sourceTree = "<group>"; };
+		432590251EACA039000C364A /* AccountsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountsTableViewController.swift; path = Accounts/AccountsTableViewController.swift; sourceTree = "<group>"; };
 		435CA87A1EA8AD32006F5EE5 /* Accounts.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Accounts.storyboard; path = Accounts/Accounts.storyboard; sourceTree = "<group>"; };
-		435CA87C1EA8ADF7006F5EE5 /* FollowingTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FollowingTableViewController.swift; path = Accounts/FollowingTableViewController.swift; sourceTree = "<group>"; };
 		435CA87E1EA8AE36006F5EE5 /* AccountsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountsTableViewCell.swift; path = Accounts/AccountsTableViewCell.swift; sourceTree = "<group>"; };
 		435CA87F1EA8AE36006F5EE5 /* AccountsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AccountsTableViewCell.xib; path = Accounts/AccountsTableViewCell.xib; sourceTree = "<group>"; };
-		435CA8821EA8B52B006F5EE5 /* BlockingTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BlockingTableViewController.swift; path = Accounts/BlockingTableViewController.swift; sourceTree = "<group>"; };
-		435CA8841EA8B54F006F5EE5 /* MutingTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MutingTableViewController.swift; path = Accounts/MutingTableViewController.swift; sourceTree = "<group>"; };
-		435CA8861EA8B552006F5EE5 /* FollowersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FollowersTableViewController.swift; path = Accounts/FollowersTableViewController.swift; sourceTree = "<group>"; };
 		438A989F1EA8CC9B007CB1BC /* ProfileHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileHeaderView.swift; path = Profile/ProfileHeaderView.swift; sourceTree = "<group>"; };
 		438A98A11EA92C5A007CB1BC /* ProfileMenuButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ProfileMenuButton.xib; path = Profile/ProfileMenuButton.xib; sourceTree = "<group>"; };
 		438A98A31EA92DE1007CB1BC /* ProfileMenuButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileMenuButton.swift; path = Profile/ProfileMenuButton.swift; sourceTree = "<group>"; };
@@ -175,12 +171,10 @@
 			isa = PBXGroup;
 			children = (
 				435CA87A1EA8AD32006F5EE5 /* Accounts.storyboard */,
+				432590251EACA039000C364A /* AccountsTableViewController.swift */,
+				430061651EACC839005DB81F /* FollowButton.swift */,
 				435CA87E1EA8AE36006F5EE5 /* AccountsTableViewCell.swift */,
 				435CA87F1EA8AE36006F5EE5 /* AccountsTableViewCell.xib */,
-				435CA87C1EA8ADF7006F5EE5 /* FollowingTableViewController.swift */,
-				435CA8861EA8B552006F5EE5 /* FollowersTableViewController.swift */,
-				435CA8821EA8B52B006F5EE5 /* BlockingTableViewController.swift */,
-				435CA8841EA8B54F006F5EE5 /* MutingTableViewController.swift */,
 				1EC795541EAC61FA000AE44D /* SelectAccountTableViewController.swift */,
 				1EEF59B61EAC7B130047293B /* AccountService.swift */,
 			);
@@ -422,13 +416,11 @@
 					};
 					43F9B19F1EA613C50093E798 = {
 						CreatedOnToolsVersion = 8.3.1;
-						DevelopmentTeam = 7462AJ4VTX;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 43F9B18B1EA613C50093E798;
 					};
 					43F9B1AA1EA613C50093E798 = {
 						CreatedOnToolsVersion = 8.3.1;
-						DevelopmentTeam = 7462AJ4VTX;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 43F9B18B1EA613C50093E798;
 					};
@@ -543,8 +535,8 @@
 			files = (
 				43F9B2091EA67E460093E798 /* Application.swift in Sources */,
 				43F9B2071EA67DAB0093E798 /* Tag.swift in Sources */,
+				430061661EACC839005DB81F /* FollowButton.swift in Sources */,
 				43F9B1E51EA618060093E798 /* NotificationTableViewController.swift in Sources */,
-				435CA8831EA8B52B006F5EE5 /* BlockingTableViewController.swift in Sources */,
 				43F9B2051EA67C680093E798 /* Mention.swift in Sources */,
 				43F9B20B1EA708200093E798 /* MastodonAPI+Timelines.swift in Sources */,
 				1EC795531EABF862000AE44D /* ComposeViewController.swift in Sources */,
@@ -555,6 +547,7 @@
 				43F9B2031EA677910093E798 /* Attachment.swift in Sources */,
 				43F9B1901EA613C50093E798 /* AppDelegate.swift in Sources */,
 				1EC795551EAC61FA000AE44D /* SelectAccountTableViewController.swift in Sources */,
+				432590261EACA039000C364A /* AccountsTableViewController.swift in Sources */,
 				43F9B1D61EA616710093E798 /* TimelineTableViewController.swift in Sources */,
 				438A98A01EA8CC9B007CB1BC /* ProfileHeaderView.swift in Sources */,
 				43F9B1FD1EA64E2B0093E798 /* MastodonAPI+Accounts.swift in Sources */,
@@ -567,12 +560,9 @@
 				43F9B2011EA658820093E798 /* Status.swift in Sources */,
 				43F9B1F61EA63E6C0093E798 /* Account.swift in Sources */,
 				435CA8801EA8AE36006F5EE5 /* AccountsTableViewCell.swift in Sources */,
-				435CA87D1EA8ADF7006F5EE5 /* FollowingTableViewController.swift in Sources */,
-				435CA8871EA8B552006F5EE5 /* FollowersTableViewController.swift in Sources */,
 				43F9B2101EA7160C0093E798 /* MastodonAPI.swift in Sources */,
 				43F9B20E1EA7112B0093E798 /* String+url.swift in Sources */,
 				43F9B1CE1EA6159E0093E798 /* MainTabBarController.swift in Sources */,
-				435CA8851EA8B54F006F5EE5 /* MutingTableViewController.swift in Sources */,
 				43F9B1F41EA62B910093E798 /* App.swift in Sources */,
 				1EEF59B91EACEFB40047293B /* TootDetailViewController.swift in Sources */,
 				43F9B1EE1EA626740093E798 /* AccessToken.swift in Sources */,
@@ -758,7 +748,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = 7462AJ4VTX;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = LiarodonTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = me.liaro.LiarodonTests;
@@ -773,7 +763,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = 7462AJ4VTX;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = LiarodonTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = me.liaro.LiarodonTests;
@@ -787,7 +777,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				DEVELOPMENT_TEAM = 7462AJ4VTX;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = LiarodonUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = me.liaro.LiarodonUITests;
@@ -801,7 +791,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				DEVELOPMENT_TEAM = 7462AJ4VTX;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = LiarodonUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = me.liaro.LiarodonUITests;

@@ -55,7 +55,7 @@
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vHy-pg-9er">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vHy-pg-9er" customClass="FollowButton" customModule="Liarodon" customModuleProvider="target">
                                 <rect key="frame" x="261" y="18" width="44" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="vHy-pg-9er" secondAttribute="height" multiplier="1:1" id="g7U-mb-oc9"/>
@@ -65,7 +65,7 @@
                                 <inset key="imageEdgeInsets" minX="8" minY="8" maxX="8" maxY="8"/>
                                 <state key="normal" image="follow"/>
                                 <connections>
-                                    <action selector="followUnfollowButtonDidTap:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="08u-oE-lPz"/>
+                                    <action selector="followButtonDidTap:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="ve6-aG-K3c"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -101,7 +101,7 @@
                 <outlet property="acctLabel" destination="lxs-Gg-Dde" id="AwJ-Zf-md1"/>
                 <outlet property="avatarImageView" destination="ygy-5l-xNY" id="a5n-IZ-A7f"/>
                 <outlet property="displayNameLabel" destination="cnP-gU-4R7" id="VXe-gB-BzR"/>
-                <outlet property="followUnfollowButton" destination="vHy-pg-9er" id="ksH-th-yv8"/>
+                <outlet property="followButton" destination="vHy-pg-9er" id="N0O-tG-SNj"/>
                 <outlet property="lockedImageView" destination="H2l-9c-lx9" id="ADP-ww-zYq"/>
                 <outlet property="requestedLabel" destination="93T-UN-3v7" id="xcA-BM-MTv"/>
             </connections>

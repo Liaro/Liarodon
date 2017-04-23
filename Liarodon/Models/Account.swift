@@ -27,7 +27,7 @@ final class Account {
     /// The number of followers for the account.
     let followersCount: Int
     /// The number of accounts the given account is following.
-    let followingCount: Int
+    var followingCount: Int
     /// The number of statuses the account has made.
     let statusesCount: Int
     /// Biography of user.
@@ -43,6 +43,8 @@ final class Account {
     /// URL to the header static image (gif)
     let headerStatic: String
 
+    /// For display `note`
+    let attributedNote: NSAttributedString
 
     init(id: Int, username: String, acct: String, displayName: String,
          locked: Bool, createdAt: String, followersCount: Int, followingCount: Int,
@@ -64,6 +66,24 @@ final class Account {
         self.avatarStatic = avatarStatic
         self.header = header
         self.headerStatic = headerStatic
+
+        // For display `note`
+        let options: [String : Any] = [
+            NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType,
+            NSCharacterEncodingDocumentAttribute: String.Encoding.utf8.rawValue,
+        ]
+        let html = note + "<style>*{font-size:15px;text-align:center;}</style>"
+        let text: NSAttributedString
+        if let data = html.data(using: .utf8) {
+            do {
+                text = try NSMutableAttributedString(data: data, options: options, documentAttributes: nil)
+            } catch {
+                text = NSAttributedString(string: note)
+            }
+        } else {
+            text = NSAttributedString(string: note)
+        }
+        attributedNote = text
     }
 }
 
