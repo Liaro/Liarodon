@@ -59,6 +59,12 @@ class TootTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+
+        avatarImageView.layer.cornerRadius = 4
+        avatarImageView.layer.masksToBounds = true
+
+        attachmentView.layer.cornerRadius = 4
+        attachmentView.layer.masksToBounds = true
     }
 
     override func prepareForReuse() {
