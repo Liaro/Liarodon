@@ -204,7 +204,7 @@ class ComposeViewController: UIViewController {
 
     func post(withAttachment attachments: [Attachment]) {
         let req = MastodonAPI.AddStatus(status: contentTextView.text,
-                                        inReplyToId: nil, // TODO: add in_reply_to
+                                        inReplyToId: nil,
                                         mediaIds: attachments.map { $0.id },
                                         sensitive: isNotSafeForWorkEnabled,
                                         spoilerText: isContentWarningEnabled ? contentWarningTextField.text : nil,
