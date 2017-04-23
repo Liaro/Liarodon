@@ -51,7 +51,7 @@ class AccountsTableViewController: UITableViewController {
 
         tableView.register(AccountsTableViewCell.nib,
                            forCellReuseIdentifier: "accountCell")
-        tableView.estimatedRowHeight = 100
+        tableView.estimatedRowHeight = 80
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.tableFooterView = UIView(frame: CGRect.zero)
     }
