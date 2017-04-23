@@ -32,13 +32,13 @@
                             <containerView opaque="NO" tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ns3-nq-cuZ" userLabel="Following Container View">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <connections>
-                                    <segue destination="mXw-wb-AJZ" kind="embed" identifier="Following" id="cZy-mN-5S0"/>
+                                    <segue destination="Dcu-AG-GCM" kind="embed" identifier="Following" id="VIt-7D-cIp"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vv3-kg-ztn" userLabel="Followers Container View">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <connections>
-                                    <segue destination="mXw-wb-AJZ" kind="embed" identifier="Followers" id="btu-xg-yxa"/>
+                                    <segue destination="D6g-rz-eMd" kind="embed" identifier="Followers" id="OJG-wQ-pKz"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" tag="3" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="la2-gV-mRY" userLabel="Favourites Container View">
@@ -274,34 +274,6 @@
             </objects>
             <point key="canvasLocation" x="1438" y="289"/>
         </scene>
-        <!--Accounts Table View Controller-->
-        <scene sceneID="9g2-mg-KFp">
-            <objects>
-                <tableViewController id="mXw-wb-AJZ" customClass="AccountsTableViewController" customModule="Liarodon" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="hGA-Mh-wEO">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="erO-mS-UJf">
-                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="erO-mS-UJf" id="OFl-9A-U1D">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="mXw-wb-AJZ" id="TOO-tk-VvD"/>
-                            <outlet property="delegate" destination="mXw-wb-AJZ" id="hko-hq-U4S"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Dyn-QZ-ajs" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1907" y="175"/>
-        </scene>
         <!--ProfileViewController-->
         <scene sceneID="zKC-ov-gX6">
             <objects>
@@ -318,11 +290,24 @@
             </objects>
             <point key="canvasLocation" x="1437" y="71"/>
         </scene>
+        <!--AccountsTableViewController-->
+        <scene sceneID="E1u-YS-QiG">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Accounts" referencedIdentifier="AccountsTableViewController" id="Dcu-AG-GCM" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xpL-XD-JUa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1437" y="134"/>
+        </scene>
+        <!--AccountsTableViewController-->
+        <scene sceneID="Z5W-D0-GtH">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Accounts" referencedIdentifier="AccountsTableViewController" id="D6g-rz-eMd" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Gzi-vq-hbJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1409" y="205"/>
+        </scene>
     </scenes>
     <resources>
         <image name="tab-profile" width="25" height="25"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="cZy-mN-5S0"/>
-    </inferredMetricsTieBreakers>
 </document>
