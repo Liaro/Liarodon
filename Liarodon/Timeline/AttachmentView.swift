@@ -31,7 +31,7 @@ class AttachmentView: UIView {
         super.init(coder: aDecoder)
     }
 
-    func setAttachments(attachments: [Attachment]) {
+    func setAttachments(attachments: [Attachment], notSafeForWork: Bool) {
         self.addSubview(statusImageView)
         self.attachments = attachments
         statusImageView.snp.makeConstraints { $0.left.top.right.bottom.equalTo(self) }
@@ -42,6 +42,15 @@ class AttachmentView: UIView {
             imageView.clipsToBounds = true
             imageView.kf.setImage(with: attachment.smallURL)
             imageView.isUserInteractionEnabled = true
+
+            if notSafeForWork {
+                let label = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 80))
+                imageView.addSubview(label)
+                label.backgroundColor = .black
+                label.textAlignment = .center
+                label.textColor = .white
+                label.text = "NSFW"
+            }
 
             let gesture = UITapGestureRecognizer(target: self, action: #selector(AttachmentView.imageTapped(_:)))
             imageView.addGestureRecognizer(gesture)
