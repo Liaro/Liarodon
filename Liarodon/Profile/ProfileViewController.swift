@@ -195,8 +195,13 @@ final class ProfileViewController: UIViewController {
         statusesButton.value = account.statusesCount
         followingButton.value = account.followingCount
         followersButton.value = account.followersCount
-        // TODO: GET /api/v1/favourites and count [Status]
-        favouritesButton.value = 0
+        if account.id == myAccount.id {
+            // TODO: GET /api/v1/favourites and count [Status]
+            favouritesButton.value = 0
+            favouritesButton.isHidden = false
+        } else {
+            favouritesButton.isHidden = true
+        }
 
         for vc in childTableViewControllers {
             if let accountsVC = vc as? AccountsTableViewController {
