@@ -91,25 +91,14 @@ final class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        fetchAuthenticatedAccount { [weak self] in
-            guard let s = self else { return }
+        initialFetch()
 
-            if let id = s.accountID, id != s.myAccount.id {
-                s.fetchAccount(id: id) {
-                    s.setupViews()
-                }
-            } else {
-                s.account = s.myAccount
-                s.setupViews()
-
-                NotificationCenter.default.addObserver(
-                    s, selector: #selector(s.didRecieveFollowNotification(notification:)),
-                    name: MastodonAPI.PostAccountFollowRequest.notificationName, object: nil)
-                NotificationCenter.default.addObserver(
-                    s, selector: #selector(s.didRecieveUnfollowNotification(notification:)),
-                    name: MastodonAPI.PostAccountUnfollowRequest.notificationName, object: nil)
-            }
-        }
+        NotificationCenter.default.addObserver(
+            self, selector: #selector(didRecieveFollowNotification(notification:)),
+            name: MastodonAPI.PostAccountFollowRequest.notificationName, object: nil)
+        NotificationCenter.default.addObserver(
+            self, selector: #selector(didRecieveUnfollowNotification(notification:)),
+            name: MastodonAPI.PostAccountUnfollowRequest.notificationName, object: nil)
 
         for button in menuButtons {
             button.delegate = self
@@ -144,6 +133,21 @@ final class ProfileViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+
+    fileprivate func initialFetch() {
+        fetchAuthenticatedAccount { [weak self] in
+            guard let s = self else { return }
+
+            if let id = s.accountID, id != s.myAccount.id {
+                s.fetchAccount(id: id) {
+                    s.setupViews()
+                }
+            } else {
+                s.account = s.myAccount
+                s.setupViews()
+            }
+        }
     }
 
     private func fetchAuthenticatedAccount(completion: @escaping () -> Void) {
@@ -230,7 +234,6 @@ final class ProfileViewController: UIViewController {
             s.currentChildTableViewController.addObserver(s, forKeyPath: "tableView.contentOffset", options: [.new], context: nil)
         })
 
-        print(currentChildTableViewController)
         if let accountsVC = currentChildTableViewController as? AccountsTableViewController {
             accountsVC.fetchLatestAccounts()
         }
@@ -239,8 +242,10 @@ final class ProfileViewController: UIViewController {
 
 // MARK: - AccountChangedRefreshable
 extension ProfileViewController: AccountChangedRefreshable {
+
     func shouldRefresh() {
-        // TODO: Please initialize view controller's content, keisuke:pray:
+
+        initialFetch()
     }
 }
 
@@ -311,12 +316,18 @@ extension ProfileViewController: ProfileMenuButtonDelegate {
 extension ProfileViewController {
 
     func didRecieveFollowNotification(notification: Notification) {
+        guard account.id == myAccount.id else {
+            return
+        }
 
         myAccount.followingCount += 1
         followingButton.value = myAccount.followingCount
     }
 
     func didRecieveUnfollowNotification(notification: Notification) {
+        guard account.id == myAccount.id else {
+            return
+        }
 
         myAccount.followingCount -= 1
         followingButton.value = myAccount.followingCount
