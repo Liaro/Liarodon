@@ -29,6 +29,18 @@ final class MainTabBarController: UITabBarController {
         federatedNavigationViewController.tabBarItem.image = UIImage(named: "tab-federated")
         federatedNavigationViewController.title = "Federated"
         (federatedNavigationViewController.topViewController as! TimelineTableViewController).type = .federated
+
+        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(MainTabBarController.longPressed(_:)))
+        tabBar.addGestureRecognizer(longPressGesture)
+
+    }
+
+    func longPressed(_ gesture: UILongPressGestureRecognizer) {
+        if gesture.state == .began {
+            if tabBar.selectedItem == viewControllers?[4].tabBarItem {
+                performSegue(withIdentifier: "SelectAccountNavigationController", sender: self)
+            }
+        }
     }
 
     override func viewDidAppear(_ animated: Bool) {
