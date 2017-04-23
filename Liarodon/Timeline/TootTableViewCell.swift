@@ -89,7 +89,11 @@ class TootTableViewCell: UITableViewCell {
             replyingLabel.text = nil
         }
 
-        contentTextView.attributedText = status.attributedContent
+        if status.cwOpened {
+            contentTextView.attributedText = status.attributedContentIncludingCW
+        } else {
+            contentTextView.attributedText = status.attributedContent
+        }
 
         avatarImageView.kf.setImage(with: status.account.avatar.url)
         displayNameLabel.text = status.account.displayName
@@ -212,6 +216,18 @@ extension TootTableViewCell: UITextViewDelegate {
     }
 
     private func interact(withURL URL: URL) {
+        if URL.absoluteString == "app://read/more" {
+            // the url added at my status model
+            status.cwOpened = true
+            contentTextView.attributedText = status.attributedContentIncludingCW
+            setNeedsLayout()
+            superview?.layoutIfNeeded()
+            superview?.superview?.setNeedsLayout()
+            superview?.superview?.layoutIfNeeded()
+            (superview?.superview as? UITableView)?.reloadData()
+            return
+        }
+
         let matchedTag = status.tags.filter {
             if $0.url == URL.absoluteString {
                 return true

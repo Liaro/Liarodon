@@ -59,7 +59,10 @@ final class Status {
     /// Application from which the status was posted.
     let application: Application?
 
+    var cwOpened = false
+
     let attributedContent: NSAttributedString
+    let attributedContentIncludingCW: NSAttributedString?
     let shouldHasLessMargin: Bool
 
     init(id: Int, uri: String, url: String, account: Account, inReplyToID: Int?,
@@ -93,16 +96,42 @@ final class Status {
             NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType,
             NSCharacterEncodingDocumentAttribute: String.Encoding.utf8.rawValue,
             ] as [String : Any]
-        let html = content + "<style>p{font-size:15px}</style>"
-        let text: NSAttributedString?
-        if let data = html.data(using: .utf8) {
-            text = try? NSMutableAttributedString(data: data, options: options, documentAttributes: nil)
+
+        if !spoilerText.isEmpty {
+            let html = spoilerText + "<p><a href='app://read/more'>read more</a></p><style>p{font-size:15px}</style>"
+            let text: NSAttributedString?
+            if let data = html.data(using: .utf8) {
+                text = try? NSMutableAttributedString(data: data, options: options, documentAttributes: nil)
+            } else {
+                text = nil
+            }
+            attributedContent = text! // TODO: Add plane text if text is nil
+
+            let allHtml = spoilerText + content + "<style>p{font-size:15px}</style>"
+            let allText: NSAttributedString?
+            if let data = allHtml.data(using: .utf8) {
+                allText = try? NSMutableAttributedString(data: data, options: options, documentAttributes: nil)
+            } else {
+                allText = nil
+            }
+            attributedContentIncludingCW = allText
+            shouldHasLessMargin = false
         } else {
-            text = nil
+
+            let html = content + "<style>p{font-size:15px}</style>"
+            let text: NSAttributedString?
+            if let data = html.data(using: .utf8) {
+                text = try? NSMutableAttributedString(data: data, options: options, documentAttributes: nil)
+            } else {
+                text = nil
+            }
+            attributedContent = text! // TODO: Add plane text if text is nil
+            attributedContentIncludingCW = nil
+
+            // if the string has p suffix, NSStringView add a space to bottom. so adding less margin is needed
+            shouldHasLessMargin = content.hasSuffix("</p>")
         }
-        attributedContent = text! // TODO: Add plane text if text is nil
-        // if the string has p suffix, NSStringView add a space to bottom. so adding less margin is needed
-        shouldHasLessMargin = content.hasSuffix("</p>")
+
     }
 }
 
