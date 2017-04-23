@@ -412,18 +412,15 @@
 				TargetAttributes = {
 					43F9B18B1EA613C50093E798 = {
 						CreatedOnToolsVersion = 8.3.1;
-						DevelopmentTeam = "";
 						ProvisioningStyle = Automatic;
 					};
 					43F9B19F1EA613C50093E798 = {
 						CreatedOnToolsVersion = 8.3.1;
-						DevelopmentTeam = "";
 						ProvisioningStyle = Automatic;
 						TestTargetID = 43F9B18B1EA613C50093E798;
 					};
 					43F9B1AA1EA613C50093E798 = {
 						CreatedOnToolsVersion = 8.3.1;
-						DevelopmentTeam = "";
 						ProvisioningStyle = Automatic;
 						TestTargetID = 43F9B18B1EA613C50093E798;
 					};
@@ -751,7 +748,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = 7462AJ4VTX;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = LiarodonTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = me.liaro.LiarodonTests;
@@ -766,7 +763,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = 7462AJ4VTX;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = LiarodonTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = me.liaro.LiarodonTests;
@@ -780,7 +777,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				DEVELOPMENT_TEAM = 7462AJ4VTX;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = LiarodonUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = me.liaro.LiarodonUITests;
@@ -794,7 +791,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				DEVELOPMENT_TEAM = 7462AJ4VTX;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = LiarodonUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = me.liaro.LiarodonUITests;

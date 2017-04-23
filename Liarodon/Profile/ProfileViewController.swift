@@ -10,6 +10,7 @@ import UIKit
 import APIKit
 import Result
 import Kingfisher
+import SafariServices
 
 
 final class ProfileViewController: UIViewController {
@@ -42,6 +43,7 @@ final class ProfileViewController: UIViewController {
     @IBOutlet weak var noteTextView: LinkTextView! {
         didSet {
             noteTextView.text = ""
+            noteTextView.delegate = self
         }
     }
     @IBOutlet weak var noteTextViewHeightConstraint: NSLayoutConstraint!
@@ -404,6 +406,36 @@ extension ProfileViewController {
 
         myAccount.followingCount -= 1
         followingButton.value = myAccount.followingCount
+    }
+}
+
+extension ProfileViewController: UITextViewDelegate {
+
+    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange) -> Bool {
+        // for iOS9
+        if #available(iOS 10.0, *) {
+        } else {
+            interact(withURL: URL)
+        }
+        return false
+    }
+
+    @available(iOS 10.0, *)
+    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
+        if interaction != .invokeDefaultAction {
+            // Prevent 3D Touch actions: http://stackoverflow.com/questions/40090138/shouldinteractwithurl-called-twice-on-3d-touch
+            return false
+        }
+
+        interact(withURL: URL)
+
+        return false
+    }
+
+    private func interact(withURL URL: URL) {
+
+        let safariViewController = SFSafariViewController(url: URL)
+        present(safariViewController, animated: true, completion: nil)
     }
 }
 

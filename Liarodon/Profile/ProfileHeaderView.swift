@@ -18,6 +18,9 @@ final class ProfileHeaderView: UIView {
         case let button as UIButton:
             return button
 
+        case let textView as LinkTextView:
+            return textView
+
         default:
             break
         }
