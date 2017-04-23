@@ -100,6 +100,8 @@ final class ProfileViewController: UIViewController {
 
     fileprivate var isFollowUnfollowRequesting = false
 
+    fileprivate var isViewDisappeared = false
+
     deinit {
         currentChildTableViewController.removeObserver(self, forKeyPath: "tableView.contentOffset")
     }
@@ -119,6 +121,18 @@ final class ProfileViewController: UIViewController {
         for button in menuButtons {
             button.delegate = self
         }
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        isViewDisappeared = false
+    }
+
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+
+        isViewDisappeared = true
     }
 
     override func didReceiveMemoryWarning() {
@@ -399,6 +413,11 @@ extension ProfileViewController {
 
         myAccount.followingCount += 1
         followingButton.value = myAccount.followingCount
+
+        if isViewDisappeared {
+            followingViewController.fetchLatestAccounts()
+            followersViewController.fetchLatestAccounts()
+        }
     }
 
     func didRecieveUnfollowNotification(notification: Notification) {
@@ -408,6 +427,11 @@ extension ProfileViewController {
 
         myAccount.followingCount -= 1
         followingButton.value = myAccount.followingCount
+
+        if isViewDisappeared {
+            followingViewController.fetchLatestAccounts()
+            followersViewController.fetchLatestAccounts()
+        }
     }
 }
 
