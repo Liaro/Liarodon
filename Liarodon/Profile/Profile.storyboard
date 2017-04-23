@@ -153,6 +153,9 @@
                                                             <constraint firstAttribute="width" secondItem="cL0-Af-Ihq" secondAttribute="height" multiplier="1:1" id="uJz-tp-9qD"/>
                                                         </constraints>
                                                         <inset key="imageEdgeInsets" minX="8" minY="8" maxX="8" maxY="8"/>
+                                                        <connections>
+                                                            <action selector="followButtonDidTap:" destination="IVO-N4-U3l" eventType="touchUpInside" id="Xgt-ka-ZaS"/>
+                                                        </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Requested" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ncf-2Q-SLs">
                                                         <rect key="frame" x="13" y="46" width="51.5" height="12"/>

@@ -98,6 +98,8 @@ final class ProfileViewController: UIViewController {
     // For scrolling
     fileprivate var lastContentOffsetY: CGFloat!
 
+    fileprivate var isFollowUnfollowRequesting = false
+
     deinit {
         currentChildTableViewController.removeObserver(self, forKeyPath: "tableView.contentOffset")
     }
@@ -436,6 +438,82 @@ extension ProfileViewController: UITextViewDelegate {
 
         let safariViewController = SFSafariViewController(url: URL)
         present(safariViewController, animated: true, completion: nil)
+    }
+}
+
+// MARK: - follow button did tap
+extension ProfileViewController {
+
+    @IBAction func followButtonDidTap(_ sender: FollowButton) {
+
+        guard !isFollowUnfollowRequesting else {
+            return
+        }
+
+        switch sender.type {
+
+        case .follow:
+            follow()
+
+        case .unfollow:
+            unfollow()
+
+        case .cancelRequest:
+            // TODO: Follow request senders cannot cancel?
+            // I tried POST unfollow, but relationship.requested was 1.
+            // I don't know how cancel.
+            break
+        }
+    }
+
+    private func follow() {
+
+        isFollowUnfollowRequesting = true
+
+        let request = MastodonAPI.PostAccountFollowRequest(id: account.id)
+        Session.send(request) { [weak self] (result) in
+            guard let s = self else {
+                return
+            }
+
+            switch result {
+
+            case .success(let relationship):
+                if relationship.following {
+                    s.followButton.type = .unfollow
+                } else if relationship.requested {
+                    s.followButton.type = .cancelRequest
+                }
+
+            case .failure(let error):
+                print(error)
+            }
+
+            s.isFollowUnfollowRequesting = false
+        }
+    }
+
+    private func unfollow(isCancelRequest: Bool = false) {
+
+        isFollowUnfollowRequesting = true
+
+        let request = MastodonAPI.PostAccountUnfollowRequest(id: account.id)
+        Session.send(request) { [weak self] (result) in
+            guard let s = self else {
+                return
+            }
+
+            switch result {
+
+            case .success( _):
+                s.followButton.type = .follow
+
+            case .failure(let error):
+                print(error)
+            }
+            
+            s.isFollowUnfollowRequesting = false
+        }
     }
 }
 
