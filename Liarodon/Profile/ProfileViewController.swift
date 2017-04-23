@@ -291,6 +291,11 @@ extension ProfileViewController {
     }
 }
 
+extension ProfileViewController: AccountChangedRefreshable {
+    func shouldRefresh() {
+        // TODO: Please initialize view controller's content, keisuke:pray:
+    }
+}
 
 // MARK: - Navigation
 extension ProfileViewController {

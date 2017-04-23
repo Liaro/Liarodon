@@ -33,6 +33,18 @@ final class MainTabBarController: UITabBarController {
         let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(MainTabBarController.longPressed(_:)))
         tabBar.addGestureRecognizer(longPressGesture)
 
+
+        NotificationCenter.default.addObserver(self,
+                    selector: #selector(MainTabBarController.accountChanged(notification:)),
+                    name: accountChangedNotification,
+                    object: nil)
+    }
+
+    func accountChanged(notification: Notification) {
+        viewControllers?.forEach {
+            ($0 as? AccountChangedRefreshable)?.shouldRefresh()
+            (($0 as? UINavigationController)?.topViewController as? AccountChangedRefreshable)?.shouldRefresh()
+        }
     }
 
     func longPressed(_ gesture: UILongPressGestureRecognizer) {

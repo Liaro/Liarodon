@@ -93,3 +93,9 @@ final class NotificationTableViewController: UITableViewController {
     */
 
 }
+
+extension NotificationTableViewController: AccountChangedRefreshable {
+    func shouldRefresh() {
+        // TODO
+    }
+}

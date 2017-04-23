@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="E2T-QQ-aic">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="E2T-QQ-aic">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -39,11 +39,20 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zYX-VX-4WM">
+                                        <rect key="frame" x="16" y="8" width="30" height="30"/>
+                                        <state key="normal" title="❌"/>
+                                        <connections>
+                                            <action selector="leftTopButtonTapped:" destination="E2T-QQ-aic" eventType="touchUpInside" id="dwL-uK-awn"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="H7E-zc-EFy" firstAttribute="top" secondItem="NmD-Pd-x0u" secondAttribute="bottom" constant="8" id="1jh-oR-R89"/>
+                                    <constraint firstItem="zYX-VX-4WM" firstAttribute="leading" secondItem="0pe-mC-1Xc" secondAttribute="leading" constant="16" id="68X-8G-vpF"/>
                                     <constraint firstAttribute="height" constant="200" id="7dc-1S-hes"/>
+                                    <constraint firstItem="zYX-VX-4WM" firstAttribute="top" secondItem="0pe-mC-1Xc" secondAttribute="top" constant="8" id="9RC-X4-JKa"/>
                                     <constraint firstItem="NmD-Pd-x0u" firstAttribute="centerX" secondItem="0pe-mC-1Xc" secondAttribute="centerX" id="WKI-aL-ToV"/>
                                     <constraint firstItem="NmD-Pd-x0u" firstAttribute="centerY" secondItem="0pe-mC-1Xc" secondAttribute="centerY" id="d4c-0X-jxL"/>
                                     <constraint firstItem="H7E-zc-EFy" firstAttribute="centerX" secondItem="0pe-mC-1Xc" secondAttribute="centerX" id="rDb-K4-nzn"/>
@@ -180,6 +189,7 @@
                         <outlet property="instanceView" destination="BVP-Pm-bon" id="k23-t0-5Eb"/>
                         <outlet property="instanceViewLeadingConstraint" destination="yxO-vE-7I0" id="hgY-Fm-TYJ"/>
                         <outlet property="invalidInstanceLabel" destination="h5S-OU-tAm" id="9YS-rF-Iz6"/>
+                        <outlet property="leftTopButton" destination="zYX-VX-4WM" id="431-40-1ai"/>
                         <outlet property="loginFailureLabel" destination="yAc-U8-isv" id="ML4-hS-Imm"/>
                         <outlet property="loginView" destination="LWt-Xk-MCP" id="cmV-2F-ssN"/>
                         <outlet property="loginViewLeadingConstraint" destination="dRb-Si-eGt" id="zuk-mg-s0a"/>

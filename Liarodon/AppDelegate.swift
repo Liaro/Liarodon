@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import KeychainAccess
 import APIKit
 
 
@@ -20,56 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
 
-        // Setup MastodonAPI
-        let keychain = Keychain()
-        do {
-            if let instanceURL = try keychain.get("instance_url") {
-                MastodonAPI.instanceURL = instanceURL.url
-            }
-            if let accessToken = try keychain.get("access_token") {
-                MastodonAPI.accessToken = accessToken
-            }
-        } catch {}
-
-        // Example for use MastodonAPI.
-        /*
-        MastodonAPI.instanceURL = URL(string: "https://mstdn.jp")!
-        let req = MastodonAPI.PostAppsRequest(clientName: "")
-        Session.send(req) { (result) in
-            switch result {
-            case .success(let app):
-                print(app)
-                let req = MastodonAPI.PostAccessTokenRequest(
-                    clientID: app.clientID,
-                    clientSecret: app.clientSecret,
-                    username: "",
-                    password: ""
-                )
-                Session.send(req, callbackQueue: nil) { (result) in
-                    switch result {
-                    case .success(let accessToken):
-                        print(accessToken)
-                        MastodonAPI.accessToken = accessToken.accessToken
-
-                        let req = MastodonAPI.GetAuthenticatedAccountRequest()
-                        Session.send(req, callbackQueue: nil) { (result) in
-                            switch result {
-                            case .success(let account):
-                                print(account)
-
-                            case .failure(let error):
-                                print(error)
-                            }
-                        }
-                    case .failure(let error):
-                        print(error)
-                    }
-                }
-            case .failure(let error):
-                print(error)
-            }
-        }
-        */
+        AccountService.shared.setupAccount()
 
         return true
     }
