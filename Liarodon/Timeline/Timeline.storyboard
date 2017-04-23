@@ -22,14 +22,13 @@
                                 <rect key="frame" x="0.0" y="28" width="320" height="266"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cHh-EG-Sy4" id="F9x-BH-XYg">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="265"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="265.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aAt-Ca-Wmo" customClass="LinkTextView" customModule="Liarodon" customModuleProvider="target">
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" editable="NO" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor " translatesAutoresizingMaskIntoConstraints="NO" id="aAt-Ca-Wmo" customClass="LinkTextView" customModule="Liarodon" customModuleProvider="target">
                                             <rect key="frame" x="76" y="59" width="236" height="179"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="0.0" right="0.0"/>
-                                            <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </string>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
@@ -120,7 +119,7 @@
                                             <rect key="frame" x="76" y="213" width="236" height="0.0"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" id="r5f-L7-MS6"/>
+                                                <constraint firstAttribute="height" priority="999" id="r5f-L7-MS6"/>
                                             </constraints>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="131e55 boosted" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BNf-6y-EcM">
@@ -412,7 +411,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0yg-Fo-GZv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2207.8125" y="-232.92253521126761"/>
+            <point key="canvasLocation" x="2221" y="-315"/>
         </scene>
         <!--Timeline-->
         <scene sceneID="Am9-I9-kVx">
@@ -436,11 +435,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="boost" width="20" height="20"/>
-        <image name="favourite" width="20" height="20"/>
-        <image name="more" width="170" height="170"/>
+        <image name="boost" width="34" height="30"/>
+        <image name="favourite" width="34" height="30"/>
+        <image name="more" width="35" height="30"/>
         <image name="picture-2" width="16" height="16"/>
-        <image name="reply" width="20" height="20"/>
+        <image name="reply" width="34" height="30"/>
         <image name="tab-home" width="25" height="25"/>
         <image name="user" width="170" height="170"/>
         <image name="worldwide" width="16" height="16"/>
