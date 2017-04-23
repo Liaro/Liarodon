@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="g7f-ag-BUV">
-    <device id="ipad12_9" orientation="portrait">
+    <device id="retina3_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -19,40 +19,40 @@
                         <viewControllerLayoutGuide type="bottom" id="dAO-xK-Jeq"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="d2j-MO-7AV">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R6h-ec-gUe" userLabel="Statuses Container View">
-                                <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <segue destination="Wsj-po-gtu" kind="embed" identifier="Statuses" id="5Gc-sK-vVE"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ns3-nq-cuZ" userLabel="Following Container View">
-                                <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                                 <connections>
                                     <segue destination="Dcu-AG-GCM" kind="embed" identifier="Following" id="VIt-7D-cIp"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vv3-kg-ztn" userLabel="Followers Container View">
-                                <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                                 <connections>
                                     <segue destination="D6g-rz-eMd" kind="embed" identifier="Followers" id="OJG-wQ-pKz"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" tag="3" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="la2-gV-mRY" userLabel="Favourites Container View">
-                                <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <segue destination="4vz-YK-RxK" kind="embed" identifier="Favourites" id="wEQ-0q-aEk"/>
                                 </connections>
                             </containerView>
                             <view clipsSubviews="YES" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HhQ-xh-g2g" customClass="ProfileHeaderView" customModule="Liarodon" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="64" width="1024" height="267"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="271.5"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="usx-n8-5Iu" userLabel="Header Image View">
-                                        <rect key="frame" x="192" y="0.0" width="640" height="306"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="153"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="lessThanOrEqual" constant="640" id="8Rk-Vm-1HD"/>
@@ -60,7 +60,7 @@
                                         </constraints>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JWS-jv-czg" userLabel="Avatar Image View">
-                                        <rect key="frame" x="468" y="15" width="88" height="88"/>
+                                        <rect key="frame" x="116" y="15" width="88" height="88"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="JWS-jv-czg" secondAttribute="height" id="13C-gp-CjC"/>
@@ -72,32 +72,50 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bless" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iiT-Nj-ERV">
-                                        <rect key="frame" x="490.5" y="107" width="43.5" height="21.5"/>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bless" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iiT-Nj-ERV">
+                                        <rect key="frame" x="138.5" y="107" width="43.5" height="21.5"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@131e55" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uh7-Qi-JYR">
-                                        <rect key="frame" x="481" y="130.5" width="63" height="18"/>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@131e55" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uh7-Qi-JYR">
+                                        <rect key="frame" x="129" y="130.5" width="63" height="18"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </label>
-                                    <label opaque="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello! I am Bless!" textAlignment="center" lineBreakMode="clip" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TF8-1r-19D" userLabel="Note Label">
-                                        <rect key="frame" x="15" y="152" width="994" height="36"/>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="dVf-x6-eej" customClass="LinkTextView" customModule="Liarodon" customModuleProvider="target">
+                                        <rect key="frame" x="15" y="152.5" width="290" height="40"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="36" id="72F-2u-Vh0"/>
+                                            <constraint firstAttribute="height" constant="40" id="lZg-qb-Du0"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </textView>
                                     <view contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0cM-eV-0td" userLabel="Menu View">
-                                        <rect key="frame" x="0.0" y="203" width="1024" height="64"/>
+                                        <rect key="frame" x="0.0" y="207.5" width="320" height="64"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cYl-sN-Pkh" userLabel="Statuses Button" customClass="ProfileMenuButton" customModule="Liarodon" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="256.5" height="64"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="80.5" height="64"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="title" value="Toots"/>
@@ -105,31 +123,31 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NRg-LI-M1d" userLabel="Following Button" customClass="ProfileMenuButton" customModule="Liarodon" customModuleProvider="target">
-                                                <rect key="frame" x="257" y="0.0" width="255.5" height="64"/>
+                                                <rect key="frame" x="81" y="0.0" width="79.5" height="64"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="title" value="Follows"/>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <view tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iHm-dB-M8a" userLabel="Followers Button" customClass="ProfileMenuButton" customModule="Liarodon" customModuleProvider="target">
-                                                <rect key="frame" x="512.5" y="0.0" width="256.5" height="64"/>
+                                                <rect key="frame" x="160.5" y="0.0" width="80.5" height="64"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="title" value="Followers"/>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <view tag="3" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cL3-WI-2Zf" userLabel="Favourites Button" customClass="ProfileMenuButton" customModule="Liarodon" customModuleProvider="target">
-                                                <rect key="frame" x="768.5" y="0.0" width="255.5" height="64"/>
+                                                <rect key="frame" x="240.5" y="0.0" width="79.5" height="64"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="title" value="Favourites"/>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1YA-xt-W5s" userLabel="Follow Button View">
-                                                <rect key="frame" x="768.5" y="0.0" width="255.5" height="64"/>
+                                                <rect key="frame" x="240.5" y="0.0" width="79.5" height="64"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cL0-Af-Ihq" customClass="FollowButton" customModule="Liarodon" customModuleProvider="target">
-                                                        <rect key="frame" x="105" y="10" width="44" height="44"/>
+                                                        <rect key="frame" x="17" y="10" width="44" height="44"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="44" id="hgm-jN-tdF"/>
                                                             <constraint firstAttribute="width" secondItem="cL0-Af-Ihq" secondAttribute="height" multiplier="1:1" id="uJz-tp-9qD"/>
@@ -137,7 +155,7 @@
                                                         <inset key="imageEdgeInsets" minX="8" minY="8" maxX="8" maxY="8"/>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Requested" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ncf-2Q-SLs">
-                                                        <rect key="frame" x="101" y="46" width="51.5" height="12"/>
+                                                        <rect key="frame" x="13" y="46" width="51.5" height="12"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
@@ -186,22 +204,21 @@
                                     <constraint firstItem="Uh7-Qi-JYR" firstAttribute="centerX" secondItem="HhQ-xh-g2g" secondAttribute="centerX" id="8ui-59-AP2"/>
                                     <constraint firstAttribute="trailing" secondItem="usx-n8-5Iu" secondAttribute="trailing" priority="750" id="Dy3-zZ-U95"/>
                                     <constraint firstItem="iiT-Nj-ERV" firstAttribute="top" secondItem="JWS-jv-czg" secondAttribute="bottom" constant="4" id="EN0-32-GIX"/>
-                                    <constraint firstItem="TF8-1r-19D" firstAttribute="top" secondItem="Uh7-Qi-JYR" secondAttribute="bottom" constant="4" id="Eqv-eK-bA2"/>
+                                    <constraint firstItem="dVf-x6-eej" firstAttribute="top" secondItem="Uh7-Qi-JYR" secondAttribute="bottom" constant="4" id="EZ5-SA-av1"/>
                                     <constraint firstItem="usx-n8-5Iu" firstAttribute="top" secondItem="HhQ-xh-g2g" secondAttribute="top" id="PRi-72-Sdo"/>
                                     <constraint firstItem="usx-n8-5Iu" firstAttribute="leading" secondItem="HhQ-xh-g2g" secondAttribute="leading" priority="750" id="Rak-VK-GCf"/>
-                                    <constraint firstItem="TF8-1r-19D" firstAttribute="leading" secondItem="HhQ-xh-g2g" secondAttribute="leading" constant="15" id="SFm-MB-cWQ"/>
+                                    <constraint firstItem="0cM-eV-0td" firstAttribute="top" secondItem="dVf-x6-eej" secondAttribute="bottom" constant="15" id="T4P-Yy-h0c"/>
+                                    <constraint firstItem="dVf-x6-eej" firstAttribute="leading" secondItem="HhQ-xh-g2g" secondAttribute="leading" constant="15" id="ZzY-OC-yih"/>
                                     <constraint firstAttribute="trailing" secondItem="0cM-eV-0td" secondAttribute="trailing" id="jCq-Q9-4c0"/>
                                     <constraint firstItem="Uh7-Qi-JYR" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="HhQ-xh-g2g" secondAttribute="leading" constant="10" id="jP2-gV-JHb"/>
+                                    <constraint firstAttribute="trailing" secondItem="dVf-x6-eej" secondAttribute="trailing" constant="15" id="kbv-a7-d7j"/>
                                     <constraint firstItem="0cM-eV-0td" firstAttribute="leading" secondItem="HhQ-xh-g2g" secondAttribute="leading" id="p00-NR-iyH"/>
                                     <constraint firstItem="iiT-Nj-ERV" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="HhQ-xh-g2g" secondAttribute="leading" constant="15" id="pSm-2M-lSq"/>
                                     <constraint firstItem="JWS-jv-czg" firstAttribute="top" secondItem="HhQ-xh-g2g" secondAttribute="top" constant="15" id="ree-q3-jB2"/>
                                     <constraint firstItem="Uh7-Qi-JYR" firstAttribute="top" secondItem="iiT-Nj-ERV" secondAttribute="bottom" constant="2" id="rky-xV-xBT"/>
                                     <constraint firstItem="iiT-Nj-ERV" firstAttribute="centerX" secondItem="HhQ-xh-g2g" secondAttribute="centerX" id="soJ-ae-AGQ"/>
                                     <constraint firstAttribute="bottom" secondItem="0cM-eV-0td" secondAttribute="bottom" id="typ-Jk-MEu"/>
-                                    <constraint firstAttribute="trailing" secondItem="TF8-1r-19D" secondAttribute="trailing" constant="15" id="u2Y-Gf-DFc"/>
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Uh7-Qi-JYR" secondAttribute="trailing" constant="10" id="uEI-1G-V84"/>
-                                    <constraint firstItem="TF8-1r-19D" firstAttribute="centerX" secondItem="HhQ-xh-g2g" secondAttribute="centerX" id="xro-k6-rR9"/>
-                                    <constraint firstItem="0cM-eV-0td" firstAttribute="top" secondItem="TF8-1r-19D" secondAttribute="bottom" constant="15" id="zxq-iz-bfW"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -250,8 +267,8 @@
                         <outlet property="headerViewMinTopConstraint" destination="nCm-bC-DTg" id="vSZ-gA-5M5"/>
                         <outlet property="headerViewTopConstraint" destination="4Ag-In-Qhc" id="Adl-pk-1Ob"/>
                         <outlet property="menuView" destination="0cM-eV-0td" id="Q32-ad-81b"/>
-                        <outlet property="noteLabel" destination="TF8-1r-19D" id="RsJ-kt-X1p"/>
-                        <outlet property="noteLabelHeightConstraint" destination="72F-2u-Vh0" id="DP8-VU-zbe"/>
+                        <outlet property="noteTextView" destination="dVf-x6-eej" id="hvV-0v-jRP"/>
+                        <outlet property="noteTextViewHeightConstraint" destination="lZg-qb-Du0" id="5Cx-fj-7uD"/>
                         <outlet property="requestedLabel" destination="ncf-2Q-SLs" id="fbY-hl-Ska"/>
                         <outlet property="statusesButton" destination="cYl-sN-Pkh" id="FBd-fa-NLM"/>
                         <outlet property="statusesContainerView" destination="R6h-ec-gUe" id="cLG-gY-dVH"/>
@@ -260,7 +277,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Og-kZ-IB1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="798.75" y="175"/>
+            <point key="canvasLocation" x="798.55072463768124" y="174.45652173913044"/>
         </scene>
         <!--Profile-->
         <scene sceneID="nbw-Re-DaJ">

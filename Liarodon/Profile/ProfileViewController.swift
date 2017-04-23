@@ -39,12 +39,12 @@ final class ProfileViewController: UIViewController {
             acctLabel.text = ""
         }
     }
-    @IBOutlet private weak var noteLabel: UILabel! {
+    @IBOutlet weak var noteTextView: LinkTextView! {
         didSet {
-            noteLabel.text = ""
+            noteTextView.text = ""
         }
     }
-    @IBOutlet weak var noteLabelHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var noteTextViewHeightConstraint: NSLayoutConstraint!
 
     @IBOutlet weak var menuView: UIView!
     @IBOutlet weak var statusesButton: ProfileMenuButton!
@@ -196,16 +196,30 @@ final class ProfileViewController: UIViewController {
 
     private func setupViews() {
         print(account)
-        headerImageView.kf.setImage(with: account.header.url)
         avatarImageView.kf.setImage(with: account.avatar.url)
+        headerImageView.kf.setImage(with: account.header.url) { [weak self] image, _, _, url in
+            guard let s = self else { return }
+            let color: UIColor
+            if let url = url, url.absoluteString.contains("missing") {
+                color = .clear
+            }
+            else if image != nil {
+                color = UIColor(red: 1, green: 1, blue: 1, alpha: 0.5)
+            } else {
+                color = .clear
+            }
+            s.displayNameLabel.backgroundColor = color
+            s.acctLabel.backgroundColor = color
+            s.noteTextView.backgroundColor = color
+        }
         displayNameLabel.text = account.displayName
         acctLabel.text = "@" + account.acct
 
         // Displayed text will be broken during scrolling.
         // Solve it by noteLabel height = noteLabel.sizeToFit height + 1
-        noteLabel.attributedText = account.attributedNote
-        let fitSize = noteLabel.sizeThatFits(CGSize(width: view.bounds.width, height: view.bounds.height))
-        noteLabelHeightConstraint.constant = fitSize.height + 1
+        noteTextView.attributedText = account.attributedNote
+        let fitSize = noteTextView.sizeThatFits(CGSize(width: noteTextView.bounds.width, height: view.bounds.height))
+        noteTextViewHeightConstraint.constant = fitSize.height + 1
 
         statusesButton.value = account.statusesCount
         followingButton.value = account.followingCount
