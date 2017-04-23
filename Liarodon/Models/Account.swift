@@ -27,7 +27,7 @@ final class Account {
     /// The number of followers for the account.
     let followersCount: Int
     /// The number of accounts the given account is following.
-    let followingCount: Int
+    var followingCount: Int
     /// The number of statuses the account has made.
     let statusesCount: Int
     /// Biography of user.
