@@ -12,6 +12,7 @@
 		1EB690C01EA6F095003587A1 /* AttachmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EB690BF1EA6F095003587A1 /* AttachmentView.swift */; };
 		1EC795551EAC61FA000AE44D /* SelectAccountTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC795541EAC61FA000AE44D /* SelectAccountTableViewController.swift */; };
 		1EC795511EABEC99000AE44D /* MastodonAPI+Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC795501EABEC99000AE44D /* MastodonAPI+Status.swift */; };
+		1EC795531EABF862000AE44D /* ComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC795521EABF862000AE44D /* ComposeViewController.swift */; };
 		435CA87B1EA8AD32006F5EE5 /* Accounts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 435CA87A1EA8AD32006F5EE5 /* Accounts.storyboard */; };
 		435CA87D1EA8ADF7006F5EE5 /* FollowingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435CA87C1EA8ADF7006F5EE5 /* FollowingTableViewController.swift */; };
 		435CA8801EA8AE36006F5EE5 /* AccountsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435CA87E1EA8AE36006F5EE5 /* AccountsTableViewCell.swift */; };
@@ -79,6 +80,7 @@
 		1EB690BF1EA6F095003587A1 /* AttachmentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AttachmentView.swift; path = Timeline/AttachmentView.swift; sourceTree = "<group>"; };
 		1EC795541EAC61FA000AE44D /* SelectAccountTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SelectAccountTableViewController.swift; path = Accounts/SelectAccountTableViewController.swift; sourceTree = "<group>"; };
 		1EC795501EABEC99000AE44D /* MastodonAPI+Status.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "MastodonAPI+Status.swift"; path = "API/MastodonAPI+Status.swift"; sourceTree = "<group>"; };
+		1EC795521EABF862000AE44D /* ComposeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ComposeViewController.swift; path = Timeline/ComposeViewController.swift; sourceTree = "<group>"; };
 		435CA87A1EA8AD32006F5EE5 /* Accounts.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Accounts.storyboard; path = Accounts/Accounts.storyboard; sourceTree = "<group>"; };
 		435CA87C1EA8ADF7006F5EE5 /* FollowingTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FollowingTableViewController.swift; path = Accounts/FollowingTableViewController.swift; sourceTree = "<group>"; };
 		435CA87E1EA8AE36006F5EE5 /* AccountsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountsTableViewCell.swift; path = Accounts/AccountsTableViewCell.swift; sourceTree = "<group>"; };
@@ -258,6 +260,7 @@
 				1EB690BF1EA6F095003587A1 /* AttachmentView.swift */,
 				F6660CF81EA8F45C007D04D7 /* LinkTextView.swift */,
 				1E7779F81EAA6E8D001BD61A /* StatusImageView.swift */,
+				1EC795521EABF862000AE44D /* ComposeViewController.swift */,
 			);
 			name = Timeline;
 			sourceTree = "<group>";
@@ -538,6 +541,7 @@
 				435CA8831EA8B52B006F5EE5 /* BlockingTableViewController.swift in Sources */,
 				43F9B2051EA67C680093E798 /* Mention.swift in Sources */,
 				43F9B20B1EA708200093E798 /* MastodonAPI+Timelines.swift in Sources */,
+				1EC795531EABF862000AE44D /* ComposeViewController.swift in Sources */,
 				43F9B1F91EA64C400093E798 /* MastodonAPI+Apps.swift in Sources */,
 				43F9B1FF1EA64E710093E798 /* MastodonAPI+OAuth.swift in Sources */,
 				1E7779FA1EAA6E8D001BD61A /* StatusImageView.swift in Sources */,
