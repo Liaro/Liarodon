@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="g7f-ag-BUV">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="g7f-ag-BUV">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -13,7 +13,7 @@
         <!--Profile-->
         <scene sceneID="Enn-Aa-86M">
             <objects>
-                <viewController id="IVO-N4-U3l" customClass="ProfileViewController" customModule="Liarodon" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProfileViewController" id="IVO-N4-U3l" customClass="ProfileViewController" customModule="Liarodon" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="9t3-Tt-H6K"/>
                         <viewControllerLayoutGuide type="bottom" id="dAO-xK-Jeq"/>
@@ -26,19 +26,19 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
-                                    <segue destination="cjj-1q-10L" kind="embed" identifier="Statuses" id="6e5-9d-4Dn"/>
+                                    <segue destination="Wsj-po-gtu" kind="embed" identifier="Statuses" id="5Gc-sK-vVE"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ns3-nq-cuZ" userLabel="Following Container View">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <connections>
-                                    <segue destination="BIY-cA-Rgo" kind="embed" identifier="Following" id="NVd-eN-z3a"/>
+                                    <segue destination="mXw-wb-AJZ" kind="embed" identifier="Following" id="cZy-mN-5S0"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vv3-kg-ztn" userLabel="Followers Container View">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <connections>
-                                    <segue destination="bXH-Ic-dyD" kind="embed" id="53A-Sc-p7n"/>
+                                    <segue destination="mXw-wb-AJZ" kind="embed" identifier="Followers" id="btu-xg-yxa"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" tag="3" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="la2-gV-mRY" userLabel="Favourites Container View">
@@ -51,7 +51,7 @@
                             <view clipsSubviews="YES" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HhQ-xh-g2g" customClass="ProfileHeaderView" customModule="Liarodon" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="64" width="414" height="262.33333333333331"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="usx-n8-5Iu" userLabel="Header Image View">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="usx-n8-5Iu" userLabel="Header Image View">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="198.33333333333331"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -72,8 +72,8 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ぶれす" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iiT-Nj-ERV">
-                                        <rect key="frame" x="176.66666666666663" y="124" width="61.333333333333343" height="24"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bless" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iiT-Nj-ERV">
+                                        <rect key="frame" x="183.33333333333334" y="124" width="48.333333333333314" height="24"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -91,7 +91,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="103.66666666666667" height="64"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="投稿"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Toots"/>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="value" value="0"/>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
@@ -99,21 +99,21 @@
                                                 <rect key="frame" x="103.66666666666669" y="0.0" width="103.33333333333331" height="64"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="フォロー"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Follows"/>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <view tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iHm-dB-M8a" userLabel="Followers Button" customClass="ProfileMenuButton" customModule="Liarodon" customModuleProvider="target">
                                                 <rect key="frame" x="207.00000000000003" y="0.0" width="103.66666666666671" height="64"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="フォロワー"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Followers"/>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <view tag="3" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cL3-WI-2Zf" userLabel="Favourites Button" customClass="ProfileMenuButton" customModule="Liarodon" customModuleProvider="target">
                                                 <rect key="frame" x="310.66666666666674" y="0.0" width="103.33333333333331" height="64"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="お気に入り"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Favourites"/>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                         </subviews>
@@ -156,7 +156,7 @@
                                     <constraint firstItem="iiT-Nj-ERV" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="HhQ-xh-g2g" secondAttribute="leading" constant="10" id="oOr-it-OOF"/>
                                     <constraint firstItem="0cM-eV-0td" firstAttribute="leading" secondItem="HhQ-xh-g2g" secondAttribute="leading" id="p00-NR-iyH"/>
                                     <constraint firstItem="iiT-Nj-ERV" firstAttribute="top" secondItem="JWS-jv-czg" secondAttribute="bottom" constant="5" id="qbK-gC-Gwx"/>
-                                    <constraint firstAttribute="height" secondItem="usx-n8-5Iu" secondAttribute="height" constant="64" id="r7A-QL-zMH"/>
+                                    <constraint firstAttribute="height" secondItem="usx-n8-5Iu" secondAttribute="height" priority="750" constant="64" id="r7A-QL-zMH"/>
                                     <constraint firstAttribute="bottom" secondItem="0cM-eV-0td" secondAttribute="bottom" id="typ-Jk-MEu"/>
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Uh7-Qi-JYR" secondAttribute="trailing" constant="10" id="uEI-1G-V84"/>
                                 </constraints>
@@ -194,31 +194,24 @@
                         <outlet property="avatarImageView" destination="JWS-jv-czg" id="OBd-Fj-a1k"/>
                         <outlet property="displayNameLabel" destination="iiT-Nj-ERV" id="R17-I1-ScD"/>
                         <outlet property="favouritesButton" destination="cL3-WI-2Zf" id="1a6-Qc-PLh"/>
+                        <outlet property="favouritesContainerView" destination="la2-gV-mRY" id="KZw-Xg-43e"/>
                         <outlet property="followersButton" destination="iHm-dB-M8a" id="FRF-2O-4QR"/>
+                        <outlet property="followersContainerView" destination="vv3-kg-ztn" id="THV-MC-qnd"/>
                         <outlet property="followingButton" destination="NRg-LI-M1d" id="KGg-Kr-XjM"/>
+                        <outlet property="followingContainerView" destination="Ns3-nq-cuZ" id="Zbs-3Z-0RD"/>
                         <outlet property="headerImageView" destination="usx-n8-5Iu" id="DJm-ze-Q2i"/>
                         <outlet property="headerView" destination="HhQ-xh-g2g" id="EMc-to-dhg"/>
                         <outlet property="headerViewMinTopConstraint" destination="nCm-bC-DTg" id="vSZ-gA-5M5"/>
                         <outlet property="headerViewTopConstraint" destination="4Ag-In-Qhc" id="Adl-pk-1Ob"/>
                         <outlet property="menuView" destination="0cM-eV-0td" id="Q32-ad-81b"/>
                         <outlet property="statusesButton" destination="cYl-sN-Pkh" id="FBd-fa-NLM"/>
-                        <outletCollection property="containerViews" destination="R6h-ec-gUe" collectionClass="NSMutableArray" id="Snq-mH-uve"/>
-                        <outletCollection property="containerViews" destination="Ns3-nq-cuZ" collectionClass="NSMutableArray" id="xX6-bP-ZhK"/>
-                        <outletCollection property="containerViews" destination="vv3-kg-ztn" collectionClass="NSMutableArray" id="3Xx-n0-0em"/>
-                        <outletCollection property="containerViews" destination="la2-gV-mRY" collectionClass="NSMutableArray" id="0e1-fY-kNf"/>
+                        <outlet property="statusesContainerView" destination="R6h-ec-gUe" id="cLG-gY-dVH"/>
+                        <segue destination="Hjw-pM-RD1" kind="show" identifier="Profile" id="KO1-iz-lHM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Og-kZ-IB1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="800.00000000000011" y="175.27173913043481"/>
-        </scene>
-        <!--FollowingTableViewController-->
-        <scene sceneID="jmZ-SQ-b34">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Accounts" referencedIdentifier="FollowingTableViewController" id="BIY-cA-Rgo" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hXh-8P-Vo9" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1438" y="157"/>
         </scene>
         <!--Profile-->
         <scene sceneID="nbw-Re-DaJ">
@@ -240,14 +233,6 @@
             </objects>
             <point key="canvasLocation" x="40.799999999999997" y="176.76161919040482"/>
         </scene>
-        <!--FollowersTableViewController-->
-        <scene sceneID="EHa-dQ-UNY">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Accounts" referencedIdentifier="FollowersTableViewController" id="bXH-Ic-dyD" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="wvg-iM-MAX" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1438" y="230"/>
-        </scene>
         <!--TimelineViewController-->
         <scene sceneID="dUn-xM-5hz">
             <objects>
@@ -256,16 +241,55 @@
             </objects>
             <point key="canvasLocation" x="1438" y="289"/>
         </scene>
-        <!--TimelineViewController-->
-        <scene sceneID="M22-Gy-Mvz">
+        <!--Accounts Table View Controller-->
+        <scene sceneID="9g2-mg-KFp">
             <objects>
-                <viewControllerPlaceholder storyboardName="Timeline" referencedIdentifier="TimelineViewController" id="cjj-1q-10L" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="m4s-uU-QBy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tableViewController id="mXw-wb-AJZ" customClass="AccountsTableViewController" customModule="Liarodon" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="hGA-Mh-wEO">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="erO-mS-UJf">
+                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="erO-mS-UJf" id="OFl-9A-U1D">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="mXw-wb-AJZ" id="TOO-tk-VvD"/>
+                            <outlet property="delegate" destination="mXw-wb-AJZ" id="hko-hq-U4S"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Dyn-QZ-ajs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1438" y="107"/>
+            <point key="canvasLocation" x="1907" y="175"/>
+        </scene>
+        <!--ProfileViewController-->
+        <scene sceneID="zKC-ov-gX6">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Profile" referencedIdentifier="ProfileViewController" id="Hjw-pM-RD1" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="L1n-4S-E6T" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1388" y="-21"/>
+        </scene>
+        <!--TimelineViewController-->
+        <scene sceneID="CeN-xi-fx6">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Timeline" referencedIdentifier="TimelineViewController" id="Wsj-po-gtu" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="j1i-yd-814" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1437" y="71"/>
         </scene>
     </scenes>
     <resources>
         <image name="tab-profile" width="25" height="25"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="cZy-mN-5S0"/>
+    </inferredMetricsTieBreakers>
 </document>

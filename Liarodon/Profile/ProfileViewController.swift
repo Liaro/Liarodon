@@ -17,8 +17,10 @@ final class ProfileViewController: UIViewController {
     // Display authenticated account if nil.
     var accountID: Int? = nil
 
+    /// Authenticated account
+    fileprivate var myAccount: Account!
+    /// Display account
     fileprivate var account: Account!
-    fileprivate var mutableFollowingCount = 0
 
     @IBOutlet weak var headerView: ProfileHeaderView!
     @IBOutlet weak var headerViewMinTopConstraint: NSLayoutConstraint!
@@ -49,12 +51,32 @@ final class ProfileViewController: UIViewController {
             favouritesButton
         ]
     }
-    @IBOutlet var containerViews: [UIView]!
-
-    fileprivate var currentContainerViewIndex: Int!
-    fileprivate var childTableViewControllers: [UITableViewController] {
-        return childViewControllers.filter({ $0 is UITableViewController }) as! [UITableViewController]
+    @IBOutlet weak var statusesContainerView: UIView!
+    @IBOutlet weak var followingContainerView: UIView!
+    @IBOutlet weak var followersContainerView: UIView!
+    @IBOutlet weak var favouritesContainerView: UIView!
+    fileprivate var containerViews: [UIView] {
+        return [
+            statusesContainerView,
+            followingContainerView,
+            followersContainerView,
+            favouritesContainerView
+        ]
     }
+    fileprivate var statusesViewController: TimelineTableViewController!
+    fileprivate var followingViewController: AccountsTableViewController!
+    fileprivate var followersViewController: AccountsTableViewController!
+    fileprivate var favouritesViewController: TimelineTableViewController!
+    fileprivate var childTableViewControllers: [UITableViewController] {
+        return [
+            statusesViewController,
+            followingViewController,
+            followersViewController,
+            favouritesViewController
+        ]
+    }
+    fileprivate var currentContainerViewIndex: Int!
+
     fileprivate var currentChildTableViewController: UITableViewController {
         return childTableViewControllers[currentContainerViewIndex]
     }
@@ -62,26 +84,31 @@ final class ProfileViewController: UIViewController {
     // For scrolling
     fileprivate var lastContentOffsetY: CGFloat!
 
+    deinit {
+        currentChildTableViewController.removeObserver(self, forKeyPath: "tableView.contentOffset")
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if let id = accountID {
-            let request = MastodonAPI.GetAccountRequest(id: id)
-            Session.send(request) { [weak self] result in
-                self?.requestCompletion(result: result)
-            }
-        } else {
-            let request = MastodonAPI.GetAuthenticatedAccountRequest()
-            Session.send(request) { [weak self] result in
-                self?.requestCompletion(result: result)
-            }
+        fetchAuthenticatedAccount { [weak self] in
+            guard let s = self else { return }
 
-            NotificationCenter.default.addObserver(
-                self, selector: #selector(didRecieveFollowNotification(notification:)),
-                name: MastodonAPI.PostAccountFollowRequest.notificationName, object: nil)
-            NotificationCenter.default.addObserver(
-                self, selector: #selector(didRecieveUnfollowNotification(notification:)),
-                name: MastodonAPI.PostAccountUnfollowRequest.notificationName, object: nil)
+            if let id = s.accountID, id != s.myAccount.id {
+                s.fetchAccount(id: id) {
+                    s.setupViews()
+                }
+            } else {
+                s.account = s.myAccount
+                s.setupViews()
+
+                NotificationCenter.default.addObserver(
+                    s, selector: #selector(s.didRecieveFollowNotification(notification:)),
+                    name: MastodonAPI.PostAccountFollowRequest.notificationName, object: nil)
+                NotificationCenter.default.addObserver(
+                    s, selector: #selector(s.didRecieveUnfollowNotification(notification:)),
+                    name: MastodonAPI.PostAccountUnfollowRequest.notificationName, object: nil)
+            }
         }
 
         for button in menuButtons {
@@ -98,16 +125,19 @@ final class ProfileViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        let insetTop = headerView.frame.maxY
-        let inset = UIEdgeInsets(top: insetTop, left: 0, bottom: 0, right: 0)
-        for tableViewController in childTableViewControllers {
-            tableViewController.tableView.contentInset = inset
-            tableViewController.tableView.scrollIndicatorInsets = inset
-            tableViewController.tableView.contentOffset = CGPoint(x: 0, y: -insetTop)
-        }
-
         if currentContainerViewIndex == nil {
+            let insetTop = headerView.frame.maxY
+            let inset = UIEdgeInsets(top: insetTop, left: 0, bottom: 0, right: 0)
+            for tableViewController in childTableViewControllers {
+                tableViewController.tableView.contentInset = inset
+                tableViewController.tableView.scrollIndicatorInsets = inset
+                tableViewController.tableView.contentOffset = CGPoint(x: 0, y: -insetTop)
+            }
             switchContainerView(index: 0)
+        } else {
+            if let accountsVC = currentChildTableViewController as? AccountsTableViewController {
+                accountsVC.fetchLatestAccounts()
+            }
         }
     }
 
@@ -116,19 +146,39 @@ final class ProfileViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    private func requestCompletion(result: Result<Account, SessionTaskError>) {
+    private func fetchAuthenticatedAccount(completion: @escaping () -> Void) {
+        let request = MastodonAPI.GetAuthenticatedAccountRequest()
+        Session.send(request) { [weak self] result in
+            guard let s = self else { return }
 
-        switch result {
+            switch result {
 
-        case .success(let account):
-            self.account = account
-            mutableFollowingCount = account.followingCount
-            setupViews()
-            print(account)
+            case .success(let account):
+                s.myAccount = account
+                completion()
 
-        case .failure(let error):
-            // TODO: GET Account failure
-            print(error)
+            case .failure(let error):
+                // TODO: GET Account failure
+                print(error)
+            }
+        }
+    }
+
+    private func fetchAccount(id: Int, completion: @escaping () -> Void) {
+        let request = MastodonAPI.GetAccountRequest(id: id)
+        Session.send(request) { [weak self] result in
+            guard let s = self else { return }
+
+            switch result {
+
+            case .success(let account):
+                s.account = account
+                completion()
+
+            case .failure(let error):
+                // TODO: GET Account failure
+                print(error)
+            }
         }
     }
 
@@ -145,16 +195,11 @@ final class ProfileViewController: UIViewController {
         favouritesButton.value = 0
 
         for vc in childTableViewControllers {
-            switch vc {
-
-            case let following as FollowingTableViewController:
-                following.account = account
-
-            case let followers as FollowersTableViewController:
-                followers.account = account
-
-            default:
-                break
+            if let accountsVC = vc as? AccountsTableViewController {
+                accountsVC.myAccount = myAccount
+                accountsVC.account = account
+                accountsVC.fetchLatestAccounts()
+                accountsVC.deleagte = self
             }
         }
     }
@@ -185,15 +230,19 @@ final class ProfileViewController: UIViewController {
             s.currentChildTableViewController.addObserver(s, forKeyPath: "tableView.contentOffset", options: [.new], context: nil)
         })
 
-        if let followingVC = currentChildTableViewController as? FollowingTableViewController {
-            followingVC.fetchLatestFollowing()
-        }
-        else if let followersVC = currentChildTableViewController as? FollowersTableViewController {
-            followersVC.fetchLatestFollowers()
+        print(currentChildTableViewController)
+        if let accountsVC = currentChildTableViewController as? AccountsTableViewController {
+            accountsVC.fetchLatestAccounts()
         }
     }
 }
 
+// MARK: - AccountChangedRefreshable
+extension ProfileViewController: AccountChangedRefreshable {
+    func shouldRefresh() {
+        // TODO: Please initialize view controller's content, keisuke:pray:
+    }
+}
 
 // MARK: - KVO
 extension ProfileViewController {
@@ -235,18 +284,9 @@ extension ProfileViewController {
 
         let top = headerViewTopConstraint.constant
         var newTop = top + diff
-
         if !isBounce && newTop > 0 {
             newTop = 0
         }
-//        if isBounce {
-//            if top < newTop {
-//                headerViewTopConstraint.constant = newTop
-//            } else {
-//                // do nothing
-//            }
-//        } else {
-//        }
         headerViewTopConstraint.constant = newTop
 
         tableView.scrollIndicatorInsets = UIEdgeInsets(top: headerView.frame.maxY, left: 0, bottom: 0, right: 0)
@@ -272,28 +312,23 @@ extension ProfileViewController {
 
     func didRecieveFollowNotification(notification: Notification) {
 
-        mutableFollowingCount += 1
-        followingButton.value = mutableFollowingCount
-
-        if let followingVC = childTableViewControllers.filter({ $0 is FollowingTableViewController }).first as? FollowingTableViewController {
-            followingVC.fetchLatestFollowing()
-        }
+        myAccount.followingCount += 1
+        followingButton.value = myAccount.followingCount
     }
 
     func didRecieveUnfollowNotification(notification: Notification) {
 
-        mutableFollowingCount -= 1
-        followingButton.value = mutableFollowingCount
-
-        if let followersVC = childTableViewControllers.filter({ $0 is FollowersTableViewController }).first as? FollowersTableViewController {
-            followersVC.fetchLatestFollowers()
-        }
+        myAccount.followingCount -= 1
+        followingButton.value = myAccount.followingCount
     }
 }
 
-extension ProfileViewController: AccountChangedRefreshable {
-    func shouldRefresh() {
-        // TODO: Please initialize view controller's content, keisuke:pray:
+// MARK: - AccountsTableViewControllerDelegate
+extension ProfileViewController: AccountsTableViewControllerDelegate {
+
+    func accountsTableViewControllerDidSelectAccount(viewController: AccountsTableViewController, account: Account) {
+
+        performSegue(withIdentifier: "Profile", sender: account)
     }
 }
 
@@ -305,6 +340,8 @@ extension ProfileViewController {
         guard let id = segue.identifier else {
             return
         }
+
+        print(id)
         switch id {
 
         case "Statuses":
@@ -313,6 +350,22 @@ extension ProfileViewController {
             }
             // TODO: .home => .account
             timelineVC.type = .home
+            statusesViewController = timelineVC
+            print(statusesViewController)
+
+        case "Following":
+            guard let accountsVC = segue.destination as? AccountsTableViewController else {
+                return
+            }
+            accountsVC.type = .following
+            followingViewController = accountsVC
+
+        case "Followers":
+            guard let accountsVC = segue.destination as? AccountsTableViewController else {
+                return
+            }
+            accountsVC.type = .followers
+            followersViewController = accountsVC
 
         case "Favourites":
             guard let timelineVC = segue.destination as? TimelineTableViewController else {
@@ -320,6 +373,16 @@ extension ProfileViewController {
             }
             // TODO: .home => .favourites
             timelineVC.type = .home
+            favouritesViewController = timelineVC
+
+        case "Profile":
+            guard let profileVC = segue.destination as? ProfileViewController else {
+                return
+            }
+            guard let account = sender as? Account else {
+                return
+            }
+            profileVC.accountID = account.id
 
         default:
             break
