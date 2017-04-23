@@ -59,7 +59,7 @@ final class AccountsTableViewCell: UITableViewCell {
     }
 
     fileprivate var followUnfollowButtonType: FollowUnfollowButtonType = .follow
-    fileprivate var account: Account!
+    fileprivate(set) var account: Account!
     fileprivate var relationship: Relationship?
     fileprivate var isLoading = false
 
@@ -81,14 +81,6 @@ final class AccountsTableViewCell: UITableViewCell {
         displayNameLabel.text = account.displayName
         acctLabel.text = "@" + account.acct
         lockedImageView.isHidden = !account.locked
-    }
-
-    /// For following accounts
-    func configureCell(following account: Account) {
-
-        configureCell(account: account)
-        changeToUnfollowButton()
-        followUnfollowButton.isHidden = false
     }
 
     /// For followers accounts
@@ -205,7 +197,7 @@ extension AccountsTableViewCell {
 
             switch result {
 
-            case .success(let _):
+            case .success( _):
                 s.changeToFollowButton()
                 if !isCancelRequest {
                     s.delegate?.accountsTableViewCellDidUnfollow(cell: s, account: s.account)
