@@ -81,14 +81,14 @@ final class LoginViewController: UIViewController {
                     s.logoViewTopConstraint.constant = diff - space
                 }
                 UIView.animate(withDuration: event.duration, delay: 0.0, options: [event.options], animations: {
-                    s.logoView.layoutIfNeeded()
+                    s.view.layoutIfNeeded()
                 })
 
             case .willHide:
 
                 s.logoViewTopConstraint.constant = 0
                 UIView.animate(withDuration: event.duration, delay: 0.0, options: [event.options], animations: {
-                    s.logoView.setNeedsLayout()
+                    s.view.layoutIfNeeded()
                 })
 
             default:
