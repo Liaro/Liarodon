@@ -62,6 +62,10 @@ class TootDetailViewController: UIViewController, UITableViewDataSource, UITable
             let timelineViewController = segue.destination as! TimelineTableViewController
             let tag = (sender as? NSDictionary)?["withTag"] as! Tag
             timelineViewController.type = .tag(tag.name)
+        } else if segue.identifier == "ShowProfile" {
+            let profileViewController = segue.destination as! ProfileViewController
+            let mention = (sender as? NSDictionary)?["withMention"] as! Mention
+            profileViewController.accountID = mention.id
         }
     }
 
@@ -209,7 +213,7 @@ extension TootDetailViewController: TootTableViewCellDelegate {
         case .tag(let tag):
             performSegue(withIdentifier: "ShowTimeline", sender: ["withTag" :tag])
         case .mention(let mention):
-            replyTextField.becomeFirstResponder()
+            performSegue(withIdentifier: "ShowProfile", sender: ["withMention": mention])
         case .attachment(_, let offset):
             attachmentView(cell.attachmentView, imageTapped: cell.attachmentView.images[offset], withImageViews: cell.attachmentView.images, withAttachments: cell.attachmentView.attachments, selectedIndex: offset)
         case .link(let url):

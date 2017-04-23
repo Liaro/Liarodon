@@ -197,6 +197,7 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <segue destination="Qb5-dM-JqW" kind="show" identifier="ShowTimeline" id="eRH-VU-n3T"/>
+                        <segue destination="hHd-0O-W0k" kind="show" identifier="ShowProfile" id="F6o-nv-Ppj"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RjH-og-a0w" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -210,6 +211,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MMd-Sy-YuR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1201" y="546"/>
+        </scene>
+        <!--ProfileViewController-->
+        <scene sceneID="S5P-EU-KZQ">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Profile" referencedIdentifier="ProfileViewController" id="hHd-0O-W0k" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Aot-yu-CrX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1170" y="706"/>
         </scene>
         <!--Toot-->
         <scene sceneID="U3C-zC-uqe">
@@ -442,6 +451,7 @@
                         <outlet property="replyTextField" destination="5dI-Se-Cz4" id="bZl-Or-akj"/>
                         <outlet property="tableView" destination="Gkc-Dl-Ug4" id="Xrz-vM-d0z"/>
                         <segue destination="Qb5-dM-JqW" kind="show" identifier="ShowTimeline" id="IUK-t4-kXd"/>
+                        <segue destination="hHd-0O-W0k" kind="show" identifier="ShowProfile" id="sGa-em-mIa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8GB-y5-mjh" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -697,5 +707,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="IUK-t4-kXd"/>
         <segue reference="pdB-uj-xmp"/>
+        <segue reference="F6o-nv-Ppj"/>
     </inferredMetricsTieBreakers>
 </document>
