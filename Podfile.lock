@@ -1,4 +1,5 @@
 PODS:
+  - 1PasswordExtension (1.8.4)
   - APIKit (3.1.2):
     - Result (~> 3.0)
   - DateToolsSwift (2.0.3)
@@ -12,6 +13,7 @@ PODS:
   - SnapKit (3.2.0)
 
 DEPENDENCIES:
+  - 1PasswordExtension
   - APIKit (from `https://github.com/ishkawa/APIKit.git`, branch `develop/4.0`)
   - DateToolsSwift
   - Himotoki
@@ -33,6 +35,7 @@ CHECKOUT OPTIONS:
     :git: https://github.com/ishkawa/APIKit.git
 
 SPEC CHECKSUMS:
+  1PasswordExtension: e775a29310c65851e5a6cec1afc349ab4e334e47
   APIKit: 923b510c13eb4d977d2d0ffcd51c88e9dfe7a74a
   DateToolsSwift: bf69bf9056d9e53c5c03f06e51f219b9b8b02f9e
   Himotoki: 85fda41d4d0e14f7228317a3b474175cdfb8f515
@@ -44,6 +47,6 @@ SPEC CHECKSUMS:
   Result: 2453a22e5c5b11c0c3a478736e82cd02f763b781
   SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
 
-PODFILE CHECKSUM: 8b35c2d069f79e02565709b809356105fbcec2ec
+PODFILE CHECKSUM: b1a657ec3e07aa5fd0243cbfc0bc1243f423e5cf
 
 COCOAPODS: 1.2.1

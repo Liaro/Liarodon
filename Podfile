@@ -12,6 +12,7 @@ target 'Liarodon' do
     pod 'SnapKit'
     pod 'ImageViewer'
     pod 'DateToolsSwift'
+    pod '1PasswordExtension'
 end
 
 post_install do |installer|
