@@ -8,6 +8,7 @@
 
 import UIKit
 import KeyboardObserver
+import APIKit
 
 class ComposeViewController: UIViewController {
 
@@ -35,6 +36,7 @@ class ComposeViewController: UIViewController {
     @IBOutlet var topConstraint: NSLayoutConstraint!
     var restCount = 500
     var images = [UIImage]()
+    var visibility = Visibility.public
     var isContentWarningEnabled = false {
         didSet {
             if isContentWarningEnabled {
@@ -145,13 +147,17 @@ class ComposeViewController: UIViewController {
 
     @IBAction func privacyButtonTapped(_ sender: UIButton) {
         let alert = UIAlertController(title: "Privacy settings", message: nil, preferredStyle: .actionSheet)
-        alert.addAction(UIAlertAction(title: "Public", style: .default, handler: { _ in
+        alert.addAction(UIAlertAction(title: "Public", style: .default, handler: { [weak self] _ in
+            self?.visibility = .public
         }))
-        alert.addAction(UIAlertAction(title: "Private", style: .default, handler: { _ in
+        alert.addAction(UIAlertAction(title: "Private", style: .default, handler: { [weak self] _ in
+            self?.visibility = .private
         }))
-        alert.addAction(UIAlertAction(title: "Unlisted", style: .default, handler: { _ in
+        alert.addAction(UIAlertAction(title: "Unlisted", style: .default, handler: { [weak self] _ in
+            self?.visibility = .unlisted
         }))
-        alert.addAction(UIAlertAction(title: "Direct", style: .default, handler: { _ in
+        alert.addAction(UIAlertAction(title: "Direct", style: .default, handler: { [weak self] _ in
+            self?.visibility = .direct
         }))
 
         alert.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: nil))
@@ -164,8 +170,65 @@ class ComposeViewController: UIViewController {
         isNotSafeForWorkEnabled = !isNotSafeForWorkEnabled
     }
     @IBAction func tootButtonTapped(_ sender: UIButton) {
-        // TODO: TOOT!!
+        sender.isEnabled = false
+
+        if images.count > 4 {
+            let alert = UIAlertController(title: "Images too much (max 4)", message: "", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            present(alert, animated: true, completion: nil)
+            return
+        }
+
+        var attachments = [Attachment]()
+        images.forEach {
+            let data = UIImageJPEGRepresentation($0, 0.8)!
+            let req = MastodonAPI.AddMedia(imageData: data)
+            Session.send(req) { [weak self] (result) in
+                switch result {
+                case .success(let attachment):
+                    attachments.append(attachment)
+                    if attachments.count == self?.images.count {
+                        self?.post(withAttachment: attachments)
+                        sender.isEnabled = true
+                    }
+                case .failure(let error):
+                    self?.fail(error: error)
+                    sender.isEnabled = true
+                }
+            }
+        }
+        if images.isEmpty {
+            post(withAttachment: [])
+        }
     }
+
+    func post(withAttachment attachments: [Attachment]) {
+        let req = MastodonAPI.AddStatus(status: contentTextView.text,
+                                        inReplyToId: nil, // TODO: add in_reply_to
+                                        mediaIds: attachments.map { $0.id },
+                                        sensitive: isNotSafeForWorkEnabled,
+                                        spoilerText: isContentWarningEnabled ? contentWarningTextField.text : nil,
+                                        visibility: visibility)
+        Session.send(req) { [weak self] (result) in
+            switch result {
+            case .success(_):
+                let alert = UIAlertController(title: "Posted", message: nil, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak self] _ in
+                    self?.dismiss(animated: true, completion: nil)
+                }))
+                self?.present(alert, animated: true, completion: nil)
+            case .failure(let error):
+                self?.fail(error: error)
+            }
+        }
+    }
+
+    func fail(error: Error) {
+        let alert = UIAlertController(title: "Post failed", message: nil, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
+
     @IBAction func closeButtonTapped(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }

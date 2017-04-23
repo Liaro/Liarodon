@@ -12,6 +12,83 @@ import Himotoki
 
 extension MastodonAPI {
 
+    struct AddMedia: JSONRequest {
+
+        let imageData: Data
+
+        var baseURL: URL {
+            return MastodonAPI.instanceURL
+        }
+
+        var headerFields: [String : String] {
+            var fields = [String: String]()
+            if let accessToken = MastodonAPI.accessToken {
+                fields["Authorization"] = "Bearer \(accessToken)"
+            }
+            return fields
+        }
+
+        var bodyParameters: BodyParameters? {
+            return MultipartFormDataBodyParameters(parts: [MultipartFormDataBodyParameters.Part(data: imageData, name: "file", mimeType: "image/jpeg", fileName: "file")])
+        }
+
+        var method: HTTPMethod {
+            return .post
+        }
+
+        var path: String {
+            return "/api/v1/media"
+        }
+
+        func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Attachment {
+            return try decodeValue(object)
+        }
+    }
+
+
+    struct AddStatus: MastodonRequest {
+        let status: String
+        let inReplyToId: Int?
+        let mediaIds: [Int]
+        let sensitive: Bool
+        let spoilerText: String?
+        let visibility: Visibility
+
+        var method: HTTPMethod {
+            return .post
+        }
+
+        var path: String {
+            return "/api/v1/statuses"
+        }
+
+        var parameters: Any? {
+            var params = [String: Any]()
+
+            params["status"] = self.status
+            if let inReplyToId = self.inReplyToId {
+                params["in_reply_to_id"] = inReplyToId
+            }
+            if !self.mediaIds.isEmpty {
+                params["media_ids"] = self.mediaIds
+            }
+            if self.sensitive {
+                params["sensitive"] = true
+            }
+            if let spoilerText = self.spoilerText {
+                params["spoiler_text"] = spoilerText
+            }
+            params["visibility"] = visibility.rawValue
+
+            return params
+        }
+
+        func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Status {
+            return try decodeValue(object)
+        }
+
+    }
+
     struct AddReblogToStatus: MastodonRequest {
 
         let statusId: Int
