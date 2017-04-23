@@ -42,7 +42,7 @@ final class TimelineTableViewController: UITableViewController {
             title = "Federated"
         }
 
-        tableView.estimatedRowHeight = 250
+        tableView.estimatedRowHeight = 100
         tableView.rowHeight = UITableViewAutomaticDimension
 
         indicator.activityIndicatorViewStyle = .gray
@@ -54,11 +54,10 @@ final class TimelineTableViewController: UITableViewController {
         }
         fetchInitialTimeline()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
 
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(TimelineTableViewController.pullToRefresh), for: .valueChanged)
+        self.refreshControl = refreshControl
     }
 
     override func didReceiveMemoryWarning() {
@@ -66,6 +65,9 @@ final class TimelineTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    func pullToRefresh() {
+        loadNewer()
+    }
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -124,6 +126,63 @@ final class TimelineTableViewController: UITableViewController {
             case .success(let statuses):
                 s.statuses = statuses
                 s.tableView.reloadData()
+
+            case .failure(let error):
+                print(error)
+            }
+            s.loading = false
+        }
+    }
+
+    func loadNewer() {
+        if loading {
+            refreshControl?.endRefreshing()
+            return
+        }
+        loading = true
+
+        let request: MastodonAPI.GetPublicTimelineRequest
+        switch type! {
+        case .home:
+            let request = MastodonAPI.GetHomeTimelineRequest(sinceId: statuses.first?.id)
+            Session.send(request) { [weak self] (result) in
+                guard let s = self else {
+                    return
+                }
+                s.refreshControl?.endRefreshing()
+
+                switch result {
+                case .success(let statuses):
+                    s.statuses = statuses + s.statuses
+
+                    let offset = s.tableView.estimatedRowHeight * CGFloat(statuses.count)
+                    s.tableView.reloadData()
+                    s.tableView.contentOffset = CGPoint(x: s.tableView.contentOffset.x, y: s.tableView.contentOffset.y + offset)
+
+
+                case .failure(let error):
+                    print(error)
+                }
+                s.loading = false
+            }
+            return
+        case .local:
+            request = MastodonAPI.GetPublicTimelineRequest(isLocal: true, sinceId: statuses.first?.id)
+        case .federated:
+            request = MastodonAPI.GetPublicTimelineRequest(isLocal: false, sinceId: statuses.first?.id)
+        }
+        Session.send(request) { [weak self] (result) in
+            guard let s = self else {
+                return
+            }
+
+            s.refreshControl?.endRefreshing()
+            switch result {
+            case .success(let statuses):
+                s.statuses =  statuses + s.statuses
+                let offset = s.tableView.estimatedRowHeight * CGFloat(statuses.count)
+                s.tableView.reloadData()
+                s.tableView.contentOffset = CGPoint(x: s.tableView.contentOffset.x, y: s.tableView.contentOffset.y + offset)
 
             case .failure(let error):
                 print(error)
