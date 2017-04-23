@@ -20,6 +20,7 @@ enum StatusLink {
 
 protocol TootTableViewCellDelegate: class {
     func tootTableViewCell(_ cell: TootTableViewCell, shouldMoveTo link: StatusLink)
+    func tootTableViewCellMoreButtonTapped(_ cell: TootTableViewCell)
 }
 
 class TootTableViewCell: UITableViewCell {
@@ -59,6 +60,12 @@ class TootTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+
+        avatarImageView.layer.cornerRadius = 4
+        avatarImageView.layer.masksToBounds = true
+
+        attachmentView.layer.cornerRadius = 4
+        attachmentView.layer.masksToBounds = true
     }
 
     override func prepareForReuse() {
@@ -137,6 +144,10 @@ class TootTableViewCell: UITableViewCell {
 
 
     @IBAction func replyButtonTapped(_ sender: UIButton) {
+        // FIXME: The reply button's userInteractionEnabled is false for now
+        // because the result on tap this button is same to tap cell.
+        // If you change this result or refector, you have to enable checkbox on storyboard file.
+        // That's why, this method is empty.
     }
     @IBAction func reblogButtonTapped(_ sender: UIButton) {
         status.reblogged = !status.reblogged
@@ -189,6 +200,7 @@ class TootTableViewCell: UITableViewCell {
         }
     }
     @IBAction func moreButtonTapped(_ sender: UIButton) {
+        delegate?.tootTableViewCellMoreButtonTapped(self)
     }
 }
 

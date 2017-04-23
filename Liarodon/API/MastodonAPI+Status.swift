@@ -12,21 +12,9 @@ import Himotoki
 
 extension MastodonAPI {
 
-    struct AddMedia: JSONRequest {
+    struct AddMedia: MastodonRequest {
 
         let imageData: Data
-
-        var baseURL: URL {
-            return MastodonAPI.instanceURL
-        }
-
-        var headerFields: [String : String] {
-            var fields = [String: String]()
-            if let accessToken = MastodonAPI.accessToken {
-                fields["Authorization"] = "Bearer \(accessToken)"
-            }
-            return fields
-        }
 
         var bodyParameters: BodyParameters? {
             return MultipartFormDataBodyParameters(parts: [MultipartFormDataBodyParameters.Part(data: imageData, name: "file", mimeType: "image/jpeg", fileName: "file")])

@@ -39,19 +39,19 @@
                                                 <constraint firstAttribute="width" constant="60" id="eyt-bz-Rge"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kouki Saito" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5mf-9y-1jz">
-                                            <rect key="frame" x="76" y="23" width="77" height="18"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="500" verticalHuggingPriority="251" text="Kouki Saito" textAlignment="natural" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5mf-9y-1jz">
+                                            <rect key="frame" x="76" y="23" width="82.5" height="18"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@kouki_dan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="89r-Uw-8c6">
-                                            <rect key="frame" x="159" y="26" width="67" height="15"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@kouki_dan" textAlignment="natural" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="89r-Uw-8c6">
+                                            <rect key="frame" x="164.5" y="26" width="67" height="15"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <color key="textColor" red="0.49803921579999999" green="0.49803921579999999" blue="0.49803921579999999" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3m" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xnl-ZK-QpF">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="251" horizontalCompressionResistancePriority="800" text="3m" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xnl-ZK-QpF">
                                             <rect key="frame" x="294" y="26" width="18" height="15"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <color key="textColor" red="0.60000002379999995" green="0.60000002379999995" blue="0.60000002379999995" alpha="1" colorSpace="calibratedRGB"/>
@@ -63,7 +63,7 @@
                                             <color key="textColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jek-tu-mNf">
+                                        <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jek-tu-mNf">
                                             <rect key="frame" x="76" y="228" width="24" height="22"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="22" id="3FR-NR-5Ol"/>
@@ -156,6 +156,7 @@
                                         <constraint firstItem="BNf-6y-EcM" firstAttribute="leading" secondItem="5mf-9y-1jz" secondAttribute="leading" id="tDf-AV-Vl6"/>
                                         <constraint firstItem="5mf-9y-1jz" firstAttribute="leading" secondItem="kom-Ot-Ng1" secondAttribute="trailing" constant="8" id="tTD-6h-jCL"/>
                                         <constraint firstItem="Bad-6f-WBV" firstAttribute="leading" secondItem="Jek-tu-mNf" secondAttribute="trailing" constant="40" id="vd5-IN-qik"/>
+                                        <constraint firstItem="Xnl-ZK-QpF" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="89r-Uw-8c6" secondAttribute="trailing" constant="4" id="y2B-f0-OsY"/>
                                         <constraint firstItem="89r-Uw-8c6" firstAttribute="leading" secondItem="5mf-9y-1jz" secondAttribute="trailing" constant="6" id="ztp-Fr-Fvd"/>
                                     </constraints>
                                 </tableViewCellContentView>
@@ -266,19 +267,19 @@
                                                         <constraint firstAttribute="height" constant="60" id="g2J-1q-6G0"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kouki Saito" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ayg-vH-2cY">
-                                                    <rect key="frame" x="76" y="23" width="77" height="18"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="500" verticalHuggingPriority="251" text="Kouki Saito" textAlignment="natural" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ayg-vH-2cY">
+                                                    <rect key="frame" x="76" y="23" width="82.5" height="18"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@kouki_dan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e9b-hO-MCr">
-                                                    <rect key="frame" x="159" y="26" width="67" height="15"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@kouki_dan" textAlignment="natural" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e9b-hO-MCr">
+                                                    <rect key="frame" x="164.5" y="26" width="67" height="15"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" red="0.49803921579999999" green="0.49803921579999999" blue="0.49803921579999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3m" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cqb-Wk-Kr8">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="800" text="3m" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cqb-Wk-Kr8">
                                                     <rect key="frame" x="294" y="26" width="18" height="15"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" red="0.60000002379999995" green="0.60000002379999995" blue="0.60000002379999995" alpha="1" colorSpace="calibratedRGB"/>
@@ -290,7 +291,7 @@
                                                     <color key="textColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="23g-CE-dKA">
+                                                <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="23g-CE-dKA">
                                                     <rect key="frame" x="76" y="228" width="24" height="22"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="24" id="c3f-r6-S50"/>
@@ -383,6 +384,7 @@
                                                 <constraint firstItem="Keh-N1-YBl" firstAttribute="top" secondItem="Do0-Ln-EiU" secondAttribute="bottom" id="feE-pX-zBE"/>
                                                 <constraint firstItem="e9b-hO-MCr" firstAttribute="bottom" secondItem="Ayg-vH-2cY" secondAttribute="bottom" id="hDQ-qx-Vvk"/>
                                                 <constraint firstItem="Nv7-HC-UoS" firstAttribute="leading" secondItem="ghN-N2-rBg" secondAttribute="trailing" constant="40" id="mmR-i0-4Dv"/>
+                                                <constraint firstItem="Cqb-Wk-Kr8" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="e9b-hO-MCr" secondAttribute="trailing" constant="4" id="szB-J9-ofK"/>
                                                 <constraint firstItem="Ayg-vH-2cY" firstAttribute="top" secondItem="Keh-N1-YBl" secondAttribute="top" id="xcs-Ef-04B"/>
                                             </constraints>
                                         </tableViewCellContentView>

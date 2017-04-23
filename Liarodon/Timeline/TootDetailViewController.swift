@@ -143,6 +143,62 @@ extension TootDetailViewController: AttachmentViewDelegate {
 }
 
 extension TootDetailViewController: TootTableViewCellDelegate {
+    func tootTableViewCellMoreButtonTapped(_ cell: TootTableViewCell) {
+        // FIXME: copy from TimelineTableViewController
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Open in Safari", style: .default, handler: { _ in
+            if let url = cell.status.url.url {
+                UIApplication.shared.openURL(url)
+            }
+        }))
+        alert.addAction(UIAlertAction(title: "Share", style: .default, handler: { [weak self] _ in
+            let shareText = cell.contentTextView.text
+            let shareWebsite = cell.status.url.url
+            let shareImage: UIImage?
+            if cell.attachmentView.images?.isEmpty == false {
+                shareImage = cell.attachmentView.images[0].image
+            } else {
+                shareImage = nil
+            }
+
+            let activityItems = ([shareText, shareWebsite, shareImage] as [Any?]).flatMap { $0 }
+            let activityVC = UIActivityViewController(activityItems: activityItems, applicationActivities: nil)
+
+            self?.present(activityVC, animated: true, completion: nil)
+        }))
+        alert.addAction(UIAlertAction(title: "Copy text", style: .default, handler: { _ in
+            UIPasteboard.general.setValue(cell.contentTextView.text, forPasteboardType: "public.text")
+        }))
+        /* // TODO: Implement them
+         alert.addAction(UIAlertAction(title: "Mute", style: .default, handler: { _ in
+         }))
+         alert.addAction(UIAlertAction(title: "Block", style: .destructive, handler: { _ in
+         }))
+         */
+        alert.addAction(UIAlertAction(title: "Report", style: .destructive, handler: { _ in
+            let req = MastodonAPI.AddReport(
+                accountId: cell.status.account.id,
+                statusIds: [cell.status.id],
+                comment: ""
+            )
+            Session.send(req) { [weak self] (result) in
+                switch result {
+                case .success(_):
+                    let alert = UIAlertController(title: "Reported", message: nil, preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    self?.present(alert, animated: true, completion: nil)
+                case .failure(_):
+                    let alert = UIAlertController(title: "Report failed", message: nil, preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    self?.present(alert, animated: true, completion: nil)
+                }
+            }
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in
+        }))
+        present(alert, animated: true, completion: nil)
+    }
+
     // FIXME: copy and paste from TinelineTableViewController
     func tootTableViewCell(_ cell: TootTableViewCell, shouldMoveTo link: StatusLink) {
         switch link {
