@@ -15,6 +15,7 @@
 		1EC795551EAC61FA000AE44D /* SelectAccountTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC795541EAC61FA000AE44D /* SelectAccountTableViewController.swift */; };
 		1EEF59B71EAC7B130047293B /* AccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EEF59B61EAC7B130047293B /* AccountService.swift */; };
 		1EEF59B91EACEFB40047293B /* TootDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EEF59B81EACEFB40047293B /* TootDetailViewController.swift */; };
+		1EEF59BB1EAD1D400047293B /* MastodonAPI+Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EEF59BA1EAD1D400047293B /* MastodonAPI+Report.swift */; };
 		430061661EACC839005DB81F /* FollowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430061651EACC839005DB81F /* FollowButton.swift */; };
 		432590261EACA039000C364A /* AccountsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432590251EACA039000C364A /* AccountsTableViewController.swift */; };
 		435CA87B1EA8AD32006F5EE5 /* Accounts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 435CA87A1EA8AD32006F5EE5 /* Accounts.storyboard */; };
@@ -83,6 +84,7 @@
 		1EC795541EAC61FA000AE44D /* SelectAccountTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SelectAccountTableViewController.swift; path = Accounts/SelectAccountTableViewController.swift; sourceTree = "<group>"; };
 		1EEF59B61EAC7B130047293B /* AccountService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountService.swift; path = Accounts/AccountService.swift; sourceTree = "<group>"; };
 		1EEF59B81EACEFB40047293B /* TootDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TootDetailViewController.swift; path = Timeline/TootDetailViewController.swift; sourceTree = "<group>"; };
+		1EEF59BA1EAD1D400047293B /* MastodonAPI+Report.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "MastodonAPI+Report.swift"; path = "API/MastodonAPI+Report.swift"; sourceTree = "<group>"; };
 		430061651EACC839005DB81F /* FollowButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FollowButton.swift; path = Accounts/FollowButton.swift; sourceTree = "<group>"; };
 		432590251EACA039000C364A /* AccountsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountsTableViewController.swift; path = Accounts/AccountsTableViewController.swift; sourceTree = "<group>"; };
 		435CA87A1EA8AD32006F5EE5 /* Accounts.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Accounts.storyboard; path = Accounts/Accounts.storyboard; sourceTree = "<group>"; };
@@ -320,6 +322,7 @@
 				43F9B1FC1EA64E2B0093E798 /* MastodonAPI+Accounts.swift */,
 				43F9B20A1EA708200093E798 /* MastodonAPI+Timelines.swift */,
 				1EC795501EABEC99000AE44D /* MastodonAPI+Status.swift */,
+				1EEF59BA1EAD1D400047293B /* MastodonAPI+Report.swift */,
 			);
 			name = API;
 			sourceTree = "<group>";
@@ -566,6 +569,7 @@
 				43F9B1F41EA62B910093E798 /* App.swift in Sources */,
 				1EEF59B91EACEFB40047293B /* TootDetailViewController.swift in Sources */,
 				43F9B1EE1EA626740093E798 /* AccessToken.swift in Sources */,
+				1EEF59BB1EAD1D400047293B /* MastodonAPI+Report.swift in Sources */,
 				439F01A31EAAAB12005C273A /* Relationship.swift in Sources */,
 				1EC795511EABEC99000AE44D /* MastodonAPI+Status.swift in Sources */,
 			);
