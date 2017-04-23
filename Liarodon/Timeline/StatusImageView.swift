@@ -61,6 +61,12 @@ class StatusImageView: UIView {
             // ****
             images.forEach {
                 mainStackView.addArrangedSubview($0)
+                if !$0.subviews.isEmpty {
+                    // Add NSFW label to full size if needed.
+                    // It is added on AttachmentView.setAttachments
+                    let image = $0
+                    $0.subviews[0].snp.makeConstraints { $0.left.top.right.bottom.equalTo(image) }
+                }
             }
         } else {
             // square
@@ -83,6 +89,12 @@ class StatusImageView: UIView {
                     substackViews[1].addArrangedSubview($0.element)
                 }
 
+                if !$0.element.subviews.isEmpty {
+                    // Add NSFW label to full size if needed.
+                    // It is added on AttachmentView.setAttachments
+                    let image = $0.element
+                    $0.element.subviews[0].snp.makeConstraints { $0.left.top.right.bottom.equalTo(image) }
+                }
             }
         }
     }
