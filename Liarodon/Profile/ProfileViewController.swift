@@ -21,6 +21,8 @@ final class ProfileViewController: UIViewController {
     fileprivate var myAccount: Account!
     /// Display account
     fileprivate var account: Account!
+    /// If myAccount is not account, use relationship.
+    fileprivate var relationship: Relationship?
 
     @IBOutlet weak var headerView: ProfileHeaderView!
     @IBOutlet weak var headerViewMinTopConstraint: NSLayoutConstraint!
@@ -51,6 +53,10 @@ final class ProfileViewController: UIViewController {
             favouritesButton
         ]
     }
+    @IBOutlet weak var followButtonView: UIView!
+    @IBOutlet weak var followButton: FollowButton!
+    @IBOutlet weak var requestedLabel: UILabel!
+
     @IBOutlet weak var statusesContainerView: UIView!
     @IBOutlet weak var followingContainerView: UIView!
     @IBOutlet weak var followersContainerView: UIView!
@@ -143,6 +149,9 @@ final class ProfileViewController: UIViewController {
                 s.fetchAccount(id: id) {
                     s.setupViews()
                 }
+                s.fetchRelationship(id: id){
+                    s.setupFollowButtonView()
+                }
             } else {
                 s.account = s.myAccount
                 s.setupViews()
@@ -186,6 +195,24 @@ final class ProfileViewController: UIViewController {
         }
     }
 
+    func fetchRelationship(id: Int, completion: @escaping () -> Void) {
+
+        let request = MastodonAPI.GetAccountRelationshipsRequest(ids: [id])
+        Session.send(request) { [weak self] (result) in
+            guard let s = self else { return }
+
+            switch result {
+
+            case .success(let relationships):
+                s.relationship = relationships.first
+                completion()
+
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+
     private func setupViews() {
 
         headerImageView.kf.setImage(with: account.header.url)
@@ -200,6 +227,7 @@ final class ProfileViewController: UIViewController {
             // TODO: GET /api/v1/favourites and count [Status]
             favouritesButton.value = 0
             favouritesButton.isHidden = false
+            followButtonView.isHidden = true
         } else {
             navigationItem.title = account.displayName
             favouritesButton.isHidden = true
@@ -213,6 +241,23 @@ final class ProfileViewController: UIViewController {
                 accountsVC.deleagte = self
             }
         }
+    }
+
+    private func setupFollowButtonView() {
+        guard let relationship = relationship else {
+            return
+        }
+        if relationship.requested {
+            followButton.type = .cancelRequest
+            requestedLabel.isHidden = false
+        } else if relationship.following {
+            followButton.type = .unfollow
+            requestedLabel.isHidden = true
+        } else {
+            followButton.type = .follow
+            requestedLabel.isHidden = true
+        }
+        followButtonView.isHidden = false
     }
 
     fileprivate func switchContainerView(index: Int) {
@@ -359,7 +404,6 @@ extension ProfileViewController {
             return
         }
 
-        print(id)
         switch id {
 
         case "Statuses":
@@ -369,7 +413,6 @@ extension ProfileViewController {
             // TODO: .home => .account
             timelineVC.type = .home
             statusesViewController = timelineVC
-            print(statusesViewController)
 
         case "Following":
             guard let accountsVC = segue.destination as? AccountsTableViewController else {
