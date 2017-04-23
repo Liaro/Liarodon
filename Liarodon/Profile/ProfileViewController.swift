@@ -233,11 +233,16 @@ final class ProfileViewController: UIViewController {
         displayNameLabel.text = account.displayName
         acctLabel.text = "@" + account.acct
 
-        // Displayed text will be broken during scrolling.
-        // Solve it by noteLabel height = noteLabel.sizeToFit height + 1
-        noteTextView.attributedText = account.attributedNote
-        let fitSize = noteTextView.sizeThatFits(CGSize(width: noteTextView.bounds.width, height: view.bounds.height))
-        noteTextViewHeightConstraint.constant = fitSize.height + 1
+        if account.attributedNote.string.characters.count > 0 {
+            noteTextView.attributedText = account.attributedNote
+            // Displayed text will be broken during scrolling.
+            // Solve it by noteLabel height = noteLabel.sizeToFit height + 1
+            let fitSize = noteTextView.sizeThatFits(CGSize(width: noteTextView.bounds.width, height: view.bounds.height))
+            noteTextViewHeightConstraint.constant = fitSize.height + 1
+        } else {
+            noteTextView.attributedText = nil
+            noteTextViewHeightConstraint.constant = 0
+        }
 
         statusesButton.value = account.statusesCount
         followingButton.value = account.followingCount
