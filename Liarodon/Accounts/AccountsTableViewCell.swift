@@ -45,20 +45,13 @@ final class AccountsTableViewCell: UITableViewCell {
             lockedImageView.image = image
         }
     }
+    @IBOutlet weak var followButton: FollowButton!
     @IBOutlet private weak var requestedLabel: UILabel! {
         didSet {
             requestedLabel.isHidden = true
         }
     }
-    @IBOutlet private weak var followUnfollowButton: UIButton!
 
-    private enum FollowUnfollowButtonType {
-        case follow
-        case unfollow
-        case cancelRequest
-    }
-
-    fileprivate var followUnfollowButtonType: FollowUnfollowButtonType = .follow
     fileprivate(set) var account: Account!
     fileprivate var relationship: Relationship?
     fileprivate var isLoading = false
@@ -87,61 +80,35 @@ final class AccountsTableViewCell: UITableViewCell {
     func configureCell(follower account: Account, relationship: Relationship? = nil) {
 
         configureCell(account: account)
+
+        requestedLabel.isHidden = true
+
         if let relationship = relationship {
             if relationship.requested {
-                changeToCancelRequestButton()
+                followButton.type = .cancelRequest
+                requestedLabel.isHidden = false
             } else if relationship.following {
-                changeToUnfollowButton()
+                followButton.type = .unfollow
             } else {
-                changeToFollowButton()
+                followButton.type = .follow
             }
-            followUnfollowButton.isHidden = false
+            followButton.isHidden = false
         } else {
-            followUnfollowButton.isHidden = true
+            followButton.isHidden = true
         }
-    }
-
-    fileprivate func changeToFollowButton() {
-
-        followUnfollowButtonType = .follow
-        followUnfollowButton.tintColor = UIColor(red: 0, green: 122/255, blue: 255/255, alpha: 1)
-        let image = UIImage(named: "follow")!
-        followUnfollowButton.setImage(image, for: .normal)
-        followUnfollowButton.isUserInteractionEnabled = true
-        requestedLabel.isHidden = true
-    }
-
-    fileprivate func changeToUnfollowButton() {
-
-        followUnfollowButtonType = .unfollow
-        followUnfollowButton.tintColor = UIColor(red: 255/255, green: 122/255, blue: 122/255, alpha: 1)
-        let image = UIImage(named: "unfollow")!
-        followUnfollowButton.setImage(image, for: .normal)
-        followUnfollowButton.isUserInteractionEnabled = true
-        requestedLabel.isHidden = true
-    }
-
-    fileprivate func changeToCancelRequestButton() {
-
-        followUnfollowButtonType = .cancelRequest
-        followUnfollowButton.tintColor = lockedImageView.tintColor
-        let image = UIImage(named: "follow")!
-        followUnfollowButton.setImage(image, for: .normal)
-        followUnfollowButton.isUserInteractionEnabled = false
-        requestedLabel.isHidden = false
     }
 }
 
 // MARK: Tap follow/unfollow button
 extension AccountsTableViewCell {
 
-    @IBAction func followUnfollowButtonDidTap(_ sender: UIButton) {
+    @IBAction func followButtonDidTap(_ sender: FollowButton) {
 
         guard !isLoading else {
             return
         }
 
-        switch followUnfollowButtonType {
+        switch sender.type {
 
         case .follow:
             follow()
@@ -171,10 +138,10 @@ extension AccountsTableViewCell {
 
             case .success(let relationship):
                 if relationship.following {
-                    s.changeToUnfollowButton()
+                    s.followButton.type = .unfollow
                     s.delegate?.accountsTableViewCellDidFollow(cell: s, account: s.account)
                 } else if relationship.requested {
-                    s.changeToCancelRequestButton()
+                    s.followButton.type = .cancelRequest
                 }
 
             case .failure(let error):
@@ -198,7 +165,7 @@ extension AccountsTableViewCell {
             switch result {
 
             case .success( _):
-                s.changeToFollowButton()
+                s.followButton.type = .follow
                 if !isCancelRequest {
                     s.delegate?.accountsTableViewCellDidUnfollow(cell: s, account: s.account)
                 }
