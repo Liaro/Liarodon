@@ -85,7 +85,9 @@ class AccountsTableViewController: UITableViewController {
         case .success(let accounts):
             datum = accounts.map({ AccountsTableCellData(id: $0.id, account: $0) })
             tableView.reloadData()
-            fetchRelationships(accounts: accounts)
+            if !accounts.isEmpty {
+                fetchRelationships(accounts: accounts)
+            }
 
         case .failure(let error):
             print(error)
