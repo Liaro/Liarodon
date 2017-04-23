@@ -39,6 +39,12 @@ final class ProfileViewController: UIViewController {
             acctLabel.text = ""
         }
     }
+    @IBOutlet private weak var noteLabel: UILabel! {
+        didSet {
+            noteLabel.text = ""
+        }
+    }
+    @IBOutlet weak var noteLabelHeightConstraint: NSLayoutConstraint!
 
     @IBOutlet weak var menuView: UIView!
     @IBOutlet weak var statusesButton: ProfileMenuButton!
@@ -108,31 +114,6 @@ final class ProfileViewController: UIViewController {
 
         for button in menuButtons {
             button.delegate = self
-        }
-    }
-
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-
-        headerViewMinTopConstraint.constant = -(headerView.bounds.height - menuView.bounds.height)
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-
-        if currentContainerViewIndex == nil {
-            let insetTop = headerView.frame.maxY
-            let inset = UIEdgeInsets(top: insetTop, left: 0, bottom: 0, right: 0)
-            for tableViewController in childTableViewControllers {
-                tableViewController.tableView.contentInset = inset
-                tableViewController.tableView.scrollIndicatorInsets = inset
-                tableViewController.tableView.contentOffset = CGPoint(x: 0, y: -insetTop)
-            }
-            switchContainerView(index: 0)
-        } else {
-            if let accountsVC = currentChildTableViewController as? AccountsTableViewController {
-                accountsVC.fetchLatestAccounts()
-            }
         }
     }
 
@@ -214,11 +195,18 @@ final class ProfileViewController: UIViewController {
     }
 
     private func setupViews() {
-
+        print(account)
         headerImageView.kf.setImage(with: account.header.url)
         avatarImageView.kf.setImage(with: account.avatar.url)
         displayNameLabel.text = account.displayName
         acctLabel.text = "@" + account.acct
+
+        // Displayed text will be broken during scrolling.
+        // Solve it by noteLabel height = noteLabel.sizeToFit height + 1
+        noteLabel.attributedText = account.attributedNote
+        let fitSize = noteLabel.sizeThatFits(CGSize(width: view.bounds.width, height: view.bounds.height))
+        noteLabelHeightConstraint.constant = fitSize.height + 1
+
         statusesButton.value = account.statusesCount
         followingButton.value = account.followingCount
         followersButton.value = account.followersCount
@@ -239,6 +227,26 @@ final class ProfileViewController: UIViewController {
                 accountsVC.account = account
                 accountsVC.fetchLatestAccounts()
                 accountsVC.deleagte = self
+            }
+        }
+
+        // Determine headerView height
+        view.layoutIfNeeded()
+
+        headerViewMinTopConstraint.constant = -(headerView.bounds.height - menuView.bounds.height)
+
+        if currentContainerViewIndex == nil {
+            let insetTop = headerView.frame.maxY
+            let inset = UIEdgeInsets(top: insetTop, left: 0, bottom: 0, right: 0)
+            for tableViewController in childTableViewControllers {
+                tableViewController.tableView.contentInset = inset
+                tableViewController.tableView.scrollIndicatorInsets = inset
+                tableViewController.tableView.contentOffset = CGPoint(x: 0, y: -insetTop)
+            }
+            switchContainerView(index: 0)
+        } else {
+            if let accountsVC = currentChildTableViewController as? AccountsTableViewController {
+                accountsVC.fetchLatestAccounts()
             }
         }
     }
