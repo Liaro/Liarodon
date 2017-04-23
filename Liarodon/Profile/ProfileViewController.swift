@@ -106,6 +106,7 @@ final class ProfileViewController: UIViewController {
         currentChildTableViewController.removeObserver(self, forKeyPath: "tableView.contentOffset")
     }
 
+    var loaded = false
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -121,6 +122,7 @@ final class ProfileViewController: UIViewController {
         for button in menuButtons {
             button.delegate = self
         }
+        loaded = true
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -340,8 +342,10 @@ final class ProfileViewController: UIViewController {
 extension ProfileViewController: AccountChangedRefreshable {
 
     func shouldRefresh() {
-
-        initialFetch()
+        if loaded {
+            // if the method calls before loaded, it crash
+            initialFetch()
+        }
     }
 }
 
