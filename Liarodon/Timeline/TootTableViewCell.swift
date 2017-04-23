@@ -241,7 +241,7 @@ extension TootTableViewCell: UITextViewDelegate {
         }
 
         let matchedTag = status.tags.filter {
-            if $0.url == URL.absoluteString {
+            if $0.url.url?.path == URL.path {
                 return true
             }
             return false

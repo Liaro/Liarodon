@@ -58,6 +58,10 @@ class TootDetailViewController: UIViewController, UITableViewDataSource, UITable
                 let status = statuses[selectedRow]
                 (segue.destination as! TootDetailViewController).targetStatus = status
             }
+        } else if segue.identifier == "ShowTimeline" {
+            let timelineViewController = segue.destination as! TimelineTableViewController
+            let tag = (sender as? NSDictionary)?["withTag"] as! Tag
+            timelineViewController.type = .tag(tag.name)
         }
     }
 
@@ -203,7 +207,7 @@ extension TootDetailViewController: TootTableViewCellDelegate {
     func tootTableViewCell(_ cell: TootTableViewCell, shouldMoveTo link: StatusLink) {
         switch link {
         case .tag(let tag):
-            break // TODO
+            performSegue(withIdentifier: "ShowTimeline", sender: ["withTag" :tag])
         case .mention(let mention):
             replyTextField.becomeFirstResponder()
         case .attachment(_, let offset):

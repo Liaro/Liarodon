@@ -31,6 +31,7 @@ final class TimelineTableViewController: UITableViewController {
     var statuses = [Status]()
     let indicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 30, height: 40))
     var loading = true
+    var hasNoMoreOlder = false
     fileprivate var attachmentGallery: AttachmentGallery?
 
     override func viewDidLoad() {
@@ -84,7 +85,6 @@ final class TimelineTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return statuses.count
     }
-
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Toot", for: indexPath) as! TootTableViewCell
@@ -193,6 +193,9 @@ final class TimelineTableViewController: UITableViewController {
 
 
     func loadOlder() {
+        if hasNoMoreOlder {
+            return
+        }
         if loading {
             return
         }
@@ -231,6 +234,10 @@ final class TimelineTableViewController: UITableViewController {
     private func loadOlderCompleted(result: Result<[Status], SessionTaskError>) {
         switch result {
         case .success(let statuses):
+            if statuses.isEmpty {
+                hasNoMoreOlder = true
+                tableView.tableFooterView = UIView(frame: .zero)
+            }
             self.statuses = self.statuses + statuses
             tableView.reloadData()
         case .failure(let error):
@@ -292,6 +299,10 @@ final class TimelineTableViewController: UITableViewController {
             if let row = tableView.indexPathForSelectedRow?.row {
                 tootDetailViewController.targetStatus = statuses[row]
             }
+        } else if segue.identifier == "ShowTimeline" {
+            let timelineViewController = segue.destination as! TimelineTableViewController
+            let tag = (sender as? NSDictionary)?["withTag"] as! Tag
+            timelineViewController.type = .tag(tag.name)
         }
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
@@ -329,7 +340,7 @@ extension TimelineTableViewController: TootTableViewCellDelegate {
     func tootTableViewCell(_ cell: TootTableViewCell, shouldMoveTo link: StatusLink) {
         switch link {
         case .tag(let tag):
-            break // TODO
+            performSegue(withIdentifier: "ShowTimeline", sender: ["withTag" :tag])
         case .mention(let mention):
             break // TODO
         case .attachment(_, let offset):
