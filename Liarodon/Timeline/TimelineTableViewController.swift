@@ -18,6 +18,10 @@ enum TimelineType {
     case federated
 }
 
+protocol AccountChangedRefreshable {
+    func shouldRefresh()
+}
+
 final class TimelineTableViewController: UITableViewController {
 
     var type: TimelineType!
@@ -227,6 +231,13 @@ final class TimelineTableViewController: UITableViewController {
     }
     */
 
+}
+
+extension TimelineTableViewController: AccountChangedRefreshable {
+    func shouldRefresh() {
+        statuses = []
+        fetchInitialTimeline()
+    }
 }
 
 extension TimelineTableViewController: AttachmentViewDelegate {
