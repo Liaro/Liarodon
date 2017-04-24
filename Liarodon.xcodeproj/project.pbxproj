@@ -19,6 +19,7 @@
 		1EEF59BD1EAD27DB0047293B /* 1Password.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1EEF59BC1EAD27DB0047293B /* 1Password.xcassets */; };
 		430061661EACC839005DB81F /* FollowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430061651EACC839005DB81F /* FollowButton.swift */; };
 		432590261EACA039000C364A /* AccountsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432590251EACA039000C364A /* AccountsTableViewController.swift */; };
+		432CFBCD1EADE5140001CA62 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 432CFBCF1EADE5140001CA62 /* Login.storyboard */; };
 		435CA87B1EA8AD32006F5EE5 /* Accounts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 435CA87A1EA8AD32006F5EE5 /* Accounts.storyboard */; };
 		435CA8801EA8AE36006F5EE5 /* AccountsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435CA87E1EA8AE36006F5EE5 /* AccountsTableViewCell.swift */; };
 		435CA8811EA8AE36006F5EE5 /* AccountsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 435CA87F1EA8AE36006F5EE5 /* AccountsTableViewCell.xib */; };
@@ -35,7 +36,6 @@
 		43F9B1D01EA615D80093E798 /* Timeline.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43F9B1CF1EA615D80093E798 /* Timeline.storyboard */; };
 		43F9B1D41EA616040093E798 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43F9B1D31EA616040093E798 /* Main.storyboard */; };
 		43F9B1D61EA616710093E798 /* TimelineTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F9B1D51EA616710093E798 /* TimelineTableViewController.swift */; };
-		43F9B1D91EA616E70093E798 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43F9B1D81EA616E70093E798 /* Login.storyboard */; };
 		43F9B1DB1EA617390093E798 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F9B1DA1EA617390093E798 /* LoginViewController.swift */; };
 		43F9B1E41EA618060093E798 /* Notification.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43F9B1E21EA618050093E798 /* Notification.storyboard */; };
 		43F9B1E51EA618060093E798 /* NotificationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F9B1E31EA618050093E798 /* NotificationTableViewController.swift */; };
@@ -89,6 +89,9 @@
 		1EEF59BC1EAD27DB0047293B /* 1Password.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = 1Password.xcassets; sourceTree = "<group>"; };
 		430061651EACC839005DB81F /* FollowButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FollowButton.swift; path = Accounts/FollowButton.swift; sourceTree = "<group>"; };
 		432590251EACA039000C364A /* AccountsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountsTableViewController.swift; path = Accounts/AccountsTableViewController.swift; sourceTree = "<group>"; };
+		432CFBCE1EADE5140001CA62 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Login.storyboard; sourceTree = "<group>"; };
+		432CFBD81EADE7F70001CA62 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Login.strings; sourceTree = "<group>"; };
+		432CFBDA1EADE7FB0001CA62 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Login.strings; sourceTree = "<group>"; };
 		435CA87A1EA8AD32006F5EE5 /* Accounts.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Accounts.storyboard; path = Accounts/Accounts.storyboard; sourceTree = "<group>"; };
 		435CA87E1EA8AE36006F5EE5 /* AccountsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountsTableViewCell.swift; path = Accounts/AccountsTableViewCell.swift; sourceTree = "<group>"; };
 		435CA87F1EA8AE36006F5EE5 /* AccountsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AccountsTableViewCell.xib; path = Accounts/AccountsTableViewCell.xib; sourceTree = "<group>"; };
@@ -111,7 +114,6 @@
 		43F9B1CF1EA615D80093E798 /* Timeline.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Timeline.storyboard; path = Timeline/Timeline.storyboard; sourceTree = "<group>"; };
 		43F9B1D31EA616040093E798 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		43F9B1D51EA616710093E798 /* TimelineTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimelineTableViewController.swift; path = Timeline/TimelineTableViewController.swift; sourceTree = "<group>"; };
-		43F9B1D81EA616E70093E798 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Login.storyboard; path = Login/Login.storyboard; sourceTree = "<group>"; };
 		43F9B1DA1EA617390093E798 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = Login/LoginViewController.swift; sourceTree = "<group>"; };
 		43F9B1E21EA618050093E798 /* Notification.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Notification.storyboard; sourceTree = "<group>"; };
 		43F9B1E31EA618050093E798 /* NotificationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationTableViewController.swift; sourceTree = "<group>"; };
@@ -273,7 +275,7 @@
 		43F9B1D71EA616C70093E798 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				43F9B1D81EA616E70093E798 /* Login.storyboard */,
+				432CFBCF1EADE5140001CA62 /* Login.storyboard */,
 				43F9B1DA1EA617390093E798 /* LoginViewController.swift */,
 			);
 			name = Login;
@@ -440,6 +442,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ja,
 			);
 			mainGroup = 43F9B1831EA613C50093E798;
 			productRefGroup = 43F9B18D1EA613C50093E798 /* Products */;
@@ -463,7 +466,7 @@
 				438A98A21EA92C5A007CB1BC /* ProfileMenuButton.xib in Resources */,
 				435CA87B1EA8AD32006F5EE5 /* Accounts.storyboard in Resources */,
 				43F9B1971EA613C50093E798 /* Assets.xcassets in Resources */,
-				43F9B1D91EA616E70093E798 /* Login.storyboard in Resources */,
+				432CFBCD1EADE5140001CA62 /* Login.storyboard in Resources */,
 				43F9B1D41EA616040093E798 /* Main.storyboard in Resources */,
 				43F9B1E91EA618680093E798 /* Profile.storyboard in Resources */,
 				435CA8811EA8AE36006F5EE5 /* AccountsTableViewCell.xib in Resources */,
@@ -625,6 +628,17 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		432CFBCF1EADE5140001CA62 /* Login.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				432CFBCE1EADE5140001CA62 /* Base */,
+				432CFBD81EADE7F70001CA62 /* en */,
+				432CFBDA1EADE7FB0001CA62 /* ja */,
+			);
+			name = Login.storyboard;
+			path = Login;
+			sourceTree = "<group>";
+		};
 		43F9B1981EA613C50093E798 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -640,6 +654,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -690,6 +705,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";

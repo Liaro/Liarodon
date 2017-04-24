@@ -148,6 +148,7 @@ extension LoginViewController {
         if let text = instanceTextField.text, text != "" {
             urlString = text
         }
+        instanceNameLabel.text = urlString
         urlString = "https://\(urlString)"
 
         guard let url = urlString.url else {
