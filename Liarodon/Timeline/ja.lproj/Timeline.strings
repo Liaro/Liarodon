@@ -33,7 +33,7 @@
 "HF1-Yu-YCz.title" = "Timeline";
 
 /* Class = "UIButton"; normalTitle = "Send"; ObjectID = "Kzy-nl-JSY"; */
-"Kzy-nl-JSY.normalTitle" = "Send";
+"Kzy-nl-JSY.normalTitle" = "送信";
 
 /* Class = "UIButton"; normalTitle = "CW"; ObjectID = "O8S-Yu-taQ"; */
 "O8S-Yu-taQ.normalTitle" = "CW";

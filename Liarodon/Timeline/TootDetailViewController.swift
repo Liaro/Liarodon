@@ -92,7 +92,7 @@ class TootDetailViewController: UIViewController, UITableViewDataSource, UITable
             sender.isEnabled = true
             switch result {
             case .success(let status):
-                let alert = UIAlertController(title: "Posted", message: nil, preferredStyle: .alert)
+                let alert = UIAlertController(title: NSLocalizedString("post_toot_success", comment: ""), message: nil, preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak self] _ in
                     self?.dismiss(animated: true, completion: nil)
                 }))
@@ -102,7 +102,7 @@ class TootDetailViewController: UIViewController, UITableViewDataSource, UITable
                 self?.replyTextField.text = ""
                 self?.present(alert, animated: true, completion: nil)
             case .failure(_):
-                let alert = UIAlertController(title: "Toot failed", message: nil, preferredStyle: .alert)
+                let alert = UIAlertController(title: NSLocalizedString("post_toot_failure", comment: ""), message: nil, preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak self] _ in
                     self?.dismiss(animated: true, completion: nil)
                 }))
@@ -154,12 +154,12 @@ extension TootDetailViewController: TootTableViewCellDelegate {
     func tootTableViewCellMoreButtonTapped(_ cell: TootTableViewCell) {
         // FIXME: copy from TimelineTableViewController
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        alert.addAction(UIAlertAction(title: "Open in Safari", style: .default, handler: { _ in
+        alert.addAction(UIAlertAction(title: NSLocalizedString("toot_more_menu_safari", comment: ""), style: .default, handler: { _ in
             if let url = cell.status.url.url {
                 UIApplication.shared.openURL(url)
             }
         }))
-        alert.addAction(UIAlertAction(title: "Share", style: .default, handler: { [weak self] _ in
+        alert.addAction(UIAlertAction(title: NSLocalizedString("toot_more_menu_share", comment: ""), style: .default, handler: { [weak self] _ in
             let shareText = cell.contentTextView.text
             let shareWebsite = cell.status.url.url
             let shareImage: UIImage?
@@ -174,7 +174,7 @@ extension TootDetailViewController: TootTableViewCellDelegate {
 
             self?.present(activityVC, animated: true, completion: nil)
         }))
-        alert.addAction(UIAlertAction(title: "Copy text", style: .default, handler: { _ in
+        alert.addAction(UIAlertAction(title: NSLocalizedString("toot_more_menu_copy", comment: ""), style: .default, handler: { _ in
             UIPasteboard.general.setValue(cell.contentTextView.text, forPasteboardType: "public.text")
         }))
         /* // TODO: Implement them
@@ -183,7 +183,7 @@ extension TootDetailViewController: TootTableViewCellDelegate {
          alert.addAction(UIAlertAction(title: "Block", style: .destructive, handler: { _ in
          }))
          */
-        alert.addAction(UIAlertAction(title: "Report", style: .destructive, handler: { _ in
+        alert.addAction(UIAlertAction(title: NSLocalizedString("toot_more_menu_report", comment: ""), style: .destructive, handler: { _ in
             let req = MastodonAPI.AddReport(
                 accountId: cell.status.account.id,
                 statusIds: [cell.status.id],
@@ -192,17 +192,17 @@ extension TootDetailViewController: TootTableViewCellDelegate {
             Session.send(req) { [weak self] (result) in
                 switch result {
                 case .success(_):
-                    let alert = UIAlertController(title: "Reported", message: nil, preferredStyle: .alert)
+                    let alert = UIAlertController(title: NSLocalizedString("toot_more_menu_report_success", comment: ""), message: nil, preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                     self?.present(alert, animated: true, completion: nil)
                 case .failure(_):
-                    let alert = UIAlertController(title: "Report failed", message: nil, preferredStyle: .alert)
+                    let alert = UIAlertController(title:  NSLocalizedString("toot_more_menu_report_failure", comment: ""), message: nil, preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                     self?.present(alert, animated: true, completion: nil)
                 }
             }
         }))
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in
+        alert.addAction(UIAlertAction(title: NSLocalizedString("cancel", comment: ""), style: .cancel, handler: { _ in
         }))
         present(alert, animated: true, completion: nil)
     }
