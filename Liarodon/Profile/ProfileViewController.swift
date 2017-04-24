@@ -256,6 +256,7 @@ final class ProfileViewController: UIViewController {
         followersButton.value = account.followersCount
 
         if account.id == myAccount.id {
+            navigationItem.title = NSLocalizedString("profile_title", comment: "")
             // TODO: GET /api/v1/favourites and count [Status]
             favouritesButton.value = 0
             favouritesButton.isHidden = false

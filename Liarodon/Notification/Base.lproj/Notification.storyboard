@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="emj-wb-PCg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="emj-wb-PCg">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Notification-->
+        <!--Notifications-->
         <scene sceneID="5I2-6u-elv">
             <objects>
                 <tableViewController id="krv-He-Hl5" customClass="NotificationTableViewController" customModule="Liarodon" customModuleProvider="target" sceneMemberID="viewController">
@@ -31,18 +31,18 @@
                             <outlet property="delegate" destination="krv-He-Hl5" id="BXf-4i-obK"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Notification" id="2Cd-W6-GQr"/>
+                    <navigationItem key="navigationItem" title="Notifications" id="2Cd-W6-GQr"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Sj-y4-S3v" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1056.8" y="141.67916041979012"/>
         </scene>
-        <!--Notification-->
+        <!--Notifications-->
         <scene sceneID="H5c-hX-hkX">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="emj-wb-PCg" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Notification" image="tab-notification" id="mkk-lm-AVI"/>
+                    <tabBarItem key="tabBarItem" title="Notifications" image="tab-notification" id="mkk-lm-AVI"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="9Bm-pt-sIa">

@@ -39,11 +39,11 @@ final class TimelineTableViewController: UITableViewController {
 
         switch type! {
         case .home:
-            title = "Home"
+            title = NSLocalizedString("home_timeline_title", comment: "")
         case .local:
-            title = "Local"
+            title = NSLocalizedString("local_timeline_title", comment: "")
         case .federated:
-            title = "Federated"
+            title = NSLocalizedString("federated_timeline_title", comment: "")
         case .account:
             title = "Account"
         case .tag(let tag):

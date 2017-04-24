@@ -5,3 +5,8 @@
   Created by 131e55 on 2017/04/24.
   Copyright © 2017年 Liaro Inc. All rights reserved.
 */
+
+"home_timeline_title" = "ホーム";
+"local_timeline_title" = "ローカル";
+"federated_timeline_title" = "連合";
+"profile_title" = "プロフィール";
