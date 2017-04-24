@@ -25,7 +25,7 @@
 		432CFBF11EADF5980001CA62 /* Notification.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 432CFBF31EADF5980001CA62 /* Notification.storyboard */; };
 		432CFBFC1EADF8590001CA62 /* AccountsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 432CFBFE1EADF8590001CA62 /* AccountsTableViewCell.xib */; };
 		432CFC031EAE03600001CA62 /* Timeline.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 432CFC051EAE03600001CA62 /* Timeline.storyboard */; };
-		435CA87B1EA8AD32006F5EE5 /* Accounts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 435CA87A1EA8AD32006F5EE5 /* Accounts.storyboard */; };
+		432CFC1A1EAE16470001CA62 /* Accounts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 432CFC1C1EAE16470001CA62 /* Accounts.storyboard */; };
 		435CA8801EA8AE36006F5EE5 /* AccountsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435CA87E1EA8AE36006F5EE5 /* AccountsTableViewCell.swift */; };
 		438A98A01EA8CC9B007CB1BC /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438A989F1EA8CC9B007CB1BC /* ProfileHeaderView.swift */; };
 		438A98A21EA92C5A007CB1BC /* ProfileMenuButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 438A98A11EA92C5A007CB1BC /* ProfileMenuButton.xib */; };
@@ -108,7 +108,9 @@
 		432CFC041EAE03600001CA62 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Timeline.storyboard; sourceTree = "<group>"; };
 		432CFC091EAE036D0001CA62 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Timeline.strings; sourceTree = "<group>"; };
 		432CFC191EAE03D40001CA62 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Timeline.strings; sourceTree = "<group>"; };
-		435CA87A1EA8AD32006F5EE5 /* Accounts.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Accounts.storyboard; path = Accounts/Accounts.storyboard; sourceTree = "<group>"; };
+		432CFC1B1EAE16470001CA62 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Accounts.storyboard; sourceTree = "<group>"; };
+		432CFC1E1EAE16490001CA62 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Accounts.strings; sourceTree = "<group>"; };
+		432CFC201EAE164E0001CA62 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Accounts.strings; sourceTree = "<group>"; };
 		435CA87E1EA8AE36006F5EE5 /* AccountsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountsTableViewCell.swift; path = Accounts/AccountsTableViewCell.swift; sourceTree = "<group>"; };
 		438A989F1EA8CC9B007CB1BC /* ProfileHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileHeaderView.swift; path = Profile/ProfileHeaderView.swift; sourceTree = "<group>"; };
 		438A98A11EA92C5A007CB1BC /* ProfileMenuButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ProfileMenuButton.xib; path = Profile/ProfileMenuButton.xib; sourceTree = "<group>"; };
@@ -188,7 +190,7 @@
 		435CA8791EA8ACD1006F5EE5 /* Accounts */ = {
 			isa = PBXGroup;
 			children = (
-				435CA87A1EA8AD32006F5EE5 /* Accounts.storyboard */,
+				432CFC1C1EAE16470001CA62 /* Accounts.storyboard */,
 				432590251EACA039000C364A /* AccountsTableViewController.swift */,
 				430061651EACC839005DB81F /* FollowButton.swift */,
 				435CA87E1EA8AE36006F5EE5 /* AccountsTableViewCell.swift */,
@@ -478,7 +480,7 @@
 				432CFBDF1EADEC7F0001CA62 /* Localizable.strings in Resources */,
 				43F9B19A1EA613C50093E798 /* LaunchScreen.storyboard in Resources */,
 				438A98A21EA92C5A007CB1BC /* ProfileMenuButton.xib in Resources */,
-				435CA87B1EA8AD32006F5EE5 /* Accounts.storyboard in Resources */,
+				432CFC1A1EAE16470001CA62 /* Accounts.storyboard in Resources */,
 				43F9B1971EA613C50093E798 /* Assets.xcassets in Resources */,
 				432CFBCD1EADE5140001CA62 /* Login.storyboard in Resources */,
 				43F9B1D41EA616040093E798 /* Main.storyboard in Resources */,
@@ -704,6 +706,17 @@
 			);
 			name = Timeline.storyboard;
 			path = Timeline;
+			sourceTree = "<group>";
+		};
+		432CFC1C1EAE16470001CA62 /* Accounts.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				432CFC1B1EAE16470001CA62 /* Base */,
+				432CFC1E1EAE16490001CA62 /* en */,
+				432CFC201EAE164E0001CA62 /* ja */,
+			);
+			name = Accounts.storyboard;
+			path = Accounts;
 			sourceTree = "<group>";
 		};
 		43F9B1981EA613C50093E798 /* LaunchScreen.storyboard */ = {
