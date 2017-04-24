@@ -169,8 +169,11 @@ final class ProfileViewController: UIViewController {
 
             case .success(let account):
                 s.myAccount = account
-                s.statusesViewController.type = .account(s.myAccount.id)
-                s.statusesViewController.shouldRefresh()
+                if s.accountID == nil {
+                    // Load statusTableView at prepareForSegue for a user who is not me
+                    s.statusesViewController.type = .account(s.myAccount.id)
+                    s.statusesViewController.shouldRefresh()
+                }
                 completion()
 
             case .failure(let error):
@@ -595,8 +598,8 @@ extension ProfileViewController {
                 return
             }
             // TODO: .home => .favourites
-            timelineVC.type = .home
             favouritesViewController = timelineVC
+            favouritesViewController.type = .home
 
         default:
             break
