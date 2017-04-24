@@ -360,6 +360,7 @@
 				43F9B18A1EA613C50093E798 /* Resources */,
 				E6A4B25C08DFB781B981C711 /* [CP] Embed Pods Frameworks */,
 				D4003FF003A553F483A6D5AA /* [CP] Copy Pods Resources */,
+				4399D9DA1EADDD0F00E4EC18 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -488,6 +489,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		4399D9DA1EADDD0F00E4EC18 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" a904bf6b3196524ba758ab9c72e16490aa469ca9 076d9703ed0616833bcb6e22bd2b7ec02a609a5169942ad4e03de864a98a9599";
+		};
 		D4003FF003A553F483A6D5AA /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -725,7 +739,7 @@
 				INFOPLIST_FILE = Liarodon/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = me.liaro.Liarodon.dev;
+				PRODUCT_BUNDLE_IDENTIFIER = me.liaro.Liarodon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
@@ -743,7 +757,7 @@
 				INFOPLIST_FILE = Liarodon/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = me.liaro.Liarodon.dev;
+				PRODUCT_BUNDLE_IDENTIFIER = me.liaro.Liarodon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
