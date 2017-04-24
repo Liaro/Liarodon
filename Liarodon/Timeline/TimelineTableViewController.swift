@@ -402,7 +402,7 @@ extension TimelineTableViewController: TootTableViewCellDelegate {
                 }
             }
         }))
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in
+        alert.addAction(UIAlertAction(title: NSLocalizedString("cancel", comment: ""), style: .cancel, handler: { _ in
         }))
         present(alert, animated: true, completion: nil)
     }
