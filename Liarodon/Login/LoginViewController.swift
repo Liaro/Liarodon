@@ -57,9 +57,15 @@ final class LoginViewController: UIViewController {
 
     var showCloseButton = false
     fileprivate var app: App!
+    fileprivate var instanceURLAtDidLoad: URL?
+    fileprivate var accessTokenAtDidLoad: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        instanceURLAtDidLoad = MastodonAPI.instanceURL
+        accessTokenAtDidLoad = MastodonAPI.accessToken
+
         onePasswordButton.isHidden = !OnePasswordExtension.shared().isAppExtensionAvailable()
 
         // Do any additional setup after loading the view.
@@ -123,10 +129,27 @@ final class LoginViewController: UIViewController {
 
     @IBAction func leftTopButtonTapped(_ sender: UIButton) {
         if leftTopButton.titleLabel?.text?.contains("❌") == true {
+
+            // Cancel login process
+            if instanceURLAtDidLoad != MastodonAPI.instanceURL &&
+                accessTokenAtDidLoad == MastodonAPI.accessToken {
+
+                cancelNewLogin()
+            }
+
             dismiss(animated: true, completion: nil)
         } else {
             backToSelectingInstance()
         }
+    }
+
+    private func cancelNewLogin() {
+        guard let url = instanceURLAtDidLoad, let token = accessTokenAtDidLoad else {
+            return
+        }
+
+        AccountService.shared.setInstanceUrl(url.absoluteString)
+        AccountService.shared.setAccessToken(token)
     }
     /*
     // MARK: - Navigation
