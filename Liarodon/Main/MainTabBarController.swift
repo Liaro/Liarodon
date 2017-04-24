@@ -49,7 +49,10 @@ final class MainTabBarController: UITabBarController {
 
     func longPressed(_ gesture: UILongPressGestureRecognizer) {
         if gesture.state == .began {
-            if tabBar.selectedItem == viewControllers?[4].tabBarItem {
+            // TODO: Implement Notifications
+            // After implement: 0: Home, 1: Local, 2: Federated, 3: Notifications 4: Profile
+            // Now:             0: Home, 1: Local, 2: Federated, 3: Profile
+            if tabBar.selectedItem == viewControllers?[3].tabBarItem {
                 performSegue(withIdentifier: "SelectAccountNavigationController", sender: self)
             }
         }
