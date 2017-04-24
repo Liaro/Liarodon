@@ -9,6 +9,12 @@
 "home_timeline_title" = "Home";
 "local_timeline_title" = "Local";
 "federated_timeline_title" = "Federated";
+"toot_more_menu_safari" = "Open in Safari";
+"toot_more_menu_share" = "Share";
+"toot_more_menu_copy" = "Copy text";
+"toot_more_menu_report" = "Report";
+"toot_more_menu_report_success" = "Reported";
+"toot_more_menu_report_failure" = "Report failed";
 "profile_title" = "Profile";
 "profile_toots_tab_title" = "Toots";
 "profile_following_tab_title" = "Following";

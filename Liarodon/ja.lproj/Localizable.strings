@@ -9,6 +9,12 @@
 "home_timeline_title" = "ホーム";
 "local_timeline_title" = "ローカル";
 "federated_timeline_title" = "連合";
+"toot_more_menu_safari" = "Safari で開く";
+"toot_more_menu_share" = "共有";
+"toot_more_menu_copy" = "テキストをコピー";
+"toot_more_menu_report" = "報告";
+"toot_more_menu_report_success" = "報告しました";
+"toot_more_menu_report_failure" = "報告失敗";
 "profile_title" = "プロフィール";
 "profile_toots_tab_title" = "トゥート";
 "profile_following_tab_title" = "フォロー";
