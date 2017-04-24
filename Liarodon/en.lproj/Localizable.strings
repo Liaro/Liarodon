@@ -10,3 +10,7 @@
 "local_timeline_title" = "Local";
 "federated_timeline_title" = "Federated";
 "profile_title" = "Profile";
+"profile_toots_tab_title" = "Toots";
+"profile_following_tab_title" = "Following";
+"profile_followers_tab_title" = "Followers";
+"profile_favourites_tab_title" = "Favourites";

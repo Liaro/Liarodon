@@ -110,6 +110,11 @@ final class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        statusesButton.title = NSLocalizedString("profile_toots_tab_title", comment: "")
+        followingButton.title = NSLocalizedString("profile_following_tab_title", comment: "")
+        followersButton.title = NSLocalizedString("profile_followers_tab_title", comment: "")
+        favouritesButton.title = NSLocalizedString("profile_favourites_tab_title", comment: "")
+
         initialFetch()
 
         NotificationCenter.default.addObserver(

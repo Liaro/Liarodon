@@ -10,3 +10,7 @@
 "local_timeline_title" = "ローカル";
 "federated_timeline_title" = "連合";
 "profile_title" = "プロフィール";
+"profile_toots_tab_title" = "トゥート";
+"profile_following_tab_title" = "フォロー";
+"profile_followers_tab_title" = "フォロワー";
+"profile_favourites_tab_title" = "お気に入り";
