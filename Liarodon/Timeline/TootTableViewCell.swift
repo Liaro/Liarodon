@@ -20,6 +20,7 @@ enum StatusLink {
 
 protocol TootTableViewCellDelegate: class {
     func tootTableViewCell(_ cell: TootTableViewCell, shouldMoveTo link: StatusLink)
+    func tootTableViewCellAvatarTapped(_ cell: TootTableViewCell)
     func tootTableViewCellMoreButtonTapped(_ cell: TootTableViewCell)
 }
 
@@ -66,6 +67,10 @@ class TootTableViewCell: UITableViewCell {
 
         attachmentView.layer.cornerRadius = 4
         attachmentView.layer.masksToBounds = true
+
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(avatarImageViewTapped(_:)))
+        avatarImageView.addGestureRecognizer(tapGesture)
+        avatarImageView.isUserInteractionEnabled = true
     }
 
     override func prepareForReuse() {
@@ -142,6 +147,10 @@ class TootTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+
+    func avatarImageViewTapped(_ sender: UITapGestureRecognizer) {
+        delegate?.tootTableViewCellAvatarTapped(self)
+    }
 
     @IBAction func replyButtonTapped(_ sender: UIButton) {
         // FIXME: The reply button's userInteractionEnabled is false for now

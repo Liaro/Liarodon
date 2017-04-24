@@ -305,8 +305,13 @@ final class TimelineTableViewController: UITableViewController {
             timelineViewController.type = .tag(tag.name)
         } else if segue.identifier == "ShowProfile" {
             let profileViewController = segue.destination as! ProfileViewController
-            let mention = (sender as? NSDictionary)?["withMention"] as! Mention
-            profileViewController.accountID = mention.id
+            var accountID: Int? = nil
+            if let mention = (sender as? NSDictionary)?["withMention"] as? Mention {
+                accountID = mention.id
+            } else if let account = (sender as? NSDictionary)?["withAccount"] as? Account {
+                accountID = account.id
+            }
+            profileViewController.accountID = accountID
         }
     }
 }
@@ -350,6 +355,11 @@ extension TimelineTableViewController: TootTableViewCellDelegate {
             let safariViewController = SFSafariViewController(url: url)
             present(safariViewController, animated: true, completion: nil)
         }
+    }
+
+    func tootTableViewCellAvatarTapped(_ cell: TootTableViewCell) {
+        let account = cell.status.account
+        performSegue(withIdentifier: "ShowProfile", sender: ["withAccount": account])
     }
 
     func tootTableViewCellMoreButtonTapped(_ cell: TootTableViewCell) {
