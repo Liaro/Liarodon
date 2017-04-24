@@ -2,7 +2,10 @@ PODS:
   - 1PasswordExtension (1.8.4)
   - APIKit (3.1.2):
     - Result (~> 3.0)
+  - Crashlytics (3.8.4):
+    - Fabric (~> 1.6.3)
   - DateToolsSwift (2.0.3)
+  - Fabric (1.6.11)
   - Himotoki (3.0.1)
   - ImageViewer (4.0)
   - KeyboardObserver (1.0.1)
@@ -15,7 +18,9 @@ PODS:
 DEPENDENCIES:
   - 1PasswordExtension
   - APIKit (from `https://github.com/ishkawa/APIKit.git`, branch `develop/4.0`)
+  - Crashlytics
   - DateToolsSwift
+  - Fabric
   - Himotoki
   - ImageViewer
   - KeyboardObserver
@@ -37,7 +42,9 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   1PasswordExtension: e775a29310c65851e5a6cec1afc349ab4e334e47
   APIKit: 923b510c13eb4d977d2d0ffcd51c88e9dfe7a74a
+  Crashlytics: 79e236942ca1e7fc641df1feb9a275360a78ab6a
   DateToolsSwift: bf69bf9056d9e53c5c03f06e51f219b9b8b02f9e
+  Fabric: 5911403591946b8228ab1c51d98f1d7137e863c6
   Himotoki: 85fda41d4d0e14f7228317a3b474175cdfb8f515
   ImageViewer: 364abc0309c33dda86d08ca25b0243e5c67d8cd3
   KeyboardObserver: b74a483236861c63a29a18b5b617f63313f04eef
@@ -47,6 +54,6 @@ SPEC CHECKSUMS:
   Result: 2453a22e5c5b11c0c3a478736e82cd02f763b781
   SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
 
-PODFILE CHECKSUM: b1a657ec3e07aa5fd0243cbfc0bc1243f423e5cf
+PODFILE CHECKSUM: 09af12c87c1d6f1e62a8a2855378ee4b71e14973
 
 COCOAPODS: 1.2.1

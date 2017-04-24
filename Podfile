@@ -3,6 +3,8 @@ project './Liarodon.xcodeproj'
 use_frameworks!
 
 target 'Liarodon' do
+    pod 'Fabric'
+    pod 'Crashlytics'
     pod 'APIKit', :git => 'https://github.com/ishkawa/APIKit.git', :branch => 'develop/4.0'
     pod 'Himotoki'
     pod 'KeychainAccess'
