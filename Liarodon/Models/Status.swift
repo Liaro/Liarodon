@@ -98,7 +98,7 @@ final class Status {
             ] as [String : Any]
 
         if !spoilerText.isEmpty {
-            let html = spoilerText + "<p><a href='app://read/more'>read more</a></p><style>p{font-size:15px}</style>"
+            let html = spoilerText + "<p><a href='app://read/more'>read more</a></p><style>*{font-size:15px}</style>"
             let text: NSAttributedString?
             if let data = html.data(using: .utf8) {
                 text = try? NSMutableAttributedString(data: data, options: options, documentAttributes: nil)
@@ -107,7 +107,7 @@ final class Status {
             }
             attributedContent = text! // TODO: Add plane text if text is nil
 
-            let allHtml = spoilerText + content + "<style>p{font-size:15px}</style>"
+            let allHtml = spoilerText + content + "<style>*{font-size:15px}</style>"
             let allText: NSAttributedString?
             if let data = allHtml.data(using: .utf8) {
                 allText = try? NSMutableAttributedString(data: data, options: options, documentAttributes: nil)
@@ -118,7 +118,7 @@ final class Status {
             shouldHasLessMargin = false
         } else {
 
-            let html = content + "<style>p{font-size:15px}</style>"
+            let html = content + "<style>*{font-size:15px}</style>"
             let text: NSAttributedString?
             if let data = html.data(using: .utf8) {
                 text = try? NSMutableAttributedString(data: data, options: options, documentAttributes: nil)
