@@ -41,7 +41,12 @@ class SelectAccountTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return accounts.count + 2
+        // TODO: Implement Create account
+        // AccountCell + CreateCell + AddCell
+        // return accounts.count + 2
+
+        // AccountCell + AddCell
+        return accounts.count + 1
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -60,11 +65,13 @@ class SelectAccountTableViewController: UITableViewController {
             }
             return cell
         case accounts.count:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "CreateCell", for: indexPath)
-            return cell
-        case accounts.count + 1:
+            // TODO: Imaplement Create account
+            // let cell = tableView.dequeueReusableCell(withIdentifier: "CreateCell", for: indexPath)
             let cell = tableView.dequeueReusableCell(withIdentifier: "AddCell", for: indexPath)
             return cell
+//        case accounts.count + 1:
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "AddCell", for: indexPath)
+//            return cell
         default:
             fatalError("No cell found in SelectAccountTableViewController")
         }

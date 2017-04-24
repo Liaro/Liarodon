@@ -263,8 +263,10 @@ final class ProfileViewController: UIViewController {
         if account.id == myAccount.id {
             navigationItem.title = NSLocalizedString("profile_title", comment: "")
             // TODO: GET /api/v1/favourites and count [Status]
+            // Not implemented yet
             favouritesButton.value = 0
-            favouritesButton.isHidden = false
+            favouritesButton.isHidden = true
+
             followButtonView.isHidden = true
         } else {
             navigationItem.title = account.displayName
