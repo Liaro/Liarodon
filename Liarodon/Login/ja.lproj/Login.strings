@@ -1,0 +1,30 @@
+
+/* Class = "UITextField"; placeholder = "email address"; ObjectID = "4al-Rp-mDZ"; */
+"4al-Rp-mDZ.placeholder" = "メールアドレス";
+
+/* Class = "UITextField"; placeholder = "password"; ObjectID = "7I3-M4-A5t"; */
+"7I3-M4-A5t.placeholder" = "パスワード";
+
+/* Class = "UIButton"; normalTitle = "Next"; ObjectID = "8p3-6B-Uc5"; */
+"8p3-6B-Uc5.normalTitle" = "次へ";
+
+/* Class = "UIButton"; normalTitle = "Log in!"; ObjectID = "Eug-Kx-8CW"; */
+"Eug-Kx-8CW.normalTitle" = "ログイン";
+
+/* Class = "UILabel"; text = "Liarodon"; ObjectID = "H7E-zc-EFy"; */
+"H7E-zc-EFy.text" = "Liarodon";
+
+/* Class = "UILabel"; text = "Enter instance name you want to log in."; ObjectID = "eEj-eS-FPP"; */
+"eEj-eS-FPP.text" = "インスタンス名を入力してください";
+
+/* Class = "UILabel"; text = "Invalid instance name."; ObjectID = "h5S-OU-tAm"; */
+"h5S-OU-tAm.text" = "無効なインスタンス名です";
+
+/* Class = "UILabel"; text = "Invalid email address or password"; ObjectID = "yAc-U8-isv"; */
+"yAc-U8-isv.text" = "メールアドレスかパスワードが間違っています";
+
+/* Class = "UITextField"; placeholder = "mastodon.cloud"; ObjectID = "yjw-lv-dxh"; */
+"yjw-lv-dxh.placeholder" = "mstdn.jp";
+
+/* Class = "UIButton"; normalTitle = "❌"; ObjectID = "zYX-VX-4WM"; */
+"zYX-VX-4WM.normalTitle" = "❌";
