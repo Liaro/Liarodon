@@ -6,6 +6,8 @@
   Copyright © 2017年 Liaro Inc. All rights reserved.
 */
 
+"yes" = "はい";
+"cancel" = "キャンセル";
 "home_timeline_title" = "ホーム";
 "local_timeline_title" = "ローカル";
 "federated_timeline_title" = "連合";
@@ -15,6 +17,20 @@
 "toot_more_menu_report" = "報告";
 "toot_more_menu_report_success" = "報告しました";
 "toot_more_menu_report_failure" = "報告失敗";
+"compose_toot_place_holder" = "今なにしてる？";
+"privacy_settings_title" = "公開設定";
+"privacy_settings_public" = "公開";
+"privacy_settings_private" = "非公開";
+"privacy_settings_unlisted" = "未収載";
+"privacy_settings_direct" = "ダイレクト";
+"photo_source_title" = "画像元";
+"photo_source_library" = "ライブラリ";
+"photo_source_camera" = "カメラ";
+"remove_photo_title" = "削除しますか？";
+"remove_photo_ok" = "削除";
+"photos_too_many_title" = "画像は最大４枚までです";
+"post_toot_success" = "トゥートしました！";
+"post_toot_failure" = "トゥートに失敗しました";
 "profile_title" = "プロフィール";
 "profile_toots_tab_title" = "トゥート";
 "profile_following_tab_title" = "フォロー";

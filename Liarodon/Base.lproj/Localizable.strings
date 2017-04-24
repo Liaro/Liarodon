@@ -6,6 +6,7 @@
   Copyright © 2017年 Liaro Inc. All rights reserved.
 */
 
+"cancel" = "Cancel";
 "home_timeline_title" = "Home";
 "local_timeline_title" = "Local";
 "federated_timeline_title" = "Federated";
@@ -15,6 +16,20 @@
 "toot_more_menu_report" = "Report";
 "toot_more_menu_report_success" = "Reported";
 "toot_more_menu_report_failure" = "Report failed";
+"compose_toot_place_holder" = "What is on your mind?";
+"privacy_settings_title" = "Privacy Settings";
+"privacy_settings_public" = "Public";
+"privacy_settings_private" = "Private";
+"privacy_settings_unlisted" = "Unlisted";
+"privacy_settings_direct" = "Direct";
+"photo_source_title" = "Select source";
+"photo_source_library" = "Library";
+"photo_source_camera" = "Camera";
+"photos_too_many_title" = "Images too many (max 4)";
+"remove_photo_title" = "Remove it?";
+"remove_photo_ok" = "Remove";
+"post_toot_success" = "Posted!";
+"post_toot_failure" = "Post failed";
 "profile_title" = "Profile";
 "profile_toots_tab_title" = "Toots";
 "profile_following_tab_title" = "Following";

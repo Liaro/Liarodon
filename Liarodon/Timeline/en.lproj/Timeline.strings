@@ -1,0 +1,75 @@
+
+/* Class = "UIButton"; normalTitle = "❌"; ObjectID = "2JV-Cr-0eN"; */
+"2JV-Cr-0eN.normalTitle" = "❌";
+
+/* Class = "UIButton"; normalTitle = "Toot!"; ObjectID = "4Yl-wE-rtl"; */
+"4Yl-wE-rtl.normalTitle" = "Toot!";
+
+/* Class = "UILabel"; text = "500"; ObjectID = "4kw-km-b4h"; */
+"4kw-km-b4h.text" = "500";
+
+/* Class = "UITextField"; placeholder = "In reply to @131e55"; ObjectID = "5dI-Se-Cz4"; */
+"5dI-Se-Cz4.placeholder" = "In reply to @131e55";
+
+/* Class = "UILabel"; text = "Kouki Saito"; ObjectID = "5mf-9y-1jz"; */
+"5mf-9y-1jz.text" = "Kouki Saito";
+
+/* Class = "UILabel"; text = "@kouki_dan"; ObjectID = "89r-Uw-8c6"; */
+"89r-Uw-8c6.text" = "@kouki_dan";
+
+/* Class = "UILabel"; text = "Kouki Saito"; ObjectID = "Ayg-vH-2cY"; */
+"Ayg-vH-2cY.text" = "Kouki Saito";
+
+/* Class = "UILabel"; text = "131e55 boosted"; ObjectID = "BNf-6y-EcM"; */
+"BNf-6y-EcM.text" = "131e55 boosted";
+
+/* Class = "UILabel"; text = "3m"; ObjectID = "Cqb-Wk-Kr8"; */
+"Cqb-Wk-Kr8.text" = "3m";
+
+/* Class = "UILabel"; text = "131e55 boosted"; ObjectID = "Do0-Ln-EiU"; */
+"Do0-Ln-EiU.text" = "131e55 boosted";
+
+/* Class = "UITabBarItem"; title = "Timeline"; ObjectID = "HF1-Yu-YCz"; */
+"HF1-Yu-YCz.title" = "Timeline";
+
+/* Class = "UIButton"; normalTitle = "Send"; ObjectID = "Kzy-nl-JSY"; */
+"Kzy-nl-JSY.normalTitle" = "Send";
+
+/* Class = "UIButton"; normalTitle = "CW"; ObjectID = "O8S-Yu-taQ"; */
+"O8S-Yu-taQ.normalTitle" = "CW";
+
+/* Class = "UIButton"; normalTitle = "NSFW"; ObjectID = "OpX-fa-CDa"; */
+"OpX-fa-CDa.normalTitle" = "NSFW";
+
+/* Class = "UILabel"; text = "Replying to @131e55"; ObjectID = "PS7-in-IDP"; */
+"PS7-in-IDP.text" = "Replying to @131e55";
+
+/* Class = "UITextField"; placeholder = "Content Warnings"; ObjectID = "SGu-nc-zQi"; */
+"SGu-nc-zQi.placeholder" = "Content Warnings";
+
+/* Class = "UITextView"; text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor "; ObjectID = "UtW-3j-GxR"; */
+"UtW-3j-GxR.text" = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ";
+
+/* Class = "UILabel"; text = "3m"; ObjectID = "Xnl-ZK-QpF"; */
+"Xnl-ZK-QpF.text" = "3m";
+
+/* Class = "UILabel"; text = "Replying to @131e55"; ObjectID = "ZGT-mt-VQL"; */
+"ZGT-mt-VQL.text" = "Replying to @131e55";
+
+/* Class = "UITextView"; text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor "; ObjectID = "aAt-Ca-Wmo"; */
+"aAt-Ca-Wmo.text" = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ";
+
+/* Class = "UIButton"; normalTitle = "Public"; ObjectID = "baf-0m-Xf6"; */
+"baf-0m-Xf6.normalTitle" = "Public";
+
+/* Class = "UILabel"; text = "❌"; ObjectID = "cw4-PN-yky"; */
+"cw4-PN-yky.text" = "❌";
+
+/* Class = "UILabel"; text = "@kouki_dan"; ObjectID = "e9b-hO-MCr"; */
+"e9b-hO-MCr.text" = "@kouki_dan";
+
+/* Class = "UINavigationItem"; title = "Toot"; ObjectID = "emC-Fw-Jy7"; */
+"emC-Fw-Jy7.title" = "Toot";
+
+/* Class = "UINavigationItem"; title = "Timeline"; ObjectID = "zmS-xo-s2B"; */
+"zmS-xo-s2B.title" = "Timeline";
