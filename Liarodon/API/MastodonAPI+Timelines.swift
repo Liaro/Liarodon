@@ -10,6 +10,7 @@ import Foundation
 import APIKit
 import Himotoki
 
+
 extension MastodonAPI {
 
     /// Retrieving a home timeline.
@@ -94,6 +95,15 @@ extension MastodonAPI {
 
         let tag: String
         let isLocal: Bool
+        let maxId: Int?
+        let sinceId: Int?
+
+        init(tag: String, isLocal: Bool, maxId: Int? = nil, sinceId: Int? = nil) {
+            self.tag = tag
+            self.isLocal = isLocal
+            self.maxId = maxId
+            self.sinceId = sinceId
+        }
 
         var method: HTTPMethod {
             return .get
@@ -104,12 +114,57 @@ extension MastodonAPI {
         }
 
         var parameters: Any? {
-            if isLocal {
-                return [
-                    "local": true
-                ]
+            var params = [String: Any]()
+
+            if let maxId = maxId {
+                params["max_id"] = maxId
             }
-            return [:]
+            if let sinceId = sinceId {
+                params["since_id"] = sinceId
+            }
+            if isLocal {
+                params["local"] = true
+            }
+
+            return params
+        }
+
+        func response(from object: Any, urlResponse: HTTPURLResponse) throws -> [Status] {
+            return try decodeArray(object)
+        }
+    }
+
+
+    struct GetAccountTimelineRequest: MastodonRequest {
+        let accountId: Int
+        let maxId: Int?
+        let sinceId: Int?
+
+        init(accountId: Int, maxId: Int? = nil, sinceId: Int? = nil) {
+            self.accountId = accountId
+            self.maxId = maxId
+            self.sinceId = sinceId
+        }
+
+        var method: HTTPMethod {
+            return .get
+        }
+
+        var path: String {
+            return "/api/v1/accounts/\(accountId)/statuses"
+        }
+
+        var parameters: Any? {
+            var params = [String: Any]()
+
+            if let maxId = maxId {
+                params["max_id"] = maxId
+            }
+            if let sinceId = sinceId {
+                params["since_id"] = sinceId
+            }
+
+            return params
         }
 
         func response(from object: Any, urlResponse: HTTPURLResponse) throws -> [Status] {

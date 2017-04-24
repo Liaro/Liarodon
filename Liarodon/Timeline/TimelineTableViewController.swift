@@ -11,11 +11,14 @@ import APIKit
 import ImageViewer
 import Kingfisher
 import SafariServices
+import Result
 
 enum TimelineType {
     case home
     case local
     case federated
+    case account(Int)
+    case tag(String)
 }
 
 protocol AccountChangedRefreshable {
@@ -28,6 +31,7 @@ final class TimelineTableViewController: UITableViewController {
     var statuses = [Status]()
     let indicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 30, height: 40))
     var loading = true
+    var hasNoMoreOlder = false
     fileprivate var attachmentGallery: AttachmentGallery?
 
     override func viewDidLoad() {
@@ -40,6 +44,10 @@ final class TimelineTableViewController: UITableViewController {
             title = "Local"
         case .federated:
             title = "Federated"
+        case .account:
+            title = "Account"
+        case .tag(let tag):
+            title = "\(tag)"
         }
 
         tableView.estimatedRowHeight = 100
@@ -78,7 +86,6 @@ final class TimelineTableViewController: UITableViewController {
         return statuses.count
     }
 
-
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Toot", for: indexPath) as! TootTableViewCell
 
@@ -97,19 +104,19 @@ final class TimelineTableViewController: UITableViewController {
         case .home:
             let request = MastodonAPI.GetHomeTimelineRequest()
             Session.send(request) { [weak self] (result) in
-                guard let s = self else {
-                    return
-                }
-
-                switch result {
-                case .success(let statuses):
-                    s.statuses = statuses
-                    s.tableView.reloadData()
-
-                case .failure(let error):
-                    print(error)
-                }
-                s.loading = false
+                self?.fetchInitialTimelineCompleted(result: result)
+            }
+            return
+        case .account(let id):
+            let request = MastodonAPI.GetAccountTimelineRequest(accountId: id)
+            Session.send(request) { [weak self] (result) in
+                self?.fetchInitialTimelineCompleted(result: result)
+            }
+            return
+        case .tag(let tag):
+            let request = MastodonAPI.GetTagTimelineRequest(tag: tag, isLocal: false)
+            Session.send(request) { [weak self] (result) in
+                self?.fetchInitialTimelineCompleted(result: result)
             }
             return
         case .local:
@@ -118,20 +125,20 @@ final class TimelineTableViewController: UITableViewController {
             request = MastodonAPI.GetPublicTimelineRequest(isLocal: false)
         }
         Session.send(request) { [weak self] (result) in
-            guard let s = self else {
-                return
-            }
-
-            switch result {
-            case .success(let statuses):
-                s.statuses = statuses
-                s.tableView.reloadData()
-
-            case .failure(let error):
-                print(error)
-            }
-            s.loading = false
+            self?.fetchInitialTimelineCompleted(result: result)
         }
+    }
+
+    private func fetchInitialTimelineCompleted(result: Result<[Status], SessionTaskError>) {
+        switch result {
+        case .success(let statuses):
+            self.statuses = statuses
+            tableView.reloadData()
+
+        case .failure(let error):
+            print(error)
+        }
+        loading = false
     }
 
     func loadNewer() {
@@ -146,24 +153,19 @@ final class TimelineTableViewController: UITableViewController {
         case .home:
             let request = MastodonAPI.GetHomeTimelineRequest(sinceId: statuses.first?.id)
             Session.send(request) { [weak self] (result) in
-                guard let s = self else {
-                    return
-                }
-                s.refreshControl?.endRefreshing()
-
-                switch result {
-                case .success(let statuses):
-                    s.statuses = statuses + s.statuses
-
-                    let offset = s.tableView.estimatedRowHeight * CGFloat(statuses.count)
-                    s.tableView.reloadData()
-                    s.tableView.contentOffset = CGPoint(x: s.tableView.contentOffset.x, y: s.tableView.contentOffset.y + offset)
-
-
-                case .failure(let error):
-                    print(error)
-                }
-                s.loading = false
+                self?.loadNewerCompleted(result: result)
+            }
+            return
+        case .account(let id):
+            let request = MastodonAPI.GetAccountTimelineRequest(accountId: id, sinceId: statuses.first?.id)
+            Session.send(request) { [weak self] (result) in
+                self?.loadNewerCompleted(result: result)
+            }
+            return
+        case .tag(let tag):
+            let request = MastodonAPI.GetTagTimelineRequest(tag: tag, isLocal: false, sinceId: statuses.first?.id)
+            Session.send(request) { [weak self] (result) in
+                self?.loadNewerCompleted(result: result)
             }
             return
         case .local:
@@ -172,26 +174,28 @@ final class TimelineTableViewController: UITableViewController {
             request = MastodonAPI.GetPublicTimelineRequest(isLocal: false, sinceId: statuses.first?.id)
         }
         Session.send(request) { [weak self] (result) in
-            guard let s = self else {
-                return
-            }
-
-            s.refreshControl?.endRefreshing()
-            switch result {
-            case .success(let statuses):
-                s.statuses =  statuses + s.statuses
-                let offset = s.tableView.estimatedRowHeight * CGFloat(statuses.count)
-                s.tableView.reloadData()
-                s.tableView.contentOffset = CGPoint(x: s.tableView.contentOffset.x, y: s.tableView.contentOffset.y + offset)
-
-            case .failure(let error):
-                print(error)
-            }
-            s.loading = false
+            self?.loadNewerCompleted(result: result)
         }
     }
+    private func loadNewerCompleted(result: Result<[Status], SessionTaskError>) {
+        refreshControl?.endRefreshing()
+        switch result {
+        case .success(let statuses):
+            self.statuses =  statuses + self.statuses
+            let offset = tableView.estimatedRowHeight * CGFloat(statuses.count)
+            tableView.reloadData()
+            tableView.contentOffset = CGPoint(x: tableView.contentOffset.x, y: tableView.contentOffset.y + offset)
+        case .failure(let error):
+            print(error)
+        }
+        loading = false
+    }
+
 
     func loadOlder() {
+        if hasNoMoreOlder {
+            return
+        }
         if loading {
             return
         }
@@ -202,19 +206,19 @@ final class TimelineTableViewController: UITableViewController {
         case .home:
             let request = MastodonAPI.GetHomeTimelineRequest(maxId: statuses.last?.id)
             Session.send(request) { [weak self] (result) in
-                guard let s = self else {
-                    return
-                }
-
-                switch result {
-                case .success(let statuses):
-                    s.statuses = s.statuses + statuses
-                    s.tableView.reloadData()
-
-                case .failure(let error):
-                    print(error)
-                }
-                s.loading = false
+                self?.loadOlderCompleted(result: result)
+            }
+            return
+        case .account(let id):
+            let request = MastodonAPI.GetAccountTimelineRequest(accountId: id, maxId: statuses.last?.id)
+            Session.send(request) { [weak self] (result) in
+                self?.loadOlderCompleted(result: result)
+            }
+            return
+        case .tag(let tag):
+            let request = MastodonAPI.GetTagTimelineRequest(tag: tag, isLocal: false, maxId: statuses.last?.id)
+            Session.send(request) { [weak self] (result) in
+                self?.loadOlderCompleted(result: result)
             }
             return
         case .local:
@@ -223,21 +227,27 @@ final class TimelineTableViewController: UITableViewController {
             request = MastodonAPI.GetPublicTimelineRequest(isLocal: false, maxId: statuses.last!.id)
         }
         Session.send(request) { [weak self] (result) in
-            guard let s = self else {
-                return
-            }
-
-            switch result {
-            case .success(let statuses):
-                s.statuses = s.statuses + statuses
-                s.tableView.reloadData()
-
-            case .failure(let error):
-                print(error)
-            }
-            s.loading = false
+            self?.loadOlderCompleted(result: result)
         }
     }
+
+    private func loadOlderCompleted(result: Result<[Status], SessionTaskError>) {
+        switch result {
+        case .success(let statuses):
+            if statuses.isEmpty {
+                hasNoMoreOlder = true
+                tableView.tableFooterView = UIView(frame: .zero)
+            }
+            self.statuses = self.statuses + statuses
+            tableView.reloadData()
+        case .failure(let error):
+            print(error)
+        }
+        loading = false
+    }
+
+
+
 
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView.contentOffset.y >= scrollView.contentSize.height - tableView.frame.size.height {
@@ -289,11 +299,16 @@ final class TimelineTableViewController: UITableViewController {
             if let row = tableView.indexPathForSelectedRow?.row {
                 tootDetailViewController.targetStatus = statuses[row]
             }
+        } else if segue.identifier == "ShowTimeline" {
+            let timelineViewController = segue.destination as! TimelineTableViewController
+            let tag = (sender as? NSDictionary)?["withTag"] as! Tag
+            timelineViewController.type = .tag(tag.name)
+        } else if segue.identifier == "ShowProfile" {
+            let profileViewController = segue.destination as! ProfileViewController
+            let mention = (sender as? NSDictionary)?["withMention"] as! Mention
+            profileViewController.accountID = mention.id
         }
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
     }
-
 }
 
 extension TimelineTableViewController: AccountChangedRefreshable {
@@ -326,9 +341,9 @@ extension TimelineTableViewController: TootTableViewCellDelegate {
     func tootTableViewCell(_ cell: TootTableViewCell, shouldMoveTo link: StatusLink) {
         switch link {
         case .tag(let tag):
-            break // TODO
+            performSegue(withIdentifier: "ShowTimeline", sender: ["withTag" :tag])
         case .mention(let mention):
-            break // TODO
+            performSegue(withIdentifier: "ShowProfile", sender: ["withMention": mention])
         case .attachment(_, let offset):
             attachmentView(cell.attachmentView, imageTapped: cell.attachmentView.images[offset], withImageViews: cell.attachmentView.images, withAttachments: cell.attachmentView.attachments, selectedIndex: offset)
         case .link(let url):

@@ -169,6 +169,11 @@ final class ProfileViewController: UIViewController {
 
             case .success(let account):
                 s.myAccount = account
+                if s.accountID == nil {
+                    // Load statusTableView at prepareForSegue for a user who is not me
+                    s.statusesViewController.type = .account(s.myAccount.id)
+                    s.statusesViewController.shouldRefresh()
+                }
                 completion()
 
             case .failure(let error):
@@ -565,8 +570,13 @@ extension ProfileViewController {
             guard let timelineVC = segue.destination as? TimelineTableViewController else {
                 return
             }
-            // TODO: .home => .account
-            timelineVC.type = .home
+            if let accountID = accountID {
+                timelineVC.type = .account(accountID)
+            } else {
+                // In case accountID is not exists, the method called and should set any type to ViewController
+                // I added ID 0 account (not exist account) for now, but it MUST be fixed. FIXME
+                timelineVC.type = .account(0)
+            }
             statusesViewController = timelineVC
 
         case "Following":
@@ -588,8 +598,8 @@ extension ProfileViewController {
                 return
             }
             // TODO: .home => .favourites
-            timelineVC.type = .home
             favouritesViewController = timelineVC
+            favouritesViewController.type = .home
 
         default:
             break
