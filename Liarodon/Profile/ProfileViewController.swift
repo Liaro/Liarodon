@@ -110,6 +110,11 @@ final class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        statusesButton.title = NSLocalizedString("profile_toots_tab_title", comment: "")
+        followingButton.title = NSLocalizedString("profile_following_tab_title", comment: "")
+        followersButton.title = NSLocalizedString("profile_followers_tab_title", comment: "")
+        favouritesButton.title = NSLocalizedString("profile_favourites_tab_title", comment: "")
+
         initialFetch()
 
         NotificationCenter.default.addObserver(
@@ -256,6 +261,7 @@ final class ProfileViewController: UIViewController {
         followersButton.value = account.followersCount
 
         if account.id == myAccount.id {
+            navigationItem.title = NSLocalizedString("profile_title", comment: "")
             // TODO: GET /api/v1/favourites and count [Status]
             favouritesButton.value = 0
             favouritesButton.isHidden = false

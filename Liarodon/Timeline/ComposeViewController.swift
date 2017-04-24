@@ -15,7 +15,7 @@ class ComposeViewController: UIViewController {
     let keyboard = KeyboardObserver()
     @IBOutlet var contentTextView: PlaceHolderTextView! {
         didSet {
-            contentTextView.placeHolder = "What is on your mind?"
+            contentTextView.placeHolder = NSLocalizedString("compose_toot_place_holder", comment: "")
             contentTextView.delegate = self
         }
     }
@@ -123,8 +123,8 @@ class ComposeViewController: UIViewController {
     }
     
     @IBAction func photoButtonTapped(_ sender: UIButton) {
-        let alert = UIAlertController(title: "Select source", message: nil, preferredStyle: .actionSheet)
-        alert.addAction(UIAlertAction(title: "Library", style: .default, handler: { [weak self] _ in
+        let alert = UIAlertController(title: NSLocalizedString("photo_source_title", comment: ""), message: nil, preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("photo_source_library", comment: ""), style: .default, handler: { [weak self] _ in
             if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
                 let controller = UIImagePickerController()
                 controller.delegate = self
@@ -132,7 +132,7 @@ class ComposeViewController: UIViewController {
                 self?.present(controller, animated: true, completion: nil)
             }
         }))
-        alert.addAction(UIAlertAction(title: "Camera", style: .default, handler: { [weak self] _ in
+        alert.addAction(UIAlertAction(title: NSLocalizedString("photo_source_camera", comment: ""), style: .default, handler: { [weak self] _ in
             if UIImagePickerController.isSourceTypeAvailable(.camera) {
                 let controller = UIImagePickerController()
                 controller.delegate = self
@@ -141,26 +141,26 @@ class ComposeViewController: UIViewController {
             }
 
         }))
-        alert.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: nil))
+        alert.addAction(UIAlertAction(title: NSLocalizedString("cancel", comment: ""), style: .destructive, handler: nil))
         present(alert, animated: true, completion: nil)
     }
 
     @IBAction func privacyButtonTapped(_ sender: UIButton) {
-        let alert = UIAlertController(title: "Privacy settings", message: nil, preferredStyle: .actionSheet)
-        alert.addAction(UIAlertAction(title: "Public", style: .default, handler: { [weak self] _ in
+        let alert = UIAlertController(title: NSLocalizedString("privacy_settings_title", comment: ""), message: nil, preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("privacy_settings_public", comment: ""), style: .default, handler: { [weak self] _ in
             self?.visibility = .public
         }))
-        alert.addAction(UIAlertAction(title: "Private", style: .default, handler: { [weak self] _ in
+        alert.addAction(UIAlertAction(title: NSLocalizedString("privacy_settings_private", comment: ""), style: .default, handler: { [weak self] _ in
             self?.visibility = .private
         }))
-        alert.addAction(UIAlertAction(title: "Unlisted", style: .default, handler: { [weak self] _ in
+        alert.addAction(UIAlertAction(title: NSLocalizedString("privacy_settings_unlisted", comment: ""), style: .default, handler: { [weak self] _ in
             self?.visibility = .unlisted
         }))
-        alert.addAction(UIAlertAction(title: "Direct", style: .default, handler: { [weak self] _ in
+        alert.addAction(UIAlertAction(title: NSLocalizedString("privacy_settings_direct", comment: ""), style: .default, handler: { [weak self] _ in
             self?.visibility = .direct
         }))
 
-        alert.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: nil))
+        alert.addAction(UIAlertAction(title: NSLocalizedString("cancel", comment: ""), style: .destructive, handler: nil))
         present(alert, animated: true, completion: nil)
     }
     @IBAction func contentWarningButtonTapped(_ sender: UIButton) {
@@ -173,7 +173,7 @@ class ComposeViewController: UIViewController {
         sender.isEnabled = false
 
         if images.count > 4 {
-            let alert = UIAlertController(title: "Images too much (max 4)", message: "", preferredStyle: .alert)
+            let alert = UIAlertController(title: NSLocalizedString("photos_too_many_title", comment: ""), message: "", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             present(alert, animated: true, completion: nil)
             return
@@ -212,7 +212,7 @@ class ComposeViewController: UIViewController {
         Session.send(req) { [weak self] (result) in
             switch result {
             case .success(_):
-                let alert = UIAlertController(title: "Posted", message: nil, preferredStyle: .alert)
+                let alert = UIAlertController(title: NSLocalizedString("post_toot_success", comment: ""), message: nil, preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak self] _ in
                     self?.dismiss(animated: true, completion: nil)
                 }))
@@ -224,7 +224,7 @@ class ComposeViewController: UIViewController {
     }
 
     func fail(error: Error) {
-        let alert = UIAlertController(title: "Post failed", message: nil, preferredStyle: .alert)
+        let alert = UIAlertController(title: NSLocalizedString("post_toot_failure", comment: ""), message: nil, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         present(alert, animated: true, completion: nil)
     }
@@ -269,9 +269,9 @@ extension ComposeViewController: UICollectionViewDataSource {
 
 extension ComposeViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let alert = UIAlertController(title: "remove it?", message: nil, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak self] _ in
+        let alert = UIAlertController(title: NSLocalizedString("remove_photo_title", comment: ""), message: nil, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("cancel", comment: ""), style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: NSLocalizedString("remove_photo_ok", comment: ""), style: .default, handler: { [weak self] _ in
             self?.images.remove(at: indexPath.row)
             collectionView.reloadData()
             self?.addBottomInsetForImage()

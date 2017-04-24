@@ -39,11 +39,11 @@ final class TimelineTableViewController: UITableViewController {
 
         switch type! {
         case .home:
-            title = "Home"
+            title = NSLocalizedString("home_timeline_title", comment: "")
         case .local:
-            title = "Local"
+            title = NSLocalizedString("local_timeline_title", comment: "")
         case .federated:
-            title = "Federated"
+            title = NSLocalizedString("federated_timeline_title", comment: "")
         case .account:
             title = "Account"
         case .tag(let tag):
@@ -354,12 +354,12 @@ extension TimelineTableViewController: TootTableViewCellDelegate {
 
     func tootTableViewCellMoreButtonTapped(_ cell: TootTableViewCell) {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        alert.addAction(UIAlertAction(title: "Open in Safari", style: .default, handler: { _ in
+        alert.addAction(UIAlertAction(title: NSLocalizedString("toot_more_menu_safari", comment: ""), style: .default, handler: { _ in
             if let url = cell.status.url.url {
                 UIApplication.shared.openURL(url)
             }
         }))
-        alert.addAction(UIAlertAction(title: "Share", style: .default, handler: { [weak self] _ in
+        alert.addAction(UIAlertAction(title: NSLocalizedString("toot_more_menu_share", comment: ""), style: .default, handler: { [weak self] _ in
             let shareText = cell.contentTextView.text
             let shareWebsite = cell.status.url.url
             let shareImage: UIImage?
@@ -374,7 +374,7 @@ extension TimelineTableViewController: TootTableViewCellDelegate {
 
             self?.present(activityVC, animated: true, completion: nil)
         }))
-        alert.addAction(UIAlertAction(title: "Copy text", style: .default, handler: { _ in
+        alert.addAction(UIAlertAction(title: NSLocalizedString("toot_more_menu_copy", comment: ""), style: .default, handler: { _ in
             UIPasteboard.general.setValue(cell.contentTextView.text, forPasteboardType: "public.text")
         }))
         /* // TODO: Implement them
@@ -383,7 +383,7 @@ extension TimelineTableViewController: TootTableViewCellDelegate {
         alert.addAction(UIAlertAction(title: "Block", style: .destructive, handler: { _ in
         }))
         */
-        alert.addAction(UIAlertAction(title: "Report", style: .destructive, handler: { _ in
+        alert.addAction(UIAlertAction(title: NSLocalizedString("toot_more_menu_report", comment: ""), style: .destructive, handler: { _ in
             let req = MastodonAPI.AddReport(
                 accountId: cell.status.account.id,
                 statusIds: [cell.status.id],
@@ -392,17 +392,17 @@ extension TimelineTableViewController: TootTableViewCellDelegate {
             Session.send(req) { [weak self] (result) in
                 switch result {
                 case .success(_):
-                    let alert = UIAlertController(title: "Reported", message: nil, preferredStyle: .alert)
+                    let alert = UIAlertController(title: NSLocalizedString("toot_more_menu_report_success", comment: ""), message: nil, preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                     self?.present(alert, animated: true, completion: nil)
                 case .failure(_):
-                    let alert = UIAlertController(title: "Report failed", message: nil, preferredStyle: .alert)
+                    let alert = UIAlertController(title: NSLocalizedString("toot_more_menu_report_failure", comment: ""), message: nil, preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                     self?.present(alert, animated: true, completion: nil)
                 }
             }
         }))
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in
+        alert.addAction(UIAlertAction(title: NSLocalizedString("cancel", comment: ""), style: .cancel, handler: { _ in
         }))
         present(alert, animated: true, completion: nil)
     }

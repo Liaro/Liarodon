@@ -1,0 +1,15 @@
+
+/* Class = "UINavigationItem"; title = "Sellect your account"; ObjectID = "AxL-TA-1Du"; */
+"AxL-TA-1Du.title" = "アカウント選択";
+
+/* Class = "UILabel"; text = "Create a new account"; ObjectID = "ENE-IZ-HBE"; */
+"ENE-IZ-HBE.text" = "アカウントの新規作成";
+
+/* Class = "UILabel"; text = "Add an exist account"; ObjectID = "McA-we-fHR"; */
+"McA-we-fHR.text" = "他のアカウントを追加";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "bPE-TX-52O"; */
+"bPE-TX-52O.text" = "Title";
+
+/* Class = "UILabel"; text = "Detail"; ObjectID = "sb6-xk-FMX"; */
+"sb6-xk-FMX.text" = "Detail";
