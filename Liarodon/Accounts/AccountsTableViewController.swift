@@ -40,6 +40,17 @@ class AccountsTableViewController: UITableViewController {
     var account: Account!
     var datum: [AccountsTableCellData] = []
 
+    private let indicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 30, height: 40))
+    private var nextMaxID: Int? {
+        didSet {
+            if nextMaxID == nil {
+                indicator.stopAnimating()
+            }
+        }
+    }
+    private var isLoading = false
+    private let limitForAPI = 80
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -53,7 +64,10 @@ class AccountsTableViewController: UITableViewController {
                            forCellReuseIdentifier: "accountCell")
         tableView.estimatedRowHeight = 80
         tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.tableFooterView = UIView(frame: CGRect.zero)
+
+        indicator.activityIndicatorViewStyle = .gray
+        indicator.startAnimating()
+        tableView.tableFooterView = indicator
     }
 
     override func didReceiveMemoryWarning() {
@@ -65,14 +79,14 @@ class AccountsTableViewController: UITableViewController {
 
         switch type! {
         case .following:
-            let request = MastodonAPI.GetAccountFollowingRequest(id: account.id)
+            let request = MastodonAPI.GetAccountFollowingRequest(id: account.id, maxID: nil, sinceID: nil, limit: limitForAPI)
             Session.send(request) { [weak self] (result) in
                 guard let s = self else { return }
                 s.fetchLatestAccountsCompletion(result: result)
             }
 
         case .followers:
-            let request = MastodonAPI.GetAccountFollowersRequest(id: account.id, maxID: nil, sinceID: nil, limit: 80)
+            let request = MastodonAPI.GetAccountFollowersRequest(id: account.id, maxID: nil, sinceID: nil, limit: limitForAPI)
             Session.send(request) { [weak self] (result) in
                 guard let s = self else { return }
                 s.fetchLatestAccountsCompletion(result: result)
@@ -80,14 +94,15 @@ class AccountsTableViewController: UITableViewController {
         }
     }
 
-    func fetchLatestAccountsCompletion(result: Result<[Account], SessionTaskError>) {
+    func fetchLatestAccountsCompletion(result: Result<(accounts: [Account], sinceID: Int?, maxID: Int?), SessionTaskError>) {
         switch result {
-        case .success(let accounts):
+        case .success(let (accounts, _, maxID)):
             datum = accounts.map({ AccountsTableCellData(id: $0.id, account: $0) })
             tableView.reloadData()
             if !accounts.isEmpty {
                 fetchRelationships(accounts: accounts)
             }
+            nextMaxID = maxID
 
         case .failure(let error):
             print(error)
@@ -119,6 +134,46 @@ class AccountsTableViewController: UITableViewController {
         }
     }
 
+    private func loadMore() {
+        guard let maxID = nextMaxID, !isLoading else {
+            return
+        }
+
+        isLoading = true
+
+        switch type! {
+        case .following:
+            let request = MastodonAPI.GetAccountFollowingRequest(id: account.id, maxID: maxID, sinceID: nil, limit: 80)
+            Session.send(request) { [weak self] (result) in
+                guard let s = self else { return }
+                s.loadMoreCompletion(result: result)
+            }
+
+        case .followers:
+            let request = MastodonAPI.GetAccountFollowersRequest(id: account.id, maxID: maxID, sinceID: nil, limit: 80)
+            Session.send(request) { [weak self] (result) in
+                guard let s = self else { return }
+                s.loadMoreCompletion(result: result)
+            }
+        }
+    }
+
+    private func loadMoreCompletion(result: Result<(accounts: [Account], sinceID: Int?, maxID: Int?), SessionTaskError>) {
+        switch result {
+        case .success(let (accounts, _, maxID)):
+            datum += accounts.map({ AccountsTableCellData(id: $0.id, account: $0) })
+            tableView.reloadData()
+            if !accounts.isEmpty {
+                fetchRelationships(accounts: accounts)
+            }
+            nextMaxID = maxID
+
+        case .failure(let error):
+            print(error)
+        }
+        isLoading = false
+    }
+
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -133,7 +188,6 @@ class AccountsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-
         let cell = tableView.dequeueReusableCell(withIdentifier: "accountCell", for: indexPath) as! AccountsTableViewCell
         let data = datum[indexPath.row]
         let relationship: Relationship?
@@ -144,6 +198,12 @@ class AccountsTableViewController: UITableViewController {
         }
         cell.configureCell(follower: data.account, relationship: relationship)
         return cell
+    }
+
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row >= datum.count - 5 {
+            loadMore()
+        }
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

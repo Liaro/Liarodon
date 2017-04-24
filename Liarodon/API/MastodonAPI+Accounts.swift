@@ -54,6 +54,29 @@ extension MastodonAPI {
     // TODO: Implement
 
 
+    /// Extract sinceID and maxID from urlResponse.allHeaderFields["Link"].
+    /// For GetAccountFollowersRequest/GetAccountFollowingRequest below.
+    // Link formart example (string)
+    // <https://friends.nico/api/v1/accounts/512/following?limit=80&max_id=211174>; rel="next", <https://friends.nico/api/v1/accounts/512/following?limit=80&since_id=201174>; rel="prev"
+    //
+    private static func extractSinceIDMaxID(raw: String) -> (sinceID: Int?, maxID: Int?) {
+        var sinceID: Int?
+        var maxID: Int?
+        let linkStrings = raw.components(separatedBy: ",")
+        for link in linkStrings {
+            guard let end = link.range(of: ">;") else { continue }
+            if let since = link.range(of: "since_id=") {
+                let substring = link.substring(with: since.upperBound..<end.lowerBound)
+                sinceID = Int(substring)
+            }
+            else if let max = link.range(of: "max_id=") {
+                let substring = link.substring(with: max.upperBound..<end.lowerBound)
+                maxID = Int(substring)
+            }
+        }
+        return (sinceID: sinceID, maxID: maxID)
+    }
+
     /// Getting an account's followers.
     struct GetAccountFollowersRequest: MastodonRequest {
 
@@ -84,8 +107,13 @@ extension MastodonAPI {
             return params
         }
 
-        func response(from object: Any, urlResponse: HTTPURLResponse) throws -> [Account] {
-            return try decodeArray(object)
+        func response(from object: Any, urlResponse: HTTPURLResponse) throws -> (accounts: [Account], sinceID: Int?, maxID: Int?) {
+            var sinceID: Int?
+            var maxID: Int?
+            if let linkValue = urlResponse.allHeaderFields["Link"] as? String {
+                (sinceID, maxID) = MastodonAPI.extractSinceIDMaxID(raw: linkValue)
+            }
+            return (try decodeArray(object), sinceID, maxID)
         }
     }
 
@@ -93,6 +121,9 @@ extension MastodonAPI {
     struct GetAccountFollowingRequest: MastodonRequest {
 
         let id: Int
+        let maxID: Int?
+        let sinceID: Int?
+        let limit: Int?
 
         var method: HTTPMethod {
             return .get
@@ -102,8 +133,27 @@ extension MastodonAPI {
             return "/api/v1/accounts/\(id)/following"
         }
 
-        func response(from object: Any, urlResponse: HTTPURLResponse) throws -> [Account] {
-            return try decodeArray(object)
+        var parameters: Any? {
+            var params = [String: Any]()
+            if let maxID = maxID {
+                params["max_id"] = maxID
+            }
+            if let sinceID = sinceID {
+                params["since_id"] = sinceID
+            }
+            if let limit = limit {
+                params["limit"] = limit
+            }
+            return params
+        }
+
+        func response(from object: Any, urlResponse: HTTPURLResponse) throws -> (accounts: [Account], sinceID: Int?, maxID: Int?) {
+            var sinceID: Int?
+            var maxID: Int?
+            if let linkValue = urlResponse.allHeaderFields["Link"] as? String {
+                (sinceID, maxID) = MastodonAPI.extractSinceIDMaxID(raw: linkValue)
+            }
+            return (try decodeArray(object), sinceID, maxID)
         }
     }
 
@@ -170,12 +220,6 @@ extension MastodonAPI {
 
         var path: String {
             return "/api/v1/accounts/\(id)/unfollow"
-        }
-
-        var parameters: Any? {
-            return [
-                "bearer_token": MastodonAPI.accessToken,
-            ]
         }
 
         func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Relationship {
