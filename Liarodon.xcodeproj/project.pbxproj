@@ -20,6 +20,7 @@
 		430061661EACC839005DB81F /* FollowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430061651EACC839005DB81F /* FollowButton.swift */; };
 		432590261EACA039000C364A /* AccountsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432590251EACA039000C364A /* AccountsTableViewController.swift */; };
 		432CFBCD1EADE5140001CA62 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 432CFBCF1EADE5140001CA62 /* Login.storyboard */; };
+		432CFBDF1EADEC7F0001CA62 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 432CFBE11EADEC7F0001CA62 /* Localizable.strings */; };
 		435CA87B1EA8AD32006F5EE5 /* Accounts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 435CA87A1EA8AD32006F5EE5 /* Accounts.storyboard */; };
 		435CA8801EA8AE36006F5EE5 /* AccountsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435CA87E1EA8AE36006F5EE5 /* AccountsTableViewCell.swift */; };
 		435CA8811EA8AE36006F5EE5 /* AccountsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 435CA87F1EA8AE36006F5EE5 /* AccountsTableViewCell.xib */; };
@@ -92,6 +93,9 @@
 		432CFBCE1EADE5140001CA62 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Login.storyboard; sourceTree = "<group>"; };
 		432CFBD81EADE7F70001CA62 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Login.strings; sourceTree = "<group>"; };
 		432CFBDA1EADE7FB0001CA62 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Login.strings; sourceTree = "<group>"; };
+		432CFBE01EADEC7F0001CA62 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		432CFBE21EADEC800001CA62 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		432CFBE31EADEC810001CA62 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		435CA87A1EA8AD32006F5EE5 /* Accounts.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Accounts.storyboard; path = Accounts/Accounts.storyboard; sourceTree = "<group>"; };
 		435CA87E1EA8AE36006F5EE5 /* AccountsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountsTableViewCell.swift; path = Accounts/AccountsTableViewCell.swift; sourceTree = "<group>"; };
 		435CA87F1EA8AE36006F5EE5 /* AccountsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AccountsTableViewCell.xib; path = Accounts/AccountsTableViewCell.xib; sourceTree = "<group>"; };
@@ -226,6 +230,7 @@
 				1EEF59BC1EAD27DB0047293B /* 1Password.xcassets */,
 				43F9B1981EA613C50093E798 /* LaunchScreen.storyboard */,
 				43F9B19B1EA613C50093E798 /* Info.plist */,
+				432CFBE11EADEC7F0001CA62 /* Localizable.strings */,
 			);
 			path = Liarodon;
 			sourceTree = "<group>";
@@ -462,6 +467,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				43F9B1D01EA615D80093E798 /* Timeline.storyboard in Resources */,
+				432CFBDF1EADEC7F0001CA62 /* Localizable.strings in Resources */,
 				43F9B19A1EA613C50093E798 /* LaunchScreen.storyboard in Resources */,
 				438A98A21EA92C5A007CB1BC /* ProfileMenuButton.xib in Resources */,
 				435CA87B1EA8AD32006F5EE5 /* Accounts.storyboard in Resources */,
@@ -637,6 +643,16 @@
 			);
 			name = Login.storyboard;
 			path = Login;
+			sourceTree = "<group>";
+		};
+		432CFBE11EADEC7F0001CA62 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				432CFBE01EADEC7F0001CA62 /* Base */,
+				432CFBE21EADEC800001CA62 /* en */,
+				432CFBE31EADEC810001CA62 /* ja */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 		43F9B1981EA613C50093E798 /* LaunchScreen.storyboard */ = {
