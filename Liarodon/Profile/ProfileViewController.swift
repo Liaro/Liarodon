@@ -47,6 +47,11 @@ final class ProfileViewController: UIViewController {
         }
     }
     @IBOutlet weak var noteTextViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var moreButtonView: UIView! {
+        didSet {
+            moreButtonView.isHidden = true
+        }
+    }
 
     @IBOutlet weak var menuView: UIView!
     @IBOutlet weak var statusesButton: ProfileMenuButton!
@@ -63,8 +68,16 @@ final class ProfileViewController: UIViewController {
     }
     @IBOutlet weak var followButtonView: UIView!
     @IBOutlet weak var followButton: FollowButton!
-    @IBOutlet weak var requestedLabel: UILabel!
-
+    @IBOutlet weak var requestedLabel: UILabel! {
+        didSet {
+            requestedLabel.isHidden = true
+        }
+    }
+    @IBOutlet weak var blockedLabel: UILabel! {
+        didSet {
+            blockedLabel.isHidden = true
+        }
+    }
     @IBOutlet weak var statusesContainerView: UIView!
     @IBOutlet weak var followingContainerView: UIView!
     @IBOutlet weak var followersContainerView: UIView!
@@ -225,7 +238,6 @@ final class ProfileViewController: UIViewController {
     }
 
     private func setupViews() {
-        print(account)
         avatarImageView.kf.setImage(with: account.avatar.url)
         headerImageView.kf.setImage(with: account.header.url) { [weak self] image, _, _, url in
             guard let s = self else { return }
@@ -268,9 +280,11 @@ final class ProfileViewController: UIViewController {
             favouritesButton.isHidden = true
 
             followButtonView.isHidden = true
+            moreButtonView.isHidden = true
         } else {
             navigationItem.title = account.displayName
             favouritesButton.isHidden = true
+            moreButtonView.isHidden = false
         }
 
         for vc in childTableViewControllers {
@@ -302,14 +316,21 @@ final class ProfileViewController: UIViewController {
         }
     }
 
-    private func setupFollowButtonView() {
+    fileprivate func setupFollowButtonView() {
         guard let relationship = relationship else {
             return
         }
+        followButton.isHidden = false
+        blockedLabel.isHidden = true
+
         if relationship.requested {
             followButton.type = .cancelRequest
             requestedLabel.isHidden = false
-        } else if relationship.following {
+        } else if relationship.blocking {
+            followButton.isHidden = true
+            blockedLabel.isHidden = false
+        }
+        else if relationship.following {
             followButton.type = .unfollow
             requestedLabel.isHidden = true
         } else {
@@ -487,7 +508,7 @@ extension ProfileViewController: UITextViewDelegate {
     }
 }
 
-// MARK: - follow button did tap
+// MARK: - ProfileHeaderView button actions
 extension ProfileViewController {
 
     @IBAction func followButtonDidTap(_ sender: FollowButton) {
@@ -559,6 +580,69 @@ extension ProfileViewController {
             }
             
             s.isFollowUnfollowRequesting = false
+        }
+    }
+
+    @IBAction func moreButtonDidTap(_ sender: UIButton) {
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let block = UIAlertAction(title: NSLocalizedString("block_user_action_title", comment: ""), style: .destructive) { (action) in
+            self.block()
+        }
+        let unblock = UIAlertAction(title: NSLocalizedString("unblock_user_action_title", comment: ""), style: .default) { (action) in
+            self.unblock()
+        }
+        let cancel = UIAlertAction(title: NSLocalizedString("cancel", comment: ""), style: .cancel, handler: nil)
+
+        if let relationship = relationship {
+            if relationship.blocking {
+                alert.addAction(unblock)
+            } else {
+                alert.addAction(block)
+            }
+        }
+        alert.addAction(cancel)
+
+        alert.popoverPresentationController?.sourceView = sender
+        present(alert, animated: true, completion: nil)
+    }
+
+    private func block() {
+
+        let request = MastodonAPI.PostAccountBlockRequest(id: account.id)
+        Session.send(request) { [weak self] (result) in
+            guard let s = self else {
+                return
+            }
+
+            switch result {
+
+            case .success(let relationship):
+                s.relationship = relationship
+                s.setupFollowButtonView()
+
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+
+    private func unblock() {
+
+        let request = MastodonAPI.PostAccountUnblockRequest(id: account.id)
+        Session.send(request) { [weak self] (result) in
+            guard let s = self else {
+                return
+            }
+
+            switch result {
+
+            case .success(let relationship):
+                s.relationship = relationship
+                s.setupFollowButtonView()
+
+            case .failure(let error):
+                print(error)
+            }
         }
     }
 }

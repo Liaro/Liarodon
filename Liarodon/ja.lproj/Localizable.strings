@@ -36,3 +36,5 @@
 "profile_following_tab_title" = "フォロー";
 "profile_followers_tab_title" = "フォロワー";
 "profile_favourites_tab_title" = "お気に入り";
+"block_user_action_title" = "ブロック";
+"unblock_user_action_title" = "ブロックを解除";
