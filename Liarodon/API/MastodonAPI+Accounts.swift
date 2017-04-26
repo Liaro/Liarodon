@@ -239,10 +239,44 @@ extension MastodonAPI {
     }
 
     /// Blocking an account.
-    // TODO: Implement
+    struct PostAccountBlockRequest: MastodonRequest {
+
+        let id: Int
+
+        var method: HTTPMethod {
+            return .post
+        }
+
+        var path: String {
+            return "/api/v1/accounts/\(id)/block"
+        }
+
+        func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Relationship {
+
+            let relationship = try Relationship.decodeValue(object)
+            return relationship
+        }
+    }
 
     /// Unblocking an account.
-    // TODO: Implement
+    struct PostAccountUnblockRequest: MastodonRequest {
+
+        let id: Int
+
+        var method: HTTPMethod {
+            return .post
+        }
+
+        var path: String {
+            return "/api/v1/accounts/\(id)/unblock"
+        }
+
+        func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Relationship {
+
+            let relationship = try Relationship.decodeValue(object)
+            return relationship
+        }
+    }
 
     /// Muting an account.
     // TODO: Implement
