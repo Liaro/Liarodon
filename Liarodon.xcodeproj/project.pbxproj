@@ -56,7 +56,9 @@
 		43F9B20B1EA708200093E798 /* MastodonAPI+Timelines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F9B20A1EA708200093E798 /* MastodonAPI+Timelines.swift */; };
 		43F9B20E1EA7112B0093E798 /* String+url.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F9B20D1EA7112B0093E798 /* String+url.swift */; };
 		43F9B2101EA7160C0093E798 /* MastodonAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F9B20F1EA7160C0093E798 /* MastodonAPI.swift */; };
+		7863950B40A2A88548FCB120 /* Pods_LiarodonUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7AB260FD73ADD2C87758A87 /* Pods_LiarodonUITests.framework */; };
 		C96594BCA41A1A7E8BAFF67D /* Pods_Liarodon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A2903B0F09627C9A95655D4 /* Pods_Liarodon.framework */; };
+		D09B4147ADD0C51834E33BF7 /* Pods_LiarodonTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 610EE0359445FD1AB49D57AD /* Pods_LiarodonTests.framework */; };
 		F6660CF91EA8F45C007D04D7 /* LinkTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6660CF81EA8F45C007D04D7 /* LinkTextView.swift */; };
 /* End PBXBuildFile section */
 
@@ -147,10 +149,16 @@
 		43F9B20A1EA708200093E798 /* MastodonAPI+Timelines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "MastodonAPI+Timelines.swift"; path = "API/MastodonAPI+Timelines.swift"; sourceTree = "<group>"; };
 		43F9B20D1EA7112B0093E798 /* String+url.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+url.swift"; path = "Extensions/String+url.swift"; sourceTree = "<group>"; };
 		43F9B20F1EA7160C0093E798 /* MastodonAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MastodonAPI.swift; path = API/MastodonAPI.swift; sourceTree = "<group>"; };
+		610EE0359445FD1AB49D57AD /* Pods_LiarodonTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LiarodonTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6CA857A6E3A7FFBF91E739BA /* Pods-LiarodonUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LiarodonUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LiarodonUITests/Pods-LiarodonUITests.release.xcconfig"; sourceTree = "<group>"; };
 		8A2903B0F09627C9A95655D4 /* Pods_Liarodon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Liarodon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B45EEC2D9960FB98F651DEDB /* Pods-LiarodonTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LiarodonTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LiarodonTests/Pods-LiarodonTests.release.xcconfig"; sourceTree = "<group>"; };
 		BB08770CBB454B140713D012 /* Pods-Liarodon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Liarodon.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Liarodon/Pods-Liarodon.debug.xcconfig"; sourceTree = "<group>"; };
 		CAD57C341AEC8EF5EFD2E96C /* Pods-Liarodon.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Liarodon.release.xcconfig"; path = "Pods/Target Support Files/Pods-Liarodon/Pods-Liarodon.release.xcconfig"; sourceTree = "<group>"; };
+		D945AE84409236875A8D3F61 /* Pods-LiarodonTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LiarodonTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LiarodonTests/Pods-LiarodonTests.debug.xcconfig"; sourceTree = "<group>"; };
+		E7AB260FD73ADD2C87758A87 /* Pods_LiarodonUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LiarodonUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6660CF81EA8F45C007D04D7 /* LinkTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LinkTextView.swift; path = Timeline/LinkTextView.swift; sourceTree = "<group>"; };
+		F6D6F28BCBCC9BC8F9F5ECC9 /* Pods-LiarodonUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LiarodonUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LiarodonUITests/Pods-LiarodonUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +174,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D09B4147ADD0C51834E33BF7 /* Pods_LiarodonTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -173,6 +182,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7863950B40A2A88548FCB120 /* Pods_LiarodonUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -183,6 +193,8 @@
 			isa = PBXGroup;
 			children = (
 				8A2903B0F09627C9A95655D4 /* Pods_Liarodon.framework */,
+				610EE0359445FD1AB49D57AD /* Pods_LiarodonTests.framework */,
+				E7AB260FD73ADD2C87758A87 /* Pods_LiarodonUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -360,6 +372,10 @@
 			children = (
 				BB08770CBB454B140713D012 /* Pods-Liarodon.debug.xcconfig */,
 				CAD57C341AEC8EF5EFD2E96C /* Pods-Liarodon.release.xcconfig */,
+				D945AE84409236875A8D3F61 /* Pods-LiarodonTests.debug.xcconfig */,
+				B45EEC2D9960FB98F651DEDB /* Pods-LiarodonTests.release.xcconfig */,
+				F6D6F28BCBCC9BC8F9F5ECC9 /* Pods-LiarodonUITests.debug.xcconfig */,
+				6CA857A6E3A7FFBF91E739BA /* Pods-LiarodonUITests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -392,9 +408,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 43F9B1B71EA613C50093E798 /* Build configuration list for PBXNativeTarget "LiarodonTests" */;
 			buildPhases = (
+				53E1CE8CB848D7B7629EF7DB /* [CP] Check Pods Manifest.lock */,
 				43F9B19C1EA613C50093E798 /* Sources */,
 				43F9B19D1EA613C50093E798 /* Frameworks */,
 				43F9B19E1EA613C50093E798 /* Resources */,
+				63EDA9D7612DC4E85DE07730 /* [CP] Embed Pods Frameworks */,
+				1F762DC50DABF3D6CE587A82 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -410,9 +429,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 43F9B1BA1EA613C50093E798 /* Build configuration list for PBXNativeTarget "LiarodonUITests" */;
 			buildPhases = (
+				B6FEEC75F7E3359E2BCAF00E /* [CP] Check Pods Manifest.lock */,
 				43F9B1A71EA613C50093E798 /* Sources */,
 				43F9B1A81EA613C50093E798 /* Frameworks */,
 				43F9B1A91EA613C50093E798 /* Resources */,
+				11137475047687A36DD47652 /* [CP] Embed Pods Frameworks */,
+				F379638A59FBFFAFD98692FA /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -508,6 +530,36 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		11137475047687A36DD47652 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LiarodonUITests/Pods-LiarodonUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		1F762DC50DABF3D6CE587A82 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LiarodonTests/Pods-LiarodonTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		4399D9DA1EADDD0F00E4EC18 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -520,6 +572,51 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Fabric/run\" a904bf6b3196524ba758ab9c72e16490aa469ca9 076d9703ed0616833bcb6e22bd2b7ec02a609a5169942ad4e03de864a98a9599";
+		};
+		53E1CE8CB848D7B7629EF7DB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		63EDA9D7612DC4E85DE07730 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LiarodonTests/Pods-LiarodonTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B6FEEC75F7E3359E2BCAF00E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
 		};
 		D4003FF003A553F483A6D5AA /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -564,6 +661,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		F379638A59FBFFAFD98692FA /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LiarodonUITests/Pods-LiarodonUITests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -863,6 +975,7 @@
 		};
 		43F9B1B81EA613C50093E798 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D945AE84409236875A8D3F61 /* Pods-LiarodonTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -878,6 +991,7 @@
 		};
 		43F9B1B91EA613C50093E798 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B45EEC2D9960FB98F651DEDB /* Pods-LiarodonTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -893,6 +1007,7 @@
 		};
 		43F9B1BB1EA613C50093E798 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F6D6F28BCBCC9BC8F9F5ECC9 /* Pods-LiarodonUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = "";
@@ -907,6 +1022,7 @@
 		};
 		43F9B1BC1EA613C50093E798 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6CA857A6E3A7FFBF91E739BA /* Pods-LiarodonUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = "";
