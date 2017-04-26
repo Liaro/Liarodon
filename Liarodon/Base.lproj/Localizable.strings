@@ -35,3 +35,5 @@
 "profile_following_tab_title" = "Following";
 "profile_followers_tab_title" = "Followers";
 "profile_favourites_tab_title" = "Favourites";
+"block_user_action_title" = "Block";
+"unblock_user_action_title" = "Unblock";
