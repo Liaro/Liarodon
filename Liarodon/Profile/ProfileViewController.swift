@@ -585,6 +585,9 @@ extension ProfileViewController {
 
     @IBAction func moreButtonDidTap(_ sender: UIButton) {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        alert.popoverPresentationController?.sourceView = sender
+        alert.popoverPresentationController?.sourceRect = sender.bounds
+
         let block = UIAlertAction(title: NSLocalizedString("block_user_action_title", comment: ""), style: .destructive) { (action) in
             self.block()
         }
@@ -601,8 +604,6 @@ extension ProfileViewController {
             }
         }
         alert.addAction(cancel)
-
-        alert.popoverPresentationController?.sourceView = sender
         present(alert, animated: true, completion: nil)
     }
 
