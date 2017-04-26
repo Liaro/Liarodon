@@ -165,6 +165,8 @@ extension TootDetailViewController: TootTableViewCellDelegate {
     func tootTableViewCellMoreButtonTapped(_ cell: TootTableViewCell) {
         // FIXME: copy from TimelineTableViewController
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        alert.popoverPresentationController?.sourceView = cell.moreButton
+        alert.popoverPresentationController?.sourceRect = cell.moreButton.bounds
         alert.addAction(UIAlertAction(title: NSLocalizedString("toot_more_menu_safari", comment: ""), style: .default, handler: { _ in
             if let url = cell.status.url.url {
                 UIApplication.shared.openURL(url)
