@@ -30,3 +30,9 @@ target 'Liarodon' do
   end
 
 end
+
+post_install do | installer |
+  require 'fileutils'
+  FileUtils.cp_r('Pods/Target Support Files/Pods-Liarodon/Pods-Liarodon-acknowledgements.plist', 'Liarodon/Settings.bundle/Acknowledgements.plist', :remove_destination => true)
+end
+
