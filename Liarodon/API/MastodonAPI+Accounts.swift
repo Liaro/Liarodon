@@ -241,6 +241,8 @@ extension MastodonAPI {
     /// Blocking an account.
     struct PostAccountBlockRequest: MastodonRequest {
 
+        static let notificationName = NSNotification.Name(rawValue: "PostAccountBlockRequestNofication")
+
         let id: Int
 
         var method: HTTPMethod {
@@ -254,12 +256,23 @@ extension MastodonAPI {
         func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Relationship {
 
             let relationship = try Relationship.decodeValue(object)
+
+            DispatchQueue.main.async {
+                let notification = Notification(
+                    name: PostAccountBlockRequest.notificationName,
+                    object: self,
+                    userInfo: ["relationship": relationship])
+                NotificationCenter.default.post(notification)
+            }
+
             return relationship
         }
     }
 
     /// Unblocking an account.
     struct PostAccountUnblockRequest: MastodonRequest {
+
+        static let notificationName = NSNotification.Name(rawValue: "PostAccountUnblockRequestNofication")
 
         let id: Int
 
@@ -274,6 +287,14 @@ extension MastodonAPI {
         func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Relationship {
 
             let relationship = try Relationship.decodeValue(object)
+
+            DispatchQueue.main.async {
+                let notification = Notification(
+                    name: PostAccountUnblockRequest.notificationName,
+                    object: self,
+                    userInfo: ["relationship": relationship])
+                NotificationCenter.default.post(notification)
+            }
             return relationship
         }
     }

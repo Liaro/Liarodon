@@ -148,6 +148,9 @@ final class ProfileViewController: UIViewController {
         NotificationCenter.default.addObserver(
             self, selector: #selector(didRecieveUnfollowNotification(notification:)),
             name: MastodonAPI.PostAccountUnfollowRequest.notificationName, object: nil)
+        NotificationCenter.default.addObserver(
+            self, selector: #selector(didRecieveUnfollowNotification(notification:)),
+            name: MastodonAPI.PostAccountBlockRequest.notificationName, object: nil)
 
         for button in menuButtons {
             button.delegate = self
