@@ -319,6 +319,7 @@ final class TimelineTableViewController: UITableViewController {
 extension TimelineTableViewController: AccountChangedRefreshable {
     func shouldRefresh() {
         statuses = []
+        tableView.reloadData()
         fetchInitialTimeline()
     }
 }

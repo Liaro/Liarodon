@@ -38,9 +38,26 @@ final class MainTabBarController: UITabBarController {
                     selector: #selector(MainTabBarController.accountChanged(notification:)),
                     name: accountChangedNotification,
                     object: nil)
+
+        NotificationCenter.default.addObserver(self,
+                    selector: #selector(MainTabBarController.relationshipChanged(notification:)),
+                    name: MastodonAPI.PostAccountBlockRequest.notificationName,
+                    object: nil)
+
+        NotificationCenter.default.addObserver(self,
+                    selector: #selector(MainTabBarController.relationshipChanged(notification:)),
+                    name: MastodonAPI.PostAccountUnblockRequest.notificationName,
+                    object: nil)
     }
 
     func accountChanged(notification: Notification) {
+        viewControllers?.forEach {
+            ($0 as? AccountChangedRefreshable)?.shouldRefresh()
+            (($0 as? UINavigationController)?.topViewController as? AccountChangedRefreshable)?.shouldRefresh()
+        }
+    }
+
+    func relationshipChanged(notification: Notification) {
         viewControllers?.forEach {
             ($0 as? AccountChangedRefreshable)?.shouldRefresh()
             (($0 as? UINavigationController)?.topViewController as? AccountChangedRefreshable)?.shouldRefresh()
