@@ -60,6 +60,7 @@
 		C96594BCA41A1A7E8BAFF67D /* Pods_Liarodon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A2903B0F09627C9A95655D4 /* Pods_Liarodon.framework */; };
 		D09B4147ADD0C51834E33BF7 /* Pods_LiarodonTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 610EE0359445FD1AB49D57AD /* Pods_LiarodonTests.framework */; };
 		F6660CF91EA8F45C007D04D7 /* LinkTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6660CF81EA8F45C007D04D7 /* LinkTextView.swift */; };
+		F68CDC401EB1E2C3005DF6DB /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F68CDC3F1EB1E2C3005DF6DB /* Settings.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -158,6 +159,7 @@
 		D945AE84409236875A8D3F61 /* Pods-LiarodonTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LiarodonTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LiarodonTests/Pods-LiarodonTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E7AB260FD73ADD2C87758A87 /* Pods_LiarodonUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LiarodonUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6660CF81EA8F45C007D04D7 /* LinkTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LinkTextView.swift; path = Timeline/LinkTextView.swift; sourceTree = "<group>"; };
+		F68CDC3F1EB1E2C3005DF6DB /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		F6D6F28BCBCC9BC8F9F5ECC9 /* Pods-LiarodonUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LiarodonUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LiarodonUITests/Pods-LiarodonUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -252,6 +254,7 @@
 				1EEF59BC1EAD27DB0047293B /* 1Password.xcassets */,
 				43F9B1981EA613C50093E798 /* LaunchScreen.storyboard */,
 				43F9B19B1EA613C50093E798 /* Info.plist */,
+				F68CDC3F1EB1E2C3005DF6DB /* Settings.bundle */,
 				432CFBE11EADEC7F0001CA62 /* Localizable.strings */,
 			);
 			path = Liarodon;
@@ -500,6 +503,7 @@
 			files = (
 				432CFC031EAE03600001CA62 /* Timeline.storyboard in Resources */,
 				432CFBDF1EADEC7F0001CA62 /* Localizable.strings in Resources */,
+				F68CDC401EB1E2C3005DF6DB /* Settings.bundle in Resources */,
 				43F9B19A1EA613C50093E798 /* LaunchScreen.storyboard in Resources */,
 				438A98A21EA92C5A007CB1BC /* ProfileMenuButton.xib in Resources */,
 				432CFC1A1EAE16470001CA62 /* Accounts.storyboard in Resources */,
