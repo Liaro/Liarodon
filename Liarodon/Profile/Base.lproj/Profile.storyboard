@@ -48,6 +48,42 @@
                                     <segue destination="4vz-YK-RxK" kind="embed" identifier="Favourites" id="wEQ-0q-aEk"/>
                                 </connections>
                             </containerView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yqa-yw-PlG" userLabel="Blocked View">
+                                <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                                <subviews>
+                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a1E-jo-p8C" userLabel="For layout">
+                                        <rect key="frame" x="0.0" y="271.5" width="320" height="144.5"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cGU-Vg-w15">
+                                        <rect key="frame" x="139" y="293" width="42" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wNC-50-vtw">
+                                        <rect key="frame" x="122" y="329" width="76" height="30"/>
+                                        <state key="normal" title="View Toots"/>
+                                        <connections>
+                                            <action selector="viewTootsButtonDidTap:" destination="IVO-N4-U3l" eventType="touchUpInside" id="KEr-XG-eBk"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="a1E-jo-p8C" firstAttribute="leading" secondItem="yqa-yw-PlG" secondAttribute="leading" id="8P1-z7-DbR"/>
+                                    <constraint firstAttribute="bottom" secondItem="a1E-jo-p8C" secondAttribute="bottom" id="DXB-8j-O1G"/>
+                                    <constraint firstItem="cGU-Vg-w15" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="yqa-yw-PlG" secondAttribute="leading" constant="15" id="Klz-9B-e3T"/>
+                                    <constraint firstAttribute="trailing" secondItem="a1E-jo-p8C" secondAttribute="trailing" id="LFZ-hQ-7ZM"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="wNC-50-vtw" secondAttribute="trailing" constant="15" id="N7z-y6-qeC"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="cGU-Vg-w15" secondAttribute="trailing" constant="15" id="P0X-1F-ay9"/>
+                                    <constraint firstItem="wNC-50-vtw" firstAttribute="centerY" secondItem="a1E-jo-p8C" secondAttribute="centerY" id="Z8T-OK-LOE"/>
+                                    <constraint firstItem="wNC-50-vtw" firstAttribute="top" secondItem="cGU-Vg-w15" secondAttribute="bottom" constant="15" id="eCX-Pe-Xmw"/>
+                                    <constraint firstItem="wNC-50-vtw" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="yqa-yw-PlG" secondAttribute="leading" constant="15" id="foO-Nn-UV7"/>
+                                    <constraint firstItem="cGU-Vg-w15" firstAttribute="centerX" secondItem="yqa-yw-PlG" secondAttribute="centerX" id="j2O-X5-MVn"/>
+                                    <constraint firstItem="wNC-50-vtw" firstAttribute="centerX" secondItem="yqa-yw-PlG" secondAttribute="centerX" id="xAY-F3-2uO"/>
+                                </constraints>
+                            </view>
                             <view clipsSubviews="YES" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HhQ-xh-g2g" customClass="ProfileHeaderView" customModule="Liarodon" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="64" width="320" height="271.5"/>
                                 <subviews>
@@ -268,13 +304,16 @@
                             <constraint firstItem="HhQ-xh-g2g" firstAttribute="top" secondItem="9t3-Tt-H6K" secondAttribute="bottom" priority="750" id="4Ag-In-Qhc"/>
                             <constraint firstItem="la2-gV-mRY" firstAttribute="top" secondItem="d2j-MO-7AV" secondAttribute="top" id="5AX-hC-P3l"/>
                             <constraint firstItem="dAO-xK-Jeq" firstAttribute="top" relation="greaterThanOrEqual" secondItem="HhQ-xh-g2g" secondAttribute="bottom" id="AJa-Xs-Vbe"/>
+                            <constraint firstItem="dAO-xK-Jeq" firstAttribute="top" secondItem="yqa-yw-PlG" secondAttribute="bottom" id="E1m-KH-bqk"/>
                             <constraint firstItem="vv3-kg-ztn" firstAttribute="top" secondItem="d2j-MO-7AV" secondAttribute="top" id="F7I-kQ-6mz"/>
                             <constraint firstItem="dAO-xK-Jeq" firstAttribute="top" secondItem="Ns3-nq-cuZ" secondAttribute="bottom" id="Hdc-n2-TnQ"/>
                             <constraint firstAttribute="trailing" secondItem="Ns3-nq-cuZ" secondAttribute="trailing" id="Hp8-FL-hJs"/>
+                            <constraint firstItem="yqa-yw-PlG" firstAttribute="leading" secondItem="d2j-MO-7AV" secondAttribute="leading" id="Id9-7J-RHk"/>
                             <constraint firstAttribute="trailing" secondItem="HhQ-xh-g2g" secondAttribute="trailing" id="K9g-U7-mch"/>
                             <constraint firstItem="la2-gV-mRY" firstAttribute="leading" secondItem="d2j-MO-7AV" secondAttribute="leading" id="LfK-lz-lnW"/>
                             <constraint firstItem="dAO-xK-Jeq" firstAttribute="top" secondItem="la2-gV-mRY" secondAttribute="bottom" id="UZL-aw-f86"/>
                             <constraint firstItem="Ns3-nq-cuZ" firstAttribute="top" secondItem="d2j-MO-7AV" secondAttribute="top" id="XXn-kg-Je9"/>
+                            <constraint firstAttribute="trailing" secondItem="yqa-yw-PlG" secondAttribute="trailing" id="aSe-k4-tX7"/>
                             <constraint firstItem="HhQ-xh-g2g" firstAttribute="centerX" secondItem="d2j-MO-7AV" secondAttribute="centerX" id="aZ6-cM-Xu1"/>
                             <constraint firstItem="Ns3-nq-cuZ" firstAttribute="leading" secondItem="d2j-MO-7AV" secondAttribute="leading" id="bF1-VK-2n8"/>
                             <constraint firstAttribute="trailing" secondItem="la2-gV-mRY" secondAttribute="trailing" id="bNW-Ni-OZ1"/>
@@ -282,7 +321,9 @@
                             <constraint firstAttribute="trailing" secondItem="R6h-ec-gUe" secondAttribute="trailing" id="fdq-8k-fQF"/>
                             <constraint firstItem="HhQ-xh-g2g" firstAttribute="leading" secondItem="d2j-MO-7AV" secondAttribute="leading" id="hpN-Ht-bYw"/>
                             <constraint firstItem="dAO-xK-Jeq" firstAttribute="top" secondItem="vv3-kg-ztn" secondAttribute="bottom" id="jKw-jb-VWn"/>
+                            <constraint firstItem="yqa-yw-PlG" firstAttribute="top" secondItem="9t3-Tt-H6K" secondAttribute="bottom" id="lLb-cb-Na5"/>
                             <constraint firstItem="HhQ-xh-g2g" firstAttribute="top" relation="greaterThanOrEqual" secondItem="9t3-Tt-H6K" secondAttribute="bottom" id="nCm-bC-DTg"/>
+                            <constraint firstItem="a1E-jo-p8C" firstAttribute="top" secondItem="HhQ-xh-g2g" secondAttribute="bottom" id="nh7-XD-sK8"/>
                             <constraint firstAttribute="trailing" secondItem="vv3-kg-ztn" secondAttribute="trailing" id="nvJ-eX-mDg"/>
                             <constraint firstItem="R6h-ec-gUe" firstAttribute="top" secondItem="d2j-MO-7AV" secondAttribute="top" id="pJV-Wh-Cto"/>
                             <constraint firstItem="R6h-ec-gUe" firstAttribute="leading" secondItem="d2j-MO-7AV" secondAttribute="leading" id="qhf-vS-HFU"/>
@@ -293,7 +334,9 @@
                     <connections>
                         <outlet property="acctLabel" destination="Uh7-Qi-JYR" id="N3e-sJ-Geh"/>
                         <outlet property="avatarImageView" destination="JWS-jv-czg" id="OBd-Fj-a1k"/>
+                        <outlet property="blockedDescriptionLabel" destination="cGU-Vg-w15" id="b1w-c3-Luz"/>
                         <outlet property="blockedLabel" destination="10a-fh-SIi" id="EN3-3c-5Ma"/>
+                        <outlet property="blockedView" destination="yqa-yw-PlG" id="BMX-UU-0Fa"/>
                         <outlet property="displayNameLabel" destination="iiT-Nj-ERV" id="R17-I1-ScD"/>
                         <outlet property="favouritesButton" destination="cL3-WI-2Zf" id="1a6-Qc-PLh"/>
                         <outlet property="favouritesContainerView" destination="la2-gV-mRY" id="KZw-Xg-43e"/>
@@ -314,11 +357,12 @@
                         <outlet property="requestedLabel" destination="ncf-2Q-SLs" id="fbY-hl-Ska"/>
                         <outlet property="statusesButton" destination="cYl-sN-Pkh" id="FBd-fa-NLM"/>
                         <outlet property="statusesContainerView" destination="R6h-ec-gUe" id="cLG-gY-dVH"/>
+                        <outlet property="viewTootsButton" destination="wNC-50-vtw" id="HqS-aD-tfh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Og-kZ-IB1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="798.55072463768124" y="174.45652173913044"/>
+            <point key="canvasLocation" x="796.875" y="173.75"/>
         </scene>
         <!--Profile-->
         <scene sceneID="nbw-Re-DaJ">

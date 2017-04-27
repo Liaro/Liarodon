@@ -36,5 +36,7 @@
 "profile_following_tab_title" = "フォロー";
 "profile_followers_tab_title" = "フォロワー";
 "profile_favourites_tab_title" = "お気に入り";
+"profile_blocked_description" = "%@ さんをブロックしています";
+"profile_view_toots_button_title" = "トゥートを見る (ブロックは解除されません)";
 "block_user_action_title" = "ブロック";
 "unblock_user_action_title" = "ブロックを解除";
