@@ -78,6 +78,18 @@ final class ProfileViewController: UIViewController {
             blockedLabel.isHidden = true
         }
     }
+    @IBOutlet weak var blockedView: UIView! {
+        didSet {
+            blockedView.isHidden = true
+        }
+    }
+    @IBOutlet weak var blockedDescriptionLabel: UILabel!
+    @IBOutlet weak var viewTootsButton: UIButton! {
+        didSet {
+            viewTootsButton.setTitle("", for: .normal)
+        }
+    }
+
     @IBOutlet weak var statusesContainerView: UIView!
     @IBOutlet weak var followingContainerView: UIView!
     @IBOutlet weak var followersContainerView: UIView!
@@ -166,11 +178,12 @@ final class ProfileViewController: UIViewController {
 
             if let id = s.accountID, id != s.myAccount.id {
                 s.fetchAccount(id: id) {
-                    s.setupViews()
+                    s.fetchRelationship(id: id){
+                        s.setupViews()
+                        s.setupFollowButtonView()
+                    }
                 }
-                s.fetchRelationship(id: id){
-                    s.setupFollowButtonView()
-                }
+
             } else {
                 s.account = s.myAccount
                 s.setupViews()
@@ -287,6 +300,16 @@ final class ProfileViewController: UIViewController {
             moreButtonView.isHidden = false
         }
 
+
+        let localized = NSLocalizedString("profile_blocked_description", comment: "")
+        blockedDescriptionLabel.text = String(format: localized, "@" + account.username)
+        viewTootsButton.setTitle(NSLocalizedString("profile_view_toots_button_title", comment: ""), for: .normal)
+        if let relationship = relationship, relationship.blocking {
+            blockedView.isHidden = false
+        } else {
+            blockedView.isHidden = true
+        }
+
         for vc in childTableViewControllers {
             if let accountsVC = vc as? AccountsTableViewController {
                 accountsVC.myAccount = myAccount
@@ -322,6 +345,7 @@ final class ProfileViewController: UIViewController {
         }
         followButton.isHidden = false
         blockedLabel.isHidden = true
+        blockedView.isHidden = true
 
         if relationship.requested {
             followButton.type = .cancelRequest
@@ -329,6 +353,7 @@ final class ProfileViewController: UIViewController {
         } else if relationship.blocking {
             followButton.isHidden = true
             blockedLabel.isHidden = false
+            blockedView.isHidden = false
         }
         else if relationship.following {
             followButton.type = .unfollow
@@ -338,6 +363,11 @@ final class ProfileViewController: UIViewController {
             requestedLabel.isHidden = true
         }
         followButtonView.isHidden = false
+    }
+
+    @IBAction func viewTootsButtonDidTap(_ sender: UIButton) {
+
+        blockedView.isHidden = true
     }
 
     fileprivate func switchContainerView(index: Int) {

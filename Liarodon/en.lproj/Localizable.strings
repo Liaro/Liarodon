@@ -35,5 +35,7 @@
 "profile_following_tab_title" = "Following";
 "profile_followers_tab_title" = "Followers";
 "profile_favourites_tab_title" = "Favourites";
+"profile_blocked_description" = "You have blocked %@";
+"profile_view_toots_button_title" = "View Toots (won't unblock)";
 "block_user_action_title" = "Block";
 "unblock_user_action_title" = "Unblock";
